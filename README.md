@@ -338,6 +338,15 @@ Leader de cada integrante durante el sprint.
       - [5.2.3.6. Services Documentation Evidence for Sprint Review](#5236-services-documentation-evidence-for-sprint-review)
       - [5.2.3.7. Software Deployment Evidence for Sprint Review](#5237-software-deployment-evidence-for-sprint-review)
       - [5.2.3.8. Team Collaboration Insights during Sprint](#5238-team-collaboration-insights-during-sprint)
+    - [5.2.4. Sprint 4](#524-sprint-4)
+      - [5.2.4.1. Sprint Planning 4](#5241-sprint-planning-4)
+      - [5.2.4.2. Aspect Leaders and Collaborators](#5242-aspect-leaders-and-collaborators)
+      - [5.2.4.3. Sprint Backlog 3](#5243-sprint-backlog-4)
+      - [5.2.4.4. Development Evidence for Sprint Review](#5244-development-evidence-for-sprint-review)
+      - [5.2.4.5. Execution Evidence for Sprint Review](#5245-execution-evidence-for-sprint-review)
+      - [5.2.4.6. Services Documentation Evidence for Sprint Review](#5246-services-documentation-evidence-for-sprint-review)
+      - [5.2.4.7. Software Deployment Evidence for Sprint Review](#5247-software-deployment-evidence-for-sprint-review)
+      - [5.2.4.8. Team Collaboration Insights during Sprint](#5248-team-collaboration-insights-during-sprint)
   - [5.3. Validation Interviews](#53-validation-interviews)
     - [5.3.1. Diseño de Entrevistas](#531-diseño-de-entrevistas)
     - [5.3.2. Registro de Entrevistas](#532-registro-de-entrevistas)
@@ -9048,6 +9057,20 @@ El Sprint 4 tuvo como punto de partida los resultados alcanzados en el Sprint 3,
 | **Sprint 3 Retrospective Summary** | El equipo identificó como aciertos la organización del trabajo por bounded contexts mediante el esquema de Aspect Leaders, que permitió paralelizar el desarrollo del backend de forma efectiva, y la documentación de endpoints en paralelo a su implementación. Como oportunidades de mejora se identificó que algunos bounded contexts del frontend quedaron pendientes de conectar al backend real al cierre del sprint, y que ciertos endpoints del backend requieren validaciones adicionales de negocio. Para el Sprint 4 el equipo se comprometió a completar la integración total del frontend con el backend, aplicar las correcciones de usabilidad identificadas en la evaluación heurística, y asegurar que todos los productos estén en su versión final y completamente funcionales para el cierre del proyecto. |
 | **Sprint Goal & User Stories** | |
 | **Sprint 4 Goal** | Nuestro enfoque está en ofrecer a los usuarios de Bloomie una experiencia de cuidado de piel completa, pulida y confiable, donde todos los flujos principales del producto funcionen de manera integrada y sin interrupciones. Creemos que esto entrega una solución madura y lista para ser evaluada por usuarios reales a los jóvenes adultos que buscan personalizar su rutina de skincare, y una herramienta de gestión de pacientes más robusta y fluida para los dermatólogos. Esto se confirmará cuando un usuario pueda completar su rutina de skincare diaria, explorar y guardar productos favoritos, gestionar su suscripción activa y participar en una consulta dermatológica virtual de inicio a fin, y cuando un dermatólogo pueda gestionar su disponibilidad, atender una consulta y registrar sus notas clínicas, todo sin encontrar bloqueos ni inconsistencias en la información mostrada. |
+
+#### 5.2.4.2. Aspect Leaders and Collaborators
+
+#### 5.2.4.3. Sprint Backlog 4
+
+#### 5.2.4.4. Development Evidence for Sprint Review
+
+#### 5.2.4.5. Execution Evidence for Sprint Review
+
+#### 5.2.4.6. Services Documentation Evidence for Sprint Review
+
+#### 5.2.4.7. Software Deployment Evidence for Sprint Review
+
+#### 5.2.4.8. Team Collaboration Insights for Sprint Review
 
 
 ## 5.3. Validation Interviews.
