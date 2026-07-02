@@ -24,7 +24,7 @@
 <h2>Integrantes</h2>
 
 <p>
-u - Acuache Lucas, Mathias Joaquin<br>
+u202314898 - Acuache Lucas, Mathias Joaquin<br>
 u202416272 - Asmat Alminco, Martin Alejandro<br>
 u202414802 - Contreras Torres, Arturo Valentino<br>
 u - Hurtado Balcázar, Rommel Daniel<br>
@@ -573,17 +573,19 @@ Convertirnos en la plataforma líder de cuidado de la piel a nivel global, recon
 <table>
   <tr>
     <td rowspan="4" align="center">
-      <img src="" alt="Foto de Mathias Acuache" width="650"/>
+      <img src="assets/img/mathias-acuache.jpeg" alt="Foto de Mathias Acuache" width="450"/>
     </td>
     <td><b>Nombre:</b> Mathias Joaquin Acuache Lucas</td>
   </tr>
   <tr>
-    <td><b>Código:</b> u</td>
+    <td><b>Código:</b> u202314898</td>
   </tr>
   <tr>
     <td>
       <b>Descripción:</b><br/>
-      Soy 
+       Soy <b> Mathias Joaquin Acuache Lucas</b>, me encuentro en el sexto ciclo de la carrera de Ingeniería de Software. Tengo experiencia en C++, SQL y MongoDB, además de utilizar GitHub de manera correcta. Asimismo, tengo conocimiento en Domain Driven Design y algunos patrones de software los cuales he aplicado en diversos proyectos. 
+       <br/><br/>
+       Dentro del equipo, cumplo el rol de apoyar en las actividades de la documentación, implementando todo lo necesario para tener una presentación del informe de manera correcta, asimismo ayudar en el Backend del proyecto. Me considero una persona que trata de apoyar en todo lo que falta en el equipo e investigo cosas nuevas que ma apasiona de mi carrera.
     </td>
   </tr>
 </table>
