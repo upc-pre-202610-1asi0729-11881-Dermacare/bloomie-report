@@ -27,7 +27,7 @@
 u202314898 - Acuache Lucas, Mathias Joaquin<br>
 u202416272 - Asmat Alminco, Martin Alejandro<br>
 u202414802 - Contreras Torres, Arturo Valentino<br>
-u - Hurtado Balcázar, Rommel Daniel<br>
+u202517474 - Hurtado Balcázar, Rommel Daniel<br>
 u20241b843 - Mechan Montenegro, Luciana Carolina<br>
 </p>
 <p><em>Periodo 202610</em></p>
