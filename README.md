@@ -9112,7 +9112,100 @@ para la entrega final del proyecto.
 
 #### 5.2.4.5. Execution Evidence for Sprint Review
 
-#### 5.2.4.6. Services Documentation Evidence for Sprint Review
+#### 5.2.4.5. Services Documentation Evidence for Sprint Review
+
+Durante el Sprint 4 se completó la documentación de los Web Services de Bloomie 
+mediante OpenAPI/Swagger, incorporando los nuevos bounded contexts y endpoints 
+implementados en esta iteración final: Intelligent Support con integración a Gemini AI, 
+mensajería en consulta virtual, procesamiento de pagos con Stripe incluyendo checkout, 
+webhook y reembolsos, ciclo completo de suscripciones con cancelación y cambio de plan, 
+compatibilidad de productos con el perfil de piel del usuario, integración con Open Beauty 
+Facts para el catálogo de productos, generación de rutinas con IA, y cambio de contraseña. 
+La documentación completa está disponible en el Swagger UI desplegado en Azure.
+
+**URL Swagger UI:** https://bloomie-platform-awb7d0fyajc6fgby.eastus-01.azurewebsites.net/swagger-ui/index.html
+
+**URL Repositorio Web Services:** https://github.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-platform
+
+**Commits relacionados con documentación — Sprint 4:**
+Es importante mencionar que la documentación de los Web Services fue elaborada de forma 
+paralela a la implementación del código durante el Sprint 4. Cada endpoint fue documentado 
+mediante anotaciones de OpenAPI directamente en el código fuente al momento de su 
+implementación, por lo que los commits de documentación corresponden a los mismos commits 
+de desarrollo de cada bounded context. Los commits que se listan a continuación corresponden 
+específicamente a actualizaciones de documentación realizadas de forma independiente al 
+finalizar el sprint para refinar las descripciones y recursos REST de los bounded contexts 
+de Subscriptions, Payments y Dermatology Care.
+
+| Commit Id | Commit Message | Fecha |
+|---|---|---|
+| 2c5f256 | docs(subscription): update persistence documentation | 02/07/2026 |
+| 9907ac9 | docs(payments): update code documentation | 02/07/2026 |
+| 3227642 | docs(dermatology-care): update REST resource documentation | 02/07/2026 |
+
+---
+
+| Bounded Context | Endpoint | Verbo HTTP | Sintaxis | Parámetros | Response de ejemplo | Descripción del response |
+|---|---|---|---|---|---|---|
+| Authentication | Register user | POST | /api/v1/authentication/register | Body: { "firstName": "Luciana", "lastName": "Mechan", "email": "luciana@email.com", "password": "Pass123!" } | 201: { "id": 1, "firstName": "Luciana", "email": "luciana@email.com" } | Crea una cuenta de usuario paciente y retorna los datos del usuario registrado. |
+| Authentication | Register dermatologist | POST | /api/v1/authentication/register-dermatologist | Body: { "firstName": "Carlos", "lastName": "Torres", "email": "carlos@email.com", "password": "Pass123!", "licenseNumber": "CMP-12345" } | 201: { "id": 2, "firstName": "Carlos", "email": "carlos@email.com" } | Crea una cuenta de usuario dermatólogo y retorna los datos del dermatólogo registrado. |
+| IAM — Users | Get user by ID | GET | /api/v1/users/{userId} | Path: userId (Long) | 200: { "id": 1, "firstName": "Luciana", "email": "luciana@email.com", "photoUrl": "https://..." } | Retorna los datos del perfil del usuario correspondiente al ID indicado. |
+| IAM — Users | Update user profile | PUT | /api/v1/users/{userId} | Path: userId (Long) / Body: { "firstName": "Luciana", "lastName": "Mechan Montenegro" } | 200: { "id": 1, "firstName": "Luciana", "lastName": "Mechan Montenegro" } | Actualiza la información personal del usuario y retorna el perfil actualizado. |
+| IAM — Users | Update user photo | PUT | /api/v1/users/{userId}/photo | Path: userId (Long) / Body: { "photoUrl": "https://storage.azure.com/foto.jpg" } | 200: { "id": 1, "photoUrl": "https://storage.azure.com/foto.jpg" } | Actualiza la URL de la foto de perfil del usuario. |
+| IAM — Users | Change password | PUT | /api/v1/users/{userId}/change-password | Path: userId (Long) / Body: { "currentPassword": "Pass123!", "newPassword": "NewPass456!" } | 200: { "message": "Password updated successfully" } | Actualiza la contraseña del usuario validando la contraseña actual antes de aplicar el cambio. |
+| Skin Profiles | Complete skin profile | POST | /api/v1/skin-profiles | Body: { "patientId": 1, "skinType": "OILY", "sensitivity": "SENSITIVE", "conditions": ["ACNE"] } | 201: { "id": 1, "patientId": 1, "skinType": "OILY", "sensitivity": "SENSITIVE" } | Registra el perfil dermatológico del paciente tras completar el cuestionario inicial. |
+| Skin Profiles | Get skin profile by patient | GET | /api/v1/skin-profiles/patient/{patientId} | Path: patientId (Long) | 200: { "id": 1, "patientId": 1, "skinType": "OILY", "sensitivity": "SENSITIVE" } | Retorna el perfil de piel del paciente indicado. |
+| Skin Profiles | Update skin profile | PUT | /api/v1/skin-profiles/{skinProfileId} | Path: skinProfileId (Long) / Body: { "skinType": "COMBINATION", "sensitivity": "NORMAL" } | 200: { "id": 1, "skinType": "COMBINATION", "sensitivity": "NORMAL" } | Actualiza las características de piel del paciente y retorna el perfil actualizado. |
+| Facial Scans | Start facial scan | POST | /api/v1/facial-scans | Body: { "patientId": 1 } | 201: { "id": 1, "patientId": 1, "status": "PENDING" } | Inicia un nuevo escaneo facial para el paciente en estado pendiente. |
+| Facial Scans | Submit facial scan | PUT | /api/v1/facial-scans/{facialScanId}/submit | Path: facialScanId (Long) / Body: { "photoUrl": "https://storage.azure.com/scan.jpg" } | 200: { "id": 1, "status": "COMPLETED", "photoUrl": "https://..." } | Envía la fotografía del escaneo y dispara el análisis automático de piel. |
+| Facial Scans | Get facial scans by patient | GET | /api/v1/facial-scans/patient/{patientId} | Path: patientId (Long) | 200: [ { "id": 1, "status": "COMPLETED" }, { "id": 2, "status": "COMPLETED" } ] | Retorna el historial completo de escaneos faciales del paciente. |
+| Skin Analyses | Get skin analysis by facial scan | GET | /api/v1/skin-analyses/facial-scan/{facialScanId} | Path: facialScanId (Long) | 200: { "id": 1, "acneScore": 72, "hydrationScore": 45, "oilinessScore": 80, "skinType": "OILY" } | Retorna el análisis de piel generado para el escaneo facial indicado. |
+| Skin Analyses | Get skin analyses by patient | GET | /api/v1/skin-analyses/patient/{patientId} | Path: patientId (Long) | 200: [ { "id": 1, "acneScore": 72 }, { "id": 2, "acneScore": 60 } ] | Retorna el historial completo de análisis de piel del paciente para seguimiento de evolución. |
+| Routine Management | Get routine by patient | GET | /api/v1/routines/patient/{patientId} | Path: patientId (Long) | 200: { "id": 1, "patientId": 1, "items": [ { "id": 1, "productId": 3, "step": "MORNING" } ] } | Retorna la rutina personalizada activa del paciente generada con IA en base a su perfil de piel. |
+| Routine Management | Replace product in routine | PUT | /api/v1/routines/{routineId}/items/{routineItemId}/replace | Path: routineId, routineItemId (Long) / Body: { "newProductId": 5 } | 200: { "id": 1, "productId": 5, "step": "MORNING" } | Reemplaza el producto de un paso de la rutina por una alternativa recomendada. |
+| Routine Management | Get replacement options | GET | /api/v1/routines/{routineId}/items/{routineItemId}/replacement-options | Path: routineId, routineItemId (Long) | 200: [ { "id": 5, "name": "Gel Limpiador Suave" }, { "id": 8, "name": "Limpiador Espumoso" } ] | Retorna las alternativas de producto disponibles para reemplazar un paso de la rutina. |
+| Routine Management | Remove product from routine | DELETE | /api/v1/routines/{routineId}/items/{routineItemId} | Path: routineId, routineItemId (Long) | 204: (sin body) | Elimina un paso de la rutina validando que no sea obligatorio y que se mantenga el mínimo requerido. |
+| Daily Trackings | Mark routine as completed | POST | /api/v1/daily-trackings | Body: { "routineId": 1, "patientId": 1, "completedAt": "2026-06-20" } | 201: { "id": 1, "routineId": 1, "completedAt": "2026-06-20" } | Registra el cumplimiento diario de la rutina del paciente para la fecha indicada. |
+| Daily Trackings | Get trackings by routine | GET | /api/v1/daily-trackings/routine/{routineId} | Path: routineId (Long) | 200: [ { "id": 1, "completedAt": "2026-06-20" }, { "id": 2, "completedAt": "2026-06-21" } ] | Retorna todos los registros de cumplimiento asociados a una rutina específica. |
+| Daily Trackings | Get weekly summary | GET | /api/v1/daily-trackings/patient/{patientId}/weekly-summary | Path: patientId (Long) | 200: { "patientId": 1, "completedDays": 5, "totalDays": 7, "adherenceRate": 71.4 } | Retorna el resumen semanal de adherencia a la rutina del paciente con tasa de cumplimiento. |
+| Product Discovery | Get all products | GET | /api/v1/products | — | 200: [ { "id": 1, "name": "Niacinamide Serum", "category": "SERUM", "imageUrl": "https://..." } ] | Retorna el catálogo completo de productos obtenidos desde la API Open Beauty Facts. |
+| Product Discovery | Get product by ID | GET | /api/v1/products/{productId} | Path: productId (Long) | 200: { "id": 1, "name": "Niacinamide Serum", "category": "SERUM", "ingredients": ["Niacinamide", "Zinc"] } | Retorna el detalle completo de un producto incluyendo ingredientes y categoría. |
+| Product Discovery | Get compatibilities by skin type | GET | /api/v1/products/compatibilities | Query: skinType (String) | 200: [ { "productId": 1, "skinType": "OILY", "score": 92, "reason": "Alta compatibilidad con piel grasa" } ] | Retorna la lista de productos con su score de compatibilidad calculado para el tipo de piel indicado. |
+| Product Discovery | Get compatibilities by product | GET | /api/v1/products/{productId}/compatibilities | Path: productId (Long) | 200: [ { "skinType": "OILY", "score": 92 }, { "skinType": "DRY", "score": 45 } ] | Retorna los scores de compatibilidad de un producto para cada tipo de piel. |
+| Favorite Products | Save product as favorite | POST | /api/v1/favorite-products | Body: { "patientId": 1, "productId": 3 } | 201: { "id": 1, "patientId": 1, "productId": 3 } | Guarda un producto en la lista de favoritos del paciente. |
+| Favorite Products | Get favorites by user | GET | /api/v1/favorite-products | Query: patientId (Long) | 200: [ { "id": 1, "productId": 3 }, { "id": 2, "productId": 7 } ] | Retorna la lista de productos guardados como favoritos por el paciente indicado. |
+| Favorite Products | Remove from favorites | DELETE | /api/v1/favorite-products/{favoriteProductId} | Path: favoriteProductId (Long) | 204: (sin body) | Elimina un producto de la lista de favoritos del paciente. |
+| Dermatologist Profiles | Get all profiles | GET | /api/v1/dermatologist-profiles | — | 200: [ { "id": 1, "firstName": "Carlos", "specialty": "Dermatología clínica", "consultationFee": 80.00 } ] | Retorna la lista completa de perfiles de dermatólogos disponibles en la plataforma. |
+| Dermatologist Profiles | Get profile by ID | GET | /api/v1/dermatologist-profiles/{profileId} | Path: profileId (Long) | 200: { "id": 1, "firstName": "Carlos", "specialty": "Dermatología clínica", "consultationFee": 80.00 } | Retorna el perfil profesional del dermatólogo indicado. |
+| Dermatologist Profiles | Update profile | PUT | /api/v1/dermatologist-profiles/{profileId} | Path: profileId (Long) / Body: { "specialty": "Dermatología estética", "consultationFee": 90.00 } | 200: { "id": 1, "specialty": "Dermatología estética", "consultationFee": 90.00 } | Actualiza la información profesional del dermatólogo y retorna el perfil actualizado. |
+| Availabilities | Define availability | POST | /api/v1/availabilities | Body: { "dermatologistId": 1, "dayOfWeek": "MONDAY", "startTime": "09:00", "endTime": "13:00" } | 201: { "id": 1, "dayOfWeek": "MONDAY", "startTime": "09:00", "endTime": "13:00", "dermatologistId": 1 } | Registra un horario de disponibilidad del dermatólogo retornando el recurso completo con todos sus campos. |
+| Availabilities | Get availabilities | GET | /api/v1/availabilities | Query: dermatologistId (Long), dayOfWeek (opcional, String) | 200: [ { "id": 1, "dayOfWeek": "MONDAY", "startTime": "09:00", "endTime": "13:00" } ] | Retorna los horarios de disponibilidad del dermatólogo con filtrado opcional por día de la semana. |
+| Availabilities | Update availability | PUT | /api/v1/availabilities/{availabilityId} | Path: availabilityId (Long) / Body: { "startTime": "10:00", "endTime": "14:00" } | 200: { "id": 1, "dayOfWeek": "MONDAY", "startTime": "10:00", "endTime": "14:00" } | Actualiza un horario de disponibilidad existente del dermatólogo. |
+| Appointments | Schedule appointment | POST | /api/v1/appointments | Body: { "patientId": 1, "dermatologistId": 1, "scheduledAt": "2026-07-10T10:00:00" } | 201: { "id": 1, "status": "PENDING", "scheduledAt": "2026-07-10T10:00:00" } | Registra una nueva cita dermatológica en estado pendiente de confirmación de pago. |
+| Appointments | Confirm appointment | PUT | /api/v1/appointments/{id}/confirm | Path: id (Long) | 200: { "id": 1, "status": "CONFIRMED" } | Confirma una cita dermatológica tras la verificación del pago. |
+| Appointments | Cancel appointment | PUT | /api/v1/appointments/{id}/cancel | Path: id (Long) | 200: { "id": 1, "status": "CANCELLED" } | Cancela una cita programada y actualiza su estado. |
+| Appointments | Reprogram appointment | PUT | /api/v1/appointments/{id}/reprogram-request | Path: id (Long) / Body: { "newScheduledAt": "2026-07-15T11:00:00" } | 200: { "id": 1, "status": "REPROGRAM_REQUESTED", "scheduledAt": "2026-07-15T11:00:00" } | Solicita la reprogramación de una cita a una nueva fecha y hora. |
+| Appointments | Get appointments | GET | /api/v1/appointments | Query: patientId o dermatologistId (Long) | 200: [ { "id": 1, "status": "CONFIRMED", "scheduledAt": "2026-07-10T10:00:00" } ] | Retorna las citas del paciente o del dermatólogo según el parámetro indicado. |
+| Consultations | Start consultation | POST | /api/v1/consultations | Body: { "appointmentId": 1 } | 201: { "id": 1, "appointmentId": 1, "status": "IN_PROGRESS" } | Inicia una nueva sesión de consulta virtual para una cita confirmada. |
+| Consultations | Get consultation by appointment | GET | /api/v1/consultations | Query: appointmentId (Long) | 200: { "id": 1, "appointmentId": 1, "status": "IN_PROGRESS", "notes": "" } | Retorna la consulta virtual asociada a la cita indicada. |
+| Consultations | Save clinical notes | PUT | /api/v1/consultations/{id}/save-notes | Path: id (Long) / Body: { "notes": "Piel con tendencia acneica moderada." } | 200: { "id": 1, "notes": "Piel con tendencia acneica moderada." } | Guarda las notas clínicas del dermatólogo de forma progresiva durante la consulta. |
+| Consultations | Record diagnosis | PUT | /api/v1/consultations/{id}/diagnosis | Path: id (Long) / Body: { "diagnosis": "Acné grado II", "recommendations": "Aplicar ácido salicílico al 2%." } | 200: { "id": 1, "diagnosis": "Acné grado II", "recommendations": "Aplicar ácido salicílico al 2%." } | Registra el diagnóstico final y las recomendaciones clínicas del dermatólogo. |
+| Consultations | Upload clinical photo | POST | /api/v1/consultations/{id}/photos | Path: id (Long) / Body: { "photoUrl": "https://storage.azure.com/clinical.jpg" } | 201: { "id": 1, "photoUrl": "https://storage.azure.com/clinical.jpg" } | Agrega una fotografía clínica a la consulta para documentación del caso. |
+| Consultations | Finish consultation | PUT | /api/v1/consultations/{id}/finish | Path: id (Long) | 200: { "id": 1, "status": "COMPLETED" } | Cierra la sesión de consulta virtual y la marca como completada. |
+| Payments | Stripe checkout | POST | /api/v1/payments/checkout | Body: { "patientId": 1, "appointmentId": 1, "amount": 80.00 } | 201: { "checkoutUrl": "https://checkout.stripe.com/pay/cs_xxx" } | Crea una sesión de checkout en Stripe y retorna la URL de pago para redirigir al usuario. |
+| Payments | Stripe webhook | POST | /api/v1/payments/webhook | Header: Stripe-Signature / Body: (payload de Stripe) | 200: (sin body) | Recibe y procesa los eventos de webhook de Stripe para confirmar o rechazar pagos de forma asíncrona. |
+| Payments | Get payment by ID | GET | /api/v1/payments/{paymentId} | Path: paymentId (Long) | 200: { "id": 1, "amount": 80.00, "status": "COMPLETED", "stripePaymentId": "pi_xxx" } | Retorna el detalle de un pago incluyendo su estado y el identificador de la transacción en Stripe. |
+| Payments | Get payments by patient | GET | /api/v1/payments/patient/{patientId} | Path: patientId (Long) | 200: [ { "id": 1, "amount": 80.00, "status": "COMPLETED" } ] | Retorna el historial de pagos realizados por el paciente indicado. |
+| Payments | Refund payment | POST | /api/v1/payments/{paymentId}/refund | Path: paymentId (Long) | 200: { "id": 1, "status": "REFUNDED", "stripeRefundId": "re_xxx" } | Procesa el reembolso de un pago completado mediante Stripe. |
+| Subscriptions | Select subscription plan | POST | /api/v1/subscriptions | Body: { "patientId": 1, "planId": 2 } | 201: { "id": 1, "patientId": 1, "planId": 2, "status": "ACTIVE" } | Registra la suscripción del paciente al plan seleccionado y la activa tras la verificación del pago. |
+| Subscriptions | Get subscription by patient | GET | /api/v1/subscriptions/patient/{patientId} | Path: patientId (Long) | 200: { "id": 1, "planId": 2, "status": "ACTIVE", "startDate": "2026-06-20" } | Retorna la suscripción activa del paciente con su plan y fecha de inicio. |
+| Subscriptions | Cancel subscription | PUT | /api/v1/subscriptions/{subscriptionId}/cancel | Path: subscriptionId (Long) | 200: { "id": 1, "status": "CANCELLED" } | Cancela la suscripción activa del paciente y actualiza su estado. |
+| Subscriptions | Change subscription plan | PUT | /api/v1/subscriptions/{subscriptionId}/change-plan | Path: subscriptionId (Long) / Body: { "newPlanId": 3 } | 200: { "id": 1, "planId": 3, "status": "ACTIVE" } | Cambia el plan de suscripción activo del paciente al nuevo plan indicado. |
+| Intelligent Support | Create support query | POST | /api/v1/support-queries | Body: { "patientId": 1, "query": "¿Puedo usar niacinamida con vitamina C?" } | 201: { "id": 1, "query": "¿Puedo usar niacinamida con vitamina C?", "response": "Sí, son compatibles...", "status": "ANSWERED" } | Envía una consulta al asistente virtual de skincare potenciado por Gemini AI y retorna la respuesta personalizada. |
+| Intelligent Support | Get support query by ID | GET | /api/v1/support-queries/{id} | Path: id (Long) | 200: { "id": 1, "query": "¿Puedo usar niacinamida con vitamina C?", "response": "Sí, son compatibles...", "status": "ANSWERED" } | Retorna el detalle de una consulta al asistente virtual por su ID. |
+| Intelligent Support | Get queries by patient | GET | /api/v1/support-queries/patient/{patientId} | Path: patientId (Long) / Query: status (opcional) | 200: [ { "id": 1, "query": "...", "status": "ANSWERED" } ] | Retorna el historial de consultas realizadas al asistente virtual por el paciente, con filtrado opcional por estado. |
+| Chat Messages | Send chat message | POST | /api/v1/chat-messages | Body: { "consultationId": 1, "senderId": 1, "content": "Buenos días doctor", "messageType": "TEXT" } | 201: { "id": 1, "consultationId": 1, "content": "Buenos días doctor", "sentAt": "2026-07-01T10:05:00" } | Envía un mensaje de chat durante una consulta virtual entre paciente y dermatólogo. |
+| Chat Messages | Get messages by consultation | GET | /api/v1/chat-messages | Query: consultationId (Long) | 200: [ { "id": 1, "content": "Buenos días doctor", "sentAt": "2026-07-01T10:05:00" } ] | Retorna todos los mensajes de chat de una consulta virtual ordenados cronológicamente. |
 
 #### 5.2.4.7. Software Deployment Evidence for Sprint Review
 
