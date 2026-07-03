@@ -9223,7 +9223,7 @@ Detalle de los principales commits realizados para la entrega del trabajo final
 
 #### 5.2.4.5. Execution Evidence for Sprint Review
 
-#### 5.2.4.5. Services Documentation Evidence for Sprint Review
+#### 5.2.4.6. Services Documentation Evidence for Sprint Review
 
 Durante el Sprint 4 se completó la documentación de los Web Services de Bloomie 
 mediante OpenAPI/Swagger, incorporando los nuevos bounded contexts y endpoints 
@@ -9359,6 +9359,118 @@ El usuario accede a la sección de Trending Items donde se muestra el catálogo 
 
 
 #### 5.2.4.7. Software Deployment Evidence for Sprint Review
+
+Durante el Sprint 4 el equipo actualizó el despliegue de los cuatro productos de Bloomie 
+a su versión final. En el backend se incorporaron las variables de entorno correspondientes 
+a los servicios externos integrados en esta iteración — Gemini AI y Stripe — y se 
+verificó el correcto funcionamiento de la API desplegada mediante Swagger UI. La base de 
+datos MySQL en Azure continuó operativa sin cambios en su configuración. El Frontend Web 
+Application y la Landing Page fueron actualizados con las versiones finales del Sprint 4, 
+incluyendo la integración completa con el backend real en todos los bounded contexts.
+
+URL de swagger: https://bloomie-platform-awb7d0fyajc6fgby.eastus-01.azurewebsites.net/swagger-ui/index.html
+
+
+---
+
+**Web Services — Azure App Service**
+
+El recurso de Azure App Service que aloja la RESTful API de Bloomie se mantuvo operativo 
+durante el Sprint 4. A continuación se presenta el overview del recurso mostrando el 
+estado de ejecución, la URL pública del servicio y el plan de servicio configurado.
+
+![bloomie-platform](assets/img/bloomie-azure-overview.png)
+
+
+---
+
+Durante el Sprint 4 se agregaron las variables de entorno correspondientes a los dos 
+servicios externos integrados en esta iteración: la API Key de Gemini AI para el 
+asistente virtual de skincare y las credenciales de Stripe para el procesamiento de 
+pagos y el webhook. A continuación se presenta la sección de configuración del App 
+Service con las nuevas variables incorporadas.
+
+![bloomie-platform](assets/img/azure-variables.png)
+
+---
+
+Como evidencia del despliegue exitoso de la versión final del backend, se accedió a 
+la documentación de la API mediante Swagger UI desde la URL pública del App Service, 
+verificando que todos los bounded contexts implementados durante el Sprint 4 están 
+disponibles y correctamente documentados, incluyendo Intelligent Support, Chat Messages, 
+la integración completa de Payments con Stripe y el bounded context de Product Compatibility.
+
+![bloomie-platform](assets/img/swagger-updated.png)
+
+
+---
+
+**Base de datos — Azure Database for MySQL Flexible Server**
+
+La instancia de Azure Database for MySQL Flexible Server continuó operativa durante el 
+Sprint 4 sin cambios en su configuración de infraestructura. El servidor mantuvo el 
+estado Ready con SSL enforced y TLS 1.2, garantizando la seguridad en la comunicación 
+entre el App Service y la base de datos.
+
+![bloomie-bd](assets/img/bloomie-bd.png)
+
+
+---
+
+Los datos de conexión del servidor MySQL se mantuvieron configurados como variables de 
+entorno en el App Service, permitiendo que la aplicación Spring Boot establezca 
+correctamente la conexión con la base de datos en el entorno de producción durante 
+el Sprint 4.
+
+![bloomie-bd-connect](assets/img/azure-connect.png)
+
+
+---
+
+**Landing Page — Vercel**
+
+La Landing Page fue actualizada durante el Sprint 4 incorporando las secciones de 
+About the Product y About the Team con los videos del equipo incrustados, y los 
+enlaces de los planes actualizados para redirigir correctamente al flujo de registro 
+de la Web Application. La Landing Page se mantiene desplegada en Vercel y accesible 
+desde su URL pública.
+
+![bloomie-landing](assets/img/deploy-landing.png)
+
+---
+
+**Web Application — Azure Static Web Apps**
+
+El Frontend Web Application fue actualizado a su versión final durante el Sprint 4 
+con la integración completa de todos los bounded contexts al backend real. En esta 
+iteración se configuró además el pipeline de CI/CD en Azure Static Web Apps mediante 
+GitHub Actions, automatizando el proceso de despliegue ante cada actualización de la 
+rama develop del repositorio bloomie-webapp. La Web Application se encuentra 
+desplegada y accesible desde su URL pública en Azure.
+
+![bloomie-frontend](assets/img/deploy-frontend.png)
+
+
+**Automatización del despliegue — GitHub Actions**
+
+El pipeline de integración y despliegue continuo configurado en GitHub Actions permitió 
+automatizar el proceso de build y despliegue del Frontend Web Application durante el 
+Sprint 4. A continuación se presenta el historial de ejecuciones del workflow en GitHub, 
+donde se puede verificar el estado exitoso del último despliegue realizado.
+
+![bloomie-frontend](assets/img/github-actions.png)
+
+
+---
+
+**Historial de deployments — Landing Page**
+
+El repositorio bloomie-website registra el historial de deployments realizados durante 
+el proyecto. A continuación se presenta el historial de los últimos deployments de la 
+Landing Page en GitHub, confirmando que la versión final del Sprint 4 fue desplegada 
+correctamente en Vercel.
+
+![bloomie-frontend](assets/img/landing-deployments.png)
 
 #### 5.2.4.8. Team Collaboration Insights for Sprint Review
 
