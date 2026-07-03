@@ -9081,6 +9081,33 @@ adaptación requerido para familiarizarse con la arquitectura del sistema.
 
 #### 5.2.4.3. Sprint Backlog 4
 
+El Sprint 4 tuvo como objetivo consolidar el producto final de Bloomie, completando la 
+implementación de los bounded contexts pendientes, integrando servicios externos para el 
+asistente virtual y los pagos, incorporando la funcionalidad de videollamada en las 
+consultas dermatológicas, y asegurando la calidad del flujo completo de la aplicación. 
+Adicionalmente se elaboraron los videos About the Product y About the Team requeridos 
+para la entrega final del proyecto.
+
+**URL del board:** https://trello.com/b/PA2Tjn3g/sprint-4-bloomie
+
+![Sprint Backlog 4 Board](assets/img/sprint4-board.png)
+
+| User Story Id | Título | Task Id | Título | Descripción | Estimación (Hours) | Responsable | Estado |
+|---|---|---|---|---|---|---|---|
+| TS01 / TS02 | Gestionar usuarios del sistema / Gestionar sesiones de autenticación | T-01 | Completar implementación del bounded context IAM | Finalizar la implementación completa del bounded context de IAM incluyendo todos los endpoints de usuarios y autenticación, validaciones de negocio pendientes y correcciones identificadas en la iteración anterior. | 5 | Mechan, Luciana | Done |
+| TS09 / TS10 | Gestionar perfiles de dermatólogos / Gestionar disponibilidad de dermatólogos | T-02 | Completar endpoints de Dermatology Care | Finalizar la implementación completa del bounded context de Dermatology Care incluyendo los endpoints de perfiles de dermatólogos y disponibilidad con todas las validaciones de negocio requeridas. | 5 | Mechan, Luciana | Done |
+| TS11 | Gestionar citas dermatológicas | T-03 | Completar endpoints de Dermatological Appointment | Finalizar la implementación completa del bounded context de Dermatological Appointment incluyendo los endpoints de agendamiento, confirmación, cancelación y reprogramación de citas con validaciones de negocio completas. | 5 | Mechan, Luciana | Done |
+| TS13 / TS15 | Gestionar pagos / Gestionar suscripciones de usuarios | T-04 | Implementar transacción con Stripe integrada con base de datos | Implementar el flujo completo de procesamiento de pagos con Stripe persistiendo las transacciones en base de datos y actualizando el estado de la suscripción del usuario de forma sincronizada. | 5 | Mechan, Luciana | Done |
+| TS16 | Gestionar consultas al asistente virtual | T-05 | Integrar servicio externo Gemini para asistente virtual | Integrar la API de Gemini como motor del asistente virtual de skincare, permitiendo al usuario realizar consultas sobre productos, rutinas e ingredientes y recibir respuestas personalizadas basadas en su perfil de piel. | 5 | Mechan, Luciana | Done |
+| US29 / US34 | Realizar consulta virtual en tiempo real / Participar en consulta virtual | T-06 | Implementar videollamada en consulta dermatológica | Implementar la funcionalidad de videollamada dentro del flujo de consulta dermatológica virtual, permitiendo que el paciente y el dermatólogo se conecten en tiempo real durante la sesión. | 5 | Mechan, Luciana | Done |
+| TS07 | Gestionar catálogo de productos | T-07 | Integrar API externa de productos de skincare | Integrar una API externa como fuente de datos del catálogo de productos de skincare, reemplazando los datos simulados por información real de productos con sus atributos e ingredientes. | 5 | Contreras, Arturo | Done |
+| - | Quality Assurance | T-08 | Prueba del flujo completo de la aplicación — Mathias | Verificar el funcionamiento integral de todos los flujos de la aplicación desde el registro de usuario hasta la consulta dermatológica, documentando incidencias encontradas y confirmando su resolución. | 4 | Acuache, Mathias | Done |
+| - | Quality Assurance | T-09 | Prueba del flujo completo de la aplicación — Rommel | Verificar el funcionamiento integral de todos los flujos de la aplicación desde el registro de usuario hasta la consulta dermatológica, documentando incidencias encontradas y confirmando su resolución. | 4 | Hurtado, Rommel | Done |
+| - | Videos del proyecto | T-10 | Elaboración del video About the Product | Producir el video promocional de Bloomie de entre 1 y 3 minutos resumiendo el modelo de negocio, las características del producto y la opinión de usuarios de ambos segmentos objetivo. | 3 | Asmat, Martin | Done |
+| - | Videos del proyecto | T-11 | Grabación de testimonio individual para video About the Team | Grabar el testimonio individual ante cámara de cada integrante describiendo las actividades realizadas, los outcomes de aprendizaje logrados y las competencias desarrolladas durante el proyecto. | 2 | Todos | Done |
+| - | Videos del proyecto | T-12 | Edición del video About the Team | Editar el video About the Team integrando las escenas de sesiones de trabajo del equipo, la narración en voz en off del proceso y los testimonios individuales de cada integrante. | 3 | Asmat, Martin | Done |
+| - | Documentación del informe | T-13 | Documentación del capítulo 5 — Sprint 4 | Redactar y completar todas las secciones del capítulo 5 correspondientes al Sprint 4 en el informe del proyecto, incluyendo Sprint Planning, Sprint Backlog, evidencias de desarrollo, despliegue y colaboración del equipo. | 4 | Mechan, Luciana | Done |
+
 #### 5.2.4.4. Development Evidence for Sprint Review
 
 #### 5.2.4.5. Execution Evidence for Sprint Review
