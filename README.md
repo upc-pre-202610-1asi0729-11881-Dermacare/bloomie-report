@@ -9112,6 +9112,115 @@ para la entrega final del proyecto.
 
 #### 5.2.4.4. Development Evidence for Sprint Review
 
+Durante el Sprint 4 el equipo completó la versión final de todos los productos de Bloomie. En el backend se implementaron los bounded contexts de Intelligent Support con integración a Gemini AI, mensajería en consulta virtual, el ciclo completo de pagos con Stripe incluyendo checkout y webhook, el ciclo completo de suscripciones con cancelación y cambio de plan, la compatibilidad de productos con Open Beauty Facts, la generación de rutinas con IA, y la implementación completa de IAM con JWT. En el frontend se conectaron todos los bounded contexts al backend real, se implementó la videollamada virtual, el cambio de contraseña, la gestión de suscripciones, y se aplicaron mejoras de UI en todas las vistas. La Landing Page fue actualizada con los videos About the Product y About the Team y los enlaces definitivos.
+
+Detalle de los principales commits realizados para la entrega del trabajo final
+
+| Repository | Branch | Commit Id | Commit Message | Committed on (Date) |
+|---|---|---|---|---|
+| bloomie-platform | feature/iam-implementation | b0bab61 | add AuthenticatedUserResourceFromEntityAssembler | 29/06/2026 |
+| bloomie-platform | feature/iam-implementation | 6f4301c | add token services | 29/06/2026 |
+| bloomie-platform | feature/iam-implementation | 7574c34 | add authorization services | 29/06/2026 |
+| bloomie-platform | feature/iam-implementation | 9c79c75 | add authorization pipeline | 29/06/2026 |
+| bloomie-platform | feature/iam-implementation | 981d993 | add authorization models | 29/06/2026 |
+| bloomie-platform | feature/iam-implementation | f823354 | add ApplicationReadyEventHandler | 29/06/2026 |
+| bloomie-platform | feature/iam-implementation | 5758691 | add RoleCommandServiceImpl | 29/06/2026 |
+| bloomie-platform | feature/change-password-command | 1767b4d | feat(iam): add change password request resources | 01/07/2026 |
+| bloomie-platform | feature/change-password-command | b5281a1 | feat(iam): update user controller | 01/07/2026 |
+| bloomie-platform | feature/create-support-query-command | 8981ac8 | add SupportQuery | 28/06/2026 |
+| bloomie-platform | feature/create-support-query-command | dba9938 | add CreateSupportQueryCommand | 28/06/2026 |
+| bloomie-platform | feature/create-support-query-command | 5768e1a | add AiService | 28/06/2026 |
+| bloomie-platform | feature/create-support-query-command | 316dd9d | add GeminiAiServiceImpl | 28/06/2026 |
+| bloomie-platform | feature/create-support-query-command | 9d97fb9 | add SupportQueryCommandServiceImpl | 28/06/2026 |
+| bloomie-platform | feature/create-support-query-command | fc6b36e | add SupportQueryRepositoryImpl | 28/06/2026 |
+| bloomie-platform | feature/create-support-query-command | 999c3ce | add SupportQueriesController | 28/06/2026 |
+| bloomie-platform | feature/get-support-query-by-id | ff287e3 | add GetSupportQueryByPatientIdAndStatusQuery | 28/06/2026 |
+| bloomie-platform | feature/get-support-query-by-patient-and-status | 25cdfeb | add query services | 28/06/2026 |
+| bloomie-platform | feature/send-message-command | 8ebf3df | add ChatMessage | 28/06/2026 |
+| bloomie-platform | feature/send-message-command | 218b8ec | add SendChatMessageCommand | 28/06/2026 |
+| bloomie-platform | feature/send-message-command | 257d5e9 | add ChatMessageCommandServiceImpl | 28/06/2026 |
+| bloomie-platform | feature/send-message-command | 31be9a1 | add ChatMessageRepositoryImpl | 28/06/2026 |
+| bloomie-platform | feature/get-chat-messages | 5eb0991 | add ChatMessagesController | 28/06/2026 |
+| bloomie-platform | feature/get-chat-messages | bcd644c | add ChatMessageQueryServiceImpl | 28/06/2026 |
+| bloomie-platform | feature/stripe-checkout-integration | 24077cd | feat(payments): add Stripe checkout session integration | 30/06/2026 |
+| bloomie-platform | feature/stripe-checkout-integration | 8ebcaaa | feat(payments): implement stripewebhookcontroller | 30/06/2026 |
+| bloomie-platform | feature/stripe-checkout-integration | 0a4638f | fix(webhook): use Jackson to deserialize Stripe session due to API version mismatch | 30/06/2026 |
+| bloomie-platform | feature/stripe-checkout-integration | 591c73d | feat(environments): add stripe environments variables | 30/06/2026 |
+| bloomie-platform | feature/stripe-checkout-integration | 1f3f36a | fix(stripe): expose webhook endpoint in security config | 30/06/2026 |
+| bloomie-platform | feature/stripe-checkout-integration | abc1995 | feat(payments): implement payment status | 30/06/2026 |
+| bloomie-platform | feature/payment-refund | f82f8d6 | feat(payments): add payment refund command and event | 29/06/2026 |
+| bloomie-platform | feature/payment-refund | b5acca6 | feat(payments): add payment event handlers | 29/06/2026 |
+| bloomie-platform | feature/payment-refund | 0c91d00 | feat(payments): add renewal payment processing | 29/06/2026 |
+| bloomie-platform | feature/cancel-subscription | 488b354 | feat(subscription): add CancelSubscriptionCommand | 29/06/2026 |
+| bloomie-platform | feature/cancel-subscription | 381bfdc | feat(subscription): add SubscriptionCancelledEvent | 29/06/2026 |
+| bloomie-platform | feature/cancel-subscription | d8ce810 | feat(subscription): add subscription lifecycle event handlers | 29/06/2026 |
+| bloomie-platform | feature/renew-subscription | 31a688e | feat(subscription): add RenewSubscriptionCommand | 29/06/2026 |
+| bloomie-platform | feature/renew-subscription | 0f62d16 | feat(subscription): add SubscriptionRenewedEvent | 29/06/2026 |
+| bloomie-platform | feature/subscription-expiration | b523697 | feat(subscription): add subscription expiration command and event | 29/06/2026 |
+| bloomie-platform | feature/change-subscription-plan | 9501d85 | feat(subscription): add subscription plan change | 01/07/2026 |
+| bloomie-platform | feat/plan-repository-and-seeding | e6fc751 | feat(subscription): implement application ready event for plans | 30/06/2026 |
+| bloomie-platform | feature/add-product-images | fceac28 | feat(product-discovery): add Open Beauty Facts integration | 29/06/2026 |
+| bloomie-platform | feature/ai-routine-recommendations | 2d0eb6a | feat(routine-management): add AI integration services | 29/06/2026 |
+| bloomie-platform | feature/ai-routine-regenerated | e59461a | feat(routine): implement routine generation with ai | 01/07/2026 |
+| bloomie-platform | fix/availability-missing-fields | e3c5c48 | feat(availability): add missing fields in availability aggregate | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | b29ad64 | feat(product-discovery): add generate product compatibility command | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 7c79609 | feat(product-discovery): add product compatibility aggregate | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 3c55bc8 | feat(product-discovery): add product compatibility command service | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 96a9884 | feat(product-discovery): add ProductCompatibilityAiService outbound port | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 77e8daa | feat(product-discovery): add Gemini compatibility AI Service Implementation | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 08698ed | feat(product-discovery): add product compatibility repository | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 84f0bd9 | feat(product-discovery): add product compatibility repository implementation | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | e4d9ff1 | feat(product-discovery): add product compatibility persistence assembler | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 1b3bdfa | feat(product-discovery): add product compatibility persistence entity | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | e0e35a2 | feat(product-discovery): add product compatibility persistence repository | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 7627112 | feat(product-discovery): update application ready event handler to seed compatibilities | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 06913a3 | feat(product-discovery): add Product Compatibility Query Service Implementation | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | b4ab5a9 | feat(product-discovery): add Product Compatibility Query Service | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 9fd5c62 | feat(product-discovery): add get compatibilities by skin type query | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 060c8be | feat(product-discovery): add product compatibility resource from entity assembler | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | f2934fb | feat(product-discovery): add product compatibility controller | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 2e01042 | fix(product-discovery): remove gemini compatibility and replace it with calculations | 01/07/2026 |
+| bloomie-platform | fix/consultation-appointment-endpoints | 137f223 | fix(consultation): add getAll endpoint and make appointmentId optional | 28/06/2026 |
+| bloomie-platform | fix/stripe-webhook-integration | 0b79809 | refactor(subscription): reorganize persistence package structure | 02/07/2026 |
+| bloomie-platform | fix/stripe-webhook-integration | 99d2872 | fix(product-discovery): eagerly fetch product benefits to avoid lazy-init error | 02/07/2026 |
+| bloomie-platform | fix/stripe-webhook-integration | 791de8a | fix(dermatology-care): return full availability resource on create | 02/07/2026 |
+| bloomie-webapp | feature/virtual-call | 752793a | feature/virtual-call | 28/06/2026 |
+| bloomie-webapp | feature/virtual-call | 009eb90 | refactor(dermatology-care): restructure consultation summary, scheduled appointments, select consultation and virtual call views | 27/06/2026 |
+| bloomie-webapp | feature/virtual-call | 4bb647c | fix(dermatology-care): improve consultation flow | 01/07/2026 |
+| bloomie-webapp | feature/virtual-call | 773c469 | fix(dermatology-care): update consultation services | 01/07/2026 |
+| bloomie-webapp | feature/virtual-call | 08ff9e2 | fix(dermatology-care): quit restriction for virtual call | 03/07/2026 |
+| bloomie-webapp | feature/virtual-call | 43c3bf8 | fix(dermatology-care): fix appointment date | 03/07/2026 |
+| bloomie-webapp | develop | 2f93336 | feat(iam): add authentication interceptor | 29/06/2026 |
+| bloomie-webapp | develop | e607f09 | feat(iam): add subscription plan selection | 30/06/2026 |
+| bloomie-webapp | develop | 0c58471 | feat(iam): implement change password ui | 01/07/2026 |
+| bloomie-webapp | develop | 2c964b3 | feat(subscription): implement cancelled a subscription | 30/06/2026 |
+| bloomie-webapp | develop | 8b668b6 | feat(subscription): implement subscription plan change | 01/07/2026 |
+| bloomie-webapp | develop | 962b9ed | feat(dermatologist-profile-connection): add dermatologist profile connection with the backend | 28/06/2026 |
+| bloomie-webapp | develop | 7203b1d | feature(dermatologist-profile): add dermatologist configuration form | 28/06/2026 |
+| bloomie-webapp | develop | dbc52f4 | feat(dermatologist-profile): implement dermatologist profile with backend | 01/07/2026 |
+| bloomie-webapp | develop | 3308bfd | fix(product-discovery): add product compatibility for all products | 01/07/2026 |
+| bloomie-webapp | develop | d9b6962 | fix(product-discovery): update product navigation | 01/07/2026 |
+| bloomie-webapp | develop | 52bb6cd | refactor(dashboard): improve dashboard UI | 27/06/2026 |
+| bloomie-webapp | develop | cfb5b91 | refactor(select-dermatologist): improve select dermatologist view ui | 27/06/2026 |
+| bloomie-webapp | develop | d6a3d56 | refactor(skin-scan-ui): improve skin scan flow ui | 27/06/2026 |
+| bloomie-webapp | develop | 43e33b3 | refactor(chat-ia): improve chat ia ui | 27/06/2026 |
+| bloomie-webapp | develop | 3e12083 | refactor(product-discovery): improve product discovery ui | 27/06/2026 |
+| bloomie-webapp | develop | fef625d | refactor(profile): improve profile ui | 27/06/2026 |
+| bloomie-webapp | develop | 261cc1e | fix(skin-analysis): implement total score view | 03/07/2026 |
+| bloomie-webapp | develop | 4fbf1e5 | fix(dermatology-care): add responsiveness to trending items section | 03/07/2026 |
+| bloomie-webapp | develop | 9df38cb | ci: add Azure Static Web Apps workflow file | 02/07/2026 |
+| bloomie-webapp | develop | 5c4b7bd | fix: add staticwebapp.config.json to handle Angular client-side routing | 02/07/2026 |
+| bloomie-webapp | develop | 9d14e0a | feat(iam): update iam store | 02/07/2026 |
+| bloomie-webapp | develop | c2950b6 | feat(environment): add backend base path | 02/07/2026 |
+| bloomie-webapp | develop | 870a1b9 | fix: replace backend url | 03/07/2026 |
+| bloomie-website | develop | 8c7b2e0 | feat(about): update about html | 20/06/2026 |
+| bloomie-website | develop | 3528bfd | feat(styles): update landing page styles for video about the team and product | 20/06/2026 |
+| bloomie-website | develop | b8eceb5 | feat(i18n): update i18n keys for videos about the team and product | 20/06/2026 |
+| bloomie-website | develop | f30103f | fix: change url links | 20/06/2026 |
+| bloomie-website | develop | c24c2d8 | refactor(main-view): improve visual interface | 29/06/2026 |
+| bloomie-website | develop | 279ff31 | feat(update-links): update plan links to sign in | 02/07/2026 |
+| bloomie-website | develop | 75d986e | docs: update member team | 03/07/2026 |
+
 #### 5.2.4.5. Execution Evidence for Sprint Review
 
 #### 5.2.4.5. Services Documentation Evidence for Sprint Review
@@ -9208,6 +9317,9 @@ de Subscriptions, Payments y Dermatology Care.
 | Intelligent Support | Get queries by patient | GET | /api/v1/support-queries/patient/{patientId} | Path: patientId (Long) / Query: status (opcional) | 200: [ { "id": 1, "query": "...", "status": "ANSWERED" } ] | Retorna el historial de consultas realizadas al asistente virtual por el paciente, con filtrado opcional por estado. |
 | Chat Messages | Send chat message | POST | /api/v1/chat-messages | Body: { "consultationId": 1, "senderId": 1, "content": "Buenos días doctor", "messageType": "TEXT" } | 201: { "id": 1, "consultationId": 1, "content": "Buenos días doctor", "sentAt": "2026-07-01T10:05:00" } | Envía un mensaje de chat durante una consulta virtual entre paciente y dermatólogo. |
 | Chat Messages | Get messages by consultation | GET | /api/v1/chat-messages | Query: consultationId (Long) | 200: [ { "id": 1, "content": "Buenos días doctor", "sentAt": "2026-07-01T10:05:00" } ] | Retorna todos los mensajes de chat de una consulta virtual ordenados cronológicamente. |
+
+
+
 
 ## Imágenes de interacción
 
