@@ -9088,9 +9088,9 @@ consultas dermatológicas, y asegurando la calidad del flujo completo de la apli
 Adicionalmente se elaboraron los videos About the Product y About the Team requeridos 
 para la entrega final del proyecto.
 
-**URL del board:** https://trello.com/b/PA2Tjn3g/sprint-4-bloomie
+**URL del board:** https://trello.com/invite/b/6a03942179de59aecf992694/ATTI292239de3874460f61b240610610f74d5BE6017C/bloomie
 
-![Sprint Backlog 4 Board](assets/img/sprint4-board.png)
+![Sprint Backlog 4 Board](assets/img/sprint-backlog-4.png)
 
 | User Story Id | Título | Task Id | Título | Descripción | Estimación (Hours) | Responsable | Estado |
 |---|---|---|---|---|---|---|---|
