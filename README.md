@@ -5411,7 +5411,9 @@ US01 - Como joven adulto, quiero registrarme con mis datos personales para
 crear una cuenta y acceder a Bloomie.
 
 **Desktop**
-![mockup 1 desktop](assets/img/mockups/mockup-01-web.png)
+
+<img src="assets/img/mockups/new-mockup-web1.png" width="400" /> <img src="assets/img/mockups/new-mockup-web2.png" width="400" /> 
+![mockup 1 desktop](assets/img/mockups/new-mockup-web3.png){width=500px}
 
 **Mobile**
 ![mockup 1 mobile](assets/img/mockups/mockup-01-mobile.png)
@@ -5453,8 +5455,8 @@ condiciones de piel en mi primer ingreso para que la aplicación configure mi
 perfil correctamente.
 
 **Desktop**
-![mockup 2 desktop](assets/img/mockups/mockup-02-web.png)
-
+![mockup 2 desktop](assets/img/mockups/new-mockup-web4.png){width=600px}
+![mockup 2 desktop](assets/img/mockups/new-mockup-web5.png){width=600px}
 **Mobile**
 ![mockup 2 mobile](assets/img/mockups/mockup-02-mobile.png)
 
@@ -5497,7 +5499,7 @@ después del escaneo para conocer el estado de mi piel y los cuidados
 que necesito.
 
 **Desktop**
-![mockup 3 desktop](assets/img/mockups/mockup-03-web.png)
+<img src="assets/img/mockups/new-mockup-web6.png" width="420" /> <img src="assets/img/mockups/new-mockup-web7.png" width="420" /> 
 
 **Mobile**
 ![mockup 3 mobile](assets/img/mockups/mockup-03-mobile.png)
@@ -5540,7 +5542,8 @@ productos basados en mi diagnóstico de piel para seguir un tratamiento
 adecuado.
 
 **Desktop**
-![mockup 4 desktop](assets/img/mockups/mockup-04-web.png)
+![mockup 4 desktop](assets/img/mockups/new-mockup-web8.png)
+![mockup 4 desktop](assets/img/mockups/new-mockup-web9.png)
 
 **Mobile**
 ![mockup 4 mobile](assets/img/mockups/mockup-04-mobile.png)
@@ -5584,7 +5587,8 @@ productos basados en mi diagnóstico de piel para seguir un tratamiento
 adecuado.
 
 **Desktop**
-![mockup 5 desktop](assets/img/mockups/mockup_05-web.png)
+![mockup 5 desktop](assets/img/mockups/new-mockup-web10.png)
+![mockup 5 desktop](assets/img/mockups/new-mockup-web11.png)
 
 **Mobile**
 ![mockup 5 mobile](assets/img/mockups/mockup-05-mobile.png)
@@ -5625,7 +5629,8 @@ US06 - Como joven adulto, quiero reemplazar un producto de mi rutina por
 una alternativa recomendada para adaptar mi tratamiento.
 
 **Desktop**
-![mockup 6 desktop](assets/img/mockups/mockup-06-web.png)
+![mockup 6 desktop](assets/img/mockups/new-mockup-web12.png)
+![mockup 6 desktop](assets/img/mockups/new-mockup-web7.png)
 
 **Mobile**
 ![mockup 6 mobile](assets/img/mockups/mockup-06-mobile.png)
@@ -5666,7 +5671,7 @@ US07 - Como joven adulto, quiero marcar si completé mi rutina del día para
 llevar un seguimiento de mi progreso.
 
 **Desktop**
-![mockup 7 desktop](assets/img/mockups/mockup-07-web.png)
+![mockup 7 desktop](assets/img/mockups/new-mockup-web11.png)
 
 **Mobile**
 ![mockup 7 mobile](assets/img/mockups/mockup-07-mobile.png)
@@ -5709,7 +5714,8 @@ US08 - Como joven adulto, quiero explorar el catálogo de productos y
 aplicar filtros para encontrar opciones relevantes a mis necesidades.
 
 **Desktop**
-![mockup 8 desktop](assets/img/mockups/mockup-08-web.png)
+![mockup 8 desktop](assets/img/mockups/new-mockup-web13.png)
+![mockup 8 desktop](assets/img/mockups/new-mockup-web14.png)
 
 **Mobile**
 ![mockup 8 mobile](assets/img/mockups/mockup-08-mobile.png)
@@ -5752,7 +5758,7 @@ US09 - Como joven adulto, quiero ver el detalle de un producto y su
 compatibilidad con mi piel para tomar decisiones informadas.
 
 **Desktop**
-![mockup 9 desktop](assets/img/mockups/mockup-09-web.png)
+![mockup 9 desktop](assets/img/mockups/new-mockup-web15.png){width=600px}
 
 **Mobile**
 ![mockup 9 mobile](assets/img/mockups/mockup-09-mobile.png)
@@ -5795,7 +5801,7 @@ US10 - Como joven adulto, quiero guardar productos en mis favoritos para
 acceder a ellos fácilmente después.
 
 **Desktop**
-![mockup 10 desktop](assets/img/mockups/mockup-10-web.png)
+![mockup 10 desktop](assets/img/mockups/new-mockup-web14.png)
 
 **Mobile**
 ![mockup 10 mobile](assets/img/mockups/mockup-10-mobile.png)
@@ -5834,7 +5840,7 @@ principales de la aplicación.
 
 US11: Como joven adulto, quiero visualizar métricas de mi constancia y evolución en el cuidado de mi piel para entender mi progreso.
 
-![mockup dashboard web](assets/img/mockups/mockup-11-web.png)
+![mockup dashboard web](assets/img/mockups/new-mockup-web12.png)
 ![mockup scheduled appointments cancel app](assets/img/mockups/mockup-11-web.png)
 
 **Principios y elementos de diseño:**
