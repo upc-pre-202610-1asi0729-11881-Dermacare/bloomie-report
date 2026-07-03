@@ -9209,6 +9209,43 @@ de Subscriptions, Payments y Dermatology Care.
 | Chat Messages | Send chat message | POST | /api/v1/chat-messages | Body: { "consultationId": 1, "senderId": 1, "content": "Buenos días doctor", "messageType": "TEXT" } | 201: { "id": 1, "consultationId": 1, "content": "Buenos días doctor", "sentAt": "2026-07-01T10:05:00" } | Envía un mensaje de chat durante una consulta virtual entre paciente y dermatólogo. |
 | Chat Messages | Get messages by consultation | GET | /api/v1/chat-messages | Query: consultationId (Long) | 200: [ { "id": 1, "content": "Buenos días doctor", "sentAt": "2026-07-01T10:05:00" } ] | Retorna todos los mensajes de chat de una consulta virtual ordenados cronológicamente. |
 
+## Imágenes de interacción
+
+**Registro y Selección de Plan con Stripe**
+
+El usuario accede a la vista de sign-up e ingresa sus datos personales. La solicitud se envía a `POST /api/v1/authentication/register` y retorna `201 Created` con los datos del usuario registrado. A continuación el sistema redirige al usuario al flujo de selección de plan, donde elige entre los planes disponibles. Al confirmar el plan, el sistema invoca `POST /api/v1/subscriptions` para registrar la suscripción y genera una sesión de pago en Stripe mediante `POST /api/v1/payments/checkout`, retornando `201 Created` con la URL de checkout de Stripe. El usuario es redirigido a la pasarela de Stripe donde completa el pago. Stripe notifica al sistema mediante `POST /api/v1/payments/webhook`, que procesa el evento, confirma el pago y activa la suscripción del usuario de forma automática
+
+![stripe-flow-1](assets/img/stripe-1.png)
+![stripe-flow-2](assets/img/stripe-2.png)
+![stripe-flow-3](assets/img/stripe-3.png)
+![stripe-flow-4](assets/img/stripe-4.png)
+
+
+**Consulta al Asistente Virtual de Skincare**
+
+El usuario accede a la sección de AI Assistant y escribe una consulta sobre productos, rutinas o ingredientes. La solicitud se envía a `POST /api/v1/support-queries` con el ID del paciente y el texto de la consulta. El sistema invoca internamente el servicio de Gemini AI, que genera una respuesta personalizada basada en el perfil de piel del usuario, y retorna `201 Created` con el objeto de consulta incluyendo el campo `response` con la respuesta del asistente. El usuario puede consultar el historial de sus consultas previas mediante `GET /api/v1/support-queries/patient/{patientId}`, que retorna `200 OK` con la lista de consultas y sus respuestas.
+
+![gemini-1](assets/img/ia-1.png)
+![gemini-1](assets/img/ia-2.png)
+
+**Registro de Dermatólogo y Creación de Perfil Profesional**
+
+El dermatólogo accede a la vista de registro especializado e ingresa sus credenciales profesionales incluyendo su número de licencia. La solicitud se envía a `POST /api/v1/authentication/register-dermatologist` y retorna `201 Created` con los datos del dermatólogo registrado. Una vez dentro de la aplicación, el dermatólogo completa su perfil profesional ingresando su especialidad, tarifa de consulta, biografía y foto de perfil. El sistema envía `PUT /api/v1/dermatologist-profiles/{profileId}` y retorna `200 OK` con el perfil actualizado. Adicionalmente el dermatólogo puede subir su foto de perfil mediante `PUT /api/v1/users/{userId}/photo`, que retorna `200 OK` con la URL de la imagen persistida.
+
+![derm-register](assets/img/derma-signup-1.png)
+![derm-register](assets/img/derma-signup.png)
+![derm-register](assets/img/derma-signup-response.png)
+![derm-register](assets/img/derma-signup-bd.png)
+
+**Exploración de Trending Items y Compatibilidad de Producto**
+
+El usuario accede a la sección de Trending Items donde se muestra el catálogo de productos de skincare obtenidos desde la API Open Beauty Facts. La vista realiza una llamada a `GET /api/v1/products` que retorna `200 OK` con la lista completa de productos disponibles. El usuario selecciona un producto de su interés y accede a su vista de detalle, donde el sistema invoca `GET /api/v1/products/{productId}` retornando `200 OK` con la información completa del producto incluyendo ingredientes y categoría. En la misma vista se muestra el nivel de compatibilidad del producto con el tipo de piel del usuario, obtenido mediante `GET /api/v1/products/compatibilities?skinType={skinType}` que retorna `200 OK` con el score de compatibilidad calculado para el perfil del usuario.
+
+![derm-register](assets/img/product-1.png)
+![derm-register](assets/img/product-2.png)
+![derm-register](assets/img/product-3.png)
+
+
 #### 5.2.4.7. Software Deployment Evidence for Sprint Review
 
 #### 5.2.4.8. Team Collaboration Insights for Sprint Review
