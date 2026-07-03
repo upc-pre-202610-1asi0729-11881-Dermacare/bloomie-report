@@ -9062,6 +9062,23 @@ El Sprint 4 tuvo como punto de partida los resultados alcanzados en el Sprint 3,
 
 #### 5.2.4.2. Aspect Leaders and Collaborators
 
+Durante el Sprint 4 el equipo organizó el trabajo en torno a los bounded contexts 
+implementados y refinados en esta iteración final, incorporando adicionalmente un 
+aspecto de Quality Assurance y documentación de código para asegurar la calidad del 
+producto entregado. Los dos nuevos integrantes del equipo — Acuache Lucas, Mathias 
+y Hurtado Balcázar, Rommel — se incorporaron en esta etapa del proyecto colaborando 
+principalmente en las actividades de revisión y documentación dado el tiempo de 
+adaptación requerido para familiarizarse con la arquitectura del sistema.
+
+| Team Member (Last Name, First Name) | GitHub Username | IAM & Authentication | Skin Analysis | Routine Management | Product Discovery | Dermatology Care | Dermatological Appointment | Subscriptions & Payments | Intelligent Support | Quality Assurance & Documentation |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Acuache Lucas, Mathias Joaquin | MathiasA25 | C | C | C | C | C | C | C | C | L |
+| Asmat Alminco, Martin Alejandro | Alemarr2 | C | L | C | C | C | C | C | C | C |
+| Contreras Torres, Arturo Valentino | Arturouu | C | C | L | L | C | C | C | L | C |
+| Hurtado Balcázar, Rommel Daniel | rommelDN | C | C | C | C | C | C | C | L | L |
+| Mechan Montenegro, Luciana Carolina | luuu6 | L | L | C | C | L | L | L | L | C |
+
+
 #### 5.2.4.3. Sprint Backlog 4
 
 #### 5.2.4.4. Development Evidence for Sprint Review
