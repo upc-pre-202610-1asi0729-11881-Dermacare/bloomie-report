@@ -602,17 +602,19 @@ Convertirnos en la plataforma líder de cuidado de la piel a nivel global, recon
 <table>
   <tr>
     <td rowspan="4" align="center">
-      <img src="" alt="Foto de Rommel Hurtado" width="650"/>
+      <img src="assets/img/rommel-hurtado.jpeg" alt="Foto de Rommel Hurtado" width="650"/>
     </td>
     <td><b>Nombre:</b> Rommel Daniel Hurtado Balcázar</td>
   </tr>
   <tr>
-    <td><b>Código:</b> u</td>
+    <td><b>Código:</b> u202517474</td>
   </tr>
   <tr>
     <td>
       <b>Descripción:</b><br/>
-      Soy 
+      Soy <b>Rommel Daniel Hurtado Balcázar</b>, estudiante de sexto ciclo de la carrera de Ingeniería de Software. Cuento con conocimientos en lenguajes de programación como C++, Python y SQL, además de manejo de herramientas como Git y Figma, aplicados dentro de un enfoque de desarrollo ágil en distintos proyectos académicos.
+      <br/><br/>
+      Dentro del equipo, cumplo el rol de apoyo en documentación, encargándome de la redacción de informes, gestión de tareas y control de calidad, así como de la subsanación de observaciones para asegurar la correcta presentación del proyecto. Me considero una persona responsable, creativa y proactiva, con disposición para apoyar en lo que el equipo necesite.
     </td>
   </tr>
 </table>
