@@ -1,0 +1,62 @@
+' Shared style + legend, included by every diagram in this folder.
+' Convention used consistently across ALL bounded contexts and ALL layers:
+'
+'  1) Generalization (extends)            A --|> B   solid line, hollow triangle
+'  2) Realization (implements), SAME      A ..|> B   dashed line, hollow triangle
+'     container as the interface
+'  3) Composition (owns, lifecycle-bound) A "1" *-- "0..*" B   filled diamond at owner
+'  4) Aggregation (references, shared     A "1" o-- "0..*" B   hollow diamond at owner
+'     lifecycle, e.g. many-to-many catalog entities)
+'  5) Association (plain held field,      A --> B
+'     same container)
+'  6) Dependency, ANY relationship that   A ..> B : <<stereotype>>
+'     CROSSES one of the drawn layer
+'     containers (Domain / Application /
+'     Infrastructure / Interfaces boxes)
+'     -- per course guidance: a query/command
+'     interface (domain) and its implementation
+'     (application) are related by DEPENDENCY,
+'     not realization, because they live in
+'     different layer containers. The same rule
+'     is generalized here to every cross-container
+'     edge: repository ports implemented by
+'     infrastructure adapters, outbound ports
+'     implemented by infrastructure services,
+'     ACL facades implemented across layers,
+'     controllers using application services,
+'     assemblers using domain commands/queries, etc.
+'     Typical stereotypes used: <<implements>>,
+'     <<uses>>, <<creates>>, <<publishes>>,
+'     <<listens to>>, <<extends>>, <<converts>>.
+'  7) Relationships to external framework types
+'     (Spring Data, Spring Security, JJWT, etc.)
+'     use the precise UML relation (generalization/
+'     realization) against a small "«external»"
+'     package, since these are not part of the
+'     bounded context's own layering.
+'
+' Each layer diagram is self-contained: classes that belong to another layer
+' but are referenced from the current one are drawn inside a clearly labeled
+' "(referenced)" package so nothing is left floating without a relationship.
+
+skinparam backgroundColor transparent
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 6
+skinparam packageStyle rectangle
+skinparam wrapWidth 220
+skinparam class {
+  BorderColor #6b7280
+  ArrowColor #6b7280
+  BackgroundColor #f8fafc
+  FontSize 12
+}
+skinparam package {
+  BorderColor #94a3b8
+  FontStyle bold
+  FontSize 13
+}
+skinparam note {
+  BackgroundColor #fef9c3
+  BorderColor #ca8a04
+}

@@ -1,0 +1,134 @@
+@startuml dermatologycare-domain
+!include ../_style.puml
+title Dermatology Care — Domain Layer
+
+package "shared.domain.model.aggregates\n(referenced)" as sharedDomain {
+  abstract class AbstractDomainAggregateRoot<T>
+}
+
+package "«external» java.time" as ext {
+  enum DayOfWeek
+  class LocalTime
+}
+
+package "dermatologycare.domain.model" as domain {
+
+  package aggregates {
+    class Availability {
+      - id: Long
+      - dermatologistId: DermatologistId
+      - day: DayOfWeek
+      - timeSlot: TimeSlot
+      - active: boolean
+      + update(command: UpdateAvailabilityCommand)
+      + onDefined()
+      + onUpdated()
+    }
+    class DermatologistProfile {
+      - id: Long
+      - dermatologistId: DermatologistId
+      - name: PersonName
+      - specialtyName: SpecialtyName
+      - licenseNumber: LicenseNumber
+      - contactPhone: ContactPhone
+      - biography: String
+      - consultationFee: Double
+      + update(command: UpdateDermatologistProfileCommand)
+      + onRegistered()
+      + onUpdated()
+    }
+  }
+
+  package valueobjects {
+    class DermatologistId <<value object>> { + dermatologistId: Long }
+    class TimeSlot <<value object>> { + startTime: LocalTime\n+ endTime: LocalTime }
+    class PersonName <<value object>> { + firstName: String\n+ lastName: String }
+    class SpecialtyName <<value object>> { + specialtyName: String }
+    class LicenseNumber <<value object>> { + licenseNumber: String }
+    class ContactPhone <<value object>> { + contactPhone: String }
+  }
+
+  package commands {
+    class DefineAvailabilityCommand <<command>> { + dermatologistId: DermatologistId\n+ dayOfWeek: DayOfWeek\n+ startTime: LocalTime\n+ endTime: LocalTime }
+    class UpdateAvailabilityCommand <<command>> { + availabilityId: Long\n+ dayOfWeek: DayOfWeek\n+ startTime: LocalTime\n+ endTime: LocalTime\n+ active: boolean }
+    class RegisterDermatologistProfileCommand <<command>> { + dermatologistId: DermatologistId\n+ firstName: String\n+ lastName: String }
+    class UpdateDermatologistProfileCommand <<command>> { + dermatologistProfileId: Long\n+ firstName: String\n+ lastName: String\n+ specialty: String\n+ licenseNumber: String\n+ phone: String\n+ biography: String\n+ consultationFee: Double }
+  }
+
+  package queries {
+    class GetAvailabilityByDermatologistIdQuery <<query>> { + dermatologistId: DermatologistId }
+    class GetAvailabilityByDermatologistIdAndDayQuery <<query>> { + dermatologistId: DermatologistId\n+ day: DayOfWeek }
+    class GetAllDermatologistProfilesQuery <<query>>
+    class GetDermatologistProfileByDermatologistIdQuery <<query>> { + dermatologistId: DermatologistId }
+    class GetDermatologistProfileByIdQuery <<query>> { + dermatologistProfileId: Long }
+  }
+
+  package events {
+    class AvailabilityDefinedEvent <<domain event>> { + availabilityId: Long\n+ dermatologistId: Long\n+ dayOfWeek: String\n+ startTime: String\n+ endTime: String }
+    class AvailabilityUpdatedEvent <<domain event>> { + availabilityId: Long\n+ dermatologistId: Long\n+ dayOfWeek: String\n+ startTime: String\n+ endTime: String }
+    class DermatologistProfileRegisteredEvent <<domain event>> { + dermatologistProfileId: Long\n+ dermatologisId: Long\n+ fullName: String }
+    class DermatologistProfileUpdatedEvent <<domain event>> { + dermatologistProfileId: Long\n+ dermatologistId: Long\n+ fullName: String }
+  }
+
+  package repositories {
+    interface AvailabilityRepository {
+      + findById(id: Long): Optional<Availability>
+      + findAllByDermatologistId(id: DermatologistId): List<Availability>
+      + findAllByDermatologistAndDay(id, day): List<Availability>
+      + save(a: Availability): Availability
+      + existsByDermatologyAndDay(id, day): boolean
+    }
+    interface DermatologistProfileRepository {
+      + findById(id: Long): Optional<DermatologistProfile>
+      + findByDermatologistId(id: DermatologistId): Optional<DermatologistProfile>
+      + findAll(): List<DermatologistProfile>
+      + save(p: DermatologistProfile): DermatologistProfile
+      + existsByDermatologistId(id): boolean
+    }
+  }
+}
+
+Availability --|> AbstractDomainAggregateRoot
+DermatologistProfile --|> AbstractDomainAggregateRoot
+
+Availability "1" *-- "1" DermatologistId : dermatologistId
+Availability "1" *-- "1" TimeSlot : timeSlot
+Availability ..> DayOfWeek : <<uses>>
+TimeSlot ..> LocalTime : <<uses>>
+
+DermatologistProfile "1" *-- "1" DermatologistId : dermatologistId
+DermatologistProfile "1" *-- "1" PersonName : name
+DermatologistProfile "1" *-- "0..1" SpecialtyName : specialtyName
+DermatologistProfile "1" *-- "0..1" LicenseNumber : licenseNumber
+DermatologistProfile "1" *-- "0..1" ContactPhone : contactPhone
+
+Availability ..> DefineAvailabilityCommand : <<uses>>
+Availability ..> UpdateAvailabilityCommand : <<uses>>
+DermatologistProfile ..> RegisterDermatologistProfileCommand : <<uses>>
+DermatologistProfile ..> UpdateDermatologistProfileCommand : <<uses>>
+
+AvailabilityDefinedEvent ..> Availability : <<derives from>>\nfrom(Availability)
+AvailabilityUpdatedEvent ..> Availability : <<derives from>>\nfrom(Availability)
+DermatologistProfileRegisteredEvent ..> DermatologistProfile : <<derives from>>\nfrom(DermatologistProfile)
+DermatologistProfileUpdatedEvent ..> DermatologistProfile : <<derives from>>\nfrom(DermatologistProfile)
+
+Availability ..> AvailabilityDefinedEvent : <<creates>>
+Availability ..> AvailabilityUpdatedEvent : <<creates>>
+DermatologistProfile ..> DermatologistProfileRegisteredEvent : <<creates>>
+DermatologistProfile ..> DermatologistProfileUpdatedEvent : <<creates>>
+
+AvailabilityRepository ..> Availability : <<uses>>
+AvailabilityRepository ..> DermatologistId : <<uses>>
+DermatologistProfileRepository ..> DermatologistProfile : <<uses>>
+DermatologistProfileRepository ..> DermatologistId : <<uses>>
+
+GetAvailabilityByDermatologistIdQuery ..> DermatologistId : <<uses>>
+GetAvailabilityByDermatologistIdAndDayQuery ..> DermatologistId : <<uses>>
+GetAvailabilityByDermatologistIdAndDayQuery ..> DayOfWeek : <<uses>>
+GetDermatologistProfileByDermatologistIdQuery ..> DermatologistId : <<uses>>
+
+note bottom of PersonName
+  Private to this bounded context —
+  not shared with IAM's own PersonName VO.
+end note
+@enduml

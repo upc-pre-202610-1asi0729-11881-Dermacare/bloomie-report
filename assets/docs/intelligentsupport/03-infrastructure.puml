@@ -1,0 +1,109 @@
+@startuml intelligentsupport-infrastructure
+!include ../_style.puml
+title Intelligent Support — Infrastructure Layer
+
+package "«external» framework" as ext {
+  interface "JpaRepository<T,ID>" as JpaRepository
+}
+
+package "shared.infrastructure.persistence\n(referenced)" as sharedInfra {
+  abstract class AuditableAbstractPersistenceEntity
+}
+
+package "intelligentsupport.domain (referenced)" as domain {
+  class ChatMessage
+  class SupportQuery
+  class PatientId <<value object>>
+  class SkinProfileId <<value object>>
+  class SupportQueryId <<value object>>
+  interface ChatMessageRepository
+  interface SupportQueryRepository
+}
+
+package "intelligentsupport.application (referenced)" as application {
+  interface AiService
+}
+
+package "intelligentsupport.infrastructure" as infra {
+
+  package "ai.services" as aiServices {
+    class GeminiAiServiceImpl {
+      - restTemplate: RestTemplate
+      - objectMapper: ObjectMapper
+      - apiKey: String
+      - apiUrl: String
+    }
+  }
+
+  package "persistence.jpa.entities" as entities {
+    class ChatMessagePersistenceEntity {
+      - supportQueryId: SupportQueryId
+      - text: String
+      - messageType: MessageType
+      - sentAt: LocalDateTime
+    }
+    class SupportQueryPersistenceEntity {
+      - patientId: PatientId
+      - skinProfileId: SkinProfileId
+      - status: SupportQueryStatus
+      - suggestedAction: SuggestedAction
+    }
+  }
+
+  package "persistence.jpa.converters" as converters {
+    class PatientIdPersistenceConverter
+    class SkinProfileIdPersistenceConverter
+    class SupportQueryIdPersistenceConverter
+  }
+
+  package "persistence.jpa.assemblers" as assemblers {
+    class ChatMessagePersistenceAssembler <<static assembler>>
+    class SupportQueryPersistenceAssembler <<static assembler>>
+  }
+
+  package "persistence.jpa.repositories" as jpaRepos {
+    interface ChatMessagePersistenceRepository
+    interface SupportQueryPersistenceRepository
+  }
+
+  package "persistence.jpa.adapters" as adapters {
+    class ChatMessageRepositoryImpl {
+      - persistenceRepository: ChatMessagePersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+    class SupportQueryRepositoryImpl {
+      - persistenceRepository: SupportQueryPersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+  }
+}
+
+GeminiAiServiceImpl ..> AiService : <<implements>>
+
+ChatMessagePersistenceEntity --|> AuditableAbstractPersistenceEntity
+SupportQueryPersistenceEntity --|> AuditableAbstractPersistenceEntity
+ChatMessagePersistenceRepository --|> JpaRepository
+SupportQueryPersistenceRepository --|> JpaRepository
+
+ChatMessagePersistenceEntity ..> SupportQueryIdPersistenceConverter : <<uses>>\n@Convert
+SupportQueryPersistenceEntity ..> PatientIdPersistenceConverter : <<uses>>\n@Convert
+SupportQueryPersistenceEntity ..> SkinProfileIdPersistenceConverter : <<uses>>\n@Convert
+
+SupportQueryIdPersistenceConverter ..> SupportQueryId : <<converts>>
+PatientIdPersistenceConverter ..> PatientId : <<converts>>
+SkinProfileIdPersistenceConverter ..> SkinProfileId : <<converts>>
+
+ChatMessageRepositoryImpl --> ChatMessagePersistenceRepository : persistenceRepository
+SupportQueryRepositoryImpl --> SupportQueryPersistenceRepository : persistenceRepository
+
+ChatMessageRepositoryImpl ..> ChatMessagePersistenceAssembler : <<uses>>
+SupportQueryRepositoryImpl ..> SupportQueryPersistenceAssembler : <<uses>>
+
+ChatMessagePersistenceAssembler ..> ChatMessagePersistenceEntity : <<uses>>
+ChatMessagePersistenceAssembler ..> ChatMessage : <<uses>>
+SupportQueryPersistenceAssembler ..> SupportQueryPersistenceEntity : <<uses>>
+SupportQueryPersistenceAssembler ..> SupportQuery : <<uses>>
+
+ChatMessageRepositoryImpl ..> ChatMessageRepository : <<implements>>
+SupportQueryRepositoryImpl ..> SupportQueryRepository : <<implements>>
+@enduml

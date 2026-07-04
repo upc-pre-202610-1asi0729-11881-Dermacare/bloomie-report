@@ -1,0 +1,122 @@
+@startuml skinanalysis-infrastructure
+!include ../_style.puml
+title Skin Analysis — Infrastructure Layer
+
+package "«external» framework" as ext {
+  interface "JpaRepository<T,ID>" as JpaRepository
+}
+
+package "shared.infrastructure.persistence\n(referenced)" as sharedInfra {
+  abstract class AuditableAbstractPersistenceEntity
+}
+
+package "skinanalysis.domain (referenced)" as domain {
+  class FacialScan
+  class SkinAnalysis
+  class SkinProfile
+  class PatientId <<value object>>
+  class FacialScanId <<value object>>
+  interface FacialScanRepository
+  interface SkinAnalysisRepository
+  interface SkinProfileRepository
+}
+
+package "skinanalysis.infrastructure" as infra {
+
+  package "persistence.jpa.entities" as entities {
+    class FacialScanPersistenceEntity {
+      - patientId: PatientId
+      - status: FacialScanStatus
+      - photoUrl: String
+      - scannedAt: LocalDateTime
+    }
+    class SkinAnalysisPersistenceEntity {
+      - patientId: PatientId
+      - facialScanId: FacialScanId
+      - skinType: String
+      - overallScore: Double
+      - hydrationScore: Double
+      - textureScore: Double
+      - sensitivityScore: Double
+      - brightnessScore: Double
+      - status: SkinAnalysisStatus
+      - analyzedAt: LocalDateTime
+    }
+    class SkinProfilePersistenceEntity {
+      - patientId: PatientId
+      - skinType: SkinType
+      - sensitivity: Sensitivity
+      - waterIntake: String
+      - sunExposure: String
+      - sleepHours: String
+      - status: SkinProfileStatus
+    }
+  }
+
+  package "persistence.jpa.converters" as converters {
+    class PatientIdPersistenceConverter
+    class FacialScanIdPersistenceConverter
+  }
+
+  package "persistence.jpa.assemblers" as assemblers {
+    class FacialScanPersistenceAssembler <<static assembler>>
+    class SkinAnalysisPersistenceAssembler <<static assembler>>
+    class SkinProfilePersistenceAssembler <<static assembler>>
+  }
+
+  package "persistence.jpa.repositories" as jpaRepos {
+    interface FacialScanPersistenceRepository
+    interface SkinAnalysisPersistenceRepository
+    interface SkinProfilePersistenceRepository
+  }
+
+  package "persistence.jpa.adapters" as adapters {
+    class FacialScanRepositoryImpl {
+      - persistenceRepository: FacialScanPersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+    class SkinAnalysisRepositoryImpl {
+      - persistenceRepository: SkinAnalysisPersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+    class SkinProfileRepositoryImpl {
+      - persistenceRepository: SkinProfilePersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+  }
+}
+
+FacialScanPersistenceEntity --|> AuditableAbstractPersistenceEntity
+SkinAnalysisPersistenceEntity --|> AuditableAbstractPersistenceEntity
+SkinProfilePersistenceEntity --|> AuditableAbstractPersistenceEntity
+FacialScanPersistenceRepository --|> JpaRepository
+SkinAnalysisPersistenceRepository --|> JpaRepository
+SkinProfilePersistenceRepository --|> JpaRepository
+
+FacialScanPersistenceEntity ..> PatientIdPersistenceConverter : <<uses>>\n@Convert
+SkinAnalysisPersistenceEntity ..> PatientIdPersistenceConverter : <<uses>>\n@Convert
+SkinAnalysisPersistenceEntity ..> FacialScanIdPersistenceConverter : <<uses>>\n@Convert
+SkinProfilePersistenceEntity ..> PatientIdPersistenceConverter : <<uses>>\n@Convert
+
+PatientIdPersistenceConverter ..> PatientId : <<converts>>
+FacialScanIdPersistenceConverter ..> FacialScanId : <<converts>>
+
+FacialScanRepositoryImpl --> FacialScanPersistenceRepository : persistenceRepository
+SkinAnalysisRepositoryImpl --> SkinAnalysisPersistenceRepository : persistenceRepository
+SkinProfileRepositoryImpl --> SkinProfilePersistenceRepository : persistenceRepository
+
+FacialScanRepositoryImpl ..> FacialScanPersistenceAssembler : <<uses>>
+SkinAnalysisRepositoryImpl ..> SkinAnalysisPersistenceAssembler : <<uses>>
+SkinProfileRepositoryImpl ..> SkinProfilePersistenceAssembler : <<uses>>
+
+FacialScanPersistenceAssembler ..> FacialScanPersistenceEntity : <<uses>>
+FacialScanPersistenceAssembler ..> FacialScan : <<uses>>
+SkinAnalysisPersistenceAssembler ..> SkinAnalysisPersistenceEntity : <<uses>>
+SkinAnalysisPersistenceAssembler ..> SkinAnalysis : <<uses>>
+SkinProfilePersistenceAssembler ..> SkinProfilePersistenceEntity : <<uses>>
+SkinProfilePersistenceAssembler ..> SkinProfile : <<uses>>
+
+FacialScanRepositoryImpl ..> FacialScanRepository : <<implements>>
+SkinAnalysisRepositoryImpl ..> SkinAnalysisRepository : <<implements>>
+SkinProfileRepositoryImpl ..> SkinProfileRepository : <<implements>>
+@enduml

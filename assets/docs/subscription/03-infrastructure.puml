@@ -1,0 +1,93 @@
+@startuml subscription-infrastructure
+!include ../_style.puml
+title Subscription — Infrastructure Layer
+
+package "«external» framework" as ext {
+  interface "JpaRepository<T,ID>" as JpaRepository
+}
+
+package "shared.infrastructure.persistence\n(referenced)" as sharedInfra {
+  abstract class AuditableAbstractPersistenceEntity
+}
+
+package "subscription.domain (referenced)" as domain {
+  class Subscription
+  class Plan
+  class PatientId <<value object>>
+  class PlanId <<value object>>
+  interface PlanRepository
+  interface SubscriptionRepository
+}
+
+package "subscription.infrastructure" as infra {
+
+  package "persistence.jpa.entities" as entities {
+    class PlanPersistenceEntity {
+      - type: PlanType
+      - name: String
+      - price: Double
+      - durationDays: Integer
+      - modules: List<String>
+    }
+    class SubscriptionPersistenceEntity {
+      - patientId: PatientId
+      - planId: PlanId
+      - status: SubscriptionStatus
+      - startDate: LocalDateTime
+      - endDate: LocalDateTime
+    }
+  }
+
+  package "persistence.jpa.converters" as converters {
+    class PatientIdPersistenceConverter
+    class PlanIdPersistenceConverter
+  }
+
+  package "persistence.jpa.assemblers" as assemblers {
+    class PlanPersistenceAssembler <<static assembler>>
+    class SubscriptionPersistenceAssembler <<static assembler>>
+  }
+
+  package "persistence.jpa.repositories" as jpaRepos {
+    interface PlanPersistenceRepository
+    interface SubscriptionPersistenceRepository
+  }
+
+  package "persistence.jpa.adapters" as adapters {
+    class PlanRepositoryImpl {
+      - planPersistenceRepository: PlanPersistenceRepository
+    }
+    class SubscriptionRepositoryImpl {
+      - subscriptionPersistenceRepository: SubscriptionPersistenceRepository
+      - planPersistenceRepository: PlanPersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+  }
+}
+
+PlanPersistenceEntity --|> AuditableAbstractPersistenceEntity
+SubscriptionPersistenceEntity --|> AuditableAbstractPersistenceEntity
+PlanPersistenceRepository --|> JpaRepository
+SubscriptionPersistenceRepository --|> JpaRepository
+
+SubscriptionPersistenceEntity ..> PatientIdPersistenceConverter : <<uses>>\n@Convert
+SubscriptionPersistenceEntity ..> PlanIdPersistenceConverter : <<uses>>\n@Convert
+PatientIdPersistenceConverter ..> PatientId : <<converts>>
+PlanIdPersistenceConverter ..> PlanId : <<converts>>
+
+PlanRepositoryImpl --> PlanPersistenceRepository : planPersistenceRepository
+SubscriptionRepositoryImpl --> SubscriptionPersistenceRepository : subscriptionPersistenceRepository
+SubscriptionRepositoryImpl --> PlanPersistenceRepository : planPersistenceRepository
+
+PlanRepositoryImpl ..> PlanPersistenceAssembler : <<uses>>
+SubscriptionRepositoryImpl ..> SubscriptionPersistenceAssembler : <<uses>>
+SubscriptionRepositoryImpl ..> PlanPersistenceAssembler : <<uses>>
+
+PlanPersistenceAssembler ..> PlanPersistenceEntity : <<uses>>
+PlanPersistenceAssembler ..> Plan : <<uses>>
+SubscriptionPersistenceAssembler ..> SubscriptionPersistenceEntity : <<uses>>
+SubscriptionPersistenceAssembler ..> Subscription : <<uses>>
+
+PlanRepositoryImpl ..> PlanRepository : <<implements>>
+SubscriptionRepositoryImpl ..> SubscriptionRepository : <<implements>>
+@enduml

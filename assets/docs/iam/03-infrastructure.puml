@@ -1,0 +1,186 @@
+@startuml iam-infrastructure
+!include ../_style.puml
+title IAM — Infrastructure Layer
+
+package "«external» framework" as ext {
+  interface "JpaRepository<T,ID>" as JpaRepository
+  interface PasswordEncoder
+  interface UserDetails
+  interface UserDetailsService
+  abstract class OncePerRequestFilter
+  interface AuthenticationEntryPoint
+}
+
+package "shared.infrastructure.persistence\n(referenced)" as sharedInfra {
+  abstract class AuditableAbstractPersistenceEntity {
+    - id: Long
+    - createdAt: Date
+    - updatedAt: Date
+  }
+}
+
+package "iam.domain (referenced)" as domain {
+  class User
+  class Role
+  class PersonName <<value object>>
+  class EmailAddress <<value object>>
+  class HashedPassword <<value object>>
+  enum UserRole
+  interface UserRepository
+  interface RoleRepository
+}
+
+package "iam.application (referenced)" as application {
+  interface HashingService
+  interface TokenService
+}
+
+package "iam.infrastructure" as infra {
+
+  package "persistence.jpa.entities" as entities {
+    class UserPersistenceEntity {
+      - name: PersonNamePersistenceEmbeddable
+      - emailAddress: EmailAddress
+      - hashedPassword: HashedPassword
+      - photoUrl: String
+      - roles: Set<RolePersistenceEntity>
+    }
+    class RolePersistenceEntity {
+      - name: UserRole
+    }
+  }
+
+  package "persistence.jpa.embeddables" as embeddables {
+    class PersonNamePersistenceEmbeddable {
+      - firstName: String
+      - lastName: String
+    }
+  }
+
+  package "persistence.jpa.converters" as converters {
+    class EmailAddressPersistenceConverter
+    class HashedPasswordPersistenceConverter
+  }
+
+  package "persistence.jpa.assemblers" as assemblers {
+    class UserPersistenceAssembler <<static assembler>>
+    class RolePersistenceAssembler <<static assembler>>
+  }
+
+  package "persistence.jpa.repositories" as jpaRepos {
+    interface UserPersistenceRepository
+    interface RolePersistenceRepository
+  }
+
+  package "persistence.jpa.adapters" as adapters {
+    class UserRepositoryImpl {
+      - userPersistenceRepository: UserPersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+    class RoleRepositoryImpl {
+      - rolePersistenceRepository: RolePersistenceRepository
+    }
+  }
+
+  package "hashing.bcrypt" as bcrypt {
+    interface BCryptHashingService
+    class HashingServiceImpl {
+      - passwordEncoder: BCryptPasswordEncoder
+    }
+  }
+
+  package "tokens.jwt" as jwt {
+    interface BearerTokenService {
+      + getBearerTokenFrom(request): String
+      + generateToken(auth: Authentication): String
+    }
+    class TokenServiceImpl {
+      - secret: String
+      - expirationDays: int
+    }
+  }
+
+  package "authorization.sfs" as sfs {
+    class WebSecurityConfiguration {
+      - userDetailsService: UserDetailsService
+      - tokenService: BearerTokenService
+      - hashingService: BCryptHashingService
+      - unauthorizedRequestHandler: AuthenticationEntryPoint
+    }
+    class UserDetailsImpl {
+      - username: String
+      - password: String
+      - authorities: Collection<GrantedAuthority>
+    }
+    class UsernamePasswordAuthenticationTokenBuilder <<static utility>>
+    class BearerAuthorizationRequestFilter {
+      - tokenService: BearerTokenService
+      - userDetailsService: UserDetailsService
+    }
+    class UnauthorizedRequestHandlerEntryPoint
+    class UserDetailsServiceImpl {
+      - userRepository: UserRepository
+    }
+  }
+}
+
+UserPersistenceEntity --|> AuditableAbstractPersistenceEntity
+RolePersistenceEntity --|> AuditableAbstractPersistenceEntity
+UserPersistenceRepository --|> JpaRepository
+RolePersistenceRepository --|> JpaRepository
+BearerAuthorizationRequestFilter --|> OncePerRequestFilter
+UnauthorizedRequestHandlerEntryPoint ..|> AuthenticationEntryPoint
+UserDetailsImpl ..|> UserDetails
+UserDetailsServiceImpl ..|> UserDetailsService
+BCryptHashingService --|> PasswordEncoder
+HashingServiceImpl ..|> BCryptHashingService
+
+UserPersistenceEntity "1" *-- "1" PersonNamePersistenceEmbeddable : name
+UserPersistenceEntity "1" o-- "0..*" RolePersistenceEntity : roles
+UserPersistenceEntity ..> EmailAddressPersistenceConverter : <<uses>>\n@Convert
+UserPersistenceEntity ..> HashedPasswordPersistenceConverter : <<uses>>\n@Convert
+EmailAddressPersistenceConverter ..> EmailAddress : <<converts>>
+HashedPasswordPersistenceConverter ..> HashedPassword : <<converts>>
+
+UserRepositoryImpl --> UserPersistenceRepository : userPersistenceRepository
+RoleRepositoryImpl --> RolePersistenceRepository : rolePersistenceRepository
+UserRepositoryImpl ..> UserPersistenceAssembler : <<uses>>
+RoleRepositoryImpl ..> RolePersistenceAssembler : <<uses>>
+UserPersistenceAssembler ..> RolePersistenceAssembler : <<uses>>
+UserPersistenceAssembler ..> UserPersistenceEntity : <<uses>>
+UserPersistenceAssembler ..> PersonNamePersistenceEmbeddable : <<uses>>
+RolePersistenceAssembler ..> RolePersistenceEntity : <<uses>>
+
+UserRepositoryImpl ..> UserRepository : <<implements>>
+RoleRepositoryImpl ..> RoleRepository : <<implements>>
+UserPersistenceAssembler ..> User : <<uses>>
+UserPersistenceAssembler ..> PersonName : <<uses>>
+RolePersistenceAssembler ..> Role : <<uses>>
+RolePersistenceAssembler ..> UserRole : <<uses>>
+
+BearerTokenService ..> TokenService : <<extends>>
+TokenServiceImpl ..|> BearerTokenService
+BCryptHashingService ..> HashingService : <<extends>>
+
+WebSecurityConfiguration --> BearerAuthorizationRequestFilter : creates bean
+WebSecurityConfiguration --> BCryptHashingService : hashingService
+WebSecurityConfiguration --> BearerTokenService : tokenService
+WebSecurityConfiguration --> AuthenticationEntryPoint : unauthorizedRequestHandler
+WebSecurityConfiguration --> UserDetailsService : userDetailsService
+
+BearerAuthorizationRequestFilter --> BearerTokenService : tokenService
+BearerAuthorizationRequestFilter --> UserDetailsService : userDetailsService
+BearerAuthorizationRequestFilter ..> UsernamePasswordAuthenticationTokenBuilder : <<uses>>
+
+UserDetailsServiceImpl --> UserRepository : userRepository
+UserDetailsServiceImpl ..> UserDetailsImpl : <<creates>>
+UserDetailsServiceImpl ..> EmailAddress : <<uses>>
+UserDetailsImpl ..> User : <<uses>>\nbuild(User)
+
+note bottom of BearerTokenService
+  BearerTokenService/BCryptHashingService are
+  "marker" sub-interfaces declared in Infrastructure
+  that extend an Application outbound port —
+  a cross-layer edge, modeled as a dependency.
+end note
+@enduml

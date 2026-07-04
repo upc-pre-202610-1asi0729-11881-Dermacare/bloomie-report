@@ -1,0 +1,105 @@
+@startuml intelligentsupport-domain
+!include ../_style.puml
+title Intelligent Support — Domain Layer
+
+package "shared.domain.model.aggregates\n(referenced)" as sharedDomain {
+  abstract class AbstractDomainAggregateRoot<T>
+}
+
+package "intelligentsupport.domain.model" as domain {
+
+  package aggregates {
+    class ChatMessage {
+      - id: Long
+      - supportQueryId: SupportQueryId
+      - text: String
+      - messageType: MessageType
+      - sentAt: LocalDateTime
+      + onCreated()
+    }
+    class SupportQuery {
+      - id: Long
+      - patientId: PatientId
+      - skinProfileId: SkinProfileId
+      - status: SupportQueryStatus
+      - suggestedAction: SuggestedAction
+      - createdAt: LocalDateTime
+      + onCreated()
+      + updateStatus(status: String)
+      + onStatusUpdated()
+    }
+  }
+
+  package valueobjects {
+    class PatientId <<value object>> { + patientId: Long }
+    class SkinProfileId <<value object>> { + skinProfileId: Long }
+    class SupportQueryId <<value object>> { + supportQueryId: Long }
+    enum MessageType { USER\nAI\nSYSTEM }
+    enum SupportQueryStatus { IN_PROGRESS\nAWAITING_AI\nRESOLVED\nUNRESOLVED }
+    enum SuggestedAction { CONTINUE_ROUTINE\nCHANGE_PRODUCT\nSUGGEST_DERMATOLOGY_CONSULTATION }
+  }
+
+  package commands {
+    class SendChatMessageCommand <<command>>
+    class CreateSupportQueryCommand <<command>>
+    class UpdateSupportQueryStatusCommand <<command>>
+  }
+
+  package queries {
+    class GetChatMessagesBySupportQueryIdQuery <<query>>
+    class GetSupportQueryByIdQuery <<query>>
+    class GetSupportQueryByPatientIdAndStatusQuery <<query>>
+  }
+
+  package events {
+    class ChatMessageSentEvent <<domain event>>
+    class SupportQueryCreatedEvent <<domain event>>
+    class SupportQueryStatusUpdatedEvent <<domain event>>
+  }
+
+  package repositories {
+    interface ChatMessageRepository
+    interface SupportQueryRepository
+  }
+}
+
+ChatMessage --|> AbstractDomainAggregateRoot
+SupportQuery --|> AbstractDomainAggregateRoot
+
+ChatMessage "1" *-- "1" SupportQueryId : supportQueryId
+ChatMessage "1" *-- "1" MessageType : messageType
+ChatMessage "0..*" o-- "1" SupportQuery : supportQueryId (by reference)
+
+SupportQuery "1" *-- "1" PatientId : patientId
+SupportQuery "1" *-- "1" SkinProfileId : skinProfileId
+SupportQuery "1" *-- "1" SupportQueryStatus : status
+SupportQuery "1" *-- "1" SuggestedAction : suggestedAction
+
+ChatMessage ..> SendChatMessageCommand : <<uses>>
+SupportQuery ..> CreateSupportQueryCommand : <<uses>>
+
+ChatMessageSentEvent ..> ChatMessage : <<derives from>>
+SupportQueryCreatedEvent ..> SupportQuery : <<derives from>>
+SupportQueryStatusUpdatedEvent ..> SupportQuery : <<derives from>>
+
+ChatMessage ..> ChatMessageSentEvent : <<creates>>
+SupportQuery ..> SupportQueryCreatedEvent : <<creates>>
+SupportQuery ..> SupportQueryStatusUpdatedEvent : <<creates>>
+
+ChatMessageRepository ..> ChatMessage : <<uses>>
+ChatMessageRepository ..> SupportQueryId : <<uses>>
+SupportQueryRepository ..> SupportQuery : <<uses>>
+SupportQueryRepository ..> PatientId : <<uses>>
+SupportQueryRepository ..> SupportQueryStatus : <<uses>>
+
+GetChatMessagesBySupportQueryIdQuery ..> SupportQueryId : <<derived, wrapped by\napplication>>
+GetSupportQueryByPatientIdAndStatusQuery ..> PatientId : <<derived, wrapped by\napplication>>
+GetSupportQueryByPatientIdAndStatusQuery ..> SupportQueryStatus : <<derived, wrapped by\napplication>>
+
+note bottom of domain
+  This bounded context has no ACL facade of its
+  own and publishes no integration events —
+  every event listed here stays internal to
+  Intelligent Support.
+end note
+@enduml

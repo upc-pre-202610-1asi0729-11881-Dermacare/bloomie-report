@@ -1,0 +1,97 @@
+@startuml productdiscovery-interfaces
+!include ../_style.puml
+title Product Discovery — Interfaces Layer
+
+package "productdiscovery.domain (referenced)" as domain {
+  class Product
+  class FavoriteProduct
+  class ProductCompatibility
+  class RemoveProductFromFavoritesCommand <<command>>
+  class GetAllProductsQuery <<query>>
+  class GetProductByIdQuery <<query>>
+  class GetFavoriteProductsByUserIdQuery <<query>>
+  class GetCompatibilitiesByProductIdQuery <<query>>
+  class GetCompatibilitiesBySkinTypeQuery <<query>>
+}
+
+package "productdiscovery.application (referenced)" as application {
+  interface FavoriteProductCommandService
+  interface FavoriteProductQueryService
+  interface ProductQueryService
+  interface ProductCompatibilityQueryService
+}
+
+package "shared (referenced)" as shared {
+  class ApplicationError
+  class "Result<T,E>" as Result
+  class ResponseEntityAssembler <<static assembler>>
+  class ErrorResponseAssembler <<static assembler>>
+}
+
+package "productdiscovery.interfaces" as ifaces {
+
+  package rest {
+    class FavoriteProductController {
+      - favoriteProductCommandService: FavoriteProductCommandService
+      - favoriteProductQueryService: FavoriteProductQueryService
+    }
+    class ProductCompatibilityController {
+      - productCompatibilityQueryService: ProductCompatibilityQueryService
+    }
+    class ProductController {
+      - productQueryService: ProductQueryService
+    }
+  }
+
+  package "rest.resources" as resources {
+    class FavoriteProductResource <<resource>>
+    class SaveFavoriteProductResource <<resource>>
+    class ProductCompatibilityResource <<resource>>
+    class ProductResource <<resource>>
+  }
+
+  package "rest.transform" as transform {
+    class FavoriteProductResourceFromEntityAssembler <<static assembler>>
+    class SaveProductAsFavoriteCommandFromResourceAssembler <<static assembler>>
+    class ProductCompatibilityResourceFromEntityAssembler <<static assembler>>
+    class ProductResourceFromEntityAssembler <<static assembler>>
+  }
+}
+
+FavoriteProductController --> FavoriteProductCommandService : <<uses>>
+FavoriteProductController --> FavoriteProductQueryService : <<uses>>
+FavoriteProductController ..> GetFavoriteProductsByUserIdQuery : <<uses>>
+FavoriteProductController ..> RemoveProductFromFavoritesCommand : <<creates>>
+FavoriteProductController ..> FavoriteProductResource : <<uses>>
+FavoriteProductController ..> SaveFavoriteProductResource : <<uses>>
+FavoriteProductController ..> FavoriteProductResourceFromEntityAssembler : <<uses>>
+FavoriteProductController ..> SaveProductAsFavoriteCommandFromResourceAssembler : <<uses>>
+FavoriteProductController ..> ApplicationError : <<uses>>
+FavoriteProductController ..> Result : <<uses>>
+FavoriteProductController ..> ErrorResponseAssembler : <<uses>>
+FavoriteProductController ..> ResponseEntityAssembler : <<uses>>
+
+ProductCompatibilityController --> ProductCompatibilityQueryService : <<uses>>
+ProductCompatibilityController ..> GetCompatibilitiesByProductIdQuery : <<uses>>
+ProductCompatibilityController ..> GetCompatibilitiesBySkinTypeQuery : <<uses>>
+ProductCompatibilityController ..> ProductCompatibilityResource : <<uses>>
+ProductCompatibilityController ..> ProductCompatibilityResourceFromEntityAssembler : <<uses>>
+
+ProductController --> ProductQueryService : <<uses>>
+ProductController ..> GetAllProductsQuery : <<uses>>
+ProductController ..> GetProductByIdQuery : <<uses>>
+ProductController ..> ProductResource : <<uses>>
+ProductController ..> ProductResourceFromEntityAssembler : <<uses>>
+ProductController ..> ApplicationError : <<uses>>
+ProductController ..> ErrorResponseAssembler : <<uses>>
+
+FavoriteProductResourceFromEntityAssembler ..> FavoriteProductResource : <<creates>>
+FavoriteProductResourceFromEntityAssembler ..> FavoriteProduct : <<uses>>
+SaveProductAsFavoriteCommandFromResourceAssembler ..> SaveFavoriteProductResource : <<uses>>
+
+ProductCompatibilityResourceFromEntityAssembler ..> ProductCompatibilityResource : <<creates>>
+ProductCompatibilityResourceFromEntityAssembler ..> ProductCompatibility : <<uses>>
+
+ProductResourceFromEntityAssembler ..> ProductResource : <<creates>>
+ProductResourceFromEntityAssembler ..> Product : <<uses>>
+@enduml
