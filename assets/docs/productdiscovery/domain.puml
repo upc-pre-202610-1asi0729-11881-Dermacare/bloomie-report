@@ -1,0 +1,144 @@
+@startuml
+title productdiscovery - domain
+hide empty members
+skinparam classAttributeIconSize 0
+
+package "model.aggregates" {
+    class FavoriteProduct {
+        -id : Long
+        -productId : ProductId
+        -userId : UserId
+        -savedAt : Date
+        +FavoriteProduct()
+        +FavoriteProduct(productId : Long, userId : Long)
+        +getProductIdValue() : Long
+        +getUserIdValue() : Long
+        +onSavedAsFavorite() : void
+        +removeFromFavorites() : void
+    }
+    class Product {
+        -id : Long
+        -name : String
+        -brand : String
+        -category : ProductCategory
+        -description : String
+        -benefits : List<String>
+        -aiRecommended : boolean
+        -imageUrl : String
+        +Product()
+    }
+    class ProductCompatibility {
+        -id : Long
+        -productId : Long
+        -skinType : String
+        -compatibilityScore : Integer
+        -reason : String
+        +ProductCompatibility()
+        +ProductCompatibility(productId : Long, skinType : String, compatibilityScore : Integer, reason : String)
+        +onEvaluated() : void
+    }
+}
+
+package "model.commands" {
+    class GenerateProductCompatibilityCommand << record >> {
+        +productId : Long
+        +productName : String
+        +category : String
+        +skinType : String
+    }
+    class RemoveProductFromFavoritesCommand << record >> {
+        +favoriteProductId : Long
+    }
+    class SaveProductAsFavoriteCommand << record >> {
+        +productId : Long
+        +userId : Long
+    }
+    class SeedProductsCommand << record >> {
+    }
+}
+
+package "model.events" {
+    class ProductCompatibilityEvaluatedEvent << record >> {
+        +compatibilityId : Long
+        +productId : Long
+        +skinType : String
+        +compatibilityScore : Integer
+    }
+    class ProductRemovedFromFavoritesEvent << record >> {
+        +favoriteProductId : Long
+        +productId : Long
+        +userId : Long
+    }
+    class ProductSavedAsFavoriteEvent << record >> {
+        +favoriteProductId : Long
+        +productId : Long
+        +userId : Long
+    }
+}
+
+package "model.queries" {
+    class GetAllProductsQuery << record >> {
+    }
+    class GetCompatibilitiesByProductIdQuery << record >> {
+        +productId : Long
+    }
+    class GetCompatibilitiesBySkinTypeQuery << record >> {
+        +skinType : String
+    }
+    class GetFavoriteProductsByUserIdQuery << record >> {
+        +userId : Long
+    }
+    class GetProductByIdQuery << record >> {
+        +productId : Long
+    }
+}
+
+package "model.valueobjects" {
+    enum ProductCategory {
+        CLEANSER
+        TONER
+        SERUM
+        MOISTURIZER
+        SUNSCREEN
+    }
+    class ProductId << record >> {
+        +productId : Long
+    }
+    class UserId << record >> {
+        +userId : Long
+    }
+}
+
+package "repositories" {
+    interface FavoriteProductRepository {
+        +findById(id : Long) : Optional<FavoriteProduct>
+        +findAllByUserId(userId : UserId) : List<FavoriteProduct>
+        +save(favoriteProduct : FavoriteProduct) : FavoriteProduct
+        +existsByProductIdAndUserId(productId : ProductId, userId : UserId) : boolean
+        +delete(favoriteProduct : FavoriteProduct) : void
+    }
+    interface ProductCompatibilityRepository {
+        +save(compatibility : ProductCompatibility) : ProductCompatibility
+        +saveAll(compatibilities : List<ProductCompatibility>) : void
+        +findByProductId(productId : Long) : List<ProductCompatibility>
+        +findBySkinType(skinType : String) : List<ProductCompatibility>
+        +count() : long
+    }
+    interface ProductRepository {
+        +findAll() : List<Product>
+        +findById(id : Long) : Optional<Product>
+        +count() : long
+        +saveAll(products : List<Product>) : void
+        +save(product : Product) : Product
+    }
+}
+
+FavoriteProduct --> ProductId : productId
+FavoriteProduct --> UserId : userId
+Product --> ProductCategory : category
+FavoriteProductRepository ..> FavoriteProduct
+FavoriteProductRepository ..> UserId
+FavoriteProductRepository ..> ProductId
+ProductCompatibilityRepository ..> ProductCompatibility
+ProductRepository ..> Product
+@enduml

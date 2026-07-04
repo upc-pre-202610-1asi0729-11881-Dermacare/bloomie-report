@@ -1,0 +1,122 @@
+@startuml
+title productdiscovery - infrastructure
+hide empty members
+skinparam classAttributeIconSize 0
+
+package "openbeautyfacts.services" {
+    class OpenBeautyFactsCatalogServiceImpl {
+        -OPEN_BEAUTY_FACTS_URL : String
+        -objectMapper : ObjectMapper
+        +OpenBeautyFactsCatalogServiceImpl()
+        +fetchProductsByCategory(searchTerm : String, category : String, limit : int) : List<Product>
+        -parseProducts(responseBody : String, category : String) : List<Product>
+        -extractBenefitsFromDescription(description : String, category : String) : List<String>
+        -getDefaultBenefits(category : String) : List<String>
+        -getFallbackImage(category : String) : String
+    }
+}
+
+package "persistence.jpa.adapters" {
+    class FavoriteProductRepositoryImpl {
+        -persistenceRepository : FavoriteProductPersistenceRepository
+        -eventPublisher : ApplicationEventPublisher
+        +FavoriteProductRepositoryImpl(persistenceRepository : FavoriteProductPersistenceRepository, eventPublisher : ApplicationEventPublisher)
+        +findById(id : Long) : Optional<FavoriteProduct>
+        +findAllByUserId(userId : UserId) : List<FavoriteProduct>
+        +save(favoriteProduct : FavoriteProduct) : FavoriteProduct
+        +existsByProductIdAndUserId(productId : ProductId, userId : UserId) : boolean
+        +delete(favoriteProduct : FavoriteProduct) : void
+    }
+    class ProductCompatibilityRepositoryImpl {
+        -productCompatibilityPersistenceRepository : ProductCompatibilityPersistenceRepository
+        -eventPublisher : ApplicationEventPublisher
+        +ProductCompatibilityRepositoryImpl(productCompatibilityPersistenceRepository : ProductCompatibilityPersistenceRepository, eventPublisher : ApplicationEventPublisher)
+        +save(compatibility : ProductCompatibility) : ProductCompatibility
+        +saveAll(compatibilities : List<ProductCompatibility>) : void
+        +findByProductId(productId : Long) : List<ProductCompatibility>
+        +findBySkinType(skinType : String) : List<ProductCompatibility>
+        +count() : long
+    }
+    class ProductRepositoryImpl {
+        -productPersistenceRepository : ProductPersistenceRepository
+        +ProductRepositoryImpl(productPersistenceRepository : ProductPersistenceRepository)
+        +findAll() : List<Product>
+        +findById(id : Long) : Optional<Product>
+        +count() : long
+        +saveAll(products : List<Product>) : void
+        +save(product : Product) : Product
+    }
+}
+
+package "persistence.jpa.assemblers" {
+    class FavoriteProductPersistenceAssembler {
+        -FavoriteProductPersistenceAssembler()
+        +toDomainFromPersistence(entity : FavoriteProductPersistenceEntity) : FavoriteProduct
+        +toPersistenceFromDomain(favoriteProduct : FavoriteProduct) : FavoriteProductPersistenceEntity
+    }
+    class ProductCompatibilityPersistenceAssembler {
+        -ProductCompatibilityPersistenceAssembler()
+        +toDomainFromPersistence(entity : ProductCompatibilityPersistenceEntity) : ProductCompatibility
+        +toPersistenceFromDomain(compatibility : ProductCompatibility) : ProductCompatibilityPersistenceEntity
+    }
+    class ProductPersistenceAssembler {
+        +toDomainFromPersistence(entity : ProductPersistenceEntity) : Product
+        +toPersistenceFromDomain(product : Product) : ProductPersistenceEntity
+    }
+}
+
+package "persistence.jpa.converters" {
+    class ProductIdPersistenceConverter {
+        +convertToDatabaseColumn(attribute : ProductId) : Long
+        +convertToEntityAttribute(dbData : Long) : ProductId
+    }
+    class UserIdPersistenceConverter {
+        +convertToDatabaseColumn(attribute : UserId) : Long
+        +convertToEntityAttribute(dbData : Long) : UserId
+    }
+}
+
+package "persistence.jpa.entities" {
+    class FavoriteProductPersistenceEntity {
+        -productId : ProductId
+        -userId : UserId
+    }
+    class ProductCompatibilityPersistenceEntity {
+        -productId : Long
+        -skinType : String
+        -compatibilityScore : Integer
+        -reason : String
+    }
+    class ProductPersistenceEntity {
+        -name : String
+        -brand : String
+        -category : ProductCategory
+        -description : String
+        -aiRecommended : boolean
+        -imageUrl : String
+    }
+}
+
+package "persistence.jpa.repositories" {
+    interface FavoriteProductPersistenceRepository {
+        +findAllByUserId(userId : UserId) : List<FavoriteProductPersistenceEntity>
+        +existsByProductIdAndUserId(productId : ProductId, userId : UserId) : boolean
+    }
+    interface ProductCompatibilityPersistenceRepository {
+        +findByProductId(productId : Long) : List<ProductCompatibilityPersistenceEntity>
+        +findBySkinType(skinType : String) : List<ProductCompatibilityPersistenceEntity>
+    }
+    interface ProductPersistenceRepository {
+        +save(product : Product) : Product
+    }
+}
+
+FavoriteProductRepositoryImpl --> FavoriteProductPersistenceRepository : persistenceRepository
+ProductCompatibilityRepositoryImpl --> ProductCompatibilityPersistenceRepository : productCompatibilityPersistenceRepository
+ProductRepositoryImpl --> ProductPersistenceRepository : productPersistenceRepository
+FavoriteProductPersistenceAssembler ..> FavoriteProductPersistenceEntity
+ProductCompatibilityPersistenceAssembler ..> ProductCompatibilityPersistenceEntity
+ProductPersistenceAssembler ..> ProductPersistenceEntity
+FavoriteProductPersistenceRepository ..> FavoriteProductPersistenceEntity
+ProductCompatibilityPersistenceRepository ..> ProductCompatibilityPersistenceEntity
+@enduml

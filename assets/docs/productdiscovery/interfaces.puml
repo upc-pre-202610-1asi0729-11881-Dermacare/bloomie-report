@@ -1,0 +1,74 @@
+@startuml
+title productdiscovery - interfaces
+hide empty members
+skinparam classAttributeIconSize 0
+
+package "rest" {
+    class FavoriteProductController {
+        -favoriteProductCommandService : FavoriteProductCommandService
+        -favoriteProductQueryService : FavoriteProductQueryService
+        +FavoriteProductController(favoriteProductCommandService : FavoriteProductCommandService, favoriteProductQueryService : FavoriteProductQueryService)
+    }
+    class ProductCompatibilityController {
+        -productCompatibilityQueryService : ProductCompatibilityQueryService
+        +ProductCompatibilityController(productCompatibilityQueryService : ProductCompatibilityQueryService)
+    }
+    class ProductController {
+        -productQueryService : ProductQueryService
+        +ProductController(productQueryService : ProductQueryService)
+    }
+}
+
+package "rest.resources" {
+    class FavoriteProductResource << record >> {
+        +id : Long
+        +productId : Long
+        +userId : Long
+        +savedAt : String
+    }
+    class ProductCompatibilityResource << record >> {
+        +id : Long
+        +productId : Long
+        +skinType : String
+        +compatibilityScore : Integer
+        +reason : String
+    }
+    class ProductResource << record >> {
+        +id : Long
+        +name : String
+        +brand : String
+        +category : String
+        +description : String
+        +benefits : List<String>
+        +aiRecommended : boolean
+        +imageUrl : String
+    }
+    class SaveFavoriteProductResource << record >> {
+        +productId : Long
+        +userId : Long
+    }
+}
+
+package "rest.transform" {
+    class FavoriteProductResourceFromEntityAssembler {
+        -FavoriteProductResourceFromEntityAssembler()
+        +toResourceFromEntity(favoriteProduct : FavoriteProduct) : FavoriteProductResource
+    }
+    class ProductCompatibilityResourceFromEntityAssembler {
+        -ProductCompatibilityResourceFromEntityAssembler()
+        +toResourceFromEntity(compatibility : ProductCompatibility) : ProductCompatibilityResource
+    }
+    class ProductResourceFromEntityAssembler {
+        +toResourceFromEntity(product : Product) : ProductResource
+    }
+    class SaveProductAsFavoriteCommandFromResourceAssembler {
+        -SaveProductAsFavoriteCommandFromResourceAssembler()
+        +toCommandFromResource(resource : SaveFavoriteProductResource) : SaveProductAsFavoriteCommand
+    }
+}
+
+FavoriteProductResourceFromEntityAssembler ..> FavoriteProductResource
+ProductCompatibilityResourceFromEntityAssembler ..> ProductCompatibilityResource
+ProductResourceFromEntityAssembler ..> ProductResource
+SaveProductAsFavoriteCommandFromResourceAssembler ..> SaveFavoriteProductResource
+@enduml

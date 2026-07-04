@@ -1,0 +1,79 @@
+@startuml
+title subscription - interfaces
+hide empty members
+skinparam classAttributeIconSize 0
+
+package "acl" {
+    interface SubscriptionContextFacade {
+        +existsPlanById(id : Long) : boolean
+        +fetchPlanPrice(planId : Long) : Double
+    }
+}
+
+package "events" {
+    class SubscriptionPlanSelectedIntegrationEvent << record >> {
+        +subscriptionId : Long
+        +patientId : Long
+        +planId : Long
+        +from(subscription : Subscription) : SubscriptionPlanSelectedIntegrationEvent
+    }
+}
+
+package "rest" {
+    class PlanController {
+        -subscriptionQueryService : SubscriptionQueryService
+        +PlanController(subscriptionQueryService : SubscriptionQueryService)
+    }
+    class SubscriptionController {
+        -subscriptionCommandService : SubscriptionCommandService
+        -subscriptionQueryService : SubscriptionQueryService
+        +SubscriptionController(subscriptionCommandService : SubscriptionCommandService, subscriptionQueryService : SubscriptionQueryService)
+    }
+}
+
+package "rest.resources" {
+    class ChangeSubscriptionPlanResource << record >> {
+        +newPlanId : Long
+    }
+    class PlanResource << record >> {
+        +id : Long
+        +type : String
+        +name : String
+        +price : Double
+        +durationDays : Integer
+        +modules : List<String>
+    }
+    class SelectSubscriptionPlanResource << record >> {
+        +patientId : Long
+        +planId : Long
+    }
+    class SubscriptionResource << record >> {
+        +id : Long
+        +patientId : Long
+        +planId : Long
+        +status : String
+        +startDate : LocalDateTime
+        +endDate : LocalDateTime
+    }
+}
+
+package "rest.transform" {
+    class ChangeSubscriptionPlanCommandFromResourceAssembler {
+        +toCommandFromResource(subscriptionId : Long, resource : ChangeSubscriptionPlanResource) : ChangeSubscriptionPlanCommand
+    }
+    class PlanResourceFromEntityAssembler {
+        +toResourceFromEntity(entity : Plan) : PlanResource
+    }
+    class SelectSubscriptionPlanCommandFromResourceAssembler {
+        +toCommandFromResource(resource : SelectSubscriptionPlanResource) : SelectSubscriptionPlanCommand
+    }
+    class SubscriptionResourceFromEntityAssembler {
+        +toResourceFromEntity(entity : Subscription) : SubscriptionResource
+    }
+}
+
+ChangeSubscriptionPlanCommandFromResourceAssembler ..> ChangeSubscriptionPlanResource
+PlanResourceFromEntityAssembler ..> PlanResource
+SelectSubscriptionPlanCommandFromResourceAssembler ..> SelectSubscriptionPlanResource
+SubscriptionResourceFromEntityAssembler ..> SubscriptionResource
+@enduml

@@ -1,0 +1,102 @@
+@startuml
+title dermatologycare - application
+hide empty members
+skinparam classAttributeIconSize 0
+
+package "acl" {
+    class DermatologyCareContextFacadeImpl {
+        -profileQueryService : DermatologistProfileQueryService
+        +DermatologyCareContextFacadeImpl(profileQueryService : DermatologistProfileQueryService)
+        +existsDermatologistProfileByDermatologistId(dermatologistId : Long) : boolean
+        +fetchProfileIdByDermatologistId(dermatologistId : Long) : Long
+        +fetchConsultationFeeByDermatologistId(dermatologistId : Long) : Double
+    }
+}
+
+package "commandservices" {
+    interface AvailabilityCommandService {
+        +handle(command : DefineAvailabilityCommand) : Result<Availability,ApplicationError>
+        +handle(command : UpdateAvailabilityCommand) : Result<Availability,ApplicationError>
+    }
+    interface DermatologistProfileCommandService {
+        +handle(command : RegisterDermatologistProfileCommand) : Result<Long,ApplicationError>
+        +handle(command : UpdateDermatologistProfileCommand) : Result<DermatologistProfile,ApplicationError>
+    }
+}
+
+package "internal.commandservices" {
+    class AvailabilityCommandServiceImpl {
+        -AVAILABILITY_ALREADY_DEFINED : String
+        -AVAILABILITY_NOT_FOUND : String
+        -availabilityRepository : AvailabilityRepository
+        +AvailabilityCommandServiceImpl(availabilityRepository : AvailabilityRepository)
+        +handle(command : DefineAvailabilityCommand) : Result<Availability,ApplicationError>
+        +handle(command : UpdateAvailabilityCommand) : Result<Availability,ApplicationError>
+    }
+    class DermatologistProfileCommandServiceImpl {
+        -PROFILE_ALREADY_EXISTS : String
+        -PROFILE_NOT_FOUND : String
+        -dermatologistProfileRepository : DermatologistProfileRepository
+        +DermatologistProfileCommandServiceImpl(dermatologistProfileRepository : DermatologistProfileRepository)
+        +handle(command : RegisterDermatologistProfileCommand) : Result<Long,ApplicationError>
+        +handle(command : UpdateDermatologistProfileCommand) : Result<DermatologistProfile,ApplicationError>
+    }
+}
+
+package "internal.eventhandlers" {
+    class AvailabilityDefinedEventHandler {
+        -eventPublisher : ApplicationEventPublisher
+        +AvailabilityDefinedEventHandler(eventPublisher : ApplicationEventPublisher)
+        +on(event : AvailabilityDefinedEvent) : void
+    }
+    class DermatologistRegisteredEventHandler {
+        -dermatologistProfileCommandService : DermatologistProfileCommandService
+        +DermatologistRegisteredEventHandler(dermatologistProfileCommandService : DermatologistProfileCommandService)
+        +on(event : DermatologistRegisteredIntegrationEvent) : void
+    }
+}
+
+package "internal.outboundservices.acl" {
+    class ExternalIamService {
+        -iamContextFacade : IamContextFacade
+        +ExternalIamService(iamContextFacade : IamContextFacade)
+        +fetchDermatologistById(userId : Long) : Optional<DermatologistId>
+        +fetchDermatologistByEmail(email : String) : Optional<DermatologistId>
+    }
+}
+
+package "internal.queryservices" {
+    class AvailabilityQueryServiceImpl {
+        -availabilityRepository : AvailabilityRepository
+        +AvailabilityQueryServiceImpl(availabilityRepository : AvailabilityRepository)
+        +handle(query : GetAvailabilityByDermatologistIdQuery) : List<Availability>
+        +handle(query : GetAvailabilityByDermatologistIdAndDayQuery) : List<Availability>
+    }
+    class DermatologistProfileQueryServiceImpl {
+        -dermatologistProfileRepository : DermatologistProfileRepository
+        +DermatologistProfileQueryServiceImpl(dermatologistProfileRepository : DermatologistProfileRepository)
+        +handle(query : GetDermatologistProfileByIdQuery) : Optional<DermatologistProfile>
+        +handle(query : GetDermatologistProfileByDermatologistIdQuery) : Optional<DermatologistProfile>
+        +handle(query : GetAllDermatologistProfilesQuery) : List<DermatologistProfile>
+    }
+}
+
+package "queryservices" {
+    interface AvailabilityQueryService {
+        +handle(query : GetAvailabilityByDermatologistIdQuery) : List<Availability>
+        +handle(query : GetAvailabilityByDermatologistIdAndDayQuery) : List<Availability>
+    }
+    interface DermatologistProfileQueryService {
+        +handle(query : GetDermatologistProfileByIdQuery) : Optional<DermatologistProfile>
+        +handle(query : GetDermatologistProfileByDermatologistIdQuery) : Optional<DermatologistProfile>
+        +handle(query : GetAllDermatologistProfilesQuery) : List<DermatologistProfile>
+    }
+}
+
+DermatologyCareContextFacadeImpl --> DermatologistProfileQueryService : profileQueryService
+AvailabilityCommandServiceImpl ..|> AvailabilityCommandService
+DermatologistProfileCommandServiceImpl ..|> DermatologistProfileCommandService
+DermatologistRegisteredEventHandler --> DermatologistProfileCommandService : dermatologistProfileCommandService
+AvailabilityQueryServiceImpl ..|> AvailabilityQueryService
+DermatologistProfileQueryServiceImpl ..|> DermatologistProfileQueryService
+@enduml
