@@ -1,0 +1,140 @@
+@startuml subscription-domain
+!include ../_style.puml
+title Subscription — Domain Layer
+
+package "shared.domain.model.aggregates\n(referenced)" as sharedDomain {
+  abstract class AbstractDomainAggregateRoot<T>
+}
+
+package "subscription.domain.model" as domain {
+
+  package aggregates {
+    class Subscription {
+      - id: Long
+      - patientId: PatientId
+      - planId: PlanId
+      - status: SubscriptionStatus
+      - startDate: LocalDateTime
+      - endDate: LocalDateTime
+      - activating: boolean
+      - renewing: boolean
+      - changingPlan: boolean
+      - resubscribing: boolean
+      - previousPlanId: PlanId
+      + onPlanSelected()
+      + activate(durationDays: int)
+      + onActivated()
+      + cancel()
+      + onCancelled()
+      + renew(durationDays: int)
+      + onRenewed()
+      + changePlan(newPlanId: PlanId)
+      + onPlanChanged(previousPlanId: Long)
+      + resubscribe(newPlanId: PlanId)
+      + expire()
+      + onExpired()
+      + isActive(): boolean
+      + isExpired(): boolean
+    }
+  }
+
+  package entities {
+    class Plan {
+      - id: Long
+      - type: PlanType
+      - name: String
+      - price: Double
+      - durationDays: Integer
+      - modules: List<String>
+    }
+  }
+
+  package valueobjects {
+    class PatientId <<value object>> { + patientId: Long }
+    class PlanId <<value object>> { + planId: Long }
+    enum PlanType { STARTER\nADVANCED\nELITE }
+    enum SubscriptionStatus { PENDING\nACTIVE\nCANCELLED\nEXPIRED }
+  }
+
+  package commands {
+    class SelectSubscriptionPlanCommand <<command>>
+    class ActivateSubscriptionCommand <<command>>
+    class CancelSubscriptionCommand <<command>>
+    class RenewSubscriptionCommand <<command>>
+    class ExpireSubscriptionCommand <<command>>
+    class ChangeSubscriptionPlanCommand <<command>>
+    class SeedPlansCommand <<command>>
+  }
+
+  package queries {
+    class GetAllPlansQuery <<query>>
+    class GetPlanByIdQuery <<query>>
+    class GetSubscriptionByIdQuery <<query>>
+    class GetSubscriptionByPatientIdQuery <<query>>
+  }
+
+  package events {
+    class SubscriptionPlanSelectedEvent <<domain event>>
+    class SubscriptionActivatedEvent <<domain event>>
+    class SubscriptionCancelledEvent <<domain event>>
+    class SubscriptionRenewedEvent <<domain event>>
+    class SubscriptionPlanChangedEvent <<domain event>>
+    class SubscriptionExpiredEvent <<domain event>>
+  }
+
+  package repositories {
+    interface PlanRepository
+    interface SubscriptionRepository
+  }
+}
+
+Subscription --|> AbstractDomainAggregateRoot
+
+Subscription "1" *-- "1" PatientId : patientId
+Subscription "1" *-- "1" PlanId : planId
+Subscription "0..1" *-- "0..1" PlanId : previousPlanId
+Subscription "1" *-- "1" SubscriptionStatus : status
+Subscription "0..*" o-- "1" Plan : planId (by reference)
+Plan "1" *-- "1" PlanType : type
+
+Subscription ..> SelectSubscriptionPlanCommand : <<uses>>
+
+SubscriptionPlanSelectedEvent ..> Subscription : <<derives from>>
+SubscriptionActivatedEvent ..> Subscription : <<derives from>>
+SubscriptionCancelledEvent ..> Subscription : <<derives from>>
+SubscriptionRenewedEvent ..> Subscription : <<derives from>>
+SubscriptionPlanChangedEvent ..> Subscription : <<derives from>>
+SubscriptionExpiredEvent ..> Subscription : <<derives from>>
+
+Subscription ..> SubscriptionPlanSelectedEvent : <<creates>>
+Subscription ..> SubscriptionActivatedEvent : <<creates>>
+Subscription ..> SubscriptionCancelledEvent : <<creates>>
+Subscription ..> SubscriptionRenewedEvent : <<creates>>
+Subscription ..> SubscriptionPlanChangedEvent : <<creates>>
+Subscription ..> SubscriptionExpiredEvent : <<creates>>
+
+PlanRepository ..> Plan : <<uses>>
+PlanRepository ..> PlanType : <<uses>>
+SubscriptionRepository ..> Subscription : <<uses>>
+SubscriptionRepository ..> Plan : <<uses>>
+SubscriptionRepository ..> PatientId : <<uses>>
+SubscriptionRepository ..> PlanId : <<uses>>
+
+GetPlanByIdQuery ..> PlanId : <<derived, wrapped by\napplication>>
+GetSubscriptionByPatientIdQuery ..> PatientId : <<uses>>
+
+note bottom of Subscription
+  activating/renewing/changingPlan/resubscribing
+  are transient flags (not persisted) that let the
+  repository adapter infer which onXxx() domain
+  event to raise after save(), since status alone
+  is ambiguous (e.g. PENDING->ACTIVE vs ACTIVE->ACTIVE).
+end note
+
+note bottom of SubscriptionRepository
+  Also exposes findPlanById/findAllPlans —
+  cross-aggregate reads kept here so
+  SubscriptionCommandServiceImpl can validate
+  a plan without a second repository dependency.
+end note
+@enduml

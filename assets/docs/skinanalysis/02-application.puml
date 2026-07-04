@@ -1,0 +1,156 @@
+@startuml skinanalysis-application
+!include ../_style.puml
+title Skin Analysis — Application Layer
+
+package "skinanalysis.domain (referenced)" as domain {
+  class FacialScan
+  class SkinAnalysis
+  class SkinProfile
+  class PatientId <<value object>>
+  class FacialScanId <<value object>>
+  enum FacialScanStatus
+  class StartFacialScanCommand <<command>>
+  class SubmitFacialScanCommand <<command>>
+  class AnalyzeSkinScanCommand <<command>>
+  class CompleteSkinProfileCommand <<command>>
+  class UpdateSkinCharacteristicsCommand <<command>>
+  class GetFacialScanByIdQuery <<query>>
+  class GetFacialScansByPatientIdQuery <<query>>
+  class GetSkinAnalysisByIdQuery <<query>>
+  class GetSkinAnalysisByFacialScanIdQuery <<query>>
+  class GetSkinAnalysesByPatientIdQuery <<query>>
+  class GetSkinProfileByIdQuery <<query>>
+  class GetSkinProfileByPatientIdQuery <<query>>
+  class FacialScanSubmittedEvent <<domain event>>
+  class PreliminaryDiagnosisGeneratedEvent <<domain event>>
+  interface FacialScanRepository
+  interface SkinAnalysisRepository
+  interface SkinProfileRepository
+}
+
+package "skinanalysis.interfaces (referenced)" as ifaces {
+  class PreliminaryDiagnosisGeneratedIntegrationEvent <<integration event>>
+}
+
+package "iam bounded context (referenced)" as iamBc {
+  interface IamContextFacade
+}
+
+package "skinanalysis.application" as application {
+
+  package "commandservices\n(ports)" as cmdPorts {
+    interface FacialScanCommandService
+    interface SkinAnalysisCommandService
+    interface SkinProfileCommandService
+  }
+
+  package "queryservices\n(ports)" as queryPorts {
+    interface FacialScanQueryService
+    interface SkinAnalysisQueryService
+    interface SkinProfileQueryService
+  }
+
+  package "internal.outboundservices.acl" as outbound {
+    class ExternalIamService {
+      - iamContextFacade: IamContextFacade
+      + fetchPatientById(id: Long): Optional<PatientId>
+    }
+  }
+
+  package "internal.commandservices\n(impl)" as cmdImpl {
+    class FacialScanCommandServiceImpl {
+      - facialScanRepository: FacialScanRepository
+      - externalIamService: ExternalIamService
+    }
+    class SkinAnalysisCommandServiceImpl {
+      - skinAnalysisRepository: SkinAnalysisRepository
+    }
+    class SkinProfileCommandServiceImpl {
+      - skinProfileRepository: SkinProfileRepository
+      - externalIamService: ExternalIamService
+    }
+  }
+
+  package "internal.queryservices\n(impl)" as queryImpl {
+    class FacialScanQueryServiceImpl {
+      - facialScanRepository: FacialScanRepository
+    }
+    class SkinAnalysisQueryServiceImpl {
+      - skinAnalysisRepository: SkinAnalysisRepository
+    }
+    class SkinProfileQueryServiceImpl {
+      - skinProfileRepository: SkinProfileRepository
+    }
+  }
+
+  package "internal.eventhandlers" as handlers {
+    class FacialScanSubmittedEventHandler {
+      - skinProfileQueryService: SkinProfileQueryService
+      - skinAnalysisCommandService: SkinAnalysisCommandService
+    }
+    class PreliminaryDiagnosisGeneratedEventHandler {
+      - eventPublisher: ApplicationEventPublisher
+    }
+  }
+}
+
+FacialScanCommandServiceImpl ..|> FacialScanCommandService
+SkinAnalysisCommandServiceImpl ..|> SkinAnalysisCommandService
+SkinProfileCommandServiceImpl ..|> SkinProfileCommandService
+FacialScanQueryServiceImpl ..|> FacialScanQueryService
+SkinAnalysisQueryServiceImpl ..|> SkinAnalysisQueryService
+SkinProfileQueryServiceImpl ..|> SkinProfileQueryService
+
+FacialScanCommandServiceImpl --> ExternalIamService : externalIamService
+SkinProfileCommandServiceImpl --> ExternalIamService : externalIamService
+ExternalIamService --> IamContextFacade : iamContextFacade
+ExternalIamService ..> PatientId : <<creates>>
+
+FacialScanCommandServiceImpl ..> FacialScanRepository : <<uses>>
+FacialScanCommandServiceImpl ..> FacialScan : <<uses>>
+FacialScanCommandServiceImpl ..> FacialScanStatus : <<uses>>
+FacialScanCommandServiceImpl ..> StartFacialScanCommand : <<uses>>
+FacialScanCommandServiceImpl ..> SubmitFacialScanCommand : <<uses>>
+
+SkinAnalysisCommandServiceImpl ..> SkinAnalysisRepository : <<uses>>
+SkinAnalysisCommandServiceImpl ..> SkinAnalysis : <<uses>>
+SkinAnalysisCommandServiceImpl ..> FacialScanId : <<uses>>
+SkinAnalysisCommandServiceImpl ..> AnalyzeSkinScanCommand : <<uses>>
+
+SkinProfileCommandServiceImpl ..> SkinProfileRepository : <<uses>>
+SkinProfileCommandServiceImpl ..> SkinProfile : <<uses>>
+SkinProfileCommandServiceImpl ..> PatientId : <<uses>>
+SkinProfileCommandServiceImpl ..> CompleteSkinProfileCommand : <<uses>>
+SkinProfileCommandServiceImpl ..> UpdateSkinCharacteristicsCommand : <<uses>>
+
+FacialScanQueryServiceImpl ..> FacialScanRepository : <<uses>>
+FacialScanQueryServiceImpl ..> GetFacialScanByIdQuery : <<uses>>
+FacialScanQueryServiceImpl ..> GetFacialScansByPatientIdQuery : <<uses>>
+
+SkinAnalysisQueryServiceImpl ..> SkinAnalysisRepository : <<uses>>
+SkinAnalysisQueryServiceImpl ..> GetSkinAnalysisByIdQuery : <<uses>>
+SkinAnalysisQueryServiceImpl ..> GetSkinAnalysisByFacialScanIdQuery : <<uses>>
+SkinAnalysisQueryServiceImpl ..> GetSkinAnalysesByPatientIdQuery : <<uses>>
+
+SkinProfileQueryServiceImpl ..> SkinProfileRepository : <<uses>>
+SkinProfileQueryServiceImpl ..> GetSkinProfileByIdQuery : <<uses>>
+SkinProfileQueryServiceImpl ..> GetSkinProfileByPatientIdQuery : <<uses>>
+
+FacialScanSubmittedEventHandler --> SkinProfileQueryService : skinProfileQueryService
+FacialScanSubmittedEventHandler --> SkinAnalysisCommandService : skinAnalysisCommandService
+FacialScanSubmittedEventHandler ..> FacialScanSubmittedEvent : <<listens to>>
+FacialScanSubmittedEventHandler ..> GetSkinProfileByPatientIdQuery : <<uses>>
+FacialScanSubmittedEventHandler ..> AnalyzeSkinScanCommand : <<creates>>
+FacialScanSubmittedEventHandler ..> PatientId : <<uses>>
+
+PreliminaryDiagnosisGeneratedEventHandler ..> PreliminaryDiagnosisGeneratedEvent : <<listens to>>
+PreliminaryDiagnosisGeneratedEventHandler ..> PreliminaryDiagnosisGeneratedIntegrationEvent : <<publishes>>
+
+note bottom of application
+  This bounded context has no ACL facade of its
+  own (no application/acl, no interfaces/acl) —
+  other contexts do not query Skin Analysis data
+  synchronously; they only react to its
+  integration events.
+end note
+@enduml

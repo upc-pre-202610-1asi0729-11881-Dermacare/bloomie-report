@@ -1,0 +1,161 @@
+@startuml dermatologicalappointment-interfaces
+!include ../_style.puml
+title Dermatological Appointment — Interfaces Layer
+
+package "dermatologicalappointment.domain (referenced)" as domain {
+  class Appointment
+  class Consultation
+  class ScheduleDermatologyAppointmentCommand <<command>>
+  class CancelAppointmentCommand <<command>>
+  class RequestReprogramAppointmentCommand <<command>>
+  class ConfirmAppointmentCommand <<command>>
+  class StartConsultationCommand <<command>>
+  class SaveNotesCommand <<command>>
+  class RecordDermatologicalDiagnosisCommand <<command>>
+  class UploadClinicalPhotoCommand <<command>>
+  class FinishConsultationCommand <<command>>
+  class GetAppointmentByIdQuery <<query>>
+  class GetAppointmentsByPatientIdQuery <<query>>
+  class GetAppointmentsByDermatologistIdQuery <<query>>
+  class GetConsultationByIdQuery <<query>>
+  class GetConsultationByAppointmentIdQuery <<query>>
+}
+
+package "dermatologicalappointment.application (referenced)" as application {
+  interface AppointmentCommandService
+  interface AppointmentQueryService
+  interface ConsultationCommandService
+  interface ConsultationQueryService
+  class DermatologicalAppointmentContextFacadeImpl
+  class AppointmentCancelledEventHandler
+  class DermatologyAppointmentScheduledEventHandler
+}
+
+package "shared (referenced)" as shared {
+  class ApplicationError
+  class ResponseEntityAssembler <<static assembler>>
+  class ErrorResponseAssembler <<static assembler>>
+}
+
+package "dermatologicalappointment.interfaces" as ifaces {
+
+  package acl {
+    interface DermatologicalAppointmentContextFacade {
+      + existsAppointmentByPatientId(id: Long): boolean
+      + fetchAppointmentStatusById(id: Long): String
+    }
+  }
+
+  package events {
+    class ProcessRefundIntegrationEvent <<integration event>> { + appointmentId: Long\n+ patientId: Long }
+    class RequestConsultationPaymentIntegrationEvent <<integration event>> {
+      + appointmentId: Long\n+ patientId: Long\n+ dermatologistId: Long\n+ scheduledAt: String\n+ amount: Double
+    }
+  }
+
+  package rest {
+    class AppointmentController {
+      - queryService: AppointmentQueryService
+      - commandService: AppointmentCommandService
+    }
+    class ConsultationController {
+      - queryService: ConsultationQueryService
+      - commandService: ConsultationCommandService
+    }
+  }
+
+  package "rest.resources" as resources {
+    class AppointmentResource <<resource>>
+    class ScheduleAppointmentResource <<resource>>
+    class CancelAppointmentResource <<resource>>
+    class ConfirmAppointmentResource <<resource>>
+    class ReprogramRequestResource <<resource>>
+    class ConsultationResource <<resource>>
+    class StartConsultationResource <<resource>>
+    class SaveNotesResource <<resource>>
+    class RecordDiagnosisResource <<resource>>
+    class UploadClinicalPhotoResource <<resource>>
+    class FinishConsultationResource <<resource>>
+  }
+
+  package "rest.transform" as transform {
+    class AppointmentResourceFromEntityAssembler <<static assembler>>
+    class ScheduleAppointmentCommandFromResourceAssembler <<static assembler>>
+    class CancelAppointmentCommandFromResourceAssembler <<static assembler>>
+    class ConfirmAppointmentCommandFromResourceAssembler <<static assembler>>
+    class ReprogramRequestCommandFromResourceAssembler <<static assembler>>
+    class ConsultationResourceFromEntityAssembler <<static assembler>>
+    class StartConsultationCommandFromResourceAssembler <<static assembler>>
+    class SaveNotesCommandFromResourceAssembler <<static assembler>>
+    class RecordDiagnosisCommandFromResourceAssembler <<static assembler>>
+    class UploadClinicalPhotoCommandFromResourceAssembler <<static assembler>>
+    class FinishConsultationCommandFromResourceAssembler <<static assembler>>
+  }
+}
+
+DermatologicalAppointmentContextFacadeImpl ..> DermatologicalAppointmentContextFacade : <<implements>>
+AppointmentCancelledEventHandler ..> ProcessRefundIntegrationEvent : <<publishes>>
+DermatologyAppointmentScheduledEventHandler ..> RequestConsultationPaymentIntegrationEvent : <<publishes>>
+
+AppointmentController --> AppointmentQueryService : <<uses>>
+AppointmentController --> AppointmentCommandService : <<uses>>
+AppointmentController ..> GetAppointmentByIdQuery : <<uses>>
+AppointmentController ..> GetAppointmentsByPatientIdQuery : <<uses>>
+AppointmentController ..> GetAppointmentsByDermatologistIdQuery : <<uses>>
+AppointmentController ..> AppointmentResource : <<uses>>
+AppointmentController ..> ScheduleAppointmentResource : <<uses>>
+AppointmentController ..> CancelAppointmentResource : <<uses>>
+AppointmentController ..> ConfirmAppointmentResource : <<uses>>
+AppointmentController ..> ReprogramRequestResource : <<uses>>
+AppointmentController ..> AppointmentResourceFromEntityAssembler : <<uses>>
+AppointmentController ..> ScheduleAppointmentCommandFromResourceAssembler : <<uses>>
+AppointmentController ..> CancelAppointmentCommandFromResourceAssembler : <<uses>>
+AppointmentController ..> ConfirmAppointmentCommandFromResourceAssembler : <<uses>>
+AppointmentController ..> ReprogramRequestCommandFromResourceAssembler : <<uses>>
+AppointmentController ..> ResponseEntityAssembler : <<uses>>
+AppointmentController ..> ErrorResponseAssembler : <<uses>>
+
+ConsultationController --> ConsultationQueryService : <<uses>>
+ConsultationController --> ConsultationCommandService : <<uses>>
+ConsultationController ..> GetConsultationByIdQuery : <<uses>>
+ConsultationController ..> GetConsultationByAppointmentIdQuery : <<uses>>
+ConsultationController ..> ConsultationResource : <<uses>>
+ConsultationController ..> StartConsultationResource : <<uses>>
+ConsultationController ..> SaveNotesResource : <<uses>>
+ConsultationController ..> RecordDiagnosisResource : <<uses>>
+ConsultationController ..> UploadClinicalPhotoResource : <<uses>>
+ConsultationController ..> FinishConsultationResource : <<uses>>
+ConsultationController ..> ConsultationResourceFromEntityAssembler : <<uses>>
+ConsultationController ..> StartConsultationCommandFromResourceAssembler : <<uses>>
+ConsultationController ..> SaveNotesCommandFromResourceAssembler : <<uses>>
+ConsultationController ..> RecordDiagnosisCommandFromResourceAssembler : <<uses>>
+ConsultationController ..> UploadClinicalPhotoCommandFromResourceAssembler : <<uses>>
+ConsultationController ..> FinishConsultationCommandFromResourceAssembler : <<uses>>
+ConsultationController ..> ApplicationError : <<uses>>
+ConsultationController ..> ErrorResponseAssembler : <<uses>>
+ConsultationController ..> ResponseEntityAssembler : <<uses>>
+
+AppointmentResourceFromEntityAssembler ..> AppointmentResource : <<creates>>
+AppointmentResourceFromEntityAssembler ..> Appointment : <<uses>>
+ScheduleAppointmentCommandFromResourceAssembler ..> ScheduleAppointmentResource : <<uses>>
+ScheduleAppointmentCommandFromResourceAssembler ..> ScheduleDermatologyAppointmentCommand : <<creates>>
+CancelAppointmentCommandFromResourceAssembler ..> CancelAppointmentResource : <<uses>>
+CancelAppointmentCommandFromResourceAssembler ..> CancelAppointmentCommand : <<creates>>
+ConfirmAppointmentCommandFromResourceAssembler ..> ConfirmAppointmentResource : <<uses>>
+ConfirmAppointmentCommandFromResourceAssembler ..> ConfirmAppointmentCommand : <<creates>>
+ReprogramRequestCommandFromResourceAssembler ..> ReprogramRequestResource : <<uses>>
+ReprogramRequestCommandFromResourceAssembler ..> RequestReprogramAppointmentCommand : <<creates>>
+
+ConsultationResourceFromEntityAssembler ..> ConsultationResource : <<creates>>
+ConsultationResourceFromEntityAssembler ..> Consultation : <<uses>>
+StartConsultationCommandFromResourceAssembler ..> StartConsultationResource : <<uses>>
+StartConsultationCommandFromResourceAssembler ..> StartConsultationCommand : <<creates>>
+SaveNotesCommandFromResourceAssembler ..> SaveNotesResource : <<uses>>
+SaveNotesCommandFromResourceAssembler ..> SaveNotesCommand : <<creates>>
+RecordDiagnosisCommandFromResourceAssembler ..> RecordDiagnosisResource : <<uses>>
+RecordDiagnosisCommandFromResourceAssembler ..> RecordDermatologicalDiagnosisCommand : <<creates>>
+UploadClinicalPhotoCommandFromResourceAssembler ..> UploadClinicalPhotoResource : <<uses>>
+UploadClinicalPhotoCommandFromResourceAssembler ..> UploadClinicalPhotoCommand : <<creates>>
+FinishConsultationCommandFromResourceAssembler ..> FinishConsultationResource : <<uses>>
+FinishConsultationCommandFromResourceAssembler ..> FinishConsultationCommand : <<creates>>
+@enduml

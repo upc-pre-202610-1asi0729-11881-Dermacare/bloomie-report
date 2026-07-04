@@ -1,0 +1,140 @@
+@startuml routinemanagement-application
+!include ../_style.puml
+title Routine Management — Application Layer
+
+package "routinemanagement.domain (referenced)" as domain {
+  class Routine
+  class DailyTracking
+  class PatientId <<value object>>
+  class RoutineId <<value object>>
+  enum RoutineStatus
+  class GeneratePersonalizedRoutineCommand <<command>>
+  class RemoveProductFromRoutineCommand <<command>>
+  class ReplaceProductInRoutineCommand <<command>>
+  class MarkRoutineAsCompletedCommand <<command>>
+  class GetRoutineByIdQuery <<query>>
+  class GetRoutineByPatientIdQuery <<query>>
+  class GetRecommendedProductsForRoutineItemQuery <<query>>
+  class GetAllDailyTrackingsQuery <<query>>
+  class GetDailyTrackingByPatientIdAndDateQuery <<query>>
+  class GetDailyTrackingsByPatientIdQuery <<query>>
+  class GetDailyTrackingsByRoutineIdQuery <<query>>
+  class GetWeeklySummaryByPatientIdQuery <<query>>
+  class PersonalizedRoutineGeneratedEvent <<domain event>>
+  interface RoutineRepository
+  interface DailyTrackingRepository
+}
+
+package "routinemanagement.interfaces (referenced)" as ifaces {
+  class PersonalizedRoutineGeneratedIntegrationEvent <<integration event>>
+  class WeeklySummaryResource <<resource>>
+}
+
+package "skinanalysis bounded context (referenced)" as skinBc {
+  class PreliminaryDiagnosisGeneratedIntegrationEvent <<integration event>>
+}
+
+package "routinemanagement.application" as application {
+
+  package "commandservices\n(ports)" as cmdPorts {
+    interface RoutineCommandService
+    interface DailyTrackingCommandService
+  }
+
+  package "queryservices\n(ports)" as queryPorts {
+    interface RoutineQueryService
+    interface DailyTrackingQueryService
+  }
+
+  package "internal.outboundservices.ai\n(port)" as outbound {
+    interface RoutineAiService {
+      + selectProductsForRoutine(skinType, steps): Map<String,String>
+      + selectAlternativeProductsForStep(skinType, step, current): List<String>
+      + getCatalogProductsForStep(step): List<String>
+    }
+  }
+
+  package "internal.commandservices\n(impl)" as cmdImpl {
+    class RoutineCommandServiceImpl {
+      - routineRepository: RoutineRepository
+      - routineAiService: RoutineAiService
+    }
+    class DailyTrackingCommandServiceImpl {
+      - dailyTrackingRepository: DailyTrackingRepository
+      - routineQueryService: RoutineQueryService
+    }
+  }
+
+  package "internal.queryservices\n(impl)" as queryImpl {
+    class RoutineQueryServiceImpl {
+      - routineRepository: RoutineRepository
+      - routineAiService: RoutineAiService
+    }
+    class DailyTrackingQueryServiceImpl {
+      - dailyTrackingRepository: DailyTrackingRepository
+    }
+  }
+
+  package "internal.eventhandlers" as handlers {
+    class PersonalizedRoutineGeneratedEventHandler {
+      - eventPublisher: ApplicationEventPublisher
+    }
+    class PreliminaryDiagnosisGeneratedEventHandler {
+      - routineCommandService: RoutineCommandService
+    }
+  }
+}
+
+RoutineCommandServiceImpl ..|> RoutineCommandService
+DailyTrackingCommandServiceImpl ..|> DailyTrackingCommandService
+RoutineQueryServiceImpl ..|> RoutineQueryService
+DailyTrackingQueryServiceImpl ..|> DailyTrackingQueryService
+
+RoutineCommandServiceImpl --> RoutineAiService : routineAiService
+RoutineQueryServiceImpl --> RoutineAiService : routineAiService
+DailyTrackingCommandServiceImpl --> RoutineQueryService : routineQueryService
+
+RoutineCommandServiceImpl ..> RoutineRepository : <<uses>>
+RoutineCommandServiceImpl ..> Routine : <<uses>>
+RoutineCommandServiceImpl ..> PatientId : <<uses>>
+RoutineCommandServiceImpl ..> RoutineStatus : <<uses>>
+RoutineCommandServiceImpl ..> GeneratePersonalizedRoutineCommand : <<uses>>
+RoutineCommandServiceImpl ..> RemoveProductFromRoutineCommand : <<uses>>
+RoutineCommandServiceImpl ..> ReplaceProductInRoutineCommand : <<uses>>
+
+DailyTrackingCommandServiceImpl ..> DailyTrackingRepository : <<uses>>
+DailyTrackingCommandServiceImpl ..> DailyTracking : <<uses>>
+DailyTrackingCommandServiceImpl ..> PatientId : <<uses>>
+DailyTrackingCommandServiceImpl ..> MarkRoutineAsCompletedCommand : <<uses>>
+DailyTrackingCommandServiceImpl ..> GetRoutineByIdQuery : <<uses>>
+
+RoutineQueryServiceImpl ..> RoutineRepository : <<uses>>
+RoutineQueryServiceImpl ..> PatientId : <<uses>>
+RoutineQueryServiceImpl ..> GetRoutineByIdQuery : <<uses>>
+RoutineQueryServiceImpl ..> GetRoutineByPatientIdQuery : <<uses>>
+RoutineQueryServiceImpl ..> GetRecommendedProductsForRoutineItemQuery : <<uses>>
+
+DailyTrackingQueryServiceImpl ..> DailyTrackingRepository : <<uses>>
+DailyTrackingQueryServiceImpl ..> PatientId : <<uses>>
+DailyTrackingQueryServiceImpl ..> RoutineId : <<uses>>
+DailyTrackingQueryServiceImpl ..> GetAllDailyTrackingsQuery : <<uses>>
+DailyTrackingQueryServiceImpl ..> GetDailyTrackingByPatientIdAndDateQuery : <<uses>>
+DailyTrackingQueryServiceImpl ..> GetDailyTrackingsByPatientIdQuery : <<uses>>
+DailyTrackingQueryServiceImpl ..> GetDailyTrackingsByRoutineIdQuery : <<uses>>
+DailyTrackingQueryServiceImpl ..> GetWeeklySummaryByPatientIdQuery : <<uses>>
+DailyTrackingQueryServiceImpl ..> WeeklySummaryResource : <<uses>>
+
+PersonalizedRoutineGeneratedEventHandler ..> PersonalizedRoutineGeneratedEvent : <<listens to>>
+PersonalizedRoutineGeneratedEventHandler ..> PersonalizedRoutineGeneratedIntegrationEvent : <<publishes>>
+
+PreliminaryDiagnosisGeneratedEventHandler --> RoutineCommandService : routineCommandService
+PreliminaryDiagnosisGeneratedEventHandler ..> PreliminaryDiagnosisGeneratedIntegrationEvent : <<listens to>>
+PreliminaryDiagnosisGeneratedEventHandler ..> GeneratePersonalizedRoutineCommand : <<creates>>
+
+note bottom of DailyTrackingQueryServiceImpl
+  Returns WeeklySummaryResource directly —
+  an Interfaces-layer resource type — a
+  layering shortcut modeled here as a
+  cross-layer dependency.
+end note
+@enduml

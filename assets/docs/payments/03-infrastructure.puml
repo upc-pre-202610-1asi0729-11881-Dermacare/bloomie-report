@@ -1,0 +1,109 @@
+@startuml payments-infrastructure
+!include ../_style.puml
+title Payments — Infrastructure Layer
+
+package "«external» framework" as ext {
+  interface "JpaRepository<T,ID>" as JpaRepository
+}
+
+package "«external» Stripe SDK" as extStripe {
+  class Stripe
+  class Session
+  class SessionCreateParams
+}
+
+package "shared.infrastructure.persistence\n(referenced)" as sharedInfra {
+  abstract class AuditableAbstractPersistenceEntity
+}
+
+package "payments.domain (referenced)" as domain {
+  class Payment
+  class PatientId <<value object>>
+  class PlanId <<value object>>
+  class SubscriptionId <<value object>>
+  class AppointmentId <<value object>>
+  class DermatologistId <<value object>>
+  class PaymentAmount <<value object>>
+  interface PaymentRepository
+}
+
+package "payments.application (referenced)" as application {
+  interface StripeCheckoutService
+}
+
+package "payments.infrastructure" as infra {
+
+  package "persistence.jpa.entities" as entities {
+    class PaymentPersistenceEntity {
+      - patientId: PatientId
+      - planId: PlanId
+      - subscriptionId: SubscriptionId
+      - appointmentId: AppointmentId
+      - dermatologistId: DermatologistId
+      - paymentAmount: PaymentAmount
+      - platformFeeAmount: PaymentAmount
+      - status: PaymentStatus
+      - type: PaymentType
+    }
+  }
+
+  package "persistence.jpa.converters" as converters {
+    class PatientIdPersistenceConverter
+    class PlanIdPersistenceConverter
+    class SubscriptionIdPersistenceConverter
+    class AppointmentIdPersistenceConverter
+    class DermatologistIdPersistenceConverter
+    class PaymentAmountPersistenceConverter
+  }
+
+  package "persistence.jpa.assemblers" as assemblers {
+    class PaymentPersistenceAssembler <<static assembler>>
+  }
+
+  package "persistence.jpa.repositories" as jpaRepos {
+    interface PaymentPersistenceRepository
+  }
+
+  package "persistence.jpa.adapters" as adapters {
+    class PaymentRepositoryImpl {
+      - paymentPersistenceRepository: PaymentPersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+  }
+
+  package "stripe.services" as stripeServices {
+    class StripeCheckoutServiceImpl {
+      - stripeApiKey: String
+      - successUrl: String
+      - cancelUrl: String
+    }
+  }
+}
+
+PaymentPersistenceEntity --|> AuditableAbstractPersistenceEntity
+PaymentPersistenceRepository --|> JpaRepository
+StripeCheckoutServiceImpl ..> StripeCheckoutService : <<implements>>
+StripeCheckoutServiceImpl ..> Stripe : <<uses>>
+StripeCheckoutServiceImpl ..> Session : <<uses>>
+StripeCheckoutServiceImpl ..> SessionCreateParams : <<uses>>
+
+PaymentPersistenceEntity ..> PatientIdPersistenceConverter : <<uses>>\n@Convert
+PaymentPersistenceEntity ..> PlanIdPersistenceConverter : <<uses>>\n@Convert
+PaymentPersistenceEntity ..> SubscriptionIdPersistenceConverter : <<uses>>\n@Convert
+PaymentPersistenceEntity ..> AppointmentIdPersistenceConverter : <<uses>>\n@Convert
+PaymentPersistenceEntity ..> DermatologistIdPersistenceConverter : <<uses>>\n@Convert
+PaymentPersistenceEntity ..> PaymentAmountPersistenceConverter : <<uses>>\n@Convert
+
+PatientIdPersistenceConverter ..> PatientId : <<converts>>
+PlanIdPersistenceConverter ..> PlanId : <<converts>>
+SubscriptionIdPersistenceConverter ..> SubscriptionId : <<converts>>
+AppointmentIdPersistenceConverter ..> AppointmentId : <<converts>>
+DermatologistIdPersistenceConverter ..> DermatologistId : <<converts>>
+PaymentAmountPersistenceConverter ..> PaymentAmount : <<converts>>
+
+PaymentRepositoryImpl --> PaymentPersistenceRepository : paymentPersistenceRepository
+PaymentRepositoryImpl ..> PaymentPersistenceAssembler : <<uses>>
+PaymentPersistenceAssembler ..> PaymentPersistenceEntity : <<uses>>
+PaymentPersistenceAssembler ..> Payment : <<uses>>
+PaymentRepositoryImpl ..> PaymentRepository : <<implements>>
+@enduml

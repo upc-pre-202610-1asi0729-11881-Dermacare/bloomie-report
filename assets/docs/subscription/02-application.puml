@@ -1,0 +1,148 @@
+@startuml subscription-application
+!include ../_style.puml
+title Subscription — Application Layer
+
+package "subscription.domain (referenced)" as domain {
+  class Subscription
+  class Plan
+  class PatientId <<value object>>
+  class PlanId <<value object>>
+  enum SubscriptionStatus
+  class SelectSubscriptionPlanCommand <<command>>
+  class ActivateSubscriptionCommand <<command>>
+  class CancelSubscriptionCommand <<command>>
+  class RenewSubscriptionCommand <<command>>
+  class ExpireSubscriptionCommand <<command>>
+  class ChangeSubscriptionPlanCommand <<command>>
+  class SeedPlansCommand <<command>>
+  class GetAllPlansQuery <<query>>
+  class GetPlanByIdQuery <<query>>
+  class GetSubscriptionByIdQuery <<query>>
+  class GetSubscriptionByPatientIdQuery <<query>>
+  class SubscriptionPlanSelectedEvent <<domain event>>
+  interface PlanRepository
+  interface SubscriptionRepository
+}
+
+package "subscription.interfaces (referenced)" as ifaces {
+  interface SubscriptionContextFacade
+  class SubscriptionPlanSelectedIntegrationEvent <<integration event>>
+}
+
+package "iam bounded context (referenced)" as iamBc {
+  interface IamContextFacade
+}
+
+package "payments bounded context (referenced)" as paymentsBc {
+  class SubscriptionPaymentProcessedIntegrationEvent <<integration event>>
+  class SubscriptionRenewalPaymentProcessedIntegrationEvent <<integration event>>
+}
+
+package "subscription.application" as application {
+
+  package "commandservices\n(ports)" as cmdPorts {
+    interface PlanCommandService
+    interface SubscriptionCommandService
+  }
+
+  package "queryservices\n(port)" as queryPorts {
+    interface SubscriptionQueryService
+  }
+
+  package "internal.outboundservices.acl" as outbound {
+    class ExternalIamService {
+      - iamContextFacade: IamContextFacade
+      + fetchPatientById(id: Long): Optional<PatientId>
+    }
+  }
+
+  package "internal.commandservices\n(impl)" as cmdImpl {
+    class PlanCommandServiceImpl {
+      - planRepository: PlanRepository
+    }
+    class SubscriptionCommandServiceImpl {
+      - subscriptionRepository: SubscriptionRepository
+      - externalIamService: ExternalIamService
+    }
+  }
+
+  package "internal.queryservices\n(impl)" as queryImpl {
+    class SubscriptionQueryServiceImpl {
+      - subscriptionRepository: SubscriptionRepository
+    }
+  }
+
+  package "internal.eventhandlers" as handlers {
+    class ApplicationReadyEventHandler {
+      - planCommandService: PlanCommandService
+    }
+    class SubscriptionPlanSelectedEventHandler {
+      - eventPublisher: ApplicationEventPublisher
+    }
+    class SubscriptionActivationEventHandler {
+      - subscriptionCommandService: SubscriptionCommandService
+    }
+    class SubscriptionRenewalEventHandler {
+      - subscriptionCommandService: SubscriptionCommandService
+    }
+  }
+
+  package acl {
+    class SubscriptionContextFacadeImpl {
+      - subscriptionCommandService: SubscriptionCommandService
+      - subscriptionQueryService: SubscriptionQueryService
+    }
+  }
+}
+
+PlanCommandServiceImpl ..|> PlanCommandService
+SubscriptionCommandServiceImpl ..|> SubscriptionCommandService
+SubscriptionQueryServiceImpl ..|> SubscriptionQueryService
+SubscriptionContextFacadeImpl ..> SubscriptionContextFacade : <<implements>>
+
+SubscriptionCommandServiceImpl --> ExternalIamService : externalIamService
+ExternalIamService --> IamContextFacade : iamContextFacade
+ExternalIamService ..> PatientId : <<creates>>
+
+ApplicationReadyEventHandler --> PlanCommandService : planCommandService
+ApplicationReadyEventHandler ..> SeedPlansCommand : <<creates>>
+
+PlanCommandServiceImpl ..> PlanRepository : <<uses>>
+PlanCommandServiceImpl ..> Plan : <<uses>>
+PlanCommandServiceImpl ..> SeedPlansCommand : <<uses>>
+
+SubscriptionCommandServiceImpl ..> SubscriptionRepository : <<uses>>
+SubscriptionCommandServiceImpl ..> Subscription : <<uses>>
+SubscriptionCommandServiceImpl ..> PatientId : <<uses>>
+SubscriptionCommandServiceImpl ..> PlanId : <<uses>>
+SubscriptionCommandServiceImpl ..> SubscriptionStatus : <<uses>>
+SubscriptionCommandServiceImpl ..> SelectSubscriptionPlanCommand : <<uses>>
+SubscriptionCommandServiceImpl ..> ActivateSubscriptionCommand : <<uses>>
+SubscriptionCommandServiceImpl ..> CancelSubscriptionCommand : <<uses>>
+SubscriptionCommandServiceImpl ..> RenewSubscriptionCommand : <<uses>>
+SubscriptionCommandServiceImpl ..> ExpireSubscriptionCommand : <<uses>>
+SubscriptionCommandServiceImpl ..> ChangeSubscriptionPlanCommand : <<uses>>
+
+SubscriptionQueryServiceImpl ..> SubscriptionRepository : <<uses>>
+SubscriptionQueryServiceImpl ..> Plan : <<uses>>
+SubscriptionQueryServiceImpl ..> PlanId : <<uses>>
+SubscriptionQueryServiceImpl ..> GetAllPlansQuery : <<uses>>
+SubscriptionQueryServiceImpl ..> GetPlanByIdQuery : <<uses>>
+SubscriptionQueryServiceImpl ..> GetSubscriptionByIdQuery : <<uses>>
+SubscriptionQueryServiceImpl ..> GetSubscriptionByPatientIdQuery : <<uses>>
+
+SubscriptionPlanSelectedEventHandler ..> SubscriptionPlanSelectedEvent : <<listens to>>
+SubscriptionPlanSelectedEventHandler ..> SubscriptionPlanSelectedIntegrationEvent : <<publishes>>
+
+SubscriptionActivationEventHandler --> SubscriptionCommandService : subscriptionCommandService
+SubscriptionActivationEventHandler ..> SubscriptionPaymentProcessedIntegrationEvent : <<listens to>>
+SubscriptionActivationEventHandler ..> ActivateSubscriptionCommand : <<creates>>
+
+SubscriptionRenewalEventHandler --> SubscriptionCommandService : subscriptionCommandService
+SubscriptionRenewalEventHandler ..> SubscriptionRenewalPaymentProcessedIntegrationEvent : <<listens to>>
+SubscriptionRenewalEventHandler ..> RenewSubscriptionCommand : <<creates>>
+
+SubscriptionContextFacadeImpl --> SubscriptionQueryService : subscriptionQueryService
+SubscriptionContextFacadeImpl ..> GetPlanByIdQuery : <<uses>>
+SubscriptionContextFacadeImpl ..> Plan : <<uses>>
+@enduml

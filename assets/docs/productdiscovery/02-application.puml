@@ -1,0 +1,137 @@
+@startuml productdiscovery-application
+!include ../_style.puml
+title Product Discovery — Application Layer
+
+package "productdiscovery.domain (referenced)" as domain {
+  class Product
+  class FavoriteProduct
+  class ProductCompatibility
+  class ProductId <<value object>>
+  class UserId <<value object>>
+  enum ProductCategory
+  class SaveProductAsFavoriteCommand <<command>>
+  class RemoveProductFromFavoritesCommand <<command>>
+  class SeedProductsCommand <<command>>
+  class GenerateProductCompatibilityCommand <<command>>
+  class GetAllProductsQuery <<query>>
+  class GetProductByIdQuery <<query>>
+  class GetFavoriteProductsByUserIdQuery <<query>>
+  class GetCompatibilitiesByProductIdQuery <<query>>
+  class GetCompatibilitiesBySkinTypeQuery <<query>>
+  interface ProductRepository
+  interface FavoriteProductRepository
+  interface ProductCompatibilityRepository
+}
+
+package "productdiscovery.application" as application {
+
+  package "commandservices\n(ports)" as cmdPorts {
+    interface FavoriteProductCommandService
+    interface ProductCommandService
+    interface ProductCompatibilityCommandService
+  }
+
+  package "queryservices\n(ports)" as queryPorts {
+    interface FavoriteProductQueryService
+    interface ProductQueryService
+    interface ProductCompatibilityQueryService
+  }
+
+  package "internal.outboundservices.catalog\n(port)" as outboundCatalog {
+    interface ProductCatalogService {
+      + fetchProductsByCategory(searchTerm, category, limit): List<Product>
+    }
+  }
+
+  package "internal.outboundservices.images\n(port)" as outboundImages {
+    interface ProductImageService {
+      + fetchImageUrl(productName, category): String
+    }
+  }
+
+  package "internal.commandservices\n(impl)" as cmdImpl {
+    class FavoriteProductCommandServiceImpl {
+      - favoriteProductRepository: FavoriteProductRepository
+    }
+    class ProductCommandServiceImpl {
+      - productRepository: ProductRepository
+      - productCatalogService: ProductCatalogService
+    }
+    class ProductCompatibilityCommandServiceImpl {
+      - productCompatibilityRepository: ProductCompatibilityRepository
+    }
+  }
+
+  package "internal.queryservices\n(impl)" as queryImpl {
+    class FavoriteProductQueryServiceImpl {
+      - favoriteProductRepository: FavoriteProductRepository
+    }
+    class ProductQueryServiceImpl {
+      - productRepository: ProductRepository
+    }
+    class ProductCompatibilityQueryServiceImpl {
+      - productCompatibilityRepository: ProductCompatibilityRepository
+    }
+  }
+
+  package "internal.eventhandlers" as handlers {
+    class ApplicationReadyEventHandler {
+      - productCommandService: ProductCommandService
+      - productCompatibilityCommandService: ProductCompatibilityCommandService
+      - productRepository: ProductRepository
+      - productCompatibilityRepository: ProductCompatibilityRepository
+    }
+  }
+}
+
+FavoriteProductCommandServiceImpl ..|> FavoriteProductCommandService
+ProductCommandServiceImpl ..|> ProductCommandService
+ProductCompatibilityCommandServiceImpl ..|> ProductCompatibilityCommandService
+FavoriteProductQueryServiceImpl ..|> FavoriteProductQueryService
+ProductQueryServiceImpl ..|> ProductQueryService
+ProductCompatibilityQueryServiceImpl ..|> ProductCompatibilityQueryService
+
+ProductCommandServiceImpl --> ProductCatalogService : productCatalogService
+ApplicationReadyEventHandler --> ProductCommandService : productCommandService
+ApplicationReadyEventHandler --> ProductCompatibilityCommandService : productCompatibilityCommandService
+ApplicationReadyEventHandler --> ProductRepository : productRepository
+ApplicationReadyEventHandler --> ProductCompatibilityRepository : productCompatibilityRepository
+
+FavoriteProductCommandServiceImpl ..> FavoriteProductRepository : <<uses>>
+FavoriteProductCommandServiceImpl ..> FavoriteProduct : <<uses>>
+FavoriteProductCommandServiceImpl ..> ProductId : <<uses>>
+FavoriteProductCommandServiceImpl ..> UserId : <<uses>>
+FavoriteProductCommandServiceImpl ..> SaveProductAsFavoriteCommand : <<uses>>
+FavoriteProductCommandServiceImpl ..> RemoveProductFromFavoritesCommand : <<uses>>
+
+ProductCommandServiceImpl ..> ProductRepository : <<uses>>
+ProductCommandServiceImpl ..> Product : <<uses>>
+ProductCommandServiceImpl ..> ProductCategory : <<uses>>
+ProductCommandServiceImpl ..> SeedProductsCommand : <<uses>>
+
+ProductCompatibilityCommandServiceImpl ..> ProductCompatibilityRepository : <<uses>>
+ProductCompatibilityCommandServiceImpl ..> ProductCompatibility : <<uses>>
+ProductCompatibilityCommandServiceImpl ..> GenerateProductCompatibilityCommand : <<uses>>
+
+FavoriteProductQueryServiceImpl ..> FavoriteProductRepository : <<uses>>
+FavoriteProductQueryServiceImpl ..> UserId : <<uses>>
+FavoriteProductQueryServiceImpl ..> GetFavoriteProductsByUserIdQuery : <<uses>>
+
+ProductQueryServiceImpl ..> ProductRepository : <<uses>>
+ProductQueryServiceImpl ..> GetAllProductsQuery : <<uses>>
+ProductQueryServiceImpl ..> GetProductByIdQuery : <<uses>>
+
+ProductCompatibilityQueryServiceImpl ..> ProductCompatibilityRepository : <<uses>>
+ProductCompatibilityQueryServiceImpl ..> GetCompatibilitiesByProductIdQuery : <<uses>>
+ProductCompatibilityQueryServiceImpl ..> GetCompatibilitiesBySkinTypeQuery : <<uses>>
+
+ApplicationReadyEventHandler ..> SeedProductsCommand : <<creates>>
+ApplicationReadyEventHandler ..> GenerateProductCompatibilityCommand : <<creates>>
+
+note bottom of ProductImageService
+  Declared outbound port with no
+  infrastructure implementation yet —
+  image enrichment is currently done inline
+  inside OpenBeautyFactsCatalogServiceImpl.
+end note
+@enduml

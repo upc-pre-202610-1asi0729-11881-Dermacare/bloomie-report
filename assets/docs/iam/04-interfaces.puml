@@ -1,0 +1,147 @@
+@startuml iam-interfaces
+!include ../_style.puml
+title IAM — Interfaces Layer
+
+package "iam.domain (referenced)" as domain {
+  class User
+  class Role
+  class SignInCommand <<command>>
+  class RegisterUserCommand <<command>>
+  class RegisterDermatologistCommand <<command>>
+  class UpdateUserProfileCommand <<command>>
+  class UpdateUserPhotoCommand <<command>>
+  class ChangePasswordCommand <<command>>
+  class GetAllUsersQuery <<query>>
+  class GetUserByIdQuery <<query>>
+}
+
+package "iam.application (referenced)" as application {
+  interface UserCommandService
+  interface UserQueryService
+  class IamContextFacadeImpl
+  class DermatologistRegisteredEventHandler
+}
+
+package "shared (referenced)" as shared {
+  class ApplicationError
+  class "Result<T,E>" as Result
+  class ResponseEntityAssembler <<static assembler>>
+  class ErrorResponseAssembler <<static assembler>>
+}
+
+package "iam.interfaces" as ifaces {
+
+  package acl {
+    interface IamContextFacade {
+      + fetchUserByEmail(email: String): Long
+      + existsUserByEmail(email: String): boolean
+      + existsUserById(userId: Long): boolean
+      + fetchUserPhotoUrl(userId: Long): String
+    }
+  }
+
+  package events {
+    class DermatologistRegisteredIntegrationEvent <<integration event>> {
+      + userId: Long
+      + firstName: String
+      + lastName: String
+      + email: String
+    }
+  }
+
+  package rest {
+    class AuthenticationController {
+      - userCommandService: UserCommandService
+      + signIn(resource: SignInResource)
+      + registerUser(resource: RegisterUserResource)
+      + registerDermatologist(resource: RegisterDermatologistResource)
+    }
+    class UsersController {
+      - userQueryService: UserQueryService
+      - userCommandService: UserCommandService
+      + getAllUsers()
+      + getUserById(userId: Long)
+      + updateUserProfile(userId: String, resource)
+      + updateUserPhoto(userId: Long, resource)
+      + changePassword(userId: String, resource)
+    }
+  }
+
+  package "rest.resources" as resources {
+    class SignInResource <<resource>> { + email: String\n+ password: String }
+    class RegisterUserResource <<resource>> { + firstName: String\n+ lastName: String\n+ email: String\n+ password: String }
+    class RegisterDermatologistResource <<resource>> { + firstName: String\n+ lastName: String\n+ email: String\n+ password: String }
+    class AuthenticatedUserResource <<resource>> { + id: Long\n+ email: String\n+ token: String }
+    class UserResource <<resource>> { + id: Long\n+ fullName: String\n+ email: String\n+ roles: List<String>\n+ photoUrl: String }
+    class UpdateUserProfileResource <<resource>> { + firstName: String\n+ lastName: String\n+ email: String }
+    class UpdateUserPhotoResource <<resource>> { + photoUrl: String }
+    class ChangePasswordResource <<resource>> { + currentPassword: String\n+ newPassword: String }
+  }
+
+  package "rest.transform" as transform {
+    class SignInCommandFromResourceAssembler <<static assembler>>
+    class RegisterUserCommandFromResourceAssembler <<static assembler>>
+    class RegisterDermatologistCommandFromResourceAssembler <<static assembler>>
+    class UpdateUserProfileCommandFromResourceAssembler <<static assembler>>
+    class UpdateUserPhotoCommandFromResourceAssembler <<static assembler>>
+    class ChangePasswordCommandFromResourceAssembler <<static assembler>>
+    class AuthenticatedUserResourceFromEntityAssembler <<static assembler>>
+    class UserResourceFromEntityAssembler <<static assembler>>
+  }
+}
+
+IamContextFacadeImpl ..> IamContextFacade : <<implements>>
+DermatologistRegisteredEventHandler ..> DermatologistRegisteredIntegrationEvent : <<publishes>>
+DermatologistRegisteredIntegrationEvent ..> User : <<uses>>\nfrom(User)
+
+AuthenticationController --> UserCommandService : <<uses>>
+AuthenticationController ..> SignInResource : <<uses>>
+AuthenticationController ..> RegisterUserResource : <<uses>>
+AuthenticationController ..> RegisterDermatologistResource : <<uses>>
+AuthenticationController ..> AuthenticatedUserResource : <<uses>>
+AuthenticationController ..> UserResource : <<uses>>
+AuthenticationController ..> SignInCommandFromResourceAssembler : <<uses>>
+AuthenticationController ..> RegisterUserCommandFromResourceAssembler : <<uses>>
+AuthenticationController ..> RegisterDermatologistCommandFromResourceAssembler : <<uses>>
+AuthenticationController ..> AuthenticatedUserResourceFromEntityAssembler : <<uses>>
+AuthenticationController ..> UserResourceFromEntityAssembler : <<uses>>
+AuthenticationController ..> ResponseEntityAssembler : <<uses>>
+
+UsersController --> UserQueryService : <<uses>>
+UsersController --> UserCommandService : <<uses>>
+UsersController ..> GetAllUsersQuery : <<uses>>
+UsersController ..> GetUserByIdQuery : <<uses>>
+UsersController ..> UserResource : <<uses>>
+UsersController ..> UpdateUserProfileResource : <<uses>>
+UsersController ..> UpdateUserPhotoResource : <<uses>>
+UsersController ..> ChangePasswordResource : <<uses>>
+UsersController ..> UpdateUserProfileCommandFromResourceAssembler : <<uses>>
+UsersController ..> UpdateUserPhotoCommandFromResourceAssembler : <<uses>>
+UsersController ..> ChangePasswordCommandFromResourceAssembler : <<uses>>
+UsersController ..> UserResourceFromEntityAssembler : <<uses>>
+UsersController ..> ApplicationError : <<uses>>
+UsersController ..> ErrorResponseAssembler : <<uses>>
+UsersController ..> ResponseEntityAssembler : <<uses>>
+
+SignInCommandFromResourceAssembler ..> SignInResource : <<uses>>
+SignInCommandFromResourceAssembler ..> SignInCommand : <<creates>>
+RegisterUserCommandFromResourceAssembler ..> RegisterUserResource : <<uses>>
+RegisterUserCommandFromResourceAssembler ..> RegisterUserCommand : <<creates>>
+RegisterDermatologistCommandFromResourceAssembler ..> RegisterDermatologistResource : <<uses>>
+RegisterDermatologistCommandFromResourceAssembler ..> RegisterDermatologistCommand : <<creates>>
+UpdateUserProfileCommandFromResourceAssembler ..> UpdateUserProfileResource : <<uses>>
+UpdateUserProfileCommandFromResourceAssembler ..> UpdateUserProfileCommand : <<creates>>
+UpdateUserPhotoCommandFromResourceAssembler ..> UpdateUserPhotoResource : <<uses>>
+UpdateUserPhotoCommandFromResourceAssembler ..> UpdateUserPhotoCommand : <<creates>>
+ChangePasswordCommandFromResourceAssembler ..> ChangePasswordResource : <<uses>>
+ChangePasswordCommandFromResourceAssembler ..> ChangePasswordCommand : <<creates>>
+AuthenticatedUserResourceFromEntityAssembler ..> AuthenticatedUserResource : <<creates>>
+AuthenticatedUserResourceFromEntityAssembler ..> User : <<uses>>
+UserResourceFromEntityAssembler ..> UserResource : <<creates>>
+UserResourceFromEntityAssembler ..> User : <<uses>>
+UserResourceFromEntityAssembler ..> Role : <<uses>>
+
+ResponseEntityAssembler ..> Result : <<uses>>
+ResponseEntityAssembler ..> ApplicationError : <<uses>>
+ErrorResponseAssembler ..> ApplicationError : <<uses>>
+@enduml

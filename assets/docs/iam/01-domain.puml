@@ -1,0 +1,153 @@
+@startuml iam-domain
+!include ../_style.puml
+title IAM — Domain Layer
+
+package "«external» framework" as ext {
+  interface "AbstractAggregateRoot<T>" as SpringAggregateRoot
+}
+
+package "shared.domain.model.aggregates\n(referenced)" as sharedDomain {
+  abstract class AbstractDomainAggregateRoot<T> {
+    # registerDomainEvent(event: Object)
+    + domainEvents(): Collection<Object>
+    + clearDomainEvents()
+  }
+}
+AbstractDomainAggregateRoot --|> SpringAggregateRoot
+
+package "iam.domain.model" as domain {
+
+  package aggregates {
+    class User {
+      - id: Long
+      - name: PersonName
+      - emailAddress: EmailAddress
+      - hashedPassword: HashedPassword
+      - photoUrl: String
+      - roles: Set<Role>
+      + onRegistered()
+      + onDermatologistRegistered()
+      + updateProfile(command: UpdateUserProfileCommand)
+      + onProfileUpdate()
+      + updatePhoto(command: UpdateUserPhotoCommand)
+      + onPhotoUpdated()
+      + changePassword(command: ChangePasswordCommand)
+      + onPasswordChanged()
+      + addRole(role: Role): User
+      + addRoles(roles: List<Role>): User
+    }
+  }
+
+  package entities {
+    class Role {
+      - id: Long
+      - name: UserRole
+      + {static} getDefaultRole(): Role
+      + {static} toRoleFromName(name: String): Role
+      + {static} validateRoleSet(roles: List<Role>): List<Role>
+    }
+  }
+
+  package valueobjects {
+    class PersonName <<value object>> {
+      + firstName: String
+      + lastName: String
+      + getFullName(): String
+    }
+    class EmailAddress <<value object>> {
+      + address: String
+    }
+    class HashedPassword <<value object>> {
+      + hashedPassword: String
+    }
+    enum UserRole {
+      ROLE_YOUNG_ADULT
+      ROLE_DERMATOLOGIST
+    }
+  }
+
+  package commands {
+    class SignInCommand <<command>> { + email: String\n+ password: String }
+    class RegisterUserCommand <<command>> { + email: String\n+ password: String\n+ firstName: String\n+ lastName: String }
+    class RegisterDermatologistCommand <<command>> { + email: String\n+ password: String\n+ firstName: String\n+ lastName: String }
+    class UpdateUserProfileCommand <<command>> { + userId: String\n+ firstName: String\n+ lastName: String\n+ email: String }
+    class UpdateUserPhotoCommand <<command>> { + userId: Long\n+ photoUrl: String }
+    class ChangePasswordCommand <<command>> { + userId: String\n+ currentPassword: String\n+ newPassword: String }
+    class SeedRolesCommand <<command>>
+  }
+
+  package queries {
+    class GetUserByIdQuery <<query>> { + userId: Long }
+    class GetUserByEmailQuery <<query>> { + email: String }
+    class GetAllUsersQuery <<query>>
+  }
+
+  package events {
+    class UserRegisteredEvent <<domain event>> { + userId: Long\n+ email: String }
+    class DermatologistRegisteredEvent <<domain event>> { + userId: Long\n+ firstName: String\n+ lastName: String\n+ email: String }
+    class UserProfileUpdatedEvent <<domain event>> { + userId: Long\n+ email: String }
+    class UserPhotoUpdatedEvent <<domain event>> { + userId: Long\n+ photoUrl: String }
+    class PasswordChangedEvent <<domain event>> { + userId: Long }
+    class UserLoggedInEvent <<domain event>> { + userId: Long\n+ email: String }
+  }
+
+  package repositories {
+    interface UserRepository {
+      + findById(id: Long): Optional<User>
+      + findByEmailAddress(e: EmailAddress): Optional<User>
+      + findAll(): List<User>
+      + save(user: User): User
+      + existsByEmailAddress(e: EmailAddress): boolean
+    }
+    interface RoleRepository {
+      + findByName(name: UserRole): Optional<Role>
+      + findAll(): List<Role>
+      + save(role: Role): Role
+      + existsByName(name: UserRole): boolean
+    }
+  }
+}
+
+User --|> AbstractDomainAggregateRoot
+
+User "1" *-- "1" PersonName : name
+User "1" *-- "1" EmailAddress : emailAddress
+User "1" *-- "1" HashedPassword : hashedPassword
+User "1" o-- "0..*" Role : roles
+Role "1" *-- "1" UserRole : name
+
+User ..> RegisterUserCommand : <<uses>>
+User ..> RegisterDermatologistCommand : <<uses>>
+User ..> UpdateUserProfileCommand : <<uses>>
+User ..> UpdateUserPhotoCommand : <<uses>>
+User ..> ChangePasswordCommand : <<uses>>
+
+UserRegisteredEvent ..> User : <<derives from>>\nfrom(User)
+DermatologistRegisteredEvent ..> User : <<derives from>>\nfrom(User)
+UserProfileUpdatedEvent ..> User : <<derives from>>\nfrom(User)
+UserPhotoUpdatedEvent ..> User : <<derives from>>\nfrom(User)
+PasswordChangedEvent ..> User : <<derives from>>\nfrom(User)
+UserLoggedInEvent ..> User : <<derives from>>\nfrom(User)
+
+User ..> DermatologistRegisteredEvent : <<creates>>
+User ..> UserRegisteredEvent : <<creates>>
+User ..> UserProfileUpdatedEvent : <<creates>>
+User ..> UserPhotoUpdatedEvent : <<creates>>
+User ..> PasswordChangedEvent : <<creates>>
+
+UserRepository ..> User : <<uses>>
+UserRepository ..> EmailAddress : <<uses>>
+RoleRepository ..> Role : <<uses>>
+RoleRepository ..> UserRole : <<uses>>
+
+note bottom of UserLoggedInEvent
+  Declared in the domain but never
+  registered/published by User today
+  (no onLoggedIn() hook exists yet).
+end note
+
+note right of SeedRolesCommand
+  Carries no data — used purely
+  as a startup trigger.
+end note
+@enduml
