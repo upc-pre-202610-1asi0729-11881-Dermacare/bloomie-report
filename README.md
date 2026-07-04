@@ -9086,10 +9086,7 @@ El Sprint 4 tuvo como punto de partida los resultados alcanzados en el Sprint 3,
 Durante el Sprint 4 el equipo organizó el trabajo en torno a los bounded contexts 
 implementados y refinados en esta iteración final, incorporando adicionalmente un 
 aspecto de Quality Assurance y documentación de código para asegurar la calidad del 
-producto entregado. Los dos nuevos integrantes del equipo — Acuache Lucas, Mathias 
-y Hurtado Balcázar, Rommel — se incorporaron en esta etapa del proyecto colaborando 
-principalmente en las actividades de revisión y documentación dado el tiempo de 
-adaptación requerido para familiarizarse con la arquitectura del sistema.
+producto entregado. 
 
 | Team Member (Last Name, First Name) | GitHub Username | IAM & Authentication | Skin Analysis | Routine Management | Product Discovery | Dermatology Care | Dermatological Appointment | Subscriptions & Payments | Intelligent Support | Quality Assurance & Documentation |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -9554,6 +9551,65 @@ correctamente en Vercel.
 ![bloomie-frontend](assets/img/landing-deployments.png)
 
 #### 5.2.4.8. Team Collaboration Insights for Sprint Review
+
+Durante el Sprint 4 el equipo desarrolló las actividades de implementación 
+distribuyendo el trabajo según el esquema de Aspect Leaders definido en el Sprint 
+Planning. Luciana lideró la implementación del backend en los bounded contexts de 
+IAM, Dermatology Care, Dermatological Appointment, Subscriptions, Payments, 
+Intelligent Support y la integración con los servicios externos Gemini AI, Stripe 
+y Open Beauty Facts, acumulando 184 commits en el repositorio de Web Services. 
+Arturo lideró la implementación del bounded context de Product Compatibility en el 
+backend y la configuración del pipeline de CI/CD del Frontend Web Application en 
+Azure Static Web Apps, acumulando 24 commits en el backend y 15 en el frontend. 
+Luciana lideró adicionalmente las actualizaciones del frontend con 70 commits. 
+En la Landing Page, Arturo realizó las actualizaciones de enlaces y estilos con 
+6 commits, Rommel contribuyó con la actualización de los integrantes del equipo, 
+y Luciana realizó las mejoras visuales de la vista principal. Los integrantes 
+Mathias y Rommel participaron en las actividades de quality assurance, verificando 
+el flujo completo de la aplicación desplegada y documentando las incidencias 
+encontradas.
+
+A continuación se presentan los analíticos de colaboración obtenidos desde 
+GitHub Insights para cada repositorio durante el periodo del Sprint 4.
+
+**Web Services — bloomie-platform**
+
+| Miembro | GitHub Username | Commits Sprint 4 |
+|---|---|---|
+| Mechan Montenegro, Luciana | luuu6 | 433 |
+| Contreras Torres, Arturo | Arturouu | 182 |
+| Asmat Alminco, Martin | Alemarr | 8 |
+| **Total** | | **623** |
+
+![bloomie-backend](assets/img/backend-commits-4.png)
+
+---
+
+**Web Application — bloomie-webapp**
+
+| Miembro | GitHub Username | Commits Sprint 4 |
+|---|---|---|
+| Mechan Montenegro, Luciana | luuu6 | 114 |
+| Contreras Torres, Arturo | Arturouu | 53 |
+| **Total** | | **167** |
+
+![bloomie-frontend](assets/img/frontend-commits-4.png)
+
+---
+
+**Landing Page — bloomie-website**
+
+**Commist realizados en el útimo entregable**
+
+| Miembro | GitHub Username | Commits Sprint 4 |
+|---|---|---|
+| Contreras Torres, Arturo | Arturouu | 6 |
+| Mechan Montenegro, Luciana | luuu6 | 1 |
+| Hurtado Balcázar, Rommel | rommelDN | 1 |
+| Acuache Lucas, Mathias Joaquin | MathiasA25 | 1 |
+| **Total** | | **9** |
+
+![bloomie-landing](assets/img/landing-commits-4.png)
 
 
 ## 5.3. Validation Interviews.
