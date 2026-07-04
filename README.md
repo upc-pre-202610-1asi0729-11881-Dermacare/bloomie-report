@@ -9223,6 +9223,70 @@ Detalle de los principales commits realizados para la entrega del trabajo final
 
 #### 5.2.4.5. Execution Evidence for Sprint Review
 
+Durante el Sprint 4 el equipo completó la versión final e integrada de Bloomie, 
+consolidando todos los productos de la solución: Landing Page, Frontend Web Application 
+y Web Services. En esta iteración se implementaron y conectaron al backend real los 
+bounded contexts de Intelligent Support con Gemini AI, la videollamada en consultas 
+dermatológicas virtuales, el ciclo completo de pagos y suscripciones con Stripe, la 
+compatibilidad de productos con Open Beauty Facts, la generación de rutinas con IA y 
+la autenticación completa con JWT. Adicionalmente se aplicaron mejoras de interfaz en 
+todas las vistas de la aplicación y se publicaron los videos About the Product y About 
+the Team. A continuación se presentan las principales vistas implementadas durante el 
+sprint.
+
+**URL del video de ejecución:** https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241b843_upc_edu_pe/IQBHPhOMX3qTRoM8TGngdNpJAZlwDr7Y1RSdqLLEm7fnnNk?e=gD4MhP
+
+---
+
+**Rutina Personalizada**
+
+La vista de rutina personalizada muestra los productos asignados al usuario para cada 
+paso de su rutina de cuidado de piel, generada automáticamente con IA en base a su 
+perfil dermatológico. El usuario puede visualizar cada paso con el nombre real del 
+producto, reemplazar un producto por una alternativa recomendada, y marcar el 
+cumplimiento de su rutina del día. Todos los datos se persisten en el backend real 
+desplegado en Azure.
+
+![routine](assets/img/routine.png)
+
+---
+
+**Trending Items y Compatibilidad de Producto**
+
+La sección de Trending Items muestra el catálogo de productos de skincare obtenidos 
+desde la API Open Beauty Facts, con imagen real de cada producto. Al seleccionar un 
+producto, el usuario accede a su vista de detalle donde puede visualizar el nivel de 
+compatibilidad del producto con su tipo de piel, calculado automáticamente por el 
+sistema en base a su perfil dermatológico, y guardarlo en su lista de favoritos.
+
+![trending-items](assets/img/trending-items.png)
+
+---
+
+**Consulta Dermatológica Virtual con Videollamada**
+
+La vista de consulta virtual permite que el paciente y el dermatólogo se conecten en 
+tiempo real mediante videollamada durante la sesión de consulta. El dermatólogo puede 
+registrar notas clínicas de forma progresiva, subir fotografías clínicas del paciente 
+y registrar el diagnóstico final con sus recomendaciones. El paciente puede enviar 
+fotografías de su piel durante la sesión. Todo el flujo opera con datos reales 
+persistidos en el backend.
+
+![virtual-session](assets/img/virtual-session.png)
+
+---
+
+**Asistente Virtual de Skincare con Gemini AI**
+
+La sección de AI Assistant permite al usuario consultar dudas sobre productos, rutinas 
+o ingredientes en lenguaje natural. El sistema envía la consulta a Gemini AI, que 
+genera una respuesta personalizada basada en el perfil de piel del usuario, y la 
+retorna en la interfaz de chat. El historial de consultas se persiste en el backend 
+y es accesible en cualquier sesión posterior.
+
+![gemini](assets/img/gemini.png)
+
+
 #### 5.2.4.6. Services Documentation Evidence for Sprint Review
 
 Durante el Sprint 4 se completó la documentación de los Web Services de Bloomie 
@@ -9317,8 +9381,6 @@ de Subscriptions, Payments y Dermatology Care.
 | Intelligent Support | Get queries by patient | GET | /api/v1/support-queries/patient/{patientId} | Path: patientId (Long) / Query: status (opcional) | 200: [ { "id": 1, "query": "...", "status": "ANSWERED" } ] | Retorna el historial de consultas realizadas al asistente virtual por el paciente, con filtrado opcional por estado. |
 | Chat Messages | Send chat message | POST | /api/v1/chat-messages | Body: { "consultationId": 1, "senderId": 1, "content": "Buenos días doctor", "messageType": "TEXT" } | 201: { "id": 1, "consultationId": 1, "content": "Buenos días doctor", "sentAt": "2026-07-01T10:05:00" } | Envía un mensaje de chat durante una consulta virtual entre paciente y dermatólogo. |
 | Chat Messages | Get messages by consultation | GET | /api/v1/chat-messages | Query: consultationId (Long) | 200: [ { "id": 1, "content": "Buenos días doctor", "sentAt": "2026-07-01T10:05:00" } ] | Retorna todos los mensajes de chat de una consulta virtual ordenados cronológicamente. |
-
-
 
 
 ## Imágenes de interacción
