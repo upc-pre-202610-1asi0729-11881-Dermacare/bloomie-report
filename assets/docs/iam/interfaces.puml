@@ -1,0 +1,97 @@
+@startuml
+title iam - interfaces
+hide empty members
+skinparam classAttributeIconSize 0
+
+package "acl" {
+    interface IamContextFacade {
+        +fetchUserByEmail(email : String) : Long
+        +existsUserByEmail(email : String) : boolean
+        +existsUserById(userId : Long) : boolean
+        +fetchUserPhotoUrl(userId : Long) : String
+    }
+}
+
+package "events" {
+    class DermatologistRegisteredIntegrationEvent << record >> {
+        +userId : Long
+        +firstName : String
+        +lastName : String
+        +email : String
+        +from(user : User) : DermatologistRegisteredIntegrationEvent
+    }
+}
+
+package "rest" {
+    class AuthenticationController {
+        -userCommandService : UserCommandService
+        +AuthenticationController(userCommandService : UserCommandService)
+    }
+    class UsersController {
+        -userQueryService : UserQueryService
+        -userCommandService : UserCommandService
+        +UsersController(userQueryService : UserQueryService, userCommandService : UserCommandService)
+    }
+}
+
+package "rest.resources" {
+    class ChangePasswordResource << record >> {
+        +currentPassword : String
+        +newPassword : String
+    }
+    class RegisterDermatologistResource << record >> {
+        +firstName : String
+        +lastName : String
+        +email : String
+        +password : String
+    }
+    class RegisterUserResource << record >> {
+        +firstName : String
+        +lastName : String
+        +email : String
+        +password : String
+    }
+    class SignInResource << record >> {
+        +email : String
+        +password : String
+    }
+    class UpdateUserProfileResource << record >> {
+        +firstName : String
+        +lastName : String
+        +email : String
+    }
+}
+
+package "rest.transform" {
+    class AuthenticatedUserResourceFromEntityAssembler {
+        +toResourceFromEntity(user : User, token : String) : AuthenticatedUserResource
+    }
+    class ChangePasswordCommandFromResourceAssembler {
+        +toCommandFromResource(userId : String, resource : ChangePasswordResource) : ChangePasswordCommand
+    }
+    class RegisterDermatologistCommandFromResourceAssembler {
+        +toCommandFromResource(resource : RegisterDermatologistResource) : RegisterDermatologistCommand
+    }
+    class RegisterUserCommandFromResourceAssembler {
+        +toCommandFromResource(resource : RegisterUserResource) : RegisterUserCommand
+    }
+    class SignInCommandFromResourceAssembler {
+        +toCommandFromResource(resource : SignInResource) : SignInCommand
+    }
+    class UpdateUserPhotoCommandFromResourceAssembler {
+        +toCommandFromResource(userId : Long, resource : UpdateUserPhotoResource) : UpdateUserPhotoCommand
+    }
+    class UpdateUserProfileCommandFromResourceAssembler {
+        +toCommandFromResource(userId : String, resource : UpdateUserProfileResource) : UpdateUserProfileCommand
+    }
+    class UserResourceFromEntityAssembler {
+        +toResourceFromEntity(user : User) : UserResource
+    }
+}
+
+ChangePasswordCommandFromResourceAssembler ..> ChangePasswordResource
+RegisterDermatologistCommandFromResourceAssembler ..> RegisterDermatologistResource
+RegisterUserCommandFromResourceAssembler ..> RegisterUserResource
+SignInCommandFromResourceAssembler ..> SignInResource
+UpdateUserProfileCommandFromResourceAssembler ..> UpdateUserProfileResource
+@enduml

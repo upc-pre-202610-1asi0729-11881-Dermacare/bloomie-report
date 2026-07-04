@@ -1,0 +1,185 @@
+@startuml
+title payments - domain
+hide empty members
+skinparam classAttributeIconSize 0
+
+package "model.aggregates" {
+    class Payment {
+        -PLATFORM_FEE_PERCENTAGE : double
+        -id : Long
+        -patientId : PatientId
+        -planId : PlanId
+        -subscriptionId : SubscriptionId
+        -appointmentId : AppointmentId
+        -dermatologistId : DermatologistId
+        -type : PaymentType
+        -amount : PaymentAmount
+        -platformFeeAmount : PaymentAmount
+        -status : PaymentStatus
+        -refunding : boolean
+        +Payment(id : Long, patientId : PatientId, planId : PlanId, subscriptionId : SubscriptionId, appointmentId : AppointmentId, dermatologistId : DermatologistId, type : PaymentType, amount : PaymentAmount, platformFeeAmount : PaymentAmount, status : PaymentStatus)
+        +Payment(command : ProcessSubscriptionPaymentCommand)
+        +Payment(command : ProcessRenewalPaymentCommand)
+        +Payment(command : ProcessConsultationPaymentCommand)
+        +onProcessSubscriptionPayment() : void
+        +onProcessRenewalPayment() : void
+        +onProcessConsultationPayment() : void
+        +refund() : void
+        +onRefunded() : void
+        +getPatientId() : Long
+        +getPlanId() : Long
+        +getAmount() : Double
+        +getSubscriptionId() : Long
+        +getAppointmentId() : Long
+        +getDermatologistId() : Long
+        +getPlatformFeeAmount() : Double
+        +getPatientIdValue() : PatientId
+        +getPlanIdValue() : PlanId
+        +getSubscriptionIdValue() : SubscriptionId
+        +getAppointmentIdValue() : AppointmentId
+        +getDermatologistIdValue() : DermatologistId
+        +getAmountValue() : PaymentAmount
+        +getPlatformFeeAmountValue() : PaymentAmount
+    }
+}
+
+package "model.commands" {
+    class ProcessConsultationPaymentCommand << record >> {
+        +patientId : Long
+        +dermatologistId : Long
+        +appointmentId : Long
+        +amount : Double
+    }
+    class ProcessRenewalPaymentCommand << record >> {
+        +patientId : Long
+        +planId : Long
+        +subscriptionId : Long
+        +amount : Double
+    }
+    class ProcessSubscriptionPaymentCommand << record >> {
+        +patientId : Long
+        +planId : Long
+        +subscriptionId : Long
+        +amount : Double
+    }
+    class RefundPaymentCommand << record >> {
+        +paymentId : Long
+    }
+}
+
+package "model.events" {
+    class ConsultationPaymentProcessedEvent << record >> {
+        +paymentId : Long
+        +patientId : Long
+        +dermatologistId : Long
+        +appointmentId : Long
+        +amount : Double
+        +platformFeeAmount : Double
+        +from(payment : Payment) : ConsultationPaymentProcessedEvent
+    }
+    class PaymentRefundedEvent << record >> {
+        +paymentId : Long
+        +patientId : Long
+        +planId : Long
+        +subscriptionId : Long
+        +amount : Double
+        +from(payment : Payment) : PaymentRefundedEvent
+    }
+    class SubscriptionPaymentProcessedEvent << record >> {
+        +paymentId : Long
+        +patientId : Long
+        +planId : Long
+        +subscriptionId : Long
+        +amount : Double
+        +from(payment : Payment) : SubscriptionPaymentProcessedEvent
+    }
+    class SubscriptionRenewalPaymentProcessedEvent << record >> {
+        +paymentId : Long
+        +patientId : Long
+        +planId : Long
+        +subscriptionId : Long
+        +amount : Double
+        +from(payment : Payment) : SubscriptionRenewalPaymentProcessedEvent
+    }
+}
+
+package "model.queries" {
+    class GetPaymentByAppointmentIdQuery << record >> {
+        +appointmentId : AppointmentId
+    }
+    class GetPaymentByIdQuery << record >> {
+        +paymentId : Long
+    }
+    class GetPaymentBySubscriptionIdQuery << record >> {
+        +subscriptionId : SubscriptionId
+    }
+    class GetPaymentsByPatientIdQuery << record >> {
+        +patientId : PatientId
+    }
+}
+
+package "model.valueobjects" {
+    class AppointmentId << record >> {
+        +appointmentId : Long
+    }
+    class DermatologistId << record >> {
+        +dermatologistId : Long
+    }
+    class PatientId << record >> {
+        +patientId : Long
+    }
+    class PaymentAmount << record >> {
+        +amount : Double
+    }
+    enum PaymentStatus {
+        PENDING
+        PROCESSED
+        REFUNDED
+        FAILED
+    }
+    enum PaymentType {
+        SUBSCRIPTION
+        RENEWAL
+        CONSULTATION
+    }
+    class PlanId << record >> {
+        +planId : Long
+    }
+    class SubscriptionId << record >> {
+        +subscriptionId : Long
+    }
+}
+
+package "repositories" {
+    interface PaymentRepository {
+        +findById(id : Long) : Optional<Payment>
+        +findAllByPatientId(patientId : PatientId) : List<Payment>
+        +findBySubscriptionId(subscriptionId : SubscriptionId) : Optional<Payment>
+        +findByAppointmentId(appointmentId : AppointmentId) : Optional<Payment>
+        +save(payment : Payment) : Payment
+    }
+}
+
+Payment --> PatientId : patientId
+Payment --> PlanId : planId
+Payment --> SubscriptionId : subscriptionId
+Payment --> AppointmentId : appointmentId
+Payment --> DermatologistId : dermatologistId
+Payment --> PaymentType : type
+Payment --> PaymentAmount : amount
+Payment --> PaymentStatus : status
+Payment ..> ProcessSubscriptionPaymentCommand
+Payment ..> ProcessRenewalPaymentCommand
+Payment ..> ProcessConsultationPaymentCommand
+ConsultationPaymentProcessedEvent ..> Payment
+PaymentRefundedEvent ..> Payment
+SubscriptionPaymentProcessedEvent ..> Payment
+SubscriptionRenewalPaymentProcessedEvent ..> Payment
+GetPaymentByAppointmentIdQuery --> AppointmentId : appointmentId
+GetPaymentBySubscriptionIdQuery --> SubscriptionId : subscriptionId
+GetPaymentsByPatientIdQuery --> PatientId : patientId
+PaymentRepository ..> Payment
+PaymentRepository ..> PatientId
+PaymentRepository ..> SubscriptionId
+PaymentRepository ..> AppointmentId
+@enduml

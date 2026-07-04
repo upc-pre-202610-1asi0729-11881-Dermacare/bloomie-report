@@ -1,0 +1,196 @@
+@startuml
+title iam - infrastructure
+hide empty members
+skinparam classAttributeIconSize 0
+
+package "authorization.sfs.configuration" {
+    class WebSecurityConfiguration {
+        -userDetailsService : UserDetailsService
+        -tokenService : BearerTokenService
+        -hashingService : BCryptHashingService
+        -unauthorizedRequestHandler : AuthenticationEntryPoint
+        +WebSecurityConfiguration(userDetailsService : UserDetailsService, tokenService : BearerTokenService, hashingService : BCryptHashingService, unauthorizedRequestHandler : AuthenticationEntryPoint)
+        +authorizationRequestFilter() : BearerAuthorizationRequestFilter
+        +authenticationManager(authenticationConfiguration : AuthenticationConfiguration) : AuthenticationManager
+        +authenticationProvider() : DaoAuthenticationProvider
+        +bearerFilterRegistration(filter : BearerAuthorizationRequestFilter) : FilterRegistrationBean<BearerAuthorizationRequestFilter>
+        +filterChain(http : HttpSecurity) : SecurityFilterChain
+    }
+}
+
+package "authorization.sfs.model" {
+    class UserDetailsImpl {
+        -username : String
+        -password : String
+        -accountNonExpired : boolean
+        -accountNonLocked : boolean
+        -credentialsNonExpired : boolean
+        -enabled : boolean
+        -authorities : Collection<?extendsGrantedAuthority>
+        +UserDetailsImpl(username : String, password : String, authorities : Collection<?extendsGrantedAuthority>)
+        +build(user : User) : UserDetailsImpl
+    }
+    class UsernamePasswordAuthenticationTokenBuilder {
+        +build(principal : UserDetails, request : HttpServletRequest) : UsernamePasswordAuthenticationToken
+    }
+}
+
+package "authorization.sfs.pipeline" {
+    class BearerAuthorizationRequestFilter {
+        -tokenService : BearerTokenService
+        -userDetailsService : UserDetailsService
+        +BearerAuthorizationRequestFilter(tokenService : BearerTokenService, userDetailsService : UserDetailsService)
+        #doFilterInternal(request : HttpServletRequest, response : HttpServletResponse, filterChain : FilterChain) : void
+    }
+    class UnauthorizedRequestHandlerEntryPoint {
+        +commence(request : HttpServletRequest, response : HttpServletResponse, authenticationException : AuthenticationException) : void
+    }
+}
+
+package "authorization.sfs.services" {
+    class UserDetailsServiceImpl {
+        -userRepository : UserRepository
+        +UserDetailsServiceImpl(userRepository : UserRepository)
+        +loadUserByUsername(email : String) : UserDetails
+    }
+}
+
+package "hashing.bcrypt" {
+    interface BCryptHashingService {
+    }
+}
+
+package "hashing.bcrypt.services" {
+    class HashingServiceImpl {
+        -passwordEncoder : BCryptPasswordEncoder
+        +HashingServiceImpl()
+        +encode(rawPassword : CharSequence) : String
+        +matches(rawPassword : CharSequence, encodedPassword : String) : boolean
+    }
+}
+
+package "persistence.jpa.adapters" {
+    class RoleRepositoryImpl {
+        -rolePersistenceRepository : RolePersistenceRepository
+        +RoleRepositoryImpl(rolePersistenceRepository : RolePersistenceRepository)
+        +findByName(name : UserRole) : Optional<Role>
+        +findAll() : List<Role>
+        +save(role : Role) : Role
+        +existsByName(name : UserRole) : boolean
+    }
+    class UserRepositoryImpl {
+        -userPersistenceRepository : UserPersistenceRepository
+        -eventPublisher : ApplicationEventPublisher
+        +UserRepositoryImpl(userPersistenceRepository : UserPersistenceRepository, eventPublisher : ApplicationEventPublisher)
+        +findById(id : Long) : Optional<User>
+        +findByEmailAddress(emailAddress : EmailAddress) : Optional<User>
+        +findAll() : List<User>
+        +save(user : User) : User
+        +existsByEmailAddress(emailAddress : EmailAddress) : boolean
+    }
+}
+
+package "persistence.jpa.assemblers" {
+    class RolePersistenceAssembler {
+        -RolePersistenceAssembler()
+        +toDomainFromPersistence(entity : RolePersistenceEntity) : Role
+        +toPersistenceFromDomain(role : Role) : RolePersistenceEntity
+    }
+    class UserPersistenceAssembler {
+        -UserPersistenceAssembler()
+        +toDomainFromPersistence(entity : UserPersistenceEntity) : User
+        +toPersistenceFromDomain(user : User) : UserPersistenceEntity
+        -toDomainFromPersistence(value : PersonNamePersistenceEmbeddable) : PersonName
+        -toPersistenceFromDomain(value : PersonName) : PersonNamePersistenceEmbeddable
+    }
+}
+
+package "persistence.jpa.converters" {
+    class EmailAddressPersistenceConverter {
+        +convertToDatabaseColumn(attribute : EmailAddress) : String
+        +convertToEntityAttribute(dbData : String) : EmailAddress
+    }
+    class HashedPasswordPersistenceConverter {
+        +convertToDatabaseColumn(attribute : HashedPassword) : String
+        +convertToEntityAttribute(dbData : String) : HashedPassword
+    }
+}
+
+package "persistence.jpa.embeddables" {
+    class PersonNamePersistenceEmbeddable {
+        -firstName : String
+        -lastName : String
+        +PersonNamePersistenceEmbeddable()
+        +PersonNamePersistenceEmbeddable(firstName : String, lastName : String)
+        +getFirstName() : String
+        +setFirstName(firstName : String) : void
+        +getLastName() : String
+        +setLastName(lastName : String) : void
+    }
+}
+
+package "persistence.jpa.entities" {
+    class RolePersistenceEntity {
+        -name : UserRole
+        +RolePersistenceEntity()
+        +RolePersistenceEntity(name : UserRole)
+        +getName() : UserRole
+        +setName(name : UserRole) : void
+    }
+    class UserPersistenceEntity {
+    }
+}
+
+package "persistence.jpa.repositories" {
+    interface RolePersistenceRepository {
+        +findByName(name : UserRole) : Optional<RolePersistenceEntity>
+        +existsByName(name : UserRole) : boolean
+    }
+    interface UserPersistenceRepository {
+        +findByEmailAddress(emailAddress : EmailAddress) : Optional<UserPersistenceEntity>
+    }
+}
+
+package "tokens.jwt" {
+    interface BearerTokenService {
+        +getBearerTokenFrom(request : HttpServletRequest) : String
+        +generateToken(authentication : Authentication) : String
+    }
+}
+
+package "tokens.jwt.services" {
+    class TokenServiceImpl {
+        -AUTHORIZATION_HEADER_NAME : String
+        -BEARER_TOKEN_PREFIX : String
+        -BEARER_PREFIX_LENGTH : int
+        -secret : String
+        -expirationDays : int
+        +generateToken(authentication : Authentication) : String
+        +generateToken(username : String) : String
+        +getUsernameFromToken(token : String) : String
+        +validateToken(token : String) : boolean
+        +getBearerTokenFrom(request : HttpServletRequest) : String
+        -buildToken(username : String) : String
+        -extractClaim(token : String, claimsResolver : Function<Claims,T>) : T
+        -extractAllClaims(token : String) : Claims
+        -getSigningKey() : SecretKey
+        -isTokenPresentIn(authorizationHeader : String) : boolean
+        -isBearerTokenIn(authorizationHeader : String) : boolean
+        -extractTokenFrom(authorizationHeader : String) : String
+    }
+}
+
+WebSecurityConfiguration --> BearerTokenService : tokenService
+WebSecurityConfiguration --> BCryptHashingService : hashingService
+WebSecurityConfiguration ..> BearerAuthorizationRequestFilter
+BearerAuthorizationRequestFilter --> BearerTokenService : tokenService
+HashingServiceImpl ..|> BCryptHashingService
+RoleRepositoryImpl --> RolePersistenceRepository : rolePersistenceRepository
+UserRepositoryImpl --> UserPersistenceRepository : userPersistenceRepository
+RolePersistenceAssembler ..> RolePersistenceEntity
+UserPersistenceAssembler ..> UserPersistenceEntity
+UserPersistenceAssembler ..> PersonNamePersistenceEmbeddable
+RolePersistenceRepository ..> RolePersistenceEntity
+UserPersistenceRepository ..> UserPersistenceEntity
+TokenServiceImpl ..|> BearerTokenService
+@enduml

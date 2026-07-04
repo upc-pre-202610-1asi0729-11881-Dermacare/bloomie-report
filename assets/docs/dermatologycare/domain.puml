@@ -1,0 +1,195 @@
+@startuml
+title dermatologycare - domain
+hide empty members
+skinparam classAttributeIconSize 0
+
+package "model.aggregates" {
+    class Availability {
+        -id : Long
+        -dermatologistId : DermatologistId
+        -day : DayOfWeek
+        -timeSlot : TimeSlot
+        -active : boolean
+        +Availability(id : Long, dermatologistId : DermatologistId, day : DayOfWeek, timeSlot : TimeSlot, active : boolean)
+        +Availability(command : DefineAvailabilityCommand)
+        +update(command : UpdateAvailabilityCommand) : void
+        +onDefined() : void
+        +onUpdated() : void
+        +getDermatologistId() : Long
+        +getDermatologistIdValue() : DermatologistId
+        +getDayofWeek() : DayOfWeek
+        +getTimeSlot() : TimeSlot
+        +isActive() : boolean
+    }
+    class DermatologistProfile {
+        -id : Long
+        -dermatologistId : DermatologistId
+        -name : PersonName
+        -specialtyName : SpecialtyName
+        -licenseNumber : LicenseNumber
+        -contactPhone : ContactPhone
+        -biography : String
+        -consultationFee : Double
+        +DermatologistProfile(command : RegisterDermatologistProfileCommand)
+        +DermatologistProfile(id : Long, dermatologistId : DermatologistId, personName : PersonName, specialtyName : SpecialtyName, licenseNumber : LicenseNumber, contactPhone : ContactPhone, biography : String, consultationFee : Double)
+        +update(command : UpdateDermatologistProfileCommand) : void
+        +onRegistered() : void
+        +onUpdated() : void
+        +getDermatologistId() : Long
+        +getDermatologistIdValue() : DermatologistId
+        +getFullName() : String
+        +getName() : PersonName
+        +getSpecialty() : SpecialtyName
+        +getLicenseNumber() : LicenseNumber
+        +getContactPhone() : ContactPhone
+        +getBiography() : String
+        +getConsultationFee() : Double
+    }
+}
+
+package "model.commands" {
+    class DefineAvailabilityCommand << record >> {
+        +dermatologistId : DermatologistId
+        +dayOfWeek : DayOfWeek
+        +startTime : LocalTime
+        +endTime : LocalTime
+    }
+    class RegisterDermatologistProfileCommand << record >> {
+        +dermatologistId : DermatologistId
+        +firstName : String
+        +lastName : String
+    }
+    class UpdateAvailabilityCommand << record >> {
+        +availabilityId : Long
+        +dayOfWeek : DayOfWeek
+        +startTime : LocalTime
+        +endTime : LocalTime
+        +active : boolean
+    }
+    class UpdateDermatologistProfileCommand << record >> {
+        +dermatologistProfileId : Long
+        +firstName : String
+        +lastName : String
+        +specialty : String
+        +licenseNumber : String
+        +phone : String
+        +biography : String
+        +consultationFee : Double
+    }
+}
+
+package "model.events" {
+    class AvailabilityDefinedEvent << record >> {
+        +availabilityId : Long
+        +dermatologistId : Long
+        +dayOfWeek : String
+        +startTime : String
+        +endTime : String
+        +from(availability : Availability) : AvailabilityDefinedEvent
+    }
+    class AvailabilityUpdatedEvent << record >> {
+        +availabilityId : Long
+        +dermatologistId : Long
+        +dayOfWeek : String
+        +startTime : String
+        +endTime : String
+        +from(availability : Availability) : AvailabilityUpdatedEvent
+    }
+    class DermatologistProfileRegisteredEvent << record >> {
+        +dermatologistProfileId : Long
+        +dermatologisId : Long
+        +fullName : String
+        +from(profile : DermatologistProfile) : DermatologistProfileRegisteredEvent
+    }
+    class DermatologistProfileUpdatedEvent << record >> {
+        +dermatologistProfileId : Long
+        +dermatologistId : Long
+        +fullName : String
+        +from(profile : DermatologistProfile) : DermatologistProfileUpdatedEvent
+    }
+}
+
+package "model.queries" {
+    class GetAllDermatologistProfilesQuery << record >> {
+    }
+    class GetAvailabilityByDermatologistIdAndDayQuery << record >> {
+        +dermatologistId : DermatologistId
+        +day : DayOfWeek
+    }
+    class GetAvailabilityByDermatologistIdQuery << record >> {
+        +dermatologistId : DermatologistId
+    }
+    class GetDermatologistProfileByDermatologistIdQuery << record >> {
+        +dermatologistId : DermatologistId
+    }
+    class GetDermatologistProfileByIdQuery << record >> {
+        +dermatologistProfileId : Long
+    }
+}
+
+package "model.valueobjects" {
+    class ContactPhone << record >> {
+        +contactPhone : String
+    }
+    class DermatologistId << record >> {
+        +dermatologistId : Long
+    }
+    class LicenseNumber << record >> {
+        +licenseNumber : String
+    }
+    class PersonName << record >> {
+        +firstName : String
+        +lastName : String
+        +getFullName() : String
+    }
+    class SpecialtyName << record >> {
+        +specialtyName : String
+    }
+    class TimeSlot << record >> {
+        +startTime : LocalTime
+        +endTime : LocalTime
+    }
+}
+
+package "repositories" {
+    interface AvailabilityRepository {
+        +findById(id : Long) : Optional<Availability>
+        +findAllByDermatologistId(dermatologistId : DermatologistId) : List<Availability>
+        +findAllByDermatologistAndDay(dermatologistId : DermatologistId, day : DayOfWeek) : List<Availability>
+        +save(availability : Availability) : Availability
+        +existsByDermatologyAndDay(dermatologistId : DermatologistId, day : DayOfWeek) : boolean
+    }
+    interface DermatologistProfileRepository {
+        +findById(dermatologistId : Long) : Optional<DermatologistProfile>
+        +findByDermatologistId(dermatologistId : DermatologistId) : Optional<DermatologistProfile>
+        +findAll() : List<DermatologistProfile>
+        +save(dermatologistProfile : DermatologistProfile) : DermatologistProfile
+        +existsByDermatologistId(dermatologistId : DermatologistId) : boolean
+    }
+}
+
+Availability --> DermatologistId : dermatologistId
+Availability --> TimeSlot : timeSlot
+Availability ..> DefineAvailabilityCommand
+Availability ..> UpdateAvailabilityCommand
+DermatologistProfile --> DermatologistId : dermatologistId
+DermatologistProfile --> PersonName : name
+DermatologistProfile --> SpecialtyName : specialtyName
+DermatologistProfile --> LicenseNumber : licenseNumber
+DermatologistProfile --> ContactPhone : contactPhone
+DermatologistProfile ..> RegisterDermatologistProfileCommand
+DermatologistProfile ..> UpdateDermatologistProfileCommand
+DefineAvailabilityCommand --> DermatologistId : dermatologistId
+RegisterDermatologistProfileCommand --> DermatologistId : dermatologistId
+AvailabilityDefinedEvent ..> Availability
+AvailabilityUpdatedEvent ..> Availability
+DermatologistProfileRegisteredEvent ..> DermatologistProfile
+DermatologistProfileUpdatedEvent ..> DermatologistProfile
+GetAvailabilityByDermatologistIdAndDayQuery --> DermatologistId : dermatologistId
+GetAvailabilityByDermatologistIdQuery --> DermatologistId : dermatologistId
+GetDermatologistProfileByDermatologistIdQuery --> DermatologistId : dermatologistId
+AvailabilityRepository ..> Availability
+AvailabilityRepository ..> DermatologistId
+DermatologistProfileRepository ..> DermatologistProfile
+DermatologistProfileRepository ..> DermatologistId
+@enduml

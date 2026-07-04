@@ -1,0 +1,152 @@
+@startuml
+title dermatologicalappointment - interfaces
+hide empty members
+skinparam classAttributeIconSize 0
+
+package "acl" {
+    interface DermatologicalAppointmentContextFacade {
+        +existsAppointmentByPatientId(patientId : Long) : boolean
+        +fetchAppointmentStatusById(appointmentId : Long) : String
+    }
+}
+
+package "events" {
+    class ProcessRefundIntegrationEvent << record >> {
+        +appointmentId : Long
+        +patientId : Long
+    }
+    class RequestConsultationPaymentIntegrationEvent << record >> {
+        +appointmentId : Long
+        +patientId : Long
+        +dermatologistId : Long
+        +scheduledAt : String
+        +amount : Double
+    }
+}
+
+package "rest" {
+    class AppointmentController {
+        -queryService : AppointmentQueryService
+        -commandService : AppointmentCommandService
+        +AppointmentController(queryService : AppointmentQueryService, commandService : AppointmentCommandService)
+    }
+    class ConsultationController {
+        -queryService : ConsultationQueryService
+        -commandService : ConsultationCommandService
+        +ConsultationController(queryService : ConsultationQueryService, commandService : ConsultationCommandService)
+    }
+}
+
+package "rest.resources" {
+    class AppointmentResource << record >> {
+        +id : Long
+        +patientId : Long
+        +dermatologistId : Long
+        +paymentId : Long
+        +scheduledAt : String
+        +status : String
+        +cancellationReason : String
+    }
+    class CancelAppointmentResource << record >> {
+        +patientId : Long
+        +cancellationReason : String
+    }
+    class ConfirmAppointmentResource << record >> {
+        +patientId : Long
+    }
+    class ConsultationResource << record >> {
+        +id : Long
+        +appointmentId : Long
+        +patientId : Long
+        +dermatologistId : Long
+        +status : String
+        +notes : String
+        +recommendations : String
+        +clinicalPhotoUrls : List<String>
+        +startedAt : String
+        +finishedAt : String
+    }
+    class FinishConsultationResource << record >> {
+        +dermatologistId : Long
+    }
+    class RecordDiagnosisResource << record >> {
+        +notes : String
+        +recommendations : String
+    }
+    class ReprogramRequestResource << record >> {
+        +patientId : Long
+        +newDate : String
+    }
+    class SaveNotesResource << record >> {
+        +notes : String
+    }
+    class ScheduleAppointmentResource << record >> {
+        +patientId : Long
+        +dermatologistId : Long
+        +scheduledAt : String
+    }
+    class StartConsultationResource << record >> {
+        +appointmentId : Long
+        +dermatologistId : Long
+        +patientId : Long
+    }
+}
+
+package "rest.transform" {
+    class AppointmentResourceFromEntityAssembler {
+        -AppointmentResourceFromEntityAssembler()
+        +toResourceFromEntity(appointment : Appointment) : AppointmentResource
+    }
+    class CancelAppointmentCommandFromResourceAssembler {
+        -CancelAppointmentCommandFromResourceAssembler()
+        +toCommandFromResource(appointmentId : Long, resource : CancelAppointmentResource) : CancelAppointmentCommand
+    }
+    class ConfirmAppointmentCommandFromResourceAssembler {
+        -ConfirmAppointmentCommandFromResourceAssembler()
+        +toCommandFromResource(appointmentId : Long, resource : ConfirmAppointmentResource) : ConfirmAppointmentCommand
+    }
+    class ConsultationResourceFromEntityAssembler {
+        -ConsultationResourceFromEntityAssembler()
+        +toResourceFromEntity(consultation : Consultation) : ConsultationResource
+    }
+    class FinishConsultationCommandFromResourceAssembler {
+        -FinishConsultationCommandFromResourceAssembler()
+        +toCommandFromResource(consultationId : Long, resource : FinishConsultationResource) : FinishConsultationCommand
+    }
+    class RecordDiagnosisCommandFromResourceAssembler {
+        -RecordDiagnosisCommandFromResourceAssembler()
+        +toCommandFromResource(consultationId : Long, resource : RecordDiagnosisResource) : RecordDermatologicalDiagnosisCommand
+    }
+    class ReprogramRequestCommandFromResourceAssembler {
+        -ReprogramRequestCommandFromResourceAssembler()
+        +toCommandFromResource(appointmentId : Long, resource : ReprogramRequestResource) : RequestReprogramAppointmentCommand
+    }
+    class SaveNotesCommandFromResourceAssembler {
+        -SaveNotesCommandFromResourceAssembler()
+        +toCommandFromResource(consultationId : Long, resource : SaveNotesResource) : SaveNotesCommand
+    }
+    class ScheduleAppointmentCommandFromResourceAssembler {
+        -ScheduleAppointmentCommandFromResourceAssembler()
+        +toCommandFromResource(resource : ScheduleAppointmentResource) : ScheduleDermatologyAppointmentCommand
+    }
+    class StartConsultationCommandFromResourceAssembler {
+        -StartConsultationCommandFromResourceAssembler()
+        +toCommandFromResource(resource : StartConsultationResource) : StartConsultationCommand
+    }
+    class UploadClinicalPhotoCommandFromResourceAssembler {
+        -UploadClinicalPhotoCommandFromResourceAssembler()
+        +toCommandFromResource(consultationId : Long, resource : UploadClinicalPhotoResource) : UploadClinicalPhotoCommand
+    }
+}
+
+AppointmentResourceFromEntityAssembler ..> AppointmentResource
+CancelAppointmentCommandFromResourceAssembler ..> CancelAppointmentResource
+ConfirmAppointmentCommandFromResourceAssembler ..> ConfirmAppointmentResource
+ConsultationResourceFromEntityAssembler ..> ConsultationResource
+FinishConsultationCommandFromResourceAssembler ..> FinishConsultationResource
+RecordDiagnosisCommandFromResourceAssembler ..> RecordDiagnosisResource
+ReprogramRequestCommandFromResourceAssembler ..> ReprogramRequestResource
+SaveNotesCommandFromResourceAssembler ..> SaveNotesResource
+ScheduleAppointmentCommandFromResourceAssembler ..> ScheduleAppointmentResource
+StartConsultationCommandFromResourceAssembler ..> StartConsultationResource
+@enduml

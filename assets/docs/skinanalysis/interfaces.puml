@@ -1,0 +1,125 @@
+@startuml
+title skinanalysis - interfaces
+hide empty members
+skinparam classAttributeIconSize 0
+
+package "events" {
+    class FacialScanSubmittedIntegrationEvent << record >> {
+        +facialScanId : Long
+        +patientId : Long
+    }
+    class PreliminaryDiagnosisGeneratedIntegrationEvent << record >> {
+        +skinAnalysisId : Long
+        +patientId : Long
+        +skinType : String
+    }
+}
+
+package "rest" {
+    class FacialScansController {
+        -FACIAL_SCAN_NOT_FOUND : String
+        -commandService : FacialScanCommandService
+        -queryService : FacialScanQueryService
+        +FacialScansController(commandService : FacialScanCommandService, queryService : FacialScanQueryService)
+    }
+    class SkinAnalysesController {
+        -ANALYSIS_NOT_FOUND : String
+        -queryService : SkinAnalysisQueryService
+        +SkinAnalysesController(queryService : SkinAnalysisQueryService)
+    }
+    class SkinProfilesController {
+        -PROFILE_NOT_FOUND : String
+        -commandService : SkinProfileCommandService
+        -queryService : SkinProfileQueryService
+        +SkinProfilesController(commandService : SkinProfileCommandService, queryService : SkinProfileQueryService)
+    }
+}
+
+package "rest.resources" {
+    class CompleteSkinProfileResource << record >> {
+        +patientId : Long
+        +skinType : String
+        +sensitivity : String
+        +waterIntake : String
+        +sunExposure : String
+        +sleepHours : String
+    }
+    class FacialScanResource << record >> {
+        +id : Long
+        +patientId : Long
+        +status : String
+        +photoUrl : String
+        +scannedAt : String
+    }
+    class SkinAnalysisResource << record >> {
+        +id : Long
+        +patientId : Long
+        +facialScanId : Long
+        +overallScore : Double
+        +hydrationScore : Double
+        +textureScore : Double
+        +sensitivityScore : Double
+        +brightnessScore : Double
+        +status : String
+        +analyzedAt : String
+    }
+    class SkinProfileResource << record >> {
+        +id : Long
+        +patientId : Long
+        +skinType : String
+        +sensitivity : String
+        +waterIntake : String
+        +sunExposure : String
+        +sleepHours : String
+        +status : String
+    }
+    class StartFacialScanResource << record >> {
+        +patientId : Long
+    }
+    class UpdateSkinCharacteristicsResource << record >> {
+        +skinType : String
+        +sensitivity : String
+        +waterIntake : String
+        +sunExposure : String
+        +sleepHours : String
+    }
+}
+
+package "rest.transform" {
+    class CompleteSkinProfileCommandFromResourceAssembler {
+        -CompleteSkinProfileCommandFromResourceAssembler()
+        +toCommandFromResource(resource : CompleteSkinProfileResource) : CompleteSkinProfileCommand
+    }
+    class FacialScanResourceFromEntityAssembler {
+        -FacialScanResourceFromEntityAssembler()
+        +toResourceFromEntity(facialScan : FacialScan) : FacialScanResource
+    }
+    class SkinAnalysisResourceFromEntityAssembler {
+        -SkinAnalysisResourceFromEntityAssembler()
+        +toResourceFromEntity(skinAnalysis : SkinAnalysis) : SkinAnalysisResource
+    }
+    class SkinProfileResourceFromEntityAssembler {
+        -SkinProfileResourceFromEntityAssembler()
+        +toResourceFromEntity(skinProfile : SkinProfile) : SkinProfileResource
+    }
+    class StartFacialScanCommandFromResourceAssembler {
+        -StartFacialScanCommandFromResourceAssembler()
+        +toCommandFromResource(resource : StartFacialScanResource) : StartFacialScanCommand
+    }
+    class SubmitFacialScanCommandFromResourceAssembler {
+        -SubmitFacialScanCommandFromResourceAssembler()
+        +toCommandFromResource(facialScanId : Long, resource : SubmitFacialScanResource) : SubmitFacialScanCommand
+    }
+    class UpdateSkinCharacteristicsCommandFromResourceAssembler {
+        -UpdateSkinCharacteristicsCommandFromResourceAssembler()
+        +toCommandFromResource(skinProfileId : Long, resource : UpdateSkinCharacteristicsResource) : UpdateSkinCharacteristicsCommand
+    }
+}
+
+CompleteSkinProfileCommandFromResourceAssembler ..> CompleteSkinProfileResource
+FacialScanResourceFromEntityAssembler ..> FacialScanResource
+SkinAnalysisResourceFromEntityAssembler ..> SkinAnalysisResource
+SkinProfileResourceFromEntityAssembler ..> SkinProfileResource
+StartFacialScanCommandFromResourceAssembler ..> StartFacialScanResource
+UpdateSkinCharacteristicsCommandFromResourceAssembler ..> UpdateSkinCharacteristicsResource
+@enduml

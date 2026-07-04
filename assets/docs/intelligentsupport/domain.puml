@@ -1,0 +1,145 @@
+@startuml
+title intelligentsupport - domain
+hide empty members
+skinparam classAttributeIconSize 0
+
+package "model.aggregates" {
+    class ChatMessage {
+        -id : Long
+        -supportQueryId : SupportQueryId
+        -text : String
+        -messageType : MessageType
+        -sentAt : LocalDateTime
+        +ChatMessage(id : Long, supportQueryId : SupportQueryId, text : String, messageType : MessageType, sentAt : LocalDateTime)
+        +ChatMessage(supportQueryId : SupportQueryId, text : String, messageType : MessageType)
+        +ChatMessage(command : SendChatMessageCommand)
+        +getSupportQueryId() : Long
+        +getSupportQueryIdValue() : SupportQueryId
+        +onCreated() : void
+    }
+    class SupportQuery {
+        -id : Long
+        -patientId : PatientId
+        -skinProfileId : SkinProfileId
+        -status : SupportQueryStatus
+        -suggestedAction : SuggestedAction
+        -createdAt : LocalDateTime
+        +SupportQuery(id : Long, patientId : PatientId, skinProfileId : SkinProfileId, status : SupportQueryStatus, suggestedAction : SuggestedAction, createdAt : LocalDateTime)
+        +SupportQuery(patientId : PatientId, skinProfileId : SkinProfileId)
+        +SupportQuery(command : CreateSupportQueryCommand)
+        +onCreated() : void
+        +updateStatus(status : String) : void
+        +onStatusUpdated() : void
+    }
+}
+
+package "model.commands" {
+    class CreateSupportQueryCommand << record >> {
+        +patientId : Long
+        +skinProfileId : Long
+    }
+    class SendChatMessageCommand << record >> {
+        +supportQueryId : Long
+        +text : String
+    }
+    class UpdateSupportQueryStatusCommand << record >> {
+        +supportQueryId : Long
+        +status : String
+    }
+}
+
+package "model.events" {
+    class ChatMessageSentEvent << record >> {
+        +chatMessageId : Long
+        +supportQueryId : Long
+        +messageType : String
+        +from(chatMessage : ChatMessage) : ChatMessageSentEvent
+    }
+    class SupportQueryCreatedEvent << record >> {
+        +supportQueryId : Long
+        +patientId : Long
+        +skinProfileId : Long
+        +status : String
+        +suggestedAction : String
+        +createdAt : LocalDateTime
+        +from(supportQuery : SupportQuery) : SupportQueryCreatedEvent
+    }
+    class SupportQueryStatusUpdatedEvent << record >> {
+        +supportQueryId : Long
+        +patientId : Long
+        +status : String
+        +from(supportQuery : SupportQuery) : SupportQueryStatusUpdatedEvent
+    }
+}
+
+package "model.queries" {
+    class GetChatMessagesBySupportQueryIdQuery << record >> {
+        +supportQueryId : Long
+    }
+    class GetSupportQueryByIdQuery << record >> {
+        +id : Long
+    }
+    class GetSupportQueryByPatientIdAndStatusQuery << record >> {
+        +patientId : Long
+        +status : String
+    }
+}
+
+package "model.valueobjects" {
+    enum MessageType {
+        USER
+        AI
+        SYSTEM
+    }
+    class PatientId << record >> {
+        +patientId : Long
+    }
+    class SkinProfileId << record >> {
+        +skinProfileId : Long
+    }
+    enum SuggestedAction {
+        CONTINUE_ROUTINE
+        CHANGE_PRODUCT
+        SUGGEST_DERMATOLOGY_CONSULTATION
+    }
+    class SupportQueryId << record >> {
+        +supportQueryId : Long
+    }
+    enum SupportQueryStatus {
+        IN_PROGRESS
+        AWAITING_AI
+        RESOLVED
+        UNRESOLVED
+    }
+}
+
+package "repositories" {
+    interface ChatMessageRepository {
+        +findAllBySupportQueryId(supportQueryId : SupportQueryId) : List<ChatMessage>
+        +save(chatMessage : ChatMessage) : ChatMessage
+    }
+    interface SupportQueryRepository {
+        +findById(id : Long) : Optional<SupportQuery>
+        +findByPatientIdAndStatus(patientId : PatientId, status : SupportQueryStatus) : Optional<SupportQuery>
+        +findAllByPatientId(patientId : PatientId) : List<SupportQuery>
+        +save(supportQuery : SupportQuery) : SupportQuery
+    }
+}
+
+ChatMessage --> SupportQueryId : supportQueryId
+ChatMessage --> MessageType : messageType
+ChatMessage ..> SendChatMessageCommand
+SupportQuery --> PatientId : patientId
+SupportQuery --> SkinProfileId : skinProfileId
+SupportQuery --> SupportQueryStatus : status
+SupportQuery --> SuggestedAction : suggestedAction
+SupportQuery ..> CreateSupportQueryCommand
+ChatMessageSentEvent ..> ChatMessage
+SupportQueryCreatedEvent ..> SupportQuery
+SupportQueryStatusUpdatedEvent ..> SupportQuery
+ChatMessageRepository ..> SupportQueryId
+ChatMessageRepository ..> ChatMessage
+SupportQueryRepository ..> SupportQuery
+SupportQueryRepository ..> PatientId
+SupportQueryRepository ..> SupportQueryStatus
+@enduml

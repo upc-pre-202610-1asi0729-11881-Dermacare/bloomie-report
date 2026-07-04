@@ -1,0 +1,120 @@
+@startuml
+title subscription - application
+hide empty members
+skinparam classAttributeIconSize 0
+
+package "acl" {
+    class SubscriptionContextFacadeImpl {
+        -subscriptionCommandService : SubscriptionCommandService
+        -subscriptionQueryService : SubscriptionQueryService
+        +SubscriptionContextFacadeImpl(subscriptionCommandService : SubscriptionCommandService, subscriptionQueryService : SubscriptionQueryService)
+        +existsPlanById(id : Long) : boolean
+        +fetchPlanPrice(id : Long) : Double
+    }
+}
+
+package "commandservices" {
+    interface PlanCommandService {
+        +handle(command : SeedPlansCommand) : void
+    }
+    interface SubscriptionCommandService {
+        +handle(command : SelectSubscriptionPlanCommand) : Result<Long,ApplicationError>
+        +handle(command : ActivateSubscriptionCommand) : Result<Subscription,ApplicationError>
+        +handle(command : CancelSubscriptionCommand) : Result<Subscription,ApplicationError>
+        +handle(command : RenewSubscriptionCommand) : Result<Subscription,ApplicationError>
+        +handle(command : ExpireSubscriptionCommand) : Result<Subscription,ApplicationError>
+        +handle(command : ChangeSubscriptionPlanCommand) : Result<Subscription,ApplicationError>
+    }
+}
+
+package "internal.commandservices" {
+    class PlanCommandServiceImpl {
+        -log : Logger
+        -planRepository : PlanRepository
+        +PlanCommandServiceImpl(planRepository : PlanRepository)
+        +handle(command : SeedPlansCommand) : void
+        -buildInitialCatalog() : List<Plan>
+    }
+    class SubscriptionCommandServiceImpl {
+        -PATIENT_NOT_FOUND : String
+        -SUBSCRIPTION_NOT_FOUND : String
+        -SUBSCRIPTION_CANNOT_ACTIVATE : String
+        -SUBSCRIPTION_CANNOT_CANCEL : String
+        -SUBSCRIPTION_CANNOT_RENEW : String
+        -SUBSCRIPTION_CANNOT_EXPIRE : String
+        -SUBSCRIPTION_CANNOT_CHANGE_PLAN : String
+        -subscriptionRepository : SubscriptionRepository
+        -externalIamService : ExternalIamService
+        +SubscriptionCommandServiceImpl(subscriptionRepository : SubscriptionRepository, externalIamService : ExternalIamService)
+        +handle(command : SelectSubscriptionPlanCommand) : Result<Long,ApplicationError>
+        +handle(command : ActivateSubscriptionCommand) : Result<Subscription,ApplicationError>
+        +handle(command : CancelSubscriptionCommand) : Result<Subscription,ApplicationError>
+        +handle(command : RenewSubscriptionCommand) : Result<Subscription,ApplicationError>
+        +handle(command : ExpireSubscriptionCommand) : Result<Subscription,ApplicationError>
+        +handle(command : ChangeSubscriptionPlanCommand) : Result<Subscription,ApplicationError>
+    }
+}
+
+package "internal.eventhandlers" {
+    class ApplicationReadyEventHandler {
+        -log : Logger
+        -planCommandService : PlanCommandService
+        +ApplicationReadyEventHandler(planCommandService : PlanCommandService)
+        +on(event : ApplicationReadyEvent) : void
+        -currentTimestamp() : Timestamp
+    }
+    class SubscriptionActivationEventHandler {
+        -subscriptionCommandService : SubscriptionCommandService
+        +SubscriptionActivationEventHandler(subscriptionCommandService : SubscriptionCommandService)
+        +on(event : SubscriptionPaymentProcessedIntegrationEvent) : void
+    }
+    class SubscriptionPlanSelectedEventHandler {
+        -eventPublisher : ApplicationEventPublisher
+        +SubscriptionPlanSelectedEventHandler(eventPublisher : ApplicationEventPublisher)
+        +on(event : SubscriptionPlanSelectedEvent) : void
+    }
+    class SubscriptionRenewalEventHandler {
+        -subscriptionCommandService : SubscriptionCommandService
+        +SubscriptionRenewalEventHandler(subscriptionCommandService : SubscriptionCommandService)
+        +on(event : SubscriptionRenewalPaymentProcessedIntegrationEvent) : void
+    }
+}
+
+package "internal.outboundservices.acl" {
+    class ExternalIamService {
+        -iamContextFacade : IamContextFacade
+        +ExternalIamService(iamContextFacade : IamContextFacade)
+        +fetchPatientById(userId : Long) : Optional<PatientId>
+    }
+}
+
+package "internal.queryservices" {
+    class SubscriptionQueryServiceImpl {
+        -subscriptionRepository : SubscriptionRepository
+        +SubscriptionQueryServiceImpl(subscriptionRepository : SubscriptionRepository)
+        +handle(query : GetPlanByIdQuery) : Optional<Plan>
+        +handle(query : GetAllPlansQuery) : List<Plan>
+        +handle(query : GetSubscriptionByIdQuery) : Optional<Subscription>
+        +handle(query : GetSubscriptionByPatientIdQuery) : Optional<Subscription>
+    }
+}
+
+package "queryservices" {
+    interface SubscriptionQueryService {
+        +handle(query : GetPlanByIdQuery) : Optional<Plan>
+        +handle(query : GetAllPlansQuery) : List<Plan>
+        +handle(query : GetSubscriptionByIdQuery) : Optional<Subscription>
+        +handle(query : GetSubscriptionByPatientIdQuery) : Optional<Subscription>
+    }
+}
+
+SubscriptionContextFacadeImpl --> SubscriptionCommandService : subscriptionCommandService
+SubscriptionContextFacadeImpl --> SubscriptionQueryService : subscriptionQueryService
+PlanCommandServiceImpl ..|> PlanCommandService
+SubscriptionCommandServiceImpl ..|> SubscriptionCommandService
+SubscriptionCommandServiceImpl --> ExternalIamService : externalIamService
+ApplicationReadyEventHandler --> PlanCommandService : planCommandService
+SubscriptionActivationEventHandler --> SubscriptionCommandService : subscriptionCommandService
+SubscriptionRenewalEventHandler --> SubscriptionCommandService : subscriptionCommandService
+SubscriptionQueryServiceImpl ..|> SubscriptionQueryService
+@enduml

@@ -1,0 +1,147 @@
+@startuml
+title dermatologicalappointment - infrastructure
+hide empty members
+skinparam classAttributeIconSize 0
+
+package "acl" {
+    class ExternalDermatologyCareServiceImpl {
+        -dermatologyCareContextFacade : DermatologyCareContextFacade
+        +ExternalDermatologyCareServiceImpl(dermatologyCareContextFacade : DermatologyCareContextFacade)
+        +existsDermatologistProfile(dermatologistId : Long) : boolean
+        +getConsultationFee(dermatologistId : Long) : Double
+    }
+    class ExternalIamServiceImpl {
+        -iamContextFacade : IamContextFacade
+        +ExternalIamServiceImpl(iamContextFacade : IamContextFacade)
+        +existsUserById(userId : Long) : boolean
+    }
+}
+
+package "persistence.jpa.adapters" {
+    class AppointmentRepositoryImpl {
+        -persistenceRepository : AppointmentPersistenceRepository
+        -eventPublisher : ApplicationEventPublisher
+        +AppointmentRepositoryImpl(persistenceRepository : AppointmentPersistenceRepository, eventPublisher : ApplicationEventPublisher)
+        +findById(id : Long) : Optional<Appointment>
+        +findByPatientId(patientId : PatientId) : List<Appointment>
+        +findByDermatologistId(dermatologistId : DermatologistId) : List<Appointment>
+        +save(appointment : Appointment) : Appointment
+        +existsById(id : Long) : boolean
+        +existsByDermatologistIdAndDate(dermatologistId : DermatologistId, scheduledAt : AppointmentDateTime) : boolean
+    }
+    class ConsultationRepositoryImpl {
+        -persistenceRepository : ConsultationPersistenceRepository
+        -eventPublisher : ApplicationEventPublisher
+        +ConsultationRepositoryImpl(persistenceRepository : ConsultationPersistenceRepository, eventPublisher : ApplicationEventPublisher)
+        +findById(id : Long) : Optional<Consultation>
+        +findByAppointmentId(appointmentId : Long) : Optional<Consultation>
+        +save(consultation : Consultation) : Consultation
+        +findAll() : List<Consultation>
+    }
+}
+
+package "persistence.jpa.assemblers" {
+    class AppointmentPersistenceAssembler {
+        -AppointmentPersistenceAssembler()
+        +toDomainFromPersistence(entity : AppointmentPersistenceEntity) : Appointment
+        +toPersistenceFromDomain(appointment : Appointment) : AppointmentPersistenceEntity
+    }
+    class ConsultationPersistenceAssembler {
+        -ConsultationPersistenceAssembler()
+        +toDomainFromPersistence(entity : ConsultationPersistenceEntity) : Consultation
+        +toPersistenceFromDomain(consultation : Consultation) : ConsultationPersistenceEntity
+    }
+}
+
+package "persistence.jpa.converters" {
+    class AppointmentDateTimePersistenceConverter {
+        +convertToDatabaseColumn(attribute : AppointmentDateTime) : String
+        +convertToEntityAttribute(dbData : String) : AppointmentDateTime
+    }
+    class ClinicalNotesPersistenceConverter {
+        +convertToDatabaseColumn(attribute : ClinicalNotes) : String
+        +convertToEntityAttribute(dbData : String) : ClinicalNotes
+    }
+    class DermatologistIdPersistenceConverter {
+        +convertToDatabaseColumn(attribute : DermatologistId) : Long
+        +convertToEntityAttribute(dbData : Long) : DermatologistId
+    }
+    class PatientIdPersistenceConverter {
+        +convertToDatabaseColumn(attribute : PatientId) : Long
+        +convertToEntityAttribute(dbData : Long) : PatientId
+    }
+}
+
+package "persistence.jpa.entities" {
+    class AppointmentPersistenceEntity {
+        -patientId : PatientId
+        -dermatologistId : DermatologistId
+        -paymentId : Long
+        -scheduledAt : AppointmentDateTime
+        -status : AppointmentStatus
+        -cancellationReason : String
+        -pendingReprogramDate : String
+        +AppointmentPersistenceEntity()
+        +getPatientId() : PatientId
+        +setPatientId(patientId : PatientId) : void
+        +getDermatologistId() : DermatologistId
+        +setDermatologistId(dermatologistId : DermatologistId) : void
+        +getPaymentId() : Long
+        +setPaymentId(paymentId : Long) : void
+        +getScheduledAt() : AppointmentDateTime
+        +setScheduledAt(scheduledAt : AppointmentDateTime) : void
+        +getStatus() : AppointmentStatus
+        +setStatus(status : AppointmentStatus) : void
+        +getCancellationReason() : String
+        +setCancellationReason(cancellationReason : String) : void
+        +getPendingReprogramDate() : String
+        +setPendingReprogramDate(pendingReprogramDate : String) : void
+    }
+    class ConsultationPersistenceEntity {
+        -appointmentId : Long
+        -patientId : PatientId
+        -dermatologistId : DermatologistId
+        -status : ConsultationStatus
+        -notes : ClinicalNotes
+        -recommendations : ClinicalNotes
+        -startedAt : String
+        -finishedAt : String
+        +ConsultationPersistenceEntity()
+        +getAppointmentId() : Long
+        +setAppointmentId(appointmentId : Long) : void
+        +getPatientId() : PatientId
+        +setPatientId(patientId : PatientId) : void
+        +getDermatologistId() : DermatologistId
+        +setDermatologistId(dermatologistId : DermatologistId) : void
+        +getStatus() : ConsultationStatus
+        +setStatus(status : ConsultationStatus) : void
+        +getNotes() : ClinicalNotes
+        +setNotes(notes : ClinicalNotes) : void
+        +getRecommendations() : ClinicalNotes
+        +setRecommendations(recommendations : ClinicalNotes) : void
+        +getClinicalPhotoUrls() : List<String>
+        +setClinicalPhotoUrls(clinicalPhotoUrls : List<String>) : void
+        +getStartedAt() : String
+        +setStartedAt(startedAt : String) : void
+        +getFinishedAt() : String
+        +setFinishedAt(finishedAt : String) : void
+    }
+}
+
+package "persistence.jpa.repositories" {
+    interface AppointmentPersistenceRepository {
+        +findAllByPatientId(patientId : PatientId) : List<AppointmentPersistenceEntity>
+        +findAllByDermatologistId(dermatologistId : DermatologistId) : List<AppointmentPersistenceEntity>
+    }
+    interface ConsultationPersistenceRepository {
+        +findByAppointmentId(appointmentId : Long) : Optional<ConsultationPersistenceEntity>
+    }
+}
+
+AppointmentRepositoryImpl --> AppointmentPersistenceRepository : persistenceRepository
+ConsultationRepositoryImpl --> ConsultationPersistenceRepository : persistenceRepository
+AppointmentPersistenceAssembler ..> AppointmentPersistenceEntity
+ConsultationPersistenceAssembler ..> ConsultationPersistenceEntity
+AppointmentPersistenceRepository ..> AppointmentPersistenceEntity
+ConsultationPersistenceRepository ..> ConsultationPersistenceEntity
+@enduml
