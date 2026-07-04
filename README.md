@@ -1,38 +1,51 @@
-<div style="page-break-after: always; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+<div style="page-break-after: always; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%;">
 
-<img src="assets/img/upc-logo.png" alt="UPC Logo" width="150"/>
+<img src="assets/img/upc-logo.png" alt="UPC Logo" width="150" style="display: block; margin: 0 auto 20px auto;"/>
 
-<h1>Universidad Peruana de Ciencias Aplicadas</h1>
+<h1 style="text-align: center; width: 100%;">Universidad Peruana de Ciencias Aplicadas</h1>
+<h2 style="text-align: center; width: 100%;">Carrera de Ingeniería de Software</h2>
+<h2 style="text-align: center; width: 100%;">1ASI0729</h2>
+<p style="text-align: center; width: 100%;"><strong>Desarrollo de aplicaciones Open Source</strong></p>
+<p style="text-align: center; width: 100%;"><strong>NRC:</strong> 11881</p>
+<h1 style="text-align: center; width: 100%;">Informe de Trabajo Final</h1>
+<p style="text-align: center; width: 100%;"><strong>Docente:</strong> Bautista Ubillús, Efraín Ricardo</p>
+<p style="text-align: center; width: 100%;"><strong>Equipo:</strong> Dermacare</p>
+<p style="text-align: center; width: 100%;"><strong>Proyecto:</strong> Bloomie</p>
+<h2 style="text-align: center; width: 100%;">Integrantes</h2>
 
-<h2>Carrera de Ingeniería de Software</h2>
+<table style="margin: 0 auto; border-collapse: collapse; width: 60%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000; padding: 6px 12px; text-align: center;">Código</th>
+      <th style="border: 1px solid #000; padding: 6px 12px; text-align: center;">Apellidos y Nombres</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u202314898</td>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Acuache Lucas, Mathias Joaquin</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u202416272</td>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Asmat Alminco, Martin Alejandro</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u202414802</td>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Contreras Torres, Arturo Valentino</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u202517474</td>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Hurtado Balcázar, Rommel Daniel</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u20241b843</td>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Mechan Montenegro, Luciana Carolina</td>
+    </tr>
+  </tbody>
+</table>
 
-<h2>1ASI0729</h2>
-
-<p><strong>Desarrollo de aplicaciones Open Source</strong></p>
-
-<p><strong>NRC:</strong> 11881</p>
-
-<h1>Informe de Trabajo Final</h1>
-
-<p><strong>Docente del curso:</strong> Efraín Ricardo Bautista Ubillús</p>
-
-
-<p><strong>Equipo:</strong> Dermacare</p>
-
-<p><strong>Proyecto:</strong> Bloomie</p>
-
-<h2>Integrantes</h2>
-
-<p>
-u202314898 - Acuache Lucas, Mathias Joaquin<br>
-u202416272 - Asmat Alminco, Martin Alejandro<br>
-u202414802 - Contreras Torres, Arturo Valentino<br>
-u202517474 - Hurtado Balcázar, Rommel Daniel<br>
-u20241b843 - Mechan Montenegro, Luciana Carolina<br>
-</p>
-<p><em>Periodo 202610</em></p>
-
-<p><em>Julio, 2026</em></p>
+<p style="text-align: center; width: 100%; margin-top: 20px;"><em>Período 202610</em></p>
+<p style="text-align: center; width: 100%;"><em>Julio, 2026</em></p>
 
 </div>
 
@@ -232,7 +245,32 @@ Leader de cada integrante durante el sprint.
 
 ![GitHub Insights bloomie-report AV2](assets/img/report-commits.png)
 
-**Cuarta Entrega (TB2)**
+**Cuarta Entrega (TF)**
+
+Para la cuarta y última entrega el equipo continuó desarrollando el Project Report de 
+manera colaborativa, expandiendo el informe con las secciones correspondientes al 
+Sprint 4. Cada integrante asumió la redacción de las subsecciones asignadas según el 
+esquema de Aspect Leaders, manteniendo el flujo de trabajo establecido en entregas 
+anteriores: creación de feature branches por sección, redacción del contenido, carga 
+de evidencias e integración mediante Pull Requests hacia la rama develop con revisión 
+por pares.
+
+Durante esta entrega se documentaron las siguientes secciones nuevas: Sprint Planning 4, 
+Aspect Leaders and Collaborators, Sprint Backlog 4, Development Evidence for Sprint 
+Review, Execution Evidence for Sprint Review, Services Documentation Evidence for 
+Sprint Review, Software Deployment Evidence for Sprint Review y Team Collaboration 
+Insights during Sprint. Adicionalmente se actualizaron los diagramas de clases del 
+backend con los bounded contexts implementados en el Sprint 4, se actualizaron las 
+Conclusiones y Recomendaciones del proyecto, y se incorporaron las secciones de 
+Video About the Product y Video About the Team. L
+
+Para esta entrega final el repositorio del informe registró un total de 40 commits y 36 Pull Requests 
+mergeados con participación de los 4 integrantes activos del equipo, con la siguiente 
+distribución: Luciana con 27 commits, Arturo con 8, Rommel con 3 y Mathias con 2, 
+evidenciando una distribución del trabajo de documentación acorde al rol de Aspect 
+Leader de cada integrante durante el sprint.
+
+![GitHub Insights bloomie-report TF](assets/img/bloomie-report-4.png)
 
 ---
 
