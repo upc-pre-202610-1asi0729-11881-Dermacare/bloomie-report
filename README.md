@@ -3519,6 +3519,107 @@ Headline "About us" en Montserrat Semibold 62 px (H1), #333333; us en Montserrat
 
 ### 4.2.1. Organization Systems
 
+La aplicación Bloomie está estructurada bajo un sistema de organización jerárquica y secuencial, diseñado para optimizar la experiencia de usuario y garantizar una navegación clara, eficiente y predecible. Esta organización permite que tanto jóvenes adultos (usuarios finales) como dermatólogos (usuarios profesionales) puedan encontrar la información que necesitan de forma lógica y contextual. A continuación se especificará las decisiones de arquitectura de información específicas para cada segmento objetivo
+
+#### 4.2.1.1. Organization System Segmento 1: Jóvenes adultos interesados en skincare
+
+##### 4.2.1.1.1. Organización jerárquica
+El contenido se dispone de manera jerárquica, siguiendo una estructura top-down que parte del onboarding hacia los módulos de uso frecuente.
+1) Nivel 1 – Acceso principal: Onboarding, Registro, Inicio de sesión y Dashboard.
+2) Nivel 2 – Módulos principales: Recomendaciones, Chat, Explorar nuevos productos, Buscar, Consulta a dermatólogo y Perfil.
+3) Nivel 3 – Submódulos o acciones: por ejemplo, dentro de Recomendaciones se encuentran Rutina personalizada, Sugerencia de productos y Recordatorios de rutina; dentro de Perfil se agrupan Editar datos, Cambiar foto, Configuración e Historial de consultas. Esta jerarquía visual facilita la orientación del usuario y distribuye los contenidos de forma coherente con las metas de interacción. Cada nivel reduce progresivamente la complejidad cognitiva, respetando los principios de Disclosure (mostrar solo la información necesaria), Growth (permitir expansión futura de funciones) y Choices (vistas alternativas significativas).
+
+##### 4.2.1.1.2. Organización secuencial
+Algunas tareas, como el registro del usuario o la agenda de citas con dermatólogos, siguen un
+flujo secuencial diseñado para guiar paso a paso al usuario:
+1. Registro → Datos personales → Lifestyle Questions → Escaneo facial → Análisis
+preliminar → Creación de perfil.
+2. Consultar dermatólogo → Seleccionar especialista → Elegir fecha → Confirmar cita.
+
+##### 4.2.1.1.3. Organización matricial
+1) Bloomie también integra rutas transversales o accesos cruzados que conectan
+diferentes módulos según la necesidad del usuario. Por ejemplo:
+2) Desde Productos sugeridos se puede acceder directamente a Tiendas cercanas o a
+Consulta a dermatólogo para resolver dudas sobre el uso del producto.
+3) Desde Historial de consultas, el usuario puede volver a Recomendaciones o Rutina
+personalizada para aplicar los cambios sugeridos.
+Este sistema matricial potencia la flexibilidad de navegación y promueve la exploración libre
+sin perder la consistencia del flujo principal.
+
+##### 4.2.1.1.4. Categorización del contenido
+El contenido dentro de Bloomie se organiza mediante diferentes esquemas de categorización
+dependiendo del contexto:
+1) Por audiencia: se diferencian dos vistas principales: Usuarios jóvenes adultos y
+Dermatólogos, cada uno con menús, funciones y terminología adaptada.
+2) Por tópicos: las secciones principales (Recomendaciones, Consulta, Buscar, Chat,
+Perfil) agrupan información y funciones según la acción o tema que el usuario desea
+realizar.
+3) Cronológica: en los módulos de Historial de consultas y Recordatorios de rutina, la
+información se ordena por fecha de registro o última actualización.
+4) Alfabética: utilizada en la lista de dermatólogos y en el catálogo de productos para
+facilitar la búsqueda directa.
+
+###### 4.2.1.2. Organization System Segmento 2: Dermatólogos certificados
+La aplicación Bloomie – vista para dermatólogos está estructurada bajo un sistema de
+organización jerárquica y secuencial, diseñado para optimizar la gestión clínica y garantizar
+una navegación clara, eficiente y centrada en las tareas profesionales. Esta organización
+permite que los dermatólogos puedan acceder fácilmente a la información de sus pacientes,
+gestionar consultas y mantener una comunicación fluida dentro de un entorno digital confiable
+y ordenado.
+
+###### 4.2.1.2.1. Organización jerárquica
+El contenido se dispone de manera jerárquica, siguiendo una estructura top-down que parte
+del onboarding hacia los módulos principales de trabajo del dermatólogo.
+1) Nivel 1 – Acceso principal: Onboarding, Registro, Inicio de sesión y Dashboard.
+2) Nivel 2 – Módulos principales: Overview, Chat, Pacientes, Siguiente reunión, Home,
+Buscar, Consulta a IA y Perfil.
+3) Nivel 3 – Submódulos o acciones: por ejemplo, dentro de Overview se encuentran
+Consultas pendientes, Pacientes recientes y Próximas citas; dentro de Pacientes se
+agrupan Historial médico, Datos personales, Progreso visual y Recomendaciones IA;
+mientras que en Perfil se incluyen Editar perfil, Cambiar foto, añadir nuevas
+credenciales y Configuración.
+Esta jerarquía visual organiza la aplicación según las prioridades de uso, permitiendo que las
+tareas clínicas estén siempre accesibles desde el Dashboard. Cada nivel reduce
+progresivamente la complejidad cognitiva, respetando los principios de Disclosure (mostrar
+solo lo necesario) y Growth (permitir la expansión de nuevas funciones sin afectar la estructura
+general).
+
+###### 4.2.1.2.2. Organización secuencial
+Algunas tareas dentro de la aplicación siguen un flujo secuencial para guiar al dermatólogo
+paso a paso en la gestión de sus pacientes y consultas:
+1) Registro → Datos personales → Subir cédula profesional → Crear perfil.
+2) Registro de pacientes → Seleccionar paciente → Revisar historial médico → Analizar
+progreso visual → Revisar recomendaciones IA.
+3) Próximas citas → Revisar calendario → Seleccionar fecha → Pacientes del día
+
+###### 4.2.1.2.3. Organización matricial
+Bloomie también integra rutas transversales o accesos cruzados que permiten al dermatólogo
+moverse de un módulo a otro sin perder contexto. Por ejemplo:
+1) Desde Consultas pendientes o Próximas citas, el dermatólogo puede acceder
+directamente al Chat con el paciente para coordinar detalles de la atención.
+2) Desde Recomendaciones IA, se puede acceder al Historial médico o al Progreso visual
+para ajustar los tratamientos.
+3) Desde la Videollamada de consulta, se puede abrir el Registro del paciente o enviar
+recomendaciones personalizadas tras finalizar la reunión.
+Este sistema matricial incrementa la eficiencia del trabajo clínico y permite una experiencia
+más flexible sin comprometer la consistencia general del flujo.
+
+###### 4.2.1.2.4. Categorización del contenido
+El contenido de la aplicación para dermatólogos se organiza mediante distintos esquemas de
+categorización que mejoran la búsqueda y comprensión de la información:
+1) Por audiencia: esta vista está dirigida exclusivamente a profesionales dermatólogos,
+con menús, iconografía y terminología médica adaptada a sus tareas de diagnóstico y
+seguimiento.
+2) Por tópicos: las secciones principales (Overview, Chat, Pacientes, Consulta, Perfil)
+agrupan funcionalidades relacionadas con tareas de gestión, comunicación y
+configuración.
+3) Cronológica: aplicada en los módulos de Consultas pendientes, Pacientes recientes y
+Próximas citas, donde la información se ordena según la fecha más próxima o reciente.
+4) Alfabética: utilizada en la lista de pacientes o en el historial médico, para localizar
+rápidamente registros específicos.
+
+<img src="assets/img/1.jpg" width="500"/>
+
 ### 4.2.2. Labeling Systems
 
 El sistema de etiquetado de Bloomie fue diseñado para garantizar claridad, coherencia y 
@@ -3527,7 +3628,7 @@ etiquetas, títulos y botones fueron redactados en un lenguaje cotidiano y cerca
 que los usuarios comprendan fácilmente las acciones que pueden realizar, reduciendo la carga 
 cognitiva y reforzando la identidad visual de la marca.
 
-##### Labeling System Landing Page
+#### Labeling System Landing Page
 
 En la interfaz web se utilizan etiquetas sencillas y universales que guían la exploración inicial del usuario: How it works, Results, Features, About Us, Pricing y Log in en el navigation bar del encabezado principal. Estas se acompañan con botones de otro color como "Analyze my skin" redactados con verbos directos que promueven la interacción con el usuario e incite a utilizar una funcionalidad clave de nuestro producto. 
 El encabezado principal incluye el apartado de traducción de idiomas con el i18n, complementado con subtítulos que explican brevemente la propuesta de valor de Bloomie y el botón principal de descarga.
@@ -3548,11 +3649,11 @@ luego, mantenemos una paleta de colores de contraste entre los blancos con sombr
 <img src="assets/img/button.png" alt="mensaje-barra" width="500"/>
 
 
-##### Labeling System App para Jóvenes adultos
+#### Labeling System App para Jóvenes adultos
 
 En la versión móvil, las etiquetas se enfocan en la acción y el beneficio, manteniendo un tono amable		y		motivador. En el dashboard principal se observan las etiquetas: Personalized skincare, Consult a dermatologist,	Product		suggestion,		etc. Dentro de cada módulo, se mantienen etiquetas descriptivas como Mi rutina, Productos recomendados,   Añadir  paso,   Mis  consultas  y  Resultados  de  análisis. El lenguaje empleado es cercano y positivo, en línea con la voz de marca que busca acompañar y educar al usuario en su cuidado personal.
 
-###### Iconografía estándar
+##### Iconografía estándar
 
 En este apartado de considera todos los icons que son completamente intuitivos para el usuario que se adapta a una acción o funcionalidad en específico.
 
@@ -3562,7 +3663,7 @@ En este apartado de considera todos los icons que son completamente intuitivos p
 
 
 
-###### Elementos de interacción activa
+##### Elementos de interacción activa
 
 Son los elementos con los que el joven interactua más seguido, como también lo cumple la navigation bar del móvil.
 
@@ -3570,7 +3671,7 @@ Son los elementos con los que el joven interactua más seguido, como también lo
 <p align = "center">
 <img src="assets/img/navigation.png" alt="nav" width="500"/>
 
-###### Elementos de validación
+##### Elementos de validación
 
 Icons que aparecen para validar algún tipo de guardado que informe al usuario sobre la evaluación del sistema. 
 
@@ -3581,7 +3682,7 @@ Icons que aparecen para validar algún tipo de guardado que informe al usuario s
 <img src="assets/img/error.png" alt="x" width="300"/>
 
 
-###### Labeling System App para Dermatólogos certificados
+##### Labeling System App para Dermatólogos certificados
 
 En la vista profesional, las etiquetas se adaptan al entorno clínico, priorizando precisión y funcionalidad.
 Las secciones principales son Appointments and consultations, My patients, treatment plans and analytics.
@@ -3610,7 +3711,7 @@ En esta sección se definen los SEO Tags y Meta Tags utilizados en la plataforma
 
 - **Landing Page** 
 
-### Principal 
+#### Principal 
 
 - **Title:**  
   Bloomie — AI Skin Analysis & Personalized Skincare  
@@ -3626,7 +3727,7 @@ En esta sección se definen los SEO Tags y Meta Tags utilizados en la plataforma
 
 
 
-### Features
+#### Features
 
 - **Title:**  
   Features — Bloomie  
@@ -3641,7 +3742,7 @@ En esta sección se definen los SEO Tags y Meta Tags utilizados en la plataforma
 Dermacare
 
 
-### How it Works
+#### How it Works
 
 - **Title:**  
   How it works — Bloomie  
@@ -3655,7 +3756,7 @@ Dermacare
 - **Author:**  
 Dermacare
 
-###  Pricing
+####  Pricing
 
 - **Title:**  
   Pricing — Bloomie  
@@ -3669,7 +3770,7 @@ Dermacare
 - **Author:**  
 Dermacare
 
-### Results
+#### Results
 
 - **Title:**  
   Results — Bloomie  
@@ -3684,7 +3785,7 @@ Dermacare
  Dermacare  
 
 
-###  About Us
+####  About Us
 
 - **Title:**  
   About us — Bloomie  
@@ -3717,10 +3818,41 @@ Dermacare
 
 ### 4.2.4. Searching Systems
 
+El sistema de búsqueda de Bloomie fue diseñado para facilitar el acceso rápido a la
+información dentro de la aplicación, permitiendo a los usuarios y dermatólogos localizar
+contenido relevante de forma eficiente.
+
+#### 4.2.4.1. Searching System Landing Page
+La página principal no requiere un buscador interno, ya que la navegación se realiza mediante
+enlaces directos y anclas que guían al visitante a las secciones Home, Features, About Us,
+Pricing y Contact.
+El botón Log In actúa como un acceso hacia la plataforma principal, donde el usuario puede
+interactuar con los buscadores de la aplicación.
+
+#### 4.2.4.2. Searching System Aplicación para jóvenes interesados en skincare
+El módulo Buscar permite realizar dos tipos de búsquedas principales:
+1. Búsqueda de productos
+El usuario puede buscar entre productos de cuidado facial ingresando palabras clave o
+mediante filtros avanzados por categoría, marca.
+2. Búsqueda de dermatólogos
+Desde el mismo módulo, el usuario puede buscar dermatólogos registrados en
+Bloomie ingresando su nombre o especialidad.
+Los resultados muestran la foto del especialista, su nombre, experiencia, costo de
+consulta y disponibilidad.
+A través de esta vista, el usuario puede acceder directamente al perfil del profesional o
+reservar una cita.
+
+#### 4.2.4.3. Searching System Aplicación para dermatólogos certificados
+En la vista de dermatólogos, el módulo Buscar permite acceder rápidamente a información
+de pacientes o consultas previas.
+Los filtros disponibles incluyen nombre del paciente, fecha de consulta, diagnóstico,
+tratamiento recomendado o estado de seguimiento.
+La búsqueda se organiza de forma alfabética y cronológica, optimizando la trazabilidad de
+los casos clínicos y permitiendo una gestión más eficiente de los historiales médicos.
+
 ### 4.2.5. Navigation Systems
 
 La aplicación Bloomie, en su versión dirigida a jóvenes adultos interesados en el cuidado de la piel, está estructurada bajo un sistema de organización jerárquico, secuencial y parcialmente matricial, con el objetivo de ofrecer una experiencia intuitiva, guiada y flexible. Esta estructura responde directamente a los flujos representados en el sistema, donde el usuario avanza desde procesos iniciales controlados hacia una navegación más libre centrada en sus necesidades.
-
 
 
 #### Organización jerárquica
@@ -4065,9 +4197,6 @@ crear una cuenta y acceder a Bloomie.
 ![wireframe 1](assets/img/wireframes/wireframe-01-web.png)
 
 ![wireframe 1 mobile](assets/img/wireframes/wireframe-01-mobile.png)
-
-
-
 
 **Principios y elementos de diseño:**
 La pantalla aplica jerarquía visual clara, ubicando el nombre y slogan de
@@ -6667,13 +6796,13 @@ El User Flow Diagram establece que desde el nodo "Entrar al perfil" se despliega
 
 ---
 
-## Funcionalidades Prototipadas
+###### Funcionalidades Prototipadas
 
 Se documentan a continuación las cinco funcionalidades core capturadas en los prototipos, con su correspondencia directa a las Historias de Usuario definidas en el backlog del producto.
 
 ---
 
-### 1. Skin Scan — Escaneo y Diagnóstico Facial
+###### 1. Skin Scan — Escaneo y Diagnóstico Facial
 
 **Historias de Usuario relacionadas:** US03 (Escaneo facial), US04 (Diagnóstico preliminar automático), US12 (Consultar historial de escaneos faciales) — Epic E2: Análisis de piel.
 
@@ -6689,7 +6818,7 @@ La captura se ejecuta con feedback visual progresivo (animación de escaneo) par
 
 ---
 
-### 2. My Routine — Gestión de Rutina Personalizada
+###### 2. My Routine — Gestión de Rutina Personalizada
 
 **Historias de Usuario relacionadas:** US05 (Generar rutina personalizada), US06 (Reemplazar producto de la rutina), US07 (Registrar cumplimiento de rutina diaria) — Epic E3: Gestión de rutina personalizada.
 
@@ -6705,7 +6834,7 @@ El reemplazo de productos utiliza un patrón de bottom sheet en mobile y panel l
 
 ---
 
-### 3. Appointments — Atención Dermatológica
+###### 3. Appointments — Atención Dermatológica
 
 **Historias de Usuario relacionadas:** US14 (Listar y seleccionar dermatólogo), US15 (Pagar y confirmar cita), US16 (Cancelar cita dermatológica), US34 (Participar en consulta virtual) — Epic E7: Atención dermatológica.
 
@@ -6721,7 +6850,7 @@ El flujo de pago sigue un patrón de stepper lineal (selección de especialista 
 
 ---
 
-### 4. AI Assistant — Soporte Inteligente de Skincare
+###### 4. AI Assistant — Soporte Inteligente de Skincare
 
 **Historias de Usuario relacionadas:** US13 (Consultar asistente virtual de skincare) — Epic E6: Soporte inteligente.
 
@@ -6737,7 +6866,7 @@ El chat mantiene historial visible de la conversación dentro de la sesión. Los
 
 ---
 
-### 5. Profile — Gestión de Perfil del Usuario
+###### 5. Profile — Gestión de Perfil del Usuario
 
 **Historias de Usuario relacionadas:** US19 (Editar perfil e información personal), US20 (Actualizar características de piel), US21 (Cambiar contraseña), US17 (Seleccionar y pagar plan de suscripción), US18 (Gestionar suscripción activa) — Epics E9 y E8.
 
@@ -6760,7 +6889,7 @@ La pantalla Profile centraliza en una sola vista las acciones de identidad (nomb
 [Click aquí...](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416272_upc_edu_pe/IQAzPhKCTFaWQqbaO1hR91IiAbpzFiv8RWWchSUaAiI63p8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=obm15x)
 ![imagen-profile-vid](assets/img/prototyping/profile-vid-img.png)
    
-##### Consideraciones de Diseño Responsivo
+###### Consideraciones de Diseño Responsivo
 
 Los prototipos presentados corresponden a la versión Desktop Web Browser. La versión Mobile Web Browser adapta los mismos flujos con los siguientes ajustes estructurales:
 
@@ -6885,254 +7014,255 @@ Dermatological Appointment Context <br>
 <img src="assets/c4-bloomie/BloomieApiComponents-dark.png" alt="C4 Diagram" width="1000"/> <br>
  
 
-## Componentes - frontend
+#### Componentes - Frontend
 
-## IAM Bounded Context
+##### IAM Bounded Context
 
-### Contenedores y Capas
+Contenedores y Capas <br>
 ![IAM - Contenedores y Capas](assets/c4-frontend-bloomie/iam01-ContenedoresYCapas-dark.png)
 
-### Capa de Presentación
+Capa de Presentación <br>
 ![IAM - Capa de Presentación](assets/c4-frontend-bloomie/iam02-CapaPresentacion-dark.png)
 
-### Componentes de Views
+Componentes de Views
 ![IAM - Componentes de Views](assets/c4-frontend-bloomie/iam03-ComponentesViews-dark.png)
 
 ---
 
-## Skin Analysis Bounded Context
+##### Skin Analysis Bounded Context
 
-### Contenedores y Capas
+Contenedores y Capas  <br>
 ![Skin Analysis - Contenedores y Capas](assets/c4-frontend-bloomie/skin-analysis01-ContenedoresYCapas-dark.png)
 
-### Capa de Presentación
+Capa de Presentación  <br>
 ![Skin Analysis - Capa de Presentación](assets/c4-frontend-bloomie/skin-analysis02-CapaPresentacion-dark.png)
 
-### Componentes de Views
+Componentes de Views  <br>
 ![Skin Analysis - Componentes de Views](assets/c4-frontend-bloomie/skin-analysis03-ComponentesViews-dark.png)
 
 ---
 
-## Routine Management Bounded Context
+##### Routine Management Bounded Context
 
-### Contenedores y Capas
+Contenedores y Capas  <br>
 ![Routine Management - Contenedores y Capas](assets/c4-frontend-bloomie/routine01-ContenedoresYCapas-dark.png)
 
-### Capa de Presentación
+Capa de Presentación <br>
 ![Routine Management - Capa de Presentación](assets/c4-frontend-bloomie/routine02-CapaPresentacion-dark.png)
 
-### Componentes de Views
+Componentes de Views <br>
 ![Routine Management - Componentes de Views](assets/c4-frontend-bloomie/routine03-ComponentesViews-dark.png)
 
 ---
 
-## Product Discovery Bounded Context
+##### Product Discovery Bounded Context
 
-### Contenedores y Capas
+Contenedores y Capas <br>
 ![Product Discovery - Contenedores y Capas](assets/c4-frontend-bloomie/product-discovery01-ContenedoresYCapas-dark.png)
 
-### Capa de Presentación
+Capa de Presentación <br>
 ![Product Discovery - Capa de Presentación](assets/c4-frontend-bloomie/product-discovery02-CapaPresentacion-dark.png)
 
-### Componentes de Views
+Componentes de Views <br>
 ![Product Discovery - Componentes de Views](assets/c4-frontend-bloomie/product-discovery03-ComponentesViews-dark.png)
 
 ---
 
-## Dermatology Care Bounded Context
+##### Dermatology Care Bounded Context
 
-### Contenedores y Capas
+Contenedores y Capas <br>
 ![Dermatology Care - Contenedores y Capas](assets/c4-frontend-bloomie/dermatology-care01-ContenedoresYCapas-dark.png)
 
-### Capa de Presentación
+Capa de Presentación <br>
 ![Dermatology Care - Capa de Presentación](assets/c4-frontend-bloomie/dermatology-care02-CapaPresentacion-dark.png)
 
-### Componentes de Views
+Componentes de Views <br>
 ![Dermatology Care - Componentes de Views](assets/c4-frontend-bloomie/dermatology-care03-ComponentesViews-dark.png)
 
 ---
 
-## Intelligent Support Bounded Context
+##### Intelligent Support Bounded Context
 
-### Contenedores y Capas
+Contenedores y Capas  <br>
 ![Intelligent Support - Contenedores y Capas](assets/c4-frontend-bloomie/intelligent01-ContenedoresYCapas-dark.png)
 
-### Capa de Presentación
+Capa de Presentación  <br>
 ![Intelligent Support - Capa de Presentación](assets/c4-frontend-bloomie/intelligent02-CapaPresentacion-dark.png)
 
-### Componentes de Views
+Componentes de Views  <br>
 ![Intelligent Support - Componentes de Views](assets/c4-frontend-bloomie/intelligent03-ComponentesViews-dark.png)
 
-## Componentes - Backend
+#### Componentes - Backend
 
-## IAM Bounded Context
+##### IAM Bounded Context
 
-### Vista general de capas DDD
-<img src="assets/c4-bloomie/iamIamLayers-dark.png" width="800"/>
+Vista general de capas DDD <br>
+<img src="assets/c4-bloomie/iamIamLayers-dark.png" height="800"/>
 
-### Capa de Dominio
-<img src="assets/c4-bloomie/iamDomainLayerClasses-dark.png" width="800"/>
+Capa de Dominio <br>
+<img src="assets/c4-bloomie/iamDomainLayerClasses-dark.png" height="800"/>
 
-### Capa de Aplicación
-<img src="assets/c4-bloomie/iamApplicationLayerClasses-dark.png" width="800"/>
+Capa de Aplicación <br>
+<img src="assets/c4-bloomie/iamApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
-<img src="assets/c4-bloomie/iamInfrastructureLayerClasses-dark.png" width="800"/>
+Capa de Infraestructura <br>
+<img src="assets/c4-bloomie/iamInfrastructureLayerClasses-dark.png" height="800"/>
 
-### Capa de Interfaces
-<img src="assets/c4-bloomie/iamInterfaceLayerClasses-dark.png" width="800"/>
+Capa de Interfaces <br>
+<img src="assets/c4-bloomie/iamInterfaceLayerClasses-dark.png" height="800"/>
 
 ---
 
-## Skin Analysis Bounded Context
+##### Skin Analysis Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/SkinAnalysisLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/DomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
-<img src="assets/c4-bloomie/ApplicationLayerClasses-dark.png" width="800"/>
+Capa de Aplicación <br>
+<img src="assets/c4-bloomie/ApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/InfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/InterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
-## Routine Management Bounded Context
+##### Routine Management Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/routineRoutineManagementLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/routineDomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
-<img src="assets/c4-bloomie/routineApplicationLayerClasses-dark.png" width="800"/>
+Capa de Aplicación <br>
+<img src="assets/c4-bloomie/routineApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/routineInfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/routineInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
-## Product Discovery Bounded Context
+##### Product Discovery Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/productProductDiscoveryLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/productDomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
-<img src="assets/c4-bloomie/productApplicationLayerClasses-dark.png" width="800"/>
+Capa de Aplicación <br>
+<img src="assets/c4-bloomie/productApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/productInfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/productInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
-## Dermatology Care Bounded Context
+##### Dermatology Care Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/DermatologyCareLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/DermatologyDomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
-<img src="assets/c4-bloomie/DermatologyApplicationLayerClasses-dark.png" width="800"/>
+Capa de Aplicación <br>
+<img src="assets/c4-bloomie/DermatologyApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/DermatologyInfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/DermatologyInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
-## Dermatological Appointment Bounded Context
+##### Dermatological Appointment Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/appointmentDermatologicalAppointmentLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/appointmentDomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
-<img src="assets/c4-bloomie/appointmentApplicationLayerClasses-dark.png" width="800"/>
+Capa de Aplicación <br>
+<img src="assets/c4-bloomie/appointmentApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/appointmentInfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/appointmentInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
-## Subscriptions Bounded Context
+##### Subscriptions Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/subscriptionSubscriptionLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/subscriptionDomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
-<img src="assets/c4-bloomie/subscriptionApplicationLayerClasses-dark.png" width="800"/>
+Capa de Aplicación <br>
+<img src="assets/c4-bloomie/subscriptionApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/subscriptionInfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/subscriptionInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
-## Payments Bounded Context
+##### Payments Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/paymentsPaymentsLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/paymentsDomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
-<img src="assets/c4-bloomie/paymentsApplicationLayerClasses-dark.png" width="800"/>
+Capa de Aplicación <br>
+<img src="assets/c4-bloomie/paymentsApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/paymentsInfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/paymentsInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
-## Intelligent Support Bounded Context
+##### Intelligent Support Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/intelligentIntelligentSupportLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/intelligentDomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
-<img src="assets/c4-bloomie/intelligentApplicationLayerClasses-dark.png" width="800"/>
+Capa de Aplicación <br>
+<img src="assets/c4-bloomie/intelligentApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/intelligentInfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/intelligentInterfaceLayerClasses-dark.png" width="800"/>
+
 ## 4.7. Software Object-Oriented Design
 
 ### 4.7.1. Class Diagrams Backend
@@ -7142,7 +7272,8 @@ Dermatological Appointment Context <br>
 ## IAM
 
 ### Capa de Dominio
-![IAM - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam/01-domain.puml)
+![IAM - Domain](assets/diagrams/docs/iam/01-domain/iam-domain.png)
+
 
 ### Capa de Aplicación
 ![IAM - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam/02-application.puml)
@@ -7151,14 +7282,15 @@ Dermatological Appointment Context <br>
 ![IAM - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam/03-infrastructure.puml)
 
 ### Capa de Interfaces
-![IAM - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam/04-interfaces.puml)
+![IAM - Interfaces](assets/diagrams/docs/iam/04-interfaces/iam-interfaces.png)
+
 
 ---
 
 ## Skin Analysis
 
 ### Capa de Dominio
-![Skin Analysis - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skinanalysis/01-domain.puml)
+![Skin Analysis - Domain](out/assets/docs/skinanalysis/01-domain.png)
 
 ### Capa de Aplicación
 ![Skin Analysis - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skinanalysis/02-application.puml)
@@ -7174,7 +7306,8 @@ Dermatological Appointment Context <br>
 ## Routine Management
 
 ### Capa de Dominio
-![Routine Management - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/routinemanagement/01-domain.puml)
+![Routine Management - Domain](assets/diagrams/docs/routinemanagement/01-domain/routinemanagement-domain.png)
+
 
 ### Capa de Aplicación
 ![Routine Management - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/routinemanagement/02-application.puml)
@@ -7190,7 +7323,8 @@ Dermatological Appointment Context <br>
 ## Product Discovery
 
 ### Capa de Dominio
-![Product Discovery - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/productdiscovery/01-domain.puml)
+![Product Discovery - Domain](assets/diagrams/docs/productdiscovery/01-domain/productdiscovery-domain.png)
+
 
 ### Capa de Aplicación
 ![Product Discovery - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/productdiscovery/02-application.puml)
@@ -7206,13 +7340,14 @@ Dermatological Appointment Context <br>
 ## Dermatology Care
 
 ### Capa de Dominio
-![Dermatology Care - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologycare/01-domain.puml)
+![Dermatology Care - Domain](assets/diagrams/docs/dermatologycare/01-domain/dermatologycare-domain.png)
+
 
 ### Capa de Aplicación
 ![Dermatology Care - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologycare/02-application.puml)
 
 ### Capa de Infraestructura
-![Dermatology Care - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologycare/03-infrastructure.puml)
+![Dermatology Care - Infrastructure](assets/diagrams/docs/dermatologycare/03-infrastructure/dermatologycare-infrastructure.png)
 
 ### Capa de Interfaces
 ![Dermatology Care - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologycare/04-interfaces.puml)
@@ -7222,7 +7357,8 @@ Dermatological Appointment Context <br>
 ## Dermatological Appointment
 
 ### Capa de Dominio
-![Dermatological Appointment - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologicalappointment/01-domain.puml)
+![Dermatological Appointment - Domain](assets/diagrams/docs/dermatologicalappointment/01-domain/dermatologicalappointment-domain.png)
+
 
 ### Capa de Aplicación
 ![Dermatological Appointment - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologicalappointment/02-application.puml)
@@ -7231,14 +7367,17 @@ Dermatological Appointment Context <br>
 ![Dermatological Appointment - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologicalappointment/03-infrastructure.puml)
 
 ### Capa de Interfaces
-![Dermatological Appointment - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologicalappointment/04-interfaces.puml)
+![Dermatological Appointment - Interfaces](assets/diagrams/docs/dermatologicalappointment/04-interfaces/dermatologicalappointment-interfaces.png)
+
+
 
 ---
 
 ## Subscription
 
 ### Capa de Dominio
-![Subscription - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/subscription/01-domain.puml)
+![Subscription - Domain](assets/diagrams/docs/subscription/01-domain/subscription-domain.png)
+
 
 ### Capa de Aplicación
 ![Subscription - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/subscription/02-application.puml)
@@ -7254,7 +7393,8 @@ Dermatological Appointment Context <br>
 ## Payments
 
 ### Capa de Dominio
-![Payments - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/payments/01-domain.puml)
+![Payments - Domain](assets/diagrams/docs/payments/01-domain/payments-domain.png)
+
 
 ### Capa de Aplicación
 ![Payments - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/payments/02-application.puml)
@@ -7270,7 +7410,7 @@ Dermatological Appointment Context <br>
 ## Intelligent Support
 
 ### Capa de Dominio
-![Intelligent Support - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/intelligentsupport/01-domain.puml)
+![Intelligent Support - Domain](assets/diagrams/docs/intelligentsupport/01-domain/intelligentsupport-domain.png)
 
 ### Capa de Aplicación
 ![Intelligent Support - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/intelligentsupport/02-application.puml)
@@ -7281,7 +7421,6 @@ Dermatological Appointment Context <br>
 ### Capa de Interfaces
 ![Intelligent Support - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/intelligentsupport/04-interfaces.puml)
 
-
 ## 4.8. Database Design
 
 ### 4.8.1. Database Diagrams
@@ -7290,31 +7429,31 @@ En esta sección se presentan los Database Diagrams de Bloomie, elaborados para 
 
 <img src="assets/img/bloomie-db.png" alt="DB Diagram" width="1000"/> <br>
 
-### Identity and Access Management
+#### Identity and Access Management
 <img src="assets/img/Diagrama-base-de-datos/iam.png" alt="DB Diagram" width="1000"/> <br>
 
-### Dermatology Care
+#### Dermatology Care
 <img src="assets/img/Diagrama-base-de-datos/dermatologycare.png" alt="DB Diagram" width="1000"/> <br>
 
-### Intelligent Support
+#### Intelligent Support
 <img src="assets/img/Diagrama-base-de-datos/intelligentsupport.png" alt="DB Diagram" width="1000"/> <br>
 
-### Payments
+#### Payments
 <img src="assets/img/Diagrama-base-de-datos/payments .png" alt="DB Diagram" width="600"/> <br>
 
-### Subscriptions
+#### Subscriptions
 <img src="assets/img/Diagrama-base-de-datos/subscription.png" alt="DB Diagram" width="1000"/> <br>
 
-### Product Discovery
+#### Product Discovery
 <img src="assets/img/Diagrama-base-de-datos/productdiscovery.png" alt="DB Diagram" width="1000"/> <br>
 
-### Routine Management
+#### Routine Management
 <img src="assets/img/Diagrama-base-de-datos/routinemanagement.png" alt="DB Diagram" width="1000"/> <br>
 
-### Skin Analysis
+#### Skin Analysis
 <img src="assets/img/Diagrama-base-de-datos/skinanalysis.png" alt="DB Diagram" width="1000"/> <br>
 
-### Suscription
+#### Suscription
 <img src="assets/img/Diagrama-base-de-datos/subscription.png" alt="DB Diagram" width="1000"/> <br>
 
 
@@ -7380,7 +7519,7 @@ una vez completada y revisada.
 
 Convención de nomenclatura:
 
-### feature/<descripción-en-kebab-case>
+#### feature/<descripción-en-kebab-case>
 Ejemplos aplicados durante el Sprint 1 en el repositorio del informe:
 
 - `feature/startup-profile`
@@ -8999,11 +9138,11 @@ Tabla de los commits mas importantes para el Backend, Frontend y Landing Page
 #### 5.2.3.5. Execution Evidence for Sprint Review
 Durante este Sprint, la plataforma Bloomie logró la integración entre el frontend Angular y el backend Spring Boot en los bounded contexts principales: IAM, Skin Analysis y Routine Management, Citas dermatológicas. Las principales funcionalidades implementadas y validadas incluyen el registro de usuario, la creación del perfil de piel mediante el formulario de estilo de vida, el envío del escaneo facial con generación automática del análisis de piel, la generación de rutina personalizada disparada por eventos de dominio, y el seguimiento diario de rutina. El backend fue desplegado exitosamente en Azure App Service y conectado a Azure Database for MySQL, permitiendo que el flujo completo del usuario funcione en un entorno de producción.
 
-### Swagger UI — Endpoints Documentados
+##### Swagger UI — Endpoints Documentados
 
 ![swagger](assets/img/swagger.png)
 
-### Evidencias de método POST - GET en la página web
+##### Evidencias de método POST - GET en la página web
 ![sign-in-db](assets/img/auth-response.png)
 ![skin-db](assets/img/skin-profile-response.png) 
 ![scan-response](assets/img/scan-result-response.png) 
@@ -9023,7 +9162,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 
 ---
 
-### Endpoints Documentados
+##### Endpoints Documentados
 
 | Bounded Context | Verbo HTTP | Endpoint | Descripción |
 |---|---|---|---|
@@ -9085,9 +9224,9 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 
 ---
 
-### Detalle de Endpoints Principales
+##### Detalle de Endpoints Principales
 
-#### POST `/api/v1/authentication/register`
+##### POST `/api/v1/authentication/register`
 **Parámetros:** Body JSON
 ```json
 {
@@ -9107,7 +9246,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 }
 ```
 
-#### POST `/api/v1/skin-profiles`
+##### POST `/api/v1/skin-profiles`
 **Parámetros:** Body JSON
 ```json
 {
@@ -9133,7 +9272,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 }
 ```
 
-#### POST `/api/v1/facial-scans`
+##### POST `/api/v1/facial-scans`
 **Parámetros:** Body JSON
 ```json
 {
@@ -9151,7 +9290,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 }
 ```
 
-#### PUT `/api/v1/facial-scans/{facialScanId}/submit`
+##### PUT `/api/v1/facial-scans/{facialScanId}/submit`
 **Parámetros:** Path `facialScanId`, Body JSON
 ```json
 {
@@ -9160,7 +9299,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 ```
 **Response 200:** Devuelve el `FacialScan` actualizado con status `SUBMITTED`. Dispara automáticamente la generación del `SkinAnalysis` y la `Routine` mediante eventos de dominio.
 
-#### GET `/api/v1/skin-analyses/facial-scan/{facialScanId}`
+##### GET `/api/v1/skin-analyses/facial-scan/{facialScanId}`
 **Parámetros:** Path `facialScanId`
 **Response 200:**
 ```json
@@ -9178,7 +9317,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 }
 ```
 
-#### GET `/api/v1/routines/patient/{patientId}`
+##### GET `/api/v1/routines/patient/{patientId}`
 **Parámetros:** Path `patientId`
 **Response 200:**
 ```json
@@ -9196,7 +9335,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 }
 ```
 
-#### POST `/api/v1/daily-trackings`
+##### POST `/api/v1/daily-trackings`
 **Parámetros:** Body JSON
 ```json
 {
@@ -9207,7 +9346,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 ```
 **Response 201:** Devuelve el ID del `DailyTracking` creado.
 
-#### GET `/api/v1/daily-trackings/patient/{patientId}/weekly-summary`
+##### GET `/api/v1/daily-trackings/patient/{patientId}/weekly-summary`
 **Parámetros:** Path `patientId`
 **Response 200:**
 ```json
@@ -9223,8 +9362,9 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 
 ---
 
-### Imágenes de interacción utilizando datos de prueba
-### Registro de Usuario
+###### Imágenes de interacción utilizando datos de prueba
+
+Registro de Usuario <br>
 
 El usuario se registra desde la vista de sign-up. La solicitud se envía a `POST /api/v1/authentication/register` y retorna 201 Created. El nuevo registro de usuario se persiste en la base de datos.
 
@@ -9232,7 +9372,7 @@ El usuario se registra desde la vista de sign-up. La solicitud se envía a `POST
 ![sign-in-response](assets/img/auth-response.png)
 ![sign-in-db](assets/img/sign-in-bd.png)
 
-### Creación del Perfil de Piel
+Creación del Perfil de Piel <br>
 
 Después del registro, el paciente completa el formulario de estilo de vida con su tipo de piel, ingesta de agua, exposición solar y hábitos de sueño. El sistema envía una solicitud `POST /api/v1/skin-profiles` y persiste el perfil en la base de datos.
 
@@ -9240,7 +9380,7 @@ Después del registro, el paciente completa el formulario de estilo de vida con 
 ![skin-response](assets/img/skin-profile-response.png)
 ![skin-db](assets/img/skin-profile-bd.png)
 
-### Envío del Escaneo Facial y Análisis de Piel
+Envío del Escaneo Facial y Análisis de Piel <br>
 
 El paciente envía un escaneo facial con una foto. El sistema dispara automáticamente el pipeline de análisis de piel mediante eventos de dominio, generando un aggregate `SkinAnalysis` con puntajes determinísticos basados en el tipo de piel y sensibilidad del paciente.
 
@@ -9248,7 +9388,7 @@ El paciente envía un escaneo facial con una foto. El sistema dispara automátic
 ![scan-response](assets/img/scan-result-response.png)
 ![scan-db](assets/img/scan-bd.png)
 
-### Generación de Rutina Personalizada
+Generación de Rutina Personalizada <br>
 
 Al completarse el análisis de piel, se publica un `PreliminaryDiagnosisGeneratedIntegrationEvent` que es consumido por el bounded context de Routine Management, el cual genera automáticamente una rutina personalizada con recomendaciones de productos adaptadas al tipo de piel del paciente.
 
@@ -9674,7 +9814,7 @@ de Subscriptions, Payments y Dermatology Care.
 | Chat Messages | Get messages by consultation | GET | /api/v1/chat-messages | Query: consultationId (Long) | 200: [ { "id": 1, "content": "Buenos días doctor", "sentAt": "2026-07-01T10:05:00" } ] | Retorna todos los mensajes de chat de una consulta virtual ordenados cronológicamente. |
 
 
-## Imágenes de interacción
+##### Imágenes de interacción
 
 **Registro y Selección de Plan con Stripe**
 
@@ -9946,7 +10086,7 @@ Los User Flows propuestos corresponden a las funcionalidades core del panel del 
 
 ### 5.3.2. Registro de Entrevistas.
 
-## Primer segmento: Jóvenes adultos
+#### Primer segmento: Jóvenes adultos
 
 <u>Entrevista 1:</u>
 
@@ -10036,7 +10176,7 @@ Al pasar al portal web, Britny realizó el flujo de búsqueda y selección de un
 En términos generales, Britny tuvo una experiencia muy positiva en ambas partes de la sesión, sin reportar confusión en ninguna de las tareas asignadas. Su única sugerencia fue incorporar la foto del especialista en el perfil. Calificó a Bloomie como una aplicación prometedora, con una interfaz intuitiva y precios accesibles para el cuidado de la piel.
 
 
-## Segundo segmento: Dermatólogos certificados
+#### Segundo segmento: Dermatólogos certificados
 
 <u>Entrevista 1:</u>
 
@@ -10145,7 +10285,7 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 3. Gestión de suscripciones y pagos
 4. Flujo completo de agendamiento de cita
 
-### ESCALA DE SEVERIDAD
+#### ESCALA DE SEVERIDAD
 
 Los errores serán puntuados tomando en cuenta la siguiente escala de severidad:
 
@@ -10166,9 +10306,9 @@ Los errores serán puntuados tomando en cuenta la siguiente escala de severidad:
 | 5 | La sección de consultas pasadas muestra notas clínicas bajo una etiqueta que dice "Diagnosis" | 2 | Information Architecture: Is it communicative? |
 | 6 | La cancelación de una cita se ejecuta sin solicitar confirmación al usuario | 3 | Usability: Prevención de errores |
 
-### DESCRIPCIÓN DE PROBLEMAS:
+#### DESCRIPCIÓN DE PROBLEMAS:
 
-#### PROBLEMA #1: Las fechas de las consultas pasadas se muestran en formato ISO 8601
+##### PROBLEMA #1: Las fechas de las consultas pasadas se muestran en formato ISO 8601
 Severidad: 3
 Heurística violada: Usability — Relación entre el sistema y el mundo real
 Problema:
@@ -10183,7 +10323,7 @@ Recomendación:
 Formatear la fecha antes de presentarla al usuario utilizando un formato legible según el idioma activo de la aplicación, por ejemplo April 10, 2026 – 10:00 AM en inglés o 10 de abril de 2026 – 10:00 a.m. en español.
 
 
-#### PROBLEMA #2: Los productos en la rutina se muestran como identificador numérico
+##### PROBLEMA #2: Los productos en la rutina se muestran como identificador numérico
 Severidad: 3
 Heurística violada: Usability — Relación entre el sistema y el mundo real
 Problema:
@@ -10196,7 +10336,7 @@ Recomendación:
 
 Resolver el nombre del producto a partir de su ID antes de renderizar la vista, mostrando el nombre comercial del producto, su categoría o ambos, por ejemplo: Niacinamide 10% + Zinc 1% — Serum.
 
-#### PROBLEMA #3: No existe opción para descartar el resultado de un escaneo facial
+##### PROBLEMA #3: No existe opción para descartar el resultado de un escaneo facial
 Severidad: 2
 Heurística violada: Usability — Libertad y control del usuario
 Problema:
@@ -10209,7 +10349,7 @@ Recomendación:
 
 Agregar un botón secundario como Discard and Retake que permita al usuario descartar el resultado y reiniciar el proceso de escaneo sin guardar el análisis actual.
 
-#### PROBLEMA #4: Las tarjetas de productos no tienen imagen representativa
+##### PROBLEMA #4: Las tarjetas de productos no tienen imagen representativa
 Severidad: 2
 Principio violado: Inclusive Design — Proporciona experiencias comparables
 Problema:
@@ -10222,7 +10362,7 @@ Recomendación:
 
 Incorporar imágenes reales de los productos en el catálogo. Como solución intermedia, se puede categorizar visualmente los productos usando íconos o colores diferenciadores por categoría (cleanser, serum, moisturizer, sunscreen) para que el usuario pueda distinguirlos visualmente mientras se implementan las imágenes reales.
 
-#### PROBLEMA #5: Etiqueta "Diagnosis" mostrando contenido de notas clínicas
+##### PROBLEMA #5: Etiqueta "Diagnosis" mostrando contenido de notas clínicas
 Severidad: 2
 Principio violado: Information Architecture — Is it communicative?
 Problema:
@@ -10236,7 +10376,7 @@ Recomendación:
 
 Corregir la etiqueta para que refleje con precisión el tipo de contenido mostrado. Si el campo corresponde a notas clínicas, la etiqueta debe ser Clinical Notes o Notes. Si se desea mostrar un diagnóstico diferenciado, este debe provenir de un campo específico del modelo de datos.
 
-#### PROBLEMA #6: Cancelación de cita se ejecuta sin solicitar confirmación
+##### PROBLEMA #6: Cancelación de cita se ejecuta sin solicitar confirmación
 Severidad: 3
 Heurística violada: Usability — Prevención de errores
 Problema:
@@ -10403,9 +10543,6 @@ adecuado.
 
 # Anexos
 
-## Anexo A
-
-
 ## Usuario de prueba para el portal de pacientes
 **email**: prueba@gmail.com
 **contraseña**: 12345678
@@ -10413,8 +10550,6 @@ adecuado.
 ## Usuario de prueba para el portal de dermatólogos
 **email**: pruebadoctor@gmail.com
 **contraseña**: 12345678
-
----
 
 URL del repositorio (Report):  [Repositorio Reporte](https://github.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report)
 
