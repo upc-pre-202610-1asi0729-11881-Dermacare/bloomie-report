@@ -3527,7 +3527,7 @@ etiquetas, títulos y botones fueron redactados en un lenguaje cotidiano y cerca
 que los usuarios comprendan fácilmente las acciones que pueden realizar, reduciendo la carga 
 cognitiva y reforzando la identidad visual de la marca.
 
-##### Labeling System Landing Page
+#### Labeling System Landing Page
 
 En la interfaz web se utilizan etiquetas sencillas y universales que guían la exploración inicial del usuario: How it works, Results, Features, About Us, Pricing y Log in en el navigation bar del encabezado principal. Estas se acompañan con botones de otro color como "Analyze my skin" redactados con verbos directos que promueven la interacción con el usuario e incite a utilizar una funcionalidad clave de nuestro producto. 
 El encabezado principal incluye el apartado de traducción de idiomas con el i18n, complementado con subtítulos que explican brevemente la propuesta de valor de Bloomie y el botón principal de descarga.
@@ -3548,11 +3548,11 @@ luego, mantenemos una paleta de colores de contraste entre los blancos con sombr
 <img src="assets/img/button.png" alt="mensaje-barra" width="500"/>
 
 
-##### Labeling System App para Jóvenes adultos
+#### Labeling System App para Jóvenes adultos
 
 En la versión móvil, las etiquetas se enfocan en la acción y el beneficio, manteniendo un tono amable		y		motivador. En el dashboard principal se observan las etiquetas: Personalized skincare, Consult a dermatologist,	Product		suggestion,		etc. Dentro de cada módulo, se mantienen etiquetas descriptivas como Mi rutina, Productos recomendados,   Añadir  paso,   Mis  consultas  y  Resultados  de  análisis. El lenguaje empleado es cercano y positivo, en línea con la voz de marca que busca acompañar y educar al usuario en su cuidado personal.
 
-###### Iconografía estándar
+##### Iconografía estándar
 
 En este apartado de considera todos los icons que son completamente intuitivos para el usuario que se adapta a una acción o funcionalidad en específico.
 
@@ -3562,7 +3562,7 @@ En este apartado de considera todos los icons que son completamente intuitivos p
 
 
 
-###### Elementos de interacción activa
+##### Elementos de interacción activa
 
 Son los elementos con los que el joven interactua más seguido, como también lo cumple la navigation bar del móvil.
 
@@ -3570,7 +3570,7 @@ Son los elementos con los que el joven interactua más seguido, como también lo
 <p align = "center">
 <img src="assets/img/navigation.png" alt="nav" width="500"/>
 
-###### Elementos de validación
+##### Elementos de validación
 
 Icons que aparecen para validar algún tipo de guardado que informe al usuario sobre la evaluación del sistema. 
 
@@ -3581,7 +3581,7 @@ Icons que aparecen para validar algún tipo de guardado que informe al usuario s
 <img src="assets/img/error.png" alt="x" width="300"/>
 
 
-###### Labeling System App para Dermatólogos certificados
+##### Labeling System App para Dermatólogos certificados
 
 En la vista profesional, las etiquetas se adaptan al entorno clínico, priorizando precisión y funcionalidad.
 Las secciones principales son Appointments and consultations, My patients, treatment plans and analytics.
@@ -3610,7 +3610,7 @@ En esta sección se definen los SEO Tags y Meta Tags utilizados en la plataforma
 
 - **Landing Page** 
 
-### Principal 
+#### Principal 
 
 - **Title:**  
   Bloomie — AI Skin Analysis & Personalized Skincare  
@@ -3626,7 +3626,7 @@ En esta sección se definen los SEO Tags y Meta Tags utilizados en la plataforma
 
 
 
-### Features
+#### Features
 
 - **Title:**  
   Features — Bloomie  
@@ -3641,7 +3641,7 @@ En esta sección se definen los SEO Tags y Meta Tags utilizados en la plataforma
 Dermacare
 
 
-### How it Works
+#### How it Works
 
 - **Title:**  
   How it works — Bloomie  
@@ -3655,7 +3655,7 @@ Dermacare
 - **Author:**  
 Dermacare
 
-###  Pricing
+####  Pricing
 
 - **Title:**  
   Pricing — Bloomie  
@@ -3669,7 +3669,7 @@ Dermacare
 - **Author:**  
 Dermacare
 
-### Results
+#### Results
 
 - **Title:**  
   Results — Bloomie  
@@ -3684,7 +3684,7 @@ Dermacare
  Dermacare  
 
 
-###  About Us
+####  About Us
 
 - **Title:**  
   About us — Bloomie  
@@ -3720,7 +3720,6 @@ Dermacare
 ### 4.2.5. Navigation Systems
 
 La aplicación Bloomie, en su versión dirigida a jóvenes adultos interesados en el cuidado de la piel, está estructurada bajo un sistema de organización jerárquico, secuencial y parcialmente matricial, con el objetivo de ofrecer una experiencia intuitiva, guiada y flexible. Esta estructura responde directamente a los flujos representados en el sistema, donde el usuario avanza desde procesos iniciales controlados hacia una navegación más libre centrada en sus necesidades.
-
 
 
 #### Organización jerárquica
