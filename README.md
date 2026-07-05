@@ -3816,6 +3816,38 @@ Dermacare
 
 ### 4.2.4. Searching Systems
 
+El sistema de búsqueda de Bloomie fue diseñado para facilitar el acceso rápido a la
+información dentro de la aplicación, permitiendo a los usuarios y dermatólogos localizar
+contenido relevante de forma eficiente.
+
+#### 4.2.4.1. Searching System Landing Page
+La página principal no requiere un buscador interno, ya que la navegación se realiza mediante
+enlaces directos y anclas que guían al visitante a las secciones Home, Features, About Us,
+Pricing y Contact.
+El botón Log In actúa como un acceso hacia la plataforma principal, donde el usuario puede
+interactuar con los buscadores de la aplicación.
+
+#### 4.2.4.2. Searching System Aplicación para jóvenes interesados en skincare
+El módulo Buscar permite realizar dos tipos de búsquedas principales:
+1. Búsqueda de productos
+El usuario puede buscar entre productos de cuidado facial ingresando palabras clave o
+mediante filtros avanzados por categoría, marca.
+2. Búsqueda de dermatólogos
+Desde el mismo módulo, el usuario puede buscar dermatólogos registrados en
+Bloomie ingresando su nombre o especialidad.
+Los resultados muestran la foto del especialista, su nombre, experiencia, costo de
+consulta y disponibilidad.
+A través de esta vista, el usuario puede acceder directamente al perfil del profesional o
+reservar una cita.
+
+#### 4.2.4.3. Searching System Aplicación para dermatólogos certificados
+En la vista de dermatólogos, el módulo Buscar permite acceder rápidamente a información
+de pacientes o consultas previas.
+Los filtros disponibles incluyen nombre del paciente, fecha de consulta, diagnóstico,
+tratamiento recomendado o estado de seguimiento.
+La búsqueda se organiza de forma alfabética y cronológica, optimizando la trazabilidad de
+los casos clínicos y permitiendo una gestión más eficiente de los historiales médicos.
+
 ### 4.2.5. Navigation Systems
 
 La aplicación Bloomie, en su versión dirigida a jóvenes adultos interesados en el cuidado de la piel, está estructurada bajo un sistema de organización jerárquico, secuencial y parcialmente matricial, con el objetivo de ofrecer una experiencia intuitiva, guiada y flexible. Esta estructura responde directamente a los flujos representados en el sistema, donde el usuario avanza desde procesos iniciales controlados hacia una navegación más libre centrada en sus necesidades.
