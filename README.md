@@ -7097,19 +7097,19 @@ Componentes de Views  <br>
 ##### IAM Bounded Context
 
 Vista general de capas DDD <br>
-<img src="assets/c4-bloomie/iamIamLayers-dark.png" height="800"/>
+<img src="assets/c4-bloomie/iamIamLayers-dark.png" width="800"/>
 
 Capa de Dominio <br>
-<img src="assets/c4-bloomie/iamDomainLayerClasses-dark.png" height="800"/>
+<img src="assets/c4-bloomie/iamDomainLayerClasses-dark.png" width="800"/>
 
 Capa de Aplicación <br>
 <img src="assets/c4-bloomie/iamApplicationLayerClasses-dark.png" width="600"/>
 
 Capa de Infraestructura <br>
-<img src="assets/c4-bloomie/iamInfrastructureLayerClasses-dark.png" height="800"/>
+<img src="assets/c4-bloomie/iamInfrastructureLayerClasses-dark.png" width="800"/>
 
 Capa de Interfaces <br>
-<img src="assets/c4-bloomie/iamInterfaceLayerClasses-dark.png" height="800"/>
+<img src="assets/c4-bloomie/iamInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
