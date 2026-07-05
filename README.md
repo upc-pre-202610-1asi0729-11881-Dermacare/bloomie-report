@@ -9494,7 +9494,7 @@ todas las vistas de la aplicación y se publicaron los videos About the Product 
 the Team. A continuación se presentan las principales vistas implementadas durante el 
 sprint.
 
-**URL del video de ejecución:** https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241b843_upc_edu_pe/IQBHPhOMX3qTRoM8TGngdNpJAZlwDr7Y1RSdqLLEm7fnnNk?e=gD4MhP
+**URL del video de ejecución:** [Ver aquí...](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241b843_upc_edu_pe/IQBHPhOMX3qTRoM8TGngdNpJARn4_AUWyMdFk-rh5HJONUE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=u0zwGc)
 
 ---
 
@@ -10231,9 +10231,9 @@ del segmento de dermatólogos, quienes expresan su opinión sobre la propuesta d
 de Bloomie. El video está disponible en Microsoft Stream y en YouTube, y se encuentra
 incrustado en la Landing Page del producto.
 
-**Microsoft Stream:** https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241b843_upc_edu_pe/IQDu96J8TapGTJZmvkV1EdXpARUk3t7E8ITiCe4zH8EjGTw?e=7t4xlF
+**Microsoft Stream:** [Ver aquí...](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202414802_upc_edu_pe/IQCLZQbk1nMDR5zlKgwLHl-gASkxdYG1uU3MCx8ibLTBe5g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=eENcRM)
 
-**YouTube:** https://youtu.be/PY43RkoGocc?si=J49vvlpaSJ3fSCid
+**YouTube:** https://youtu.be/pFUj0ZZU50A?si=M_1KEJRO0txqCB4J
 
 <img src="assets/img/about-product.png" width="500"/>
 
@@ -10252,9 +10252,9 @@ las actividades que realizó, los outcomes de aprendizaje logrados y las compete
 desarrolladas a lo largo del proyecto. El video está disponible en Microsoft Stream y
 en YouTube, y se encuentra incrustado en la Landing Page del producto.
 
-**Microsoft Stream:** https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416272_upc_edu_pe/IQB47eNi7uD-SZtLrmG1C6K9Aa38Jb27oKHBTQK-y9f7yqA?e=o5ZCsk
+**Microsoft Stream:** [Ver aquí...](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416272_upc_edu_pe/IQAE0grnnK-IQqLo15GHvKy1AST6GVO0LBl8YGvenPE6jgw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=PDPSHW)
 
-**YouTube:** https://youtu.be/EY9q8qPghf0?si=vW0y2XiUGsA_iNom
+**YouTube:** https://youtu.be/0IyUOE8eXvw
 
 <img src="assets/img/about-team.png" width="500"/>
 
@@ -10394,6 +10394,11 @@ Video exposición TB1: [Click aquí...](https://upcedupe-my.sharepoint.com/:v:/g
 
 Video exposición AV2: [Click aquí...](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202414802_upc_edu_pe/IQCmXMM4EPCYToLXeyIfPNHEAQLouA-oKa0d86hEqbswBPo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ALIcMA)
 
-Video About The Product: https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241b843_upc_edu_pe/IQDu96J8TapGTJZmvkV1EdXpARUk3t7E8ITiCe4zH8EjGTw?e=7t4xlF&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+Video About The Product (Primera versión): [Click aquí..](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241b843_upc_edu_pe/IQDu96J8TapGTJZmvkV1EdXpARUk3t7E8ITiCe4zH8EjGTw?e=7t4xlF&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 
-Video About The Team: https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416272_upc_edu_pe/IQB47eNi7uD-SZtLrmG1C6K9Aa38Jb27oKHBTQK-y9f7yqA?e=o5ZCsk&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+Video About The Product (Segunda versión):  [Click aquí..](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202414802_upc_edu_pe/IQCLZQbk1nMDR5zlKgwLHl-gASkxdYG1uU3MCx8ibLTBe5g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=eENcRM)
+
+Video About The Team (Primera versión):  [Click aquí..](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416272_upc_edu_pe/IQB47eNi7uD-SZtLrmG1C6K9Aa38Jb27oKHBTQK-y9f7yqA?e=o5ZCsk&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
+Video About The Team (Segunda versión): [Click aquí...](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416272_upc_edu_pe/IQAE0grnnK-IQqLo15GHvKy1AST6GVO0LBl8YGvenPE6jgw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=PDPSHW)
+
