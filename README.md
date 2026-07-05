@@ -6968,172 +6968,171 @@ Dermatological Appointment Context <br>
 ## IAM Bounded Context
 
 ### Vista general de capas DDD
-![IAM - Layers Overview](assets/c4-bloomie/iamIamLayers-dark.png)
+<img src="assets/c4-bloomie/iamIamLayers-dark.png" width="800"/>
 
 ### Capa de Dominio
-![IAM - Domain Layer](assets/c4-bloomie/iamDomainLayerClasses-dark.png)
+<img src="assets/c4-bloomie/iamDomainLayerClasses-dark.png" width="800"/>
 
 ### Capa de Aplicación
-![IAM - Application Layer](assets/c4-bloomie/iamApplicationLayerClasses-dark.png)
+<img src="assets/c4-bloomie/iamApplicationLayerClasses-dark.png" width="800"/>
 
 ### Capa de Infraestructura
-![IAM - Infrastructure Layer](assets/c4-bloomie/iamInfrastructureLayerClasses-dark.png)
+<img src="assets/c4-bloomie/iamInfrastructureLayerClasses-dark.png" width="800"/>
 
 ### Capa de Interfaces
-![IAM - Interface Layer](assets/c4-bloomie/iamInterfaceLayerClasses-dark.png)
+<img src="assets/c4-bloomie/iamInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
 ## Skin Analysis Bounded Context
 
 ### Vista general de capas DDD
-![Skin Analysis - Layers Overview](assets/c4-bloomie/SkinAnalysisLayers-dark.png)
+<img src="assets/c4-bloomie/SkinAnalysisLayers-dark.png" width="800"/>
 
 ### Capa de Dominio
-![Skin Analysis - Domain Layer](assets/c4-bloomie/DomainLayerClasses-dark.png)
+<img src="assets/c4-bloomie/DomainLayerClasses-dark.png" width="800"/>
 
 ### Capa de Aplicación
-![Skin Analysis - Application Layer](assets/c4-bloomie/ApplicationLayerClasses-dark.png)
+<img src="assets/c4-bloomie/ApplicationLayerClasses-dark.png" width="800"/>
 
 ### Capa de Infraestructura
-![Skin Analysis - Infrastructure Layer](assets/c4-bloomie/InfrastructureLayerClasses-dark.png)
+<img src="assets/c4-bloomie/InfrastructureLayerClasses-dark.png" width="800"/>
 
 ### Capa de Interfaces
-![Skin Analysis - Interface Layer](assets/c4-bloomie/InterfaceLayerClasses-dark.png)
+<img src="assets/c4-bloomie/InterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
 ## Routine Management Bounded Context
 
 ### Vista general de capas DDD
-![Routine Management - Layers Overview](assets/c4-bloomie/routineRoutineManagementLayers-dark.png)
+<img src="assets/c4-bloomie/routineRoutineManagementLayers-dark.png" width="800"/>
 
 ### Capa de Dominio
-![Routine Management - Domain Layer](assets/c4-bloomie/routineDomainLayerClasses-dark.png)
+<img src="assets/c4-bloomie/routineDomainLayerClasses-dark.png" width="800"/>
 
 ### Capa de Aplicación
-![Routine Management - Application Layer](assets/c4-bloomie/routineApplicationLayerClasses-dark.png)
+<img src="assets/c4-bloomie/routineApplicationLayerClasses-dark.png" width="800"/>
 
 ### Capa de Infraestructura
-![Routine Management - Infrastructure Layer](assets/c4-bloomie/routineInfrastructureLayerClasses-dark.png)
+<img src="assets/c4-bloomie/routineInfrastructureLayerClasses-dark.png" width="800"/>
 
 ### Capa de Interfaces
-![Routine Management - Interface Layer](assets/c4-bloomie/routineInterfaceLayerClasses-dark.png)
+<img src="assets/c4-bloomie/routineInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
 ## Product Discovery Bounded Context
 
 ### Vista general de capas DDD
-![Product Discovery - Layers Overview](assets/c4-bloomie/productProductDiscoveryLayers-dark.png)
+<img src="assets/c4-bloomie/productProductDiscoveryLayers-dark.png" width="800"/>
 
 ### Capa de Dominio
-![Product Discovery - Domain Layer](assets/c4-bloomie/productDomainLayerClasses-dark.png)
+<img src="assets/c4-bloomie/productDomainLayerClasses-dark.png" width="800"/>
 
 ### Capa de Aplicación
-![Product Discovery - Application Layer](assets/c4-bloomie/productApplicationLayerClasses-dark.png)
+<img src="assets/c4-bloomie/productApplicationLayerClasses-dark.png" width="800"/>
 
 ### Capa de Infraestructura
-![Product Discovery - Infrastructure Layer](assets/c4-bloomie/productInfrastructureLayerClasses-dark.png)
+<img src="assets/c4-bloomie/productInfrastructureLayerClasses-dark.png" width="800"/>
 
 ### Capa de Interfaces
-![Product Discovery - Interface Layer](assets/c4-bloomie/productInterfaceLayerClasses-dark.png)
+<img src="assets/c4-bloomie/productInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
 ## Dermatology Care Bounded Context
 
 ### Vista general de capas DDD
-![Dermatology Care - Layers Overview](assets/c4-bloomie/DermatologyCareLayers-dark.png)
+<img src="assets/c4-bloomie/DermatologyCareLayers-dark.png" width="800"/>
 
 ### Capa de Dominio
-![Dermatology Care - Domain Layer](assets/c4-bloomie/DermatologyDomainLayerClasses-dark.png)
+<img src="assets/c4-bloomie/DermatologyDomainLayerClasses-dark.png" width="800"/>
 
 ### Capa de Aplicación
-![Dermatology Care - Application Layer](assets/c4-bloomie/DermatologyApplicationLayerClasses-dark.png)
+<img src="assets/c4-bloomie/DermatologyApplicationLayerClasses-dark.png" width="800"/>
 
 ### Capa de Infraestructura
-![Dermatology Care - Infrastructure Layer](assets/c4-bloomie/DermatologyInfrastructureLayerClasses-dark.png)
+<img src="assets/c4-bloomie/DermatologyInfrastructureLayerClasses-dark.png" width="800"/>
 
 ### Capa de Interfaces
-![Dermatology Care - Interface Layer](assets/c4-bloomie/DermatologyInterfaceLayerClasses-dark.png)
+<img src="assets/c4-bloomie/DermatologyInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
 ## Dermatological Appointment Bounded Context
 
 ### Vista general de capas DDD
-![Dermatological Appointment - Layers Overview](assets/c4-bloomie/appointmentDermatologicalAppointmentLayers-dark.png)
+<img src="assets/c4-bloomie/appointmentDermatologicalAppointmentLayers-dark.png" width="800"/>
 
 ### Capa de Dominio
-![Dermatological Appointment - Domain Layer](assets/c4-bloomie/appointmentDomainLayerClasses-dark.png)
+<img src="assets/c4-bloomie/appointmentDomainLayerClasses-dark.png" width="800"/>
 
 ### Capa de Aplicación
-![Dermatological Appointment - Application Layer](assets/c4-bloomie/appointmentApplicationLayerClasses-dark.png)
+<img src="assets/c4-bloomie/appointmentApplicationLayerClasses-dark.png" width="800"/>
 
 ### Capa de Infraestructura
-![Dermatological Appointment - Infrastructure Layer](assets/c4-bloomie/appointmentInfrastructureLayerClasses-dark.png)
+<img src="assets/c4-bloomie/appointmentInfrastructureLayerClasses-dark.png" width="800"/>
 
 ### Capa de Interfaces
-![Dermatological Appointment - Interface Layer](assets/c4-bloomie/appointmentInterfaceLayerClasses-dark.png)
+<img src="assets/c4-bloomie/appointmentInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
 ## Subscriptions Bounded Context
 
 ### Vista general de capas DDD
-![Subscription - Layers Overview](assets/c4-bloomie/subscriptionSubscriptionLayers-dark.png)
+<img src="assets/c4-bloomie/subscriptionSubscriptionLayers-dark.png" width="800"/>
 
 ### Capa de Dominio
-![Subscription - Domain Layer](assets/c4-bloomie/subscriptionDomainLayerClasses-dark.png)
+<img src="assets/c4-bloomie/subscriptionDomainLayerClasses-dark.png" width="800"/>
 
 ### Capa de Aplicación
-![Subscription - Application Layer](assets/c4-bloomie/subscriptionApplicationLayerClasses-dark.png)
+<img src="assets/c4-bloomie/subscriptionApplicationLayerClasses-dark.png" width="800"/>
 
 ### Capa de Infraestructura
-![Subscription - Infrastructure Layer](assets/c4-bloomie/subscriptionInfrastructureLayerClasses-dark.png)
+<img src="assets/c4-bloomie/subscriptionInfrastructureLayerClasses-dark.png" width="800"/>
 
 ### Capa de Interfaces
-![Subscription - Interface Layer](assets/c4-bloomie/subscriptionInterfaceLayerClasses-dark.png)
+<img src="assets/c4-bloomie/subscriptionInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
 ## Payments Bounded Context
 
 ### Vista general de capas DDD
-![Payments - Layers Overview](assets/c4-bloomie/paymentsPaymentsLayers-dark.png)
+<img src="assets/c4-bloomie/paymentsPaymentsLayers-dark.png" width="800"/>
 
 ### Capa de Dominio
-![Payments - Domain Layer](assets/c4-bloomie/paymentsDomainLayerClasses-dark.png)
+<img src="assets/c4-bloomie/paymentsDomainLayerClasses-dark.png" width="800"/>
 
 ### Capa de Aplicación
-![Payments - Application Layer](assets/c4-bloomie/paymentsApplicationLayerClasses-dark.png)
+<img src="assets/c4-bloomie/paymentsApplicationLayerClasses-dark.png" width="800"/>
 
 ### Capa de Infraestructura
-![Payments - Infrastructure Layer](assets/c4-bloomie/paymentsInfrastructureLayerClasses-dark.png)
+<img src="assets/c4-bloomie/paymentsInfrastructureLayerClasses-dark.png" width="800"/>
 
 ### Capa de Interfaces
-![Payments - Interface Layer](assets/c4-bloomie/paymentsInterfaceLayerClasses-dark.png)
+<img src="assets/c4-bloomie/paymentsInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
 ## Intelligent Support Bounded Context
 
 ### Vista general de capas DDD
-![Intelligent Support - Layers Overview](assets/c4-bloomie/intelligentIntelligentSupportLayers-dark.png)
+<img src="assets/c4-bloomie/intelligentIntelligentSupportLayers-dark.png" width="800"/>
 
 ### Capa de Dominio
-![Intelligent Support - Domain Layer](assets/c4-bloomie/intelligentDomainLayerClasses-dark.png)
+<img src="assets/c4-bloomie/intelligentDomainLayerClasses-dark.png" width="800"/>
 
 ### Capa de Aplicación
-![Intelligent Support - Application Layer](assets/c4-bloomie/intelligentApplicationLayerClasses-dark.png)
+<img src="assets/c4-bloomie/intelligentApplicationLayerClasses-dark.png" width="800"/>
 
 ### Capa de Infraestructura
-![Intelligent Support - Infrastructure Layer](assets/c4-bloomie/intelligentInfrastructureLayerClasses-dark.png)
+<img src="assets/c4-bloomie/intelligentInfrastructureLayerClasses-dark.png" width="800"/>
 
 ### Capa de Interfaces
-![Intelligent Support - Interface Layer](assets/c4-bloomie/intelligentInterfaceLayerClasses-dark.png)
-
+<img src="assets/c4-bloomie/intelligentInterfaceLayerClasses-dark.png" width="800"/>
 ## 4.7. Software Object-Oriented Design
 
 ### 4.7.1. Class Diagrams Backend
