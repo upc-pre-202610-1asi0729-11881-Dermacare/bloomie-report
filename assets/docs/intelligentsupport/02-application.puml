@@ -1,0 +1,99 @@
+@startuml intelligentsupport-application
+!include ../_style.puml
+title Intelligent Support — Application Layer
+
+package "intelligentsupport.domain (referenced)" as domain {
+  class ChatMessage
+  class SupportQuery
+  class PatientId <<value object>>
+  class SupportQueryId <<value object>>
+  enum MessageType
+  enum SupportQueryStatus
+  class SendChatMessageCommand <<command>>
+  class CreateSupportQueryCommand <<command>>
+  class UpdateSupportQueryStatusCommand <<command>>
+  class GetChatMessagesBySupportQueryIdQuery <<query>>
+  class GetSupportQueryByIdQuery <<query>>
+  class GetSupportQueryByPatientIdAndStatusQuery <<query>>
+  interface ChatMessageRepository
+  interface SupportQueryRepository
+}
+
+package "intelligentsupport.application" as application {
+
+  package "commandservices\n(ports)" as cmdPorts {
+    interface ChatMessageCommandService
+    interface SupportQueryCommandService
+  }
+
+  package "queryservices\n(ports)" as queryPorts {
+    interface ChatMessageQueryService
+    interface SupportQueryQueryService
+  }
+
+  package "internal.outboundservices.ai\n(port)" as outbound {
+    interface AiService {
+      + generateSkincareResponse(userMessage, skinContext): String
+    }
+  }
+
+  package "internal.commandservices\n(impl)" as cmdImpl {
+    class ChatMessageCommandServiceImpl {
+      - chatMessageRepository: ChatMessageRepository
+      - supportQueryRepository: SupportQueryRepository
+      - aiService: AiService
+    }
+    class SupportQueryCommandServiceImpl {
+      - supportQueryRepository: SupportQueryRepository
+    }
+  }
+
+  package "internal.queryservices\n(impl)" as queryImpl {
+    class ChatMessageQueryServiceImpl {
+      - chatMessageRepository: ChatMessageRepository
+    }
+    class SupportQueryQueryServiceImpl {
+      - supportQueryRepository: SupportQueryRepository
+    }
+  }
+}
+
+ChatMessageCommandServiceImpl ..|> ChatMessageCommandService
+SupportQueryCommandServiceImpl ..|> SupportQueryCommandService
+ChatMessageQueryServiceImpl ..|> ChatMessageQueryService
+SupportQueryQueryServiceImpl ..|> SupportQueryQueryService
+
+ChatMessageCommandServiceImpl --> AiService : aiService
+
+ChatMessageCommandServiceImpl ..> ChatMessageRepository : <<uses>>
+ChatMessageCommandServiceImpl ..> SupportQueryRepository : <<uses>>
+ChatMessageCommandServiceImpl ..> ChatMessage : <<uses>>
+ChatMessageCommandServiceImpl ..> MessageType : <<uses>>
+ChatMessageCommandServiceImpl ..> SupportQueryId : <<uses>>
+ChatMessageCommandServiceImpl ..> SendChatMessageCommand : <<uses>>
+
+SupportQueryCommandServiceImpl ..> SupportQueryRepository : <<uses>>
+SupportQueryCommandServiceImpl ..> SupportQuery : <<uses>>
+SupportQueryCommandServiceImpl ..> PatientId : <<uses>>
+SupportQueryCommandServiceImpl ..> SupportQueryStatus : <<uses>>
+SupportQueryCommandServiceImpl ..> CreateSupportQueryCommand : <<uses>>
+SupportQueryCommandServiceImpl ..> UpdateSupportQueryStatusCommand : <<uses>>
+
+ChatMessageQueryServiceImpl ..> ChatMessageRepository : <<uses>>
+ChatMessageQueryServiceImpl ..> SupportQueryId : <<uses>>
+ChatMessageQueryServiceImpl ..> GetChatMessagesBySupportQueryIdQuery : <<uses>>
+
+SupportQueryQueryServiceImpl ..> SupportQueryRepository : <<uses>>
+SupportQueryQueryServiceImpl ..> PatientId : <<uses>>
+SupportQueryQueryServiceImpl ..> SupportQueryStatus : <<uses>>
+SupportQueryQueryServiceImpl ..> GetSupportQueryByIdQuery : <<uses>>
+SupportQueryQueryServiceImpl ..> GetSupportQueryByPatientIdAndStatusQuery : <<uses>>
+
+note bottom of ChatMessageCommandServiceImpl
+  Orchestrates both aggregates directly: saves
+  the patient's ChatMessage, reads SupportQuery
+  for skin context, calls the AI outbound port,
+  then saves a second AI-authored ChatMessage —
+  all within one command handler.
+end note
+@enduml

@@ -1,0 +1,158 @@
+@startuml iam-application
+!include ../_style.puml
+title IAM — Application Layer
+
+package "iam.domain (referenced)" as domain {
+  class User
+  class Role
+  class EmailAddress <<value object>>
+  enum UserRole
+  class SignInCommand <<command>>
+  class RegisterUserCommand <<command>>
+  class RegisterDermatologistCommand <<command>>
+  class UpdateUserProfileCommand <<command>>
+  class UpdateUserPhotoCommand <<command>>
+  class ChangePasswordCommand <<command>>
+  class SeedRolesCommand <<command>>
+  class GetUserByIdQuery <<query>>
+  class GetUserByEmailQuery <<query>>
+  class GetAllUsersQuery <<query>>
+  class DermatologistRegisteredEvent <<domain event>>
+  interface UserRepository
+  interface RoleRepository
+}
+
+package "iam.interfaces (referenced)" as ifaces {
+  interface IamContextFacade
+  class DermatologistRegisteredIntegrationEvent <<integration event>>
+}
+
+package "iam.application" as application {
+
+  package "commandservices\n(ports)" as cmdPorts {
+    interface UserCommandService {
+      + handle(c: SignInCommand): Result<Pair<User,String>,ApplicationError>
+      + handle(c: RegisterUserCommand): Result<User,ApplicationError>
+      + handle(c: RegisterDermatologistCommand): Result<User,ApplicationError>
+      + handle(c: UpdateUserProfileCommand): Result<User,ApplicationError>
+      + handle(c: UpdateUserPhotoCommand): Result<User,ApplicationError>
+      + handle(c: ChangePasswordCommand): Result<Void,ApplicationError>
+    }
+    interface RoleCommandService {
+      + handle(c: SeedRolesCommand)
+    }
+  }
+
+  package "queryservices\n(ports)" as queryPorts {
+    interface UserQueryService {
+      + handle(q: GetUserByIdQuery): Optional<User>
+      + handle(q: GetUserByEmailQuery): Optional<User>
+      + handle(q: GetAllUsersQuery): List<User>
+    }
+  }
+
+  package "internal.outboundservices\n(ports)" as outboundPorts {
+    interface HashingService {
+      + encode(raw: CharSequence): String
+      + matches(raw: CharSequence, encoded: String): boolean
+    }
+    interface TokenService {
+      + generateToken(username: String): String
+      + getUsernameFromToken(token: String): String
+      + validateToken(token: String): boolean
+    }
+  }
+
+  package "internal.commandservices\n(impl)" as cmdImpl {
+    class UserCommandServiceImpl {
+      - userRepository: UserRepository
+      - roleRepository: RoleRepository
+      - hashingService: HashingService
+      - tokenService: TokenService
+    }
+    class RoleCommandServiceImpl {
+      - roleRepository: RoleRepository
+    }
+  }
+
+  package "internal.queryservices\n(impl)" as queryImpl {
+    class UserQueryServiceImpl {
+      - userRepository: UserRepository
+    }
+  }
+
+  package "internal.eventhandlers" as handlers {
+    class ApplicationReadyEventHandler {
+      - roleCommandService: RoleCommandService
+      + on(event: ApplicationReadyEvent)
+    }
+    class DermatologistRegisteredEventHandler {
+      - eventPublisher: ApplicationEventPublisher
+      + on(event: DermatologistRegisteredEvent)
+    }
+  }
+
+  package acl {
+    class IamContextFacadeImpl {
+      - userQueryService: UserQueryService
+    }
+  }
+}
+
+UserCommandServiceImpl ..|> UserCommandService
+RoleCommandServiceImpl ..|> RoleCommandService
+UserQueryServiceImpl ..|> UserQueryService
+IamContextFacadeImpl ..> IamContextFacade : <<implements>>
+
+UserCommandServiceImpl --> HashingService : hashingService
+UserCommandServiceImpl --> TokenService : tokenService
+ApplicationReadyEventHandler --> RoleCommandService : roleCommandService
+IamContextFacadeImpl --> UserQueryService : userQueryService
+
+UserCommandServiceImpl ..> UserRepository : <<uses>>
+UserCommandServiceImpl ..> RoleRepository : <<uses>>
+UserCommandServiceImpl ..> User : <<uses>>
+UserCommandServiceImpl ..> EmailAddress : <<uses>>
+UserCommandServiceImpl ..> UserRole : <<uses>>
+UserCommandServiceImpl ..> SignInCommand : <<uses>>
+UserCommandServiceImpl ..> RegisterUserCommand : <<uses>>
+UserCommandServiceImpl ..> RegisterDermatologistCommand : <<uses>>
+UserCommandServiceImpl ..> UpdateUserProfileCommand : <<uses>>
+UserCommandServiceImpl ..> UpdateUserPhotoCommand : <<uses>>
+UserCommandServiceImpl ..> ChangePasswordCommand : <<uses>>
+
+RoleCommandServiceImpl ..> RoleRepository : <<uses>>
+RoleCommandServiceImpl ..> Role : <<uses>>
+RoleCommandServiceImpl ..> UserRole : <<uses>>
+RoleCommandServiceImpl ..> SeedRolesCommand : <<uses>>
+
+UserQueryServiceImpl ..> UserRepository : <<uses>>
+UserQueryServiceImpl ..> User : <<uses>>
+UserQueryServiceImpl ..> EmailAddress : <<uses>>
+UserQueryServiceImpl ..> GetUserByIdQuery : <<uses>>
+UserQueryServiceImpl ..> GetUserByEmailQuery : <<uses>>
+UserQueryServiceImpl ..> GetAllUsersQuery : <<uses>>
+
+ApplicationReadyEventHandler ..> SeedRolesCommand : <<creates>>
+DermatologistRegisteredEventHandler ..> DermatologistRegisteredEvent : <<listens to>>
+DermatologistRegisteredEventHandler ..> DermatologistRegisteredIntegrationEvent : <<publishes>>
+
+IamContextFacadeImpl ..> GetUserByEmailQuery : <<uses>>
+IamContextFacadeImpl ..> GetUserByIdQuery : <<uses>>
+IamContextFacadeImpl ..> User : <<uses>>
+
+note bottom of cmdPorts
+  Command/query *service ports* live in
+  application.commandservices / queryservices;
+  their implementations live one package below,
+  in application.internal.* — same layer,
+  so the port <-> impl edge is a realization (..|>).
+end note
+
+note bottom of IamContextFacadeImpl
+  IamContextFacade is declared in the
+  Interfaces layer (ACL contract) but
+  implemented here in Application — a
+  cross-layer edge, modeled as a dependency.
+end note
+@enduml

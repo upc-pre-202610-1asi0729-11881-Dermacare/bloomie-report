@@ -1,36 +1,51 @@
-<div style="page-break-after: always; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+<div style="page-break-after: always; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%;">
 
-<img src="assets/img/upc-logo.png" alt="UPC Logo" width="150"/>
+<img src="assets/img/upc-logo.png" alt="UPC Logo" width="150" style="display: block; margin: 0 auto 20px auto;"/>
 
-<h1>Universidad Peruana de Ciencias Aplicadas</h1>
+<h1 style="text-align: center; width: 100%;">Universidad Peruana de Ciencias Aplicadas</h1>
+<h2 style="text-align: center; width: 100%;">Carrera de Ingeniería de Software</h2>
+<h2 style="text-align: center; width: 100%;">1ASI0729</h2>
+<p style="text-align: center; width: 100%;"><strong>Desarrollo de aplicaciones Open Source</strong></p>
+<p style="text-align: center; width: 100%;"><strong>NRC:</strong> 11881</p>
+<h1 style="text-align: center; width: 100%;">Informe de Trabajo Final</h1>
+<p style="text-align: center; width: 100%;"><strong>Docente:</strong> Bautista Ubillús, Efraín Ricardo</p>
+<p style="text-align: center; width: 100%;"><strong>Equipo:</strong> Dermacare</p>
+<p style="text-align: center; width: 100%;"><strong>Proyecto:</strong> Bloomie</p>
+<h2 style="text-align: center; width: 100%;">Integrantes</h2>
 
-<h2>Carrera de Ingeniería de Software</h2>
+<table style="margin: 0 auto; border-collapse: collapse; width: 60%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #000; padding: 6px 12px; text-align: center;">Código</th>
+      <th style="border: 1px solid #000; padding: 6px 12px; text-align: center;">Apellidos y Nombres</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u202314898</td>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Acuache Lucas, Mathias Joaquin</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u202416272</td>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Asmat Alminco, Martin Alejandro</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u202414802</td>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Contreras Torres, Arturo Valentino</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u202517474</td>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Hurtado Balcázar, Rommel Daniel</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u20241b843</td>
+      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Mechan Montenegro, Luciana Carolina</td>
+    </tr>
+  </tbody>
+</table>
 
-<h2>1ASI0729</h2>
-
-<p><strong>Desarrollo de aplicaciones Open Source</strong></p>
-
-<p><strong>NRC:</strong> 11881</p>
-
-<h1>Informe de Trabajo Final</h1>
-
-<p><strong>Docente del curso:</strong> Efraín Ricardo Bautista Ubillús</p>
-
-
-<p><strong>Equipo:</strong> Dermacare</p>
-
-<p><strong>Proyecto:</strong> Bloomie</p>
-
-<h2>Integrantes</h2>
-
-<p>
-u202416272 - Asmat Alminco, Martin Alejandro<br>
-u202414802 - Contreras Torres, Arturo Valentino<br>
-u20241b843 - Mechan Montenegro, Luciana Carolina<br>
-</p>
-<p><em>Periodo 202610</em></p>
-
-<p><em>Junio, 2026</em></p>
+<p style="text-align: center; width: 100%; margin-top: 20px;"><em>Período 202610</em></p>
+<p style="text-align: center; width: 100%;"><em>Julio, 2026</em></p>
 
 </div>
 
@@ -48,7 +63,7 @@ u20241b843 - Mechan Montenegro, Luciana Carolina<br>
 
   <tr>
     <td><b>Primera Entrega (AV1)</b></td>
-    <td>12/04/2026</td>
+    <td>25/04/2026</td>
     <td>
       Asmat Alminco, Martin Alejandro <br>
       <br>
@@ -72,7 +87,7 @@ u20241b843 - Mechan Montenegro, Luciana Carolina<br>
 
   <tr>
     <td><b>Segunda Entrega (TB1)</b></td>
-    <td>4/05/2026</td>
+    <td>14/05/2026</td>
     <td>
       Asmat Alminco, Martin Alejandro <br>
       <br>
@@ -91,9 +106,10 @@ u20241b843 - Mechan Montenegro, Luciana Carolina<br>
       Capítulo V: Product Implementation, Validation & Deployment (Sprint 2) <br>
     </td>
   </tr>
+
   <tr>
     <td><b>Tercera Entrega (AV2)</b></td>
-    <td>01/06/2026</td>
+    <td>20/06/2026</td>
     <td>
       Asmat Alminco, Martin Alejandro <br>
       <br>
@@ -115,9 +131,38 @@ u20241b843 - Mechan Montenegro, Luciana Carolina<br>
     Capítulo V: Product Implementation, Validation & Deployment (Sprint 3 / Validation Interviews) <br>
     </td>
   </tr>
+
+  <tr>
+    <td><b>Cuarta Entrega (TB2)</b></td>
+    <td>05/07/2026</td>
+    <td>
+      Acuache Lucas, Mathias Joaquin <br>
+      <br>
+      <p></p>
+      Asmat Alminco, Martin Alejandro <br>
+      <br>
+      <p></p>
+      Contreras Torres, Arturo Valentino <br>
+      <br>
+      <p></p>
+      Hurtado Balcázar, Rommel Daniel <br>
+      <br>
+      <p></p>
+      Mechan Montenegro, Luciana Carolina <br>
+      <br>
+    </td>
+    <td>
+    Mejora de reporte <br>
+    Mejora de artefactos <br>
+    Nueva versión desplegada de Landing Page <br>
+    Nueva versión desplegada de Frontend Web Applications <br>
+    Nueva versión desplegada de Web Services <br>
+    Nueva versión publicada de Video About-The-Product <br>
+    Nueva versión publicada de Video About-The-Team <br>
+    Capítulo V: Product Implementation, Validation & Deployment (Sprint 4) <br>
+    </td>
+  </tr>
 </table>
-
-
 
 ---
 
@@ -197,6 +242,34 @@ evidenciando una distribución del trabajo de documentación acorde al rol de As
 Leader de cada integrante durante el sprint.
 
 ![GitHub Insights bloomie-report AV2](assets/img/report-commits.png)
+
+**Cuarta Entrega (TF)**
+
+Para la cuarta y última entrega el equipo continuó desarrollando el Project Report de 
+manera colaborativa, expandiendo el informe con las secciones correspondientes al 
+Sprint 4. Cada integrante asumió la redacción de las subsecciones asignadas según el 
+esquema de Aspect Leaders, manteniendo el flujo de trabajo establecido en entregas 
+anteriores: creación de feature branches por sección, redacción del contenido, carga 
+de evidencias e integración mediante Pull Requests hacia la rama develop con revisión 
+por pares.
+
+Durante esta entrega se documentaron las siguientes secciones nuevas: Sprint Planning 4, 
+Aspect Leaders and Collaborators, Sprint Backlog 4, Development Evidence for Sprint 
+Review, Execution Evidence for Sprint Review, Services Documentation Evidence for 
+Sprint Review, Software Deployment Evidence for Sprint Review y Team Collaboration 
+Insights during Sprint. Adicionalmente se actualizaron los diagramas de clases del 
+backend con los bounded contexts implementados en el Sprint 4, se actualizaron las 
+Conclusiones y Recomendaciones del proyecto, y se incorporaron las secciones de 
+Video About the Product y Video About the Team. L
+
+Para esta entrega final el repositorio del informe registró un total de 40 commits y 36 Pull Requests 
+mergeados con participación de los 4 integrantes activos del equipo, con la siguiente 
+distribución: Luciana con 27 commits, Arturo con 8, Rommel con 3 y Mathias con 2, 
+evidenciando una distribución del trabajo de documentación acorde al rol de Aspect 
+Leader de cada integrante durante el sprint.
+
+![GitHub Insights bloomie-report TF](assets/img/bloomie-report-4.png)
+
 ---
 
 # Contenido
@@ -301,6 +374,15 @@ Leader de cada integrante durante el sprint.
       - [5.2.3.6. Services Documentation Evidence for Sprint Review](#5236-services-documentation-evidence-for-sprint-review)
       - [5.2.3.7. Software Deployment Evidence for Sprint Review](#5237-software-deployment-evidence-for-sprint-review)
       - [5.2.3.8. Team Collaboration Insights during Sprint](#5238-team-collaboration-insights-during-sprint)
+    - [5.2.4. Sprint 4](#524-sprint-4)
+      - [5.2.4.1. Sprint Planning 4](#5241-sprint-planning-4)
+      - [5.2.4.2. Aspect Leaders and Collaborators](#5242-aspect-leaders-and-collaborators)
+      - [5.2.4.3. Sprint Backlog 3](#5243-sprint-backlog-4)
+      - [5.2.4.4. Development Evidence for Sprint Review](#5244-development-evidence-for-sprint-review)
+      - [5.2.4.5. Execution Evidence for Sprint Review](#5245-execution-evidence-for-sprint-review)
+      - [5.2.4.6. Services Documentation Evidence for Sprint Review](#5246-services-documentation-evidence-for-sprint-review)
+      - [5.2.4.7. Software Deployment Evidence for Sprint Review](#5247-software-deployment-evidence-for-sprint-review)
+      - [5.2.4.8. Team Collaboration Insights during Sprint](#5248-team-collaboration-insights-during-sprint)
   - [5.3. Validation Interviews](#53-validation-interviews)
     - [5.3.1. Diseño de Entrevistas](#531-diseño-de-entrevistas)
     - [5.3.2. Registro de Entrevistas](#532-registro-de-entrevistas)
@@ -339,6 +421,8 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       Expuso el despliegue del Mock API en Azure y la pasarela de pagos del landing page ante el equipo y evaluadores, empleando demostraciones en vivo como medio audiovisual para validar el funcionamiento real de los componentes. Al presentar el Sprint Planning, dirigió su comunicación hacia la organización del equipo y los objetivos del sprint, escuchando las observaciones del equipo antes de ajustar la planificación.<br><br>
       <u>AV2</u><br>
       Como líder del backend en este entregable, lideró la presentación del avance del desarrollo backend, explicando ante el equipo y los evaluadores las decisiones técnicas detrás de la conexión entre frontend y backend, adaptando el nivel de detalle según quién preguntaba. Presentó los hallazgos de la entrevista de validación y la evaluación según heurísticas, comunicando con claridad qué aspectos del producto debían ajustarse y por qué. Participó en la grabación del Video About the Team, compartiendo de forma cercana la experiencia del equipo durante el sprint. Al exponer el despliegue del backend en Azure, mostró evidencia en vivo del servicio funcionando, dirigiendo la explicación hacia la disponibilidad real del sistema.<br><br>
+      <u>TB2</u><br>
+      Se lideró la presentación del avance final del Sprint 4, comunicando al equipo y evaluadores el estado del backend, las mejoras de la webapp y los despliegues en Azure. Al exponer las mejoras de diagramas, se explicó con claridad qué había cambiado y por qué, mostrando que las observaciones de entregas anteriores fueron escuchadas e incorporadas. Se participó en el Video About the Team compartiendo de forma cercana la experiencia del proyecto desde el inicio hasta el cierre.<br><br>
       <b>Asmat Alminco, Martin Alejandro</b><br>
       <u>AV1</u><br>
       Presentó las Lean UX Assumptions y el diseño de entrevistas empleando un lenguaje orientado a validar hipótesis con audiencias mixtas (técnicas y de negocio), diferenciando los supuestos del producto de los hallazgos del usuario. En la exposición del Sprint Review, utilizó tablas y evidencias de commits como medios de soporte visual, enfocando la presentación en demostrar el avance funcional alcanzado dentro del sprint.<br><br>
@@ -346,11 +430,8 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       Expuso los wireflows y userflows con descripciones verbales detalladas, adaptando el nivel de abstracción según si la audiencia era técnica o de diseño. Presentó los videos de prototyping como medio audiovisual principal para validar con el equipo que los flujos diseñados representaban correctamente la experiencia esperada por el usuario, recogiendo retroalimentación antes de cerrar las iteraciones de diseño.<br><br>
       <u>AV2</u><br>
       Expuso el avance del desarrollo backend explicando los bounded contexts implementados, adaptando el discurso según si la audiencia tenía perfil técnico o no. Compartió los resultados de la entrevista de validación, explicando cómo los hallazgos motivaron la mejora del userflow presentado. Participó en el Video About the Team, comunicando de forma cercana y honesta la experiencia del equipo a lo largo del proyecto.<br><br>
-      <b>Gallardo Morales, Carla Alejandra</b><br>
-      <u>AV1</u><br>
-      Sustentó los Lean UX Problem Statements y las Lean UX Hypothesis Statements empleando un lenguaje centrado en el problema del usuario, comprensible tanto para evaluadores técnicos como para audiencias sin perfil de ingeniería. Al exponer el Impact Mapping y el Product Backlog, orientó su comunicación hacia los objetivos de priorización del producto, utilizando el tablero visual como apoyo para mostrar la relación entre metas de negocio y funcionalidades.<br><br>
-      <u>TB1</u><br>
-      Lideró la exposición de los mockups y wireframes apoyándose en prototipos navegables como medio audiovisual, lo que permitió que audiencias no técnicas comprendieran la propuesta de interfaz sin necesidad de conocimiento previo de diseño. Utilizó el tablero Trello del Sprint 2 como herramienta visual de respaldo durante la presentación del avance del equipo, enfocando la explicación en los objetivos de entrega del sprint.<br><br>
+      <u>TB2</u><br>
+      Se comunicaron al equipo los hallazgos de calidad detectados en el reporte, la webapp y la plataforma, priorizando de forma oral qué observaciones debían resolverse antes del cierre del proyecto. Las actualizaciones de pantallas y las mejoras del landing page se validaron verbalmente con el equipo antes de darlas por cerradas. Se participó en el Video About the Team compartiendo la experiencia del proyecto ante cámara.<br><br>
       <b>Contreras Torres, Arturo Valentino</b><br>
       <u>AV1</u><br>
       Presentó los diagramas de arquitectura C4 (Context, Container y Components) empleando los niveles de abstracción adecuados para cada audiencia. Al exponer el Big Picture Event Storming y el Design-Level Event Storming, utilizó los tableros de eventos como medios visuales estructurados, orientando cada explicación hacia el objetivo de delimitar los bounded contexts del sistema.<br><br>
@@ -358,11 +439,26 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       Presentó las correcciones del diagrama C4 explicando puntualmente los cambios realizados respecto a la versión anterior, lo que evidenció capacidad de escucha objetiva frente a las observaciones del AV1. Al exponer el despliegue del Static Web App en Azure, empleó capturas del entorno de nube como apoyo visual, dirigiendo la presentación hacia el objetivo de demostrar la disponibilidad real del frontend desplegado.<br><br>
       <u>AV2</u><br>
       Presentó el avance del desarrollo backend junto con las mejoras realizadas en la webapp, explicando cómo se integraron los nuevos cambios al sistema existente. Expuso los resultados de la entrevista de validación, comunicando los hallazgos de forma estructurada. Lideró la grabación del Video About the Product, presentando el producto terminado a una audiencia externa al curso, cuidando que el mensaje fuera comprensible sin necesidad de contexto técnico previo. Mostró en vivo el despliegue de la segunda versión de la webapp en Azure, validando ante el equipo que la nueva versión estuviera disponible y funcionando correctamente.<br><br>
-      <b>Ramirez Ruiz, Nickolas</b><br>
+      <u>TB2</u><br>
+      Se presentó el estado final del backend y los despliegues en Azure ante el equipo, mostrando en vivo la disponibilidad real del sistema en producción. Al editar y presentar el Video About the Product, se adaptó el mensaje del producto para una audiencia completamente externa, cuidando que cualquier persona pudiera entender el valor de Bloomie sin contexto técnico previo. Se expusieron las mejoras de diagramas y los releases del proyecto de forma ordenada, comunicando el cierre del sistema con claridad.<br><br>
+      <b>Acuache Lucas, Mathias Joaquin</b><br>
       <u>AV1</u><br>
-      Presentó el Startup Profile y la descripción de la startup adaptando el discurso a una audiencia general, destacando la propuesta de valor sin recurrir a terminología técnica innecesaria. Al exponer el User Journey Mapping y el Empathy Mapping, empleó los mapas visuales como medios de comunicación que permitieron transmitir la experiencia del usuario de forma empática y comprensible. Orientó la presentación del Sprint Planning 1 y el Sprint Backlog hacia los objetivos de organización del equipo, escuchando observaciones antes de definir los acuerdos de trabajo.<br><br>
+      Se comunicaron al equipo las observaciones detectadas al revisar la calidad de los primeros artefactos del informe, señalando de forma oral y directa qué secciones requerían corrección antes de la entrega, adaptando el lenguaje según si la observación era para un compañero técnico o para la coherencia general del documento.<br><br>
       <u>TB1</u><br>
-      Coordinó la grabación del Web Application Prototyping como medio audiovisual para comunicar el estado funcional de la aplicación a audiencias que no participan directamente en el desarrollo. Revisó y actualizó los userflows, mockups y wireflows antes de la presentación, asegurando que los medios visuales estuvieran alineados con los objetivos del sprint y fueran comprensibles para diferentes rangos de audiencia.<br><br>
+      Se expusieron ante el equipo los hallazgos de la revisión de calidad sobre el informe y los primeros avances de la webapp, comunicando con claridad qué inconsistencias se encontraron y priorizando verbalmente cuáles debían resolverse primero antes del cierre del sprint.<br><br>
+      <u>AV2</u><br>
+      Se compartieron con el equipo los resultados de la revisión de calidad realizada sobre el informe, la webapp y la plataforma en esta etapa del proyecto, explicando de forma oral el criterio usado para evaluar cada componente y qué ajustes se consideraban prioritarios.<br><br>
+      <u>TB2</u><br>
+      Se presentaron los hallazgos de la revisión de calidad sobre el reporte, la webapp y la plataforma al equipo, comunicando con claridad qué estaba listo y qué necesitaba corrección antes del cierre del proyecto. Las actualizaciones de pantallas y las mejoras del landing page se validaron en vivo junto al equipo. Se participó en el Video About the Team compartiendo la experiencia del proyecto ante cámara para una audiencia que no estuvo presente en el desarrollo.<br><br>
+      <b>Hurtado Balcázar, Rommel Daniel</b><br>
+      <u>AV1</u><br>
+      Se comunicaron al equipo las observaciones encontradas al revisar la calidad de los artefactos entregados en el AV1, explicando de forma oral y puntual qué aspectos no cumplían con el estándar esperado y por qué era necesario ajustarlos.<br><br>
+      <u>TB1</u><br>
+      Se expusieron los hallazgos de la revisión de calidad realizada sobre el informe y los avances técnicos del TB1, comunicando al equipo de forma clara y ordenada las inconsistencias detectadas y el criterio usado para priorizarlas.<br><br>
+      <u>AV2</u><br>
+      Se compartieron con el equipo los resultados de la revisión de calidad del informe, la webapp y la plataforma en esta etapa, explicando verbalmente qué elementos cumplían el estándar esperado y cuáles requerían ajustes antes de continuar.<br><br>
+      <u>TB2</u><br>
+      Se presentaron los resultados de la revisión de calidad al equipo, señalando con precisión los aspectos que requerían ajuste en el reporte, la webapp y la plataforma para el cierre del proyecto. Las actualizaciones de pantallas y las mejoras del landing page se expusieron mostrando los cambios aplicados, permitiendo que el equipo verificara el resultado final antes de la entrega. Se participó en el Video About the Team comunicando de forma cercana la experiencia vivida durante el proyecto.
     </td>
     <td>
       <u>AV1</u><br>
@@ -370,7 +466,9 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       <u>TB1</u><br>
       Como equipo, durante el TB1 se fortaleció la comunicación oral mediante el uso de demostraciones en vivo, prototipos navegables y videos de prototyping como medios audiovisuales que validaron el funcionamiento real del sistema ante diferentes audiencias. Cada integrante orientó sus presentaciones hacia los objetivos del sprint y recogió observaciones del equipo y evaluadores antes de ajustar los entregables, evidenciando escucha activa y capacidad de conciliación en el proceso de revisión.<br><br>
       <u>AV2</u><br>
-      Como equipo, durante el AV2 la comunicación oral se orientó hacia audiencias más diversas: el equipo interno, los evaluadores del curso y, por primera vez, una audiencia externa a través del Video About the Product. Esto exigió adaptar el lenguaje según quién recibía el mensaje, sin perder claridad ni rigor. Las entrevistas de validación y la evaluación según heurísticas se convirtieron en un espacio donde se practicó escuchar primero y comunicar después, asegurando que los hallazgos del usuario fueran el punto de partida de cualquier ajuste presentado. El Video About the Team, además, permitió que cada integrante comunicara su experiencia personal dentro del proyecto de forma honesta y cercana.
+      Como equipo, durante el AV2 la comunicación oral se orientó hacia audiencias más diversas: el equipo interno, los evaluadores del curso y, por primera vez, una audiencia externa a través del Video About the Product. Esto exigió adaptar el lenguaje según quién recibía el mensaje, sin perder claridad ni rigor. Las entrevistas de validación y la evaluación según heurísticas se convirtieron en un espacio donde se practicó escuchar primero y comunicar después, asegurando que los hallazgos del usuario fueran el punto de partida de cualquier ajuste presentado. El Video About the Team, además, permitió que cada integrante comunicara su experiencia personal dentro del proyecto de forma honesta y cercana.<br><br>
+      <u>TB2</u><br>
+      Como equipo, durante el TB2 la comunicación oral estuvo orientada al cierre del proyecto. Los hallazgos de la revisión de calidad se comunicaron al equipo de forma directa, señalando con claridad qué estaba listo y qué necesitaba ajuste antes de la entrega final. El Video About the Team reunió la voz de todos los integrantes, permitiendo que cada uno comunicara su experiencia a una audiencia que no participó en el desarrollo. El Video About the Product, ya editado en su versión final, exigió simplificar el mensaje al máximo sin perder lo esencial de la solución construida, pensando siempre en alguien completamente externo al proyecto.
     </td>
   </tr>
   <tr>
@@ -383,6 +481,8 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       Documentó el diagrama de base de datos y el diagrama de clases con sus respectivas descripciones escritas, verificando que las convenciones de nomenclatura y las relaciones entre entidades fueran coherentes con el estándar técnico establecido. Redactó el Sprint Planning del capítulo 5 sintetizando los acuerdos del equipo de forma estructurada, adecuando el lenguaje a lectores que requieren comprender el alcance del sprint sin conocimiento previo del sistema.<br><br>
       <u>AV2</u><br>
       Como líder del backend, documentó el desarrollo de los bounded contexts implementados y la conexión entre frontend y backend, dejando registro técnico claro de las decisiones tomadas para que cualquier integrante del equipo pudiera continuar el trabajo sin perder contexto. Redactó los hallazgos de la entrevista de validación y de la evaluación según heurísticas, sintetizando los resultados en un lenguaje comprensible tanto para el equipo técnico como para quien revisara el informe sin haber participado en las pruebas. Documentó el Sprint 3 y las mejoras de diagramas aplicadas, además del despliegue del backend en Azure, dejando evidencia escrita verificable del avance.<br><br>
+      <u>TB2</u><br>
+      Se documentó el Sprint 4 con los acuerdos del equipo y los objetivos del cierre, redactando de forma que cualquier lector pudiera entender el alcance final del proyecto. Las mejoras de diagramas se registraron con sus respectivas descripciones, dejando trazabilidad de los cambios respecto a versiones anteriores. La evidencia del despliegue en Azure y las mejoras de la webapp se documentaron siguiendo los estándares del informe técnico, con el nivel de detalle necesario para que el trabajo fuera verificable por cualquier revisor.<br><br>
       <b>Asmat Alminco, Martin Alejandro</b><br>
       <u>AV1</u><br>
       Redactó las Lean UX Assumptions y las User Stories siguiendo el formato estándar del informe, utilizando un lenguaje orientado al usuario que permitiera a lectores no técnicos comprender las hipótesis y los criterios de aceptación del producto. Documentó las evidencias de desarrollo para el Sprint Review con un nivel de detalle técnico adecuado para evaluadores del curso, incluyendo referencias a commits y entornos de despliegue.<br><br>
@@ -390,11 +490,8 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       Documentó los wireflows y userflows con descripciones escritas detalladas que acompañaban cada diagrama, permitiendo que lectores sin experiencia en diseño UX comprendieran los flujos de interacción del sistema. Redactó las correcciones de las hipótesis del AV1 de forma clara, sintetizando los ajustes realizados respecto a la versión anterior en un lenguaje comprensible para diferentes audiencias del informe.<br><br>
       <u>AV2</u><br>
       Documentó el avance del desarrollo backend explicando por escrito los bounded contexts trabajados, con un nivel de detalle técnico pensado para evaluadores del curso. Redactó los hallazgos de la entrevista de validación, sintetizando los resultados de forma que motivaran con claridad las mejoras aplicadas al userflow. Dejó registro escrito de los ajustes realizados al userflow tras la validación, explicando qué cambió respecto a la versión anterior.<br><br>
-      <b>Gallardo Morales, Carla Alejandra</b><br>
-      <u>AV1</u><br>
-      Redactó los Lean UX Problem Statements y las Lean UX Hypothesis Statements con un lenguaje centrado en el problema del usuario, verificando antes de la entrega que la redacción fuera coherente con el público objetivo del informe. Documentó el Impact Mapping y el Product Backlog con una estructura que permite a lectores técnicos y de gestión identificar con claridad la priorización de funcionalidades y su relación con las metas del producto.<br><br>
-      <u>TB1</u><br>
-      Redactó las descripciones escritas de los userflows y wireflows, sintetizando de forma precisa la lógica de cada flujo de usuario en un lenguaje comprensible para audiencias de diseño y desarrollo. Documentó el estado del Sprint 2 a través del tablero Trello y su respectivo registro escrito, garantizando que la información reflejara con claridad los objetivos y el progreso del equipo para diferentes lectores del informe.<br><br>
+      <u>TB2</u><br>
+      Se dejó registro escrito de los hallazgos encontrados al revisar la calidad del reporte, la webapp y la plataforma, priorizando por escrito qué observaciones eran más urgentes antes del cierre del proyecto. Las actualizaciones de pantallas y las mejoras del landing page se documentaron con sus descripciones correspondientes, de modo que cualquier lector del informe pudiera identificar con claridad qué cambió respecto a la versión anterior y por qué.<br><br>
       <b>Contreras Torres, Arturo Valentino</b><br>
       <u>AV1</u><br>
       Documentó los diagramas de arquitectura C4, el Big Picture Event Storming y el Design-Level Event Storming con descripciones escritas que acompañaban cada vista del sistema, utilizando un lenguaje técnico preciso adecuado para evaluadores de ingeniería de software. Redactó las User Personas y el User Task Matrix con un nivel de síntesis que permite a lectores no técnicos comprender el comportamiento y las necesidades de los usuarios del sistema.<br><br>
@@ -402,11 +499,26 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       Documentó las correcciones del diagrama C4 detallando por escrito los cambios aplicados respecto a la versión del AV1, facilitando la trazabilidad del diseño arquitectónico para diferentes lectores del informe. Redactó la documentación del despliegue del Static Web App en Azure siguiendo los estándares del informe técnico, sintetizando los pasos y evidencias del proceso en un lenguaje comprensible tanto para perfiles técnicos como para revisores externos.<br><br>
       <u>AV2</u><br>
       Documentó el avance del desarrollo backend y las mejoras aplicadas a la webapp, explicando por escrito cómo se integraron los cambios al sistema existente. Redactó los hallazgos de la entrevista de validación de forma estructurada. Documentó el guion y la justificación del Video About the Product, sintetizando el mensaje del producto en un lenguaje accesible para una audiencia externa al curso. Redactó la evidencia del despliegue de la segunda versión de la webapp en Azure, dejando registro técnico verificable del proceso.<br><br>
-      <b>Ramirez Ruiz, Nickolas</b><br>
+      <u>TB2</u><br>
+      Se documentó el avance final del backend y el proceso de despliegue en Azure, dejando registro verificable de los releases y la configuración del entorno de producción. Las mejoras de diagramas se registraron detallando los cambios aplicados respecto a versiones anteriores, facilitando la trazabilidad del diseño a lo largo del proyecto. El guion del Video About the Product en su versión final se redactó pensando en una audiencia externa, cuidando que el mensaje fuera claro y accesible sin asumir conocimiento técnico previo.<br><br>
+      <b>Acuache Lucas, Mathias Joaquin</b><br>
       <u>AV1</u><br>
-      Redactó el Startup Profile y la descripción de la startup con un lenguaje accesible para audiencias generales, sintetizando la identidad y propuesta de valor del proyecto sin recurrir a terminología técnica innecesaria. Documentó el User Journey Mapping y el Empathy Mapping con descripciones escritas que complementaban los diagramas visuales, permitiendo que lectores con diferentes perfiles comprendieran la experiencia y emociones del usuario a lo largo del flujo del producto.<br><br>
+      Dejó registro escrito de las observaciones encontradas al revisar la calidad de los primeros artefactos del informe, redactando de forma clara qué secciones requerían corrección y por qué, de modo que el equipo pudiera priorizar los ajustes antes de la entrega.<br><br>
       <u>TB1</u><br>
-      Actualizó y documentó por escrito los userflows, mockups y wireflows revisados, verificando que las descripciones escritas estuvieran alineadas con los cambios del sprint y fueran comprensibles para lectores de diseño y desarrollo. Redactó los Aspect Leaders and Collaborators y el Sprint Backlog con un lenguaje claro y estructurado, sintetizando las responsabilidades del equipo de forma que cualquier lector del informe pudiera identificar los acuerdos de trabajo establecidos.<br><br>
+      Documentó por escrito los hallazgos de la revisión de calidad sobre el informe y los primeros avances de la webapp, sintetizando las inconsistencias encontradas en un lenguaje comprensible para cualquier integrante del equipo, sin importar su nivel de involucramiento técnico.<br><br>
+      <u>AV2</u><br>
+      Dejó registro escrito de los resultados de la revisión de calidad realizada sobre el informe, la webapp y la plataforma en esta etapa del proyecto, explicando por escrito el criterio usado para evaluar cada componente y los ajustes considerados prioritarios.<br><br>
+      <u>TB2</u><br>
+      Se documentaron los hallazgos de la revisión de calidad sobre el reporte, la webapp y la plataforma, sintetizando los resultados de forma comprensible tanto para el equipo técnico como para los evaluadores del curso. Las actualizaciones de pantallas y las mejoras del landing page se registraron por escrito, dejando evidencia clara de los cambios realizados para el cierre del proyecto y permitiendo que cualquier lector identificara el estado final de cada componente revisado.<br><br>
+      <b>Hurtado Balcázar, Rommel Daniel</b><br>
+      <u>AV1</u><br>
+      Dejó registro escrito de las observaciones encontradas al revisar la calidad de los artefactos entregados en el AV1, redactando con precisión qué aspectos no cumplían con el estándar esperado y qué se necesitaba ajustar antes de la entrega.<br><br>
+      <u>TB1</u><br>
+      Documentó por escrito los hallazgos de la revisión de calidad realizada sobre el informe y los avances técnicos del TB1, sintetizando las inconsistencias detectadas y el criterio usado para priorizarlas de forma comprensible para el equipo.<br><br>
+      <u>AV2</u><br>
+      Dejó registro escrito de los resultados de la revisión de calidad del informe, la webapp y la plataforma en esta etapa, explicando por escrito qué elementos cumplían el estándar esperado y cuáles requerían ajustes antes de continuar.<br><br>
+      <u>TB2</u><br>
+      Se documentaron los resultados de la revisión de calidad de forma estructurada, dejando registro escrito de los aspectos revisados en el reporte, la webapp y la plataforma. Las actualizaciones de pantallas y las mejoras del landing page se registraron con sus descripciones correspondientes, de modo que cualquier lector del informe pudiera identificar con claridad los ajustes aplicados antes de la entrega final del proyecto.
     </td>
     <td>
       <u>AV1</u><br>
@@ -414,7 +526,9 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       <u>TB1</u><br>
       Como equipo, durante el TB1 se consolidó la comunicación escrita mediante la documentación estructurada de los avances del sprint, los diagramas del sistema, los flujos de usuario y las evidencias de despliegue. La redacción de cada sección mantuvo coherencia con los estándares técnicos del informe y fue adaptada al rango de audiencia correspondiente, garantizando que tanto evaluadores técnicos como lectores generales pudieran comprender el progreso y los resultados del proyecto.<br><br>
       <u>AV2</u><br>
-      Como equipo, durante el AV2 la documentación escrita se volvió más exigente porque el proyecto empezó a tener piezas funcionando de extremo a extremo: backend desplegado, frontend conectado, validaciones reales con usuarios. Aprendimos a sintetizar resultados de entrevistas y heurísticas sin perder la voz del usuario en el camino, y a documentar el trabajo técnico de forma que fuera comprensible incluso para quien no participó directamente en el desarrollo. El Video About the Product también nos obligó a pensar por primera vez en una audiencia completamente externa al curso, lo que reforzó la importancia de comunicar con claridad sin asumir conocimiento previo.
+      Como equipo, durante el AV2 la documentación escrita se volvió más exigente porque el proyecto empezó a tener piezas funcionando de extremo a extremo: backend desplegado, frontend conectado, validaciones reales con usuarios. Aprendimos a sintetizar resultados de entrevistas y heurísticas sin perder la voz del usuario en el camino, y a documentar el trabajo técnico de forma que fuera comprensible incluso para quien no participó directamente en el desarrollo. El Video About the Product también nos obligó a pensar por primera vez en una audiencia completamente externa al curso, lo que reforzó la importancia de comunicar con claridad sin asumir conocimiento previo.<br><br>
+      <u>TB2</u><br>
+      Como equipo, durante el TB2 la comunicación escrita se centró en dejar el proyecto completamente documentado y verificable. Los hallazgos de la revisión de calidad, las evidencias de despliegue, los releases y las mejoras de diagramas se registraron con el nivel de detalle necesario para que cualquier lector, independientemente de su perfil, pudiera entender el estado final del sistema. Cerrar el proyecto nos dejó la convicción de que documentar bien no es un trámite, sino parte de construir algo que realmente pueda ser entendido, mantenido y continuado por otros.
     </td>
   </tr>
 </table>
@@ -465,7 +579,6 @@ Convertirnos en la plataforma líder de cuidado de la piel a nivel global, recon
 
 ### Perfil del Integrante
 
-<table>
 <table>
   <tr>
     <td rowspan="4" align="center">
@@ -522,6 +635,46 @@ Convertirnos en la plataforma líder de cuidado de la piel a nivel global, recon
       Soy <b>Martin Alejandro Asmat Alminco</b>, estudiante de quinto ciclo de la carrera de Ingeniería de Software. Cuento con experiencia en lenguajes de programación como Python y C++ para proyectos enfocados en el desarrollo de habilidades computacionales, las cuales apliqué en proyectos académicos enfocados en solucionar un problema a través de procesos de documentación de Ingeniería de software.
       <br/><br/>
         Dentro del equipo, cumplo el rol de un full stack al realizar actividades de documentación y programación a un nivel medio. Considero que soy una persona responsable y adaptable a distintas situaciones con buen time-management.  
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td rowspan="4" align="center">
+      <img src="assets/img/mathias-acuache.jpeg" alt="Foto de Mathias Acuache" width="450"/>
+    </td>
+    <td><b>Nombre:</b> Mathias Joaquin Acuache Lucas</td>
+  </tr>
+  <tr>
+    <td><b>Código:</b> u202314898</td>
+  </tr>
+  <tr>
+    <td>
+      <b>Descripción:</b><br/>
+       Soy <b> Mathias Joaquin Acuache Lucas</b>, me encuentro en el sexto ciclo de la carrera de Ingeniería de Software. Tengo experiencia en C++, SQL y MongoDB, además de utilizar GitHub de manera correcta. Asimismo, tengo conocimiento en Domain Driven Design y algunos patrones de software los cuales he aplicado en diversos proyectos. 
+       <br/><br/>
+       Dentro del equipo, cumplo el rol de apoyar en las actividades de la documentación, implementando todo lo necesario para tener una presentación del informe de manera correcta, asimismo ayudar en el Backend del proyecto. Me considero una persona que trata de apoyar en todo lo que falta en el equipo e investigo cosas nuevas que ma apasiona de mi carrera.
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td rowspan="4" align="center">
+      <img src="assets/img/rommel-hurtado.jpeg" alt="Foto de Rommel Hurtado" width="650"/>
+    </td>
+    <td><b>Nombre:</b> Rommel Daniel Hurtado Balcázar</td>
+  </tr>
+  <tr>
+    <td><b>Código:</b> u202517474</td>
+  </tr>
+  <tr>
+    <td>
+      <b>Descripción:</b><br/>
+      Soy <b>Rommel Daniel Hurtado Balcázar</b>, estudiante de sexto ciclo de la carrera de Ingeniería de Software. Cuento con conocimientos en lenguajes de programación como C++, Python y SQL, además de manejo de herramientas como Git y Figma, aplicados dentro de un enfoque de desarrollo ágil en distintos proyectos académicos.
+      <br/><br/>
+      Dentro del equipo, cumplo el rol de apoyo en documentación, encargándome de la redacción de informes, gestión de tareas y control de calidad, así como de la subsanación de observaciones para asegurar la correcta presentación del proyecto. Me considero una persona responsable, creativa y proactiva, con disposición para apoyar en lo que el equipo necesite.
     </td>
   </tr>
 </table>
@@ -1211,6 +1364,8 @@ En esta sección se presentan los user personas construidos a partir del anális
 <img src="assets/img/user-persona-segmento2.png" width="500"/>
 
 ### 2.3.2. User Task Matrix
+
+<img src="assets/img/task-matrix.jpg" width="500"/>
 
 ### 2.3.3. User Journey Mapping
 En esta sección se detallan los User Journey Maps en su versión "As-Is", uno por cada segmento de usuario definido. El objetivo de estos mapas es ilustrar el proceso de extremo a extremo que realizan actualmente los usuarios para intentar resolver su necesidad, evidenciando los puntos de dolor, las frustraciones y las ineficiencias que experimentan antes de la implementación de nuestra solución propuesta.
@@ -5320,7 +5475,10 @@ US01 - Como joven adulto, quiero registrarme con mis datos personales para
 crear una cuenta y acceder a Bloomie.
 
 **Desktop**
-![mockup 1 desktop](assets/img/mockups/mockup-01-web.png)
+
+ <img src="assets/img/mockups/new-mockup-web2.png" width="400" /> 
+ 
+![mockup 1 desktop](assets/img/mockups/new-mockup-web3.png){width=500px}
 
 **Mobile**
 ![mockup 1 mobile](assets/img/mockups/mockup-01-mobile.png)
@@ -5362,8 +5520,8 @@ condiciones de piel en mi primer ingreso para que la aplicación configure mi
 perfil correctamente.
 
 **Desktop**
-![mockup 2 desktop](assets/img/mockups/mockup-02-web.png)
-
+![mockup 2 desktop](assets/img/mockups/new-mockup-web4.png){width=600px}
+![mockup 2 desktop](assets/img/mockups/new-mockup-web5.png){width=600px}
 **Mobile**
 ![mockup 2 mobile](assets/img/mockups/mockup-02-mobile.png)
 
@@ -5406,7 +5564,7 @@ después del escaneo para conocer el estado de mi piel y los cuidados
 que necesito.
 
 **Desktop**
-![mockup 3 desktop](assets/img/mockups/mockup-03-web.png)
+<img src="assets/img/mockups/new-mockup-web6.png" width="420" /> <img src="assets/img/mockups/new-mockup-web7.png" width="420" /> 
 
 **Mobile**
 ![mockup 3 mobile](assets/img/mockups/mockup-03-mobile.png)
@@ -5441,15 +5599,14 @@ preliminar y próximos pasos recomendados.
 
 ---
 
-4) **Mock-up 4:** Generar rutina personalizada
+4) **Mock-up 4:** Diagnóstico preliminar automático
 
 **User Story relacionada:**
-US05 - Como joven adulto, quiero recibir una rutina personalizada con
-productos basados en mi diagnóstico de piel para seguir un tratamiento
-adecuado.
+US04 - Como joven adulto, quiero recibir un diagnóstico generado por IA después del escaneo para conocer el estado de mi piel y los cuidados que necesito.
 
 **Desktop**
-![mockup 4 desktop](assets/img/mockups/mockup-04-web.png)
+![mockup 4 desktop](assets/img/mockups/new-mockup-web10.png)
+![mockup 4 desktop](assets/img/mockups/new-mockup-web9.png)
 
 **Mobile**
 ![mockup 4 mobile](assets/img/mockups/mockup-04-mobile.png)
@@ -5493,7 +5650,8 @@ productos basados en mi diagnóstico de piel para seguir un tratamiento
 adecuado.
 
 **Desktop**
-![mockup 5 desktop](assets/img/mockups/mockup_05-web.png)
+![mockup 5 desktop](assets/img/mockups/new-mockup-web8.png)
+![mockup 5 desktop](assets/img/mockups/new-mockup-web11.png)
 
 **Mobile**
 ![mockup 5 mobile](assets/img/mockups/mockup-05-mobile.png)
@@ -5534,7 +5692,8 @@ US06 - Como joven adulto, quiero reemplazar un producto de mi rutina por
 una alternativa recomendada para adaptar mi tratamiento.
 
 **Desktop**
-![mockup 6 desktop](assets/img/mockups/mockup-06-web.png)
+![mockup 6 desktop](assets/img/mockups/new-mockup-web12.png)
+![mockup 6 desktop](assets/img/mockups/new-mockup-web7.png)
 
 **Mobile**
 ![mockup 6 mobile](assets/img/mockups/mockup-06-mobile.png)
@@ -5575,7 +5734,7 @@ US07 - Como joven adulto, quiero marcar si completé mi rutina del día para
 llevar un seguimiento de mi progreso.
 
 **Desktop**
-![mockup 7 desktop](assets/img/mockups/mockup-07-web.png)
+![mockup 7 desktop](assets/img/mockups/new-mockup-web11.png)
 
 **Mobile**
 ![mockup 7 mobile](assets/img/mockups/mockup-07-mobile.png)
@@ -5618,7 +5777,8 @@ US08 - Como joven adulto, quiero explorar el catálogo de productos y
 aplicar filtros para encontrar opciones relevantes a mis necesidades.
 
 **Desktop**
-![mockup 8 desktop](assets/img/mockups/mockup-08-web.png)
+![mockup 8 desktop](assets/img/mockups/new-mockup-web13.png)
+![mockup 8 desktop](assets/img/mockups/new-mockup-web14.png)
 
 **Mobile**
 ![mockup 8 mobile](assets/img/mockups/mockup-08-mobile.png)
@@ -5661,7 +5821,7 @@ US09 - Como joven adulto, quiero ver el detalle de un producto y su
 compatibilidad con mi piel para tomar decisiones informadas.
 
 **Desktop**
-![mockup 9 desktop](assets/img/mockups/mockup-09-web.png)
+![mockup 9 desktop](assets/img/mockups/new-mockup-web15.png){width=600px}
 
 **Mobile**
 ![mockup 9 mobile](assets/img/mockups/mockup-09-mobile.png)
@@ -5704,7 +5864,7 @@ US10 - Como joven adulto, quiero guardar productos en mis favoritos para
 acceder a ellos fácilmente después.
 
 **Desktop**
-![mockup 10 desktop](assets/img/mockups/mockup-10-web.png)
+![mockup 10 desktop](assets/img/mockups/new-mockup-web14.png)
 
 **Mobile**
 ![mockup 10 mobile](assets/img/mockups/mockup-10-mobile.png)
@@ -5743,8 +5903,7 @@ principales de la aplicación.
 
 US11: Como joven adulto, quiero visualizar métricas de mi constancia y evolución en el cuidado de mi piel para entender mi progreso.
 
-![mockup dashboard web](assets/img/mockups/mockup-11-web.png)
-![mockup scheduled appointments cancel app](assets/img/mockups/mockup-11-web.png)
+![mockup dashboard web](assets/img/dashboard.png)
 
 **Principios y elementos de diseño:**
 Este grupo comprende la pantalla principal del dashboard web y la vista de Skin Progress Tracker. El dashboard centraliza la información más relevante del usuario mediante tarjetas de métricas (Skin Health Score, Routine Streak, Next Appointment, Products in Routine), un gráfico de línea para el progreso de piel, la rutina del día con sus pasos ordenados, y un panel de recomendaciones personalizadas con productos sugeridos. La paleta cromática aplica el Design System definido: fondo en tonos crema (#FAF7F4), sidebar en borgoña oscuro (#6B2D3E), tarjetas en blanco con bordes suaves, y acentos en rose-mauve (#B07080) para indicadores activos y botones de acción. La tipografía es jerárquica: títulos en peso bold para los valores numéricos principales (76/100, 7 days), subtítulos en medium para etiquetas de sección, y texto regular para descripciones secundarias. El Skin Progress Tracker extiende esta lógica visual con un gráfico de área en tono rosado, métricas de adherencia, y una sección de Skin Metrics con barras de progreso codificadas por el mismo esquema de color del sistema.
@@ -6149,7 +6308,7 @@ adecuado.
 
 
 **Desktop**
-![user flow 5 desktop](assets/img/userflows/userflow_05-web.png)
+![user flow 5 desktop](assets/img/userflows/new-userflow-web1.png)
 
 
 **Descripción del flujo:**
@@ -6182,7 +6341,7 @@ aplicar filtros para encontrar opciones relevantes a mis necesidades.
 ![user flow 8 mobile](assets/img/userflows/userflow-08-mobile.png)
 
 **Desktop**
-![user flow 8 desktop](assets/img/userflows/userflow-08-web.png)
+![user flow 8 desktop](assets/img/userflows/new-userflow-web2.png)
 
 **Descripción del flujo:**
 
@@ -6215,7 +6374,7 @@ para acceder a ellos fácilmente después.
 ![user flow 10 mobile](assets/img/userflows/userflow-10-mobile.png)
 
 **Desktop**
-![user flow 10 desktop](assets/img/userflows/userflow-10-web.png)
+![user flow 10 desktop](assets/img/userflows/new-userflow-web3.png)
 
 **Descripción del flujo:**
 
@@ -6646,7 +6805,7 @@ Finalmente, se incluyen las capturas elaboradas en la herramienta colaborativa u
 **Design Level Event Storming - Bloomie**
 
   <div>
-    <img src="assets/img/Design-Level-Event-Storming/Design-Level-Event-Storming-Bloomie.png" alt="Design Level Event Storming - Bloomie" width="500"/>
+    <img src="assets/img/Design-Level-Event-Storming/Design-Level-Event-Storming-Bloomie.png" alt="Design Level Event Storming - Bloomie" width="1000"/>
   </div> <br>
 
 **Bounded Contexts**
@@ -6654,281 +6813,509 @@ Finalmente, se incluyen las capturas elaboradas en la herramienta colaborativa u
 Identity & Access Context <br>
 
   <div>
-    <img src="assets/img/Design-Level-Event-Storming/Identity-&-Access-Context.png" alt="Identity & Access Context - Bloomie" width="500"/>
+    <img src="assets/img/Design-Level-Event-Storming/Identity-&-Access-Context.png" alt="Identity & Access Context - Bloomie" width="1000"/>
   </div> 
 
 <br>
 Skin Analysis Context <br>
 
   <div>
-    <img src="assets/img/Design-Level-Event-Storming/Skin-Analysis-Context.png" alt="Skin Analysis Context - Bloomie" width="500"/>
+    <img src="assets/img/Design-Level-Event-Storming/Skin-Analysis-Context.png" alt="Skin Analysis Context - Bloomie" width="1000"/>
   </div> 
 
 <br>
 Product Discovery Context <br>
 
   <div>
-    <img src="assets/img/Design-Level-Event-Storming/Product-Discovery-Context.png" alt="Product Discovery Context - Bloomie" width="500"/>
+    <img src="assets/img/Design-Level-Event-Storming/Product-Discovery-Context.png" alt="Product Discovery Context - Bloomie" width="1000"/>
   </div> 
 
 <br>
 Intelligent Support Context <br>
 
   <div>
-    <img src="assets/img/Design-Level-Event-Storming/Intelligent-Support-Context.png" alt="Intelligent Support Context - Bloomie" width="500"/>
+    <img src="assets/img/Design-Level-Event-Storming/Intelligent-Support-Context.png" alt="Intelligent Support Context - Bloomie" width="1000"/>
   </div> 
 
 <br>
 Dermatology Care Context <br>
 
   <div>
-    <img src="assets/img/Design-Level-Event-Storming/Dermatology-Care-Context.png" alt="Dermatology Care Context - Bloomie" width="500"/>
+    <img src="assets/img/Design-Level-Event-Storming/Dermatology-Care-Context.png" alt="Dermatology Care Context - Bloomie" width="1000"/>
   </div> 
 
 <br>
 Routine Management Context <br>
 
   <div>
-    <img src="assets/img/Design-Level-Event-Storming/Routine-Management-Context.png" alt="Routine Management Context - Bloomie" width="500"/>
+    <img src="assets/img/Design-Level-Event-Storming/Routine-Management-Context.png" alt="Routine Management Context - Bloomie" width="1000"/>
   </div> 
 
 <br>
 Payments Context <br>
 
   <div>
-    <img src="assets/img/Design-Level-Event-Storming/Payments-Context.png" alt="Payments Context - Bloomie" width="500"/>
+    <img src="assets/img/Design-Level-Event-Storming/Payments-Context.png" alt="Payments Context - Bloomie" width="1000"/>
   </div> 
 
 <br>
 Subscription Context <br>
 
   <div>
-    <img src="assets/img/Design-Level-Event-Storming/Subscription-Context.png" alt="Subscription Context - Bloomie" width="500"/>
+    <img src="assets/img/Design-Level-Event-Storming/Subscription-Context.png" alt="Subscription Context - Bloomie" width="1000"/>
   </div>
 
   <br>
 Dermatological Appointment Context <br>
 
   <div>
-    <img src="assets/img/Design-Level-Event-Storming/DermatologicalAppointment.png" alt="Dermatological Appointment Context - Bloomie" width="500"/>
+    <img src="assets/img/Design-Level-Event-Storming/DermatologicalAppointment.png" alt="Dermatological Appointment Context - Bloomie" width="1000"/>
   </div>
 
 ### 4.6.2. Software Architecture Context Diagram
 
-<img src="assets/img/bloomie-c4-diagrams/system-context.png" alt="C4 Diagram" width="1000"/> <br>
+<img src="assets/c4-bloomie/BloomieSystemContext-dark.png"/> <br>
 
 ### 4.6.3. Software Architecture Container Diagrams
 
-<img src="assets/img/bloomie-c4-diagrams/container-view.png" alt="C4 Diagram" width="1000"/> <br>
+<img src="assets/c4-bloomie/BloomieContainerView-dark.png" alt="C4 Diagram" width="1000"/> <br>
 
 ### 4.6.4. Software Architecture Components Diagrams
-### Frontend
 
-<img src="assets/img/bloomie-c4-diagrams/frontend/Components_BoundedContexts.png" alt="C4 Diagram" width="1000"/> <br>
+<img src="assets/c4-bloomie/BloomieApiComponents-dark.png" alt="C4 Diagram" width="1000"/> <br>
+ 
 
-## 4.7. Software Object-Oriented Design
-#### Dermatology Care
+## Componentes - frontend
 
-<img src="assets/img/bloomie-c4-diagrams/frontend/DermatologyCare/Components_DermatologyCare_Layers.png" alt="C4 Diagram" width="1000"/> <br>
+## IAM Bounded Context
 
-<img src="assets/img/bloomie-c4-diagrams/frontend/DermatologyCare/Components_DermatologyCare_Presentation.png" alt="C4 Diagram" width="1000"/> <br>
+### Contenedores y Capas
+![IAM - Contenedores y Capas](assets/c4-frontend-bloomie/iam01-ContenedoresYCapas-dark.png)
 
-<img src="assets/img/bloomie-c4-diagrams/frontend/DermatologyCare/Components_DermatologyCare_Views.png" alt="C4 Diagram" width="1000"/> <br>
+### Capa de Presentación
+![IAM - Capa de Presentación](assets/c4-frontend-bloomie/iam02-CapaPresentacion-dark.png)
 
-#### IAM
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/IAM/Components_IAM_Layers.png" alt="C4 Diagram" width="1000"/> <br>
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/IAM/Components_IAM_Presentation.png" alt="C4 Diagram" width="1000"/> <br>
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/IAM/Components_IAM_Views.png" alt="C4 Diagram" width="1000"/> <br>
-
-#### Intelligent Support
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/IntelligentSupport/Components_IntelligentSupport_Layers.png" alt="C4 Diagram" width="1000"/> <br>
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/IntelligentSupport/Components_IntelligentSupport_Presentation.png" alt="C4 Diagram" width="1000"/> <br>
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/IntelligentSupport/Components_IntelligentSupport_Views.png" alt="C4 Diagram" width="1000"/> <br>
-
-#### Product Discovery
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/ProductDiscovery/Components_ProductDiscovery_Layers.png" alt="C4 Diagram" width="1000"/> <br>
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/ProductDiscovery/Components_ProductDiscovery_Presentation.png" alt="C4 Diagram" width="1000"/> <br>
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/ProductDiscovery/Components_ProductDiscovery_Views.png" alt="C4 Diagram" width="1000"/> <br>
-
-#### Routine Management
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/RoutineManagement/Components_RoutineManagement_Layers.png" alt="C4 Diagram" width="1000"/> <br>
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/RoutineManagement/Components_RoutineManagement_Presentation.png" alt="C4 Diagram" width="1000"/> <br>
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/RoutineManagement/Components_RoutineManagement_Views.png" alt="C4 Diagram" width="1000"/> <br>
-
-#### Skin Analysis
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/SkinAnalysis/Components_SkinAnalysis_Layers.png" alt="C4 Diagram" width="1000"/> <br>
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/SkinAnalysis/Components_SkinAnalysis_Presentation.png" alt="C4 Diagram" width="1000"/> <br>
-
-<img src="assets/img/bloomie-c4-diagrams/frontend/SkinAnalysis/Components_SkinAnalysis_Views.png" alt="C4 Diagram" width="1000"/> <br>
-
-### 4.7.1. Class Diagrams Backend
-
-## Product Discovery
-
-### Capa de Dominio
-![Product Discovery - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/product-discovery-domain.puml)
-
-### Capa de Aplicación
-![Product Discovery - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/product-discovery-application.puml)
-
-### Capa de Infraestructura
-![Product Discovery - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/product-discovery-infrastructure.puml)
-
-### Capa de Interfaces
-![Product Discovery - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/product-discovery-interfaces.puml)
+### Componentes de Views
+![IAM - Componentes de Views](assets/c4-frontend-bloomie/iam03-ComponentesViews-dark.png)
 
 ---
 
-## Routine Management
+## Skin Analysis Bounded Context
+
+### Contenedores y Capas
+![Skin Analysis - Contenedores y Capas](assets/c4-frontend-bloomie/skin-analysis01-ContenedoresYCapas-dark.png)
+
+### Capa de Presentación
+![Skin Analysis - Capa de Presentación](assets/c4-frontend-bloomie/skin-analysis02-CapaPresentacion-dark.png)
+
+### Componentes de Views
+![Skin Analysis - Componentes de Views](assets/c4-frontend-bloomie/skin-analysis03-ComponentesViews-dark.png)
+
+---
+
+## Routine Management Bounded Context
+
+### Contenedores y Capas
+![Routine Management - Contenedores y Capas](assets/c4-frontend-bloomie/routine01-ContenedoresYCapas-dark.png)
+
+### Capa de Presentación
+![Routine Management - Capa de Presentación](assets/c4-frontend-bloomie/routine02-CapaPresentacion-dark.png)
+
+### Componentes de Views
+![Routine Management - Componentes de Views](assets/c4-frontend-bloomie/routine03-ComponentesViews-dark.png)
+
+---
+
+## Product Discovery Bounded Context
+
+### Contenedores y Capas
+![Product Discovery - Contenedores y Capas](assets/c4-frontend-bloomie/product-discovery01-ContenedoresYCapas-dark.png)
+
+### Capa de Presentación
+![Product Discovery - Capa de Presentación](assets/c4-frontend-bloomie/product-discovery02-CapaPresentacion-dark.png)
+
+### Componentes de Views
+![Product Discovery - Componentes de Views](assets/c4-frontend-bloomie/product-discovery03-ComponentesViews-dark.png)
+
+---
+
+## Dermatology Care Bounded Context
+
+### Contenedores y Capas
+![Dermatology Care - Contenedores y Capas](assets/c4-frontend-bloomie/dermatology-care01-ContenedoresYCapas-dark.png)
+
+### Capa de Presentación
+![Dermatology Care - Capa de Presentación](assets/c4-frontend-bloomie/dermatology-care02-CapaPresentacion-dark.png)
+
+### Componentes de Views
+![Dermatology Care - Componentes de Views](assets/c4-frontend-bloomie/dermatology-care03-ComponentesViews-dark.png)
+
+---
+
+## Intelligent Support Bounded Context
+
+### Contenedores y Capas
+![Intelligent Support - Contenedores y Capas](assets/c4-frontend-bloomie/intelligent01-ContenedoresYCapas-dark.png)
+
+### Capa de Presentación
+![Intelligent Support - Capa de Presentación](assets/c4-frontend-bloomie/intelligent02-CapaPresentacion-dark.png)
+
+### Componentes de Views
+![Intelligent Support - Componentes de Views](assets/c4-frontend-bloomie/intelligent03-ComponentesViews-dark.png)
+
+## Componentes - Backend
+
+## IAM Bounded Context
+
+### Vista general de capas DDD
+<img src="assets/c4-bloomie/iamIamLayers-dark.png" width="800"/>
 
 ### Capa de Dominio
-![Routine Management - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/routine-management-domain.puml)
+<img src="assets/c4-bloomie/iamDomainLayerClasses-dark.png" width="800"/>
 
 ### Capa de Aplicación
-![Routine Management - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/routine-management-application.puml)
+<img src="assets/c4-bloomie/iamApplicationLayerClasses-dark.png" width="800"/>
 
 ### Capa de Infraestructura
-![Routine Management - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/routine-management-infrastructure.puml)
+<img src="assets/c4-bloomie/iamInfrastructureLayerClasses-dark.png" width="800"/>
 
 ### Capa de Interfaces
-![Routine Management - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/routine-management-interfaces.puml)
+<img src="assets/c4-bloomie/iamInterfaceLayerClasses-dark.png" width="800"/>
+
+---
+
+## Skin Analysis Bounded Context
+
+### Vista general de capas DDD
+<img src="assets/c4-bloomie/SkinAnalysisLayers-dark.png" width="800"/>
+
+### Capa de Dominio
+<img src="assets/c4-bloomie/DomainLayerClasses-dark.png" width="800"/>
+
+### Capa de Aplicación
+<img src="assets/c4-bloomie/ApplicationLayerClasses-dark.png" width="800"/>
+
+### Capa de Infraestructura
+<img src="assets/c4-bloomie/InfrastructureLayerClasses-dark.png" width="800"/>
+
+### Capa de Interfaces
+<img src="assets/c4-bloomie/InterfaceLayerClasses-dark.png" width="800"/>
+
+---
+
+## Routine Management Bounded Context
+
+### Vista general de capas DDD
+<img src="assets/c4-bloomie/routineRoutineManagementLayers-dark.png" width="800"/>
+
+### Capa de Dominio
+<img src="assets/c4-bloomie/routineDomainLayerClasses-dark.png" width="800"/>
+
+### Capa de Aplicación
+<img src="assets/c4-bloomie/routineApplicationLayerClasses-dark.png" width="800"/>
+
+### Capa de Infraestructura
+<img src="assets/c4-bloomie/routineInfrastructureLayerClasses-dark.png" width="800"/>
+
+### Capa de Interfaces
+<img src="assets/c4-bloomie/routineInterfaceLayerClasses-dark.png" width="800"/>
+
+---
+
+## Product Discovery Bounded Context
+
+### Vista general de capas DDD
+<img src="assets/c4-bloomie/productProductDiscoveryLayers-dark.png" width="800"/>
+
+### Capa de Dominio
+<img src="assets/c4-bloomie/productDomainLayerClasses-dark.png" width="800"/>
+
+### Capa de Aplicación
+<img src="assets/c4-bloomie/productApplicationLayerClasses-dark.png" width="800"/>
+
+### Capa de Infraestructura
+<img src="assets/c4-bloomie/productInfrastructureLayerClasses-dark.png" width="800"/>
+
+### Capa de Interfaces
+<img src="assets/c4-bloomie/productInterfaceLayerClasses-dark.png" width="800"/>
+
+---
+
+## Dermatology Care Bounded Context
+
+### Vista general de capas DDD
+<img src="assets/c4-bloomie/DermatologyCareLayers-dark.png" width="800"/>
+
+### Capa de Dominio
+<img src="assets/c4-bloomie/DermatologyDomainLayerClasses-dark.png" width="800"/>
+
+### Capa de Aplicación
+<img src="assets/c4-bloomie/DermatologyApplicationLayerClasses-dark.png" width="800"/>
+
+### Capa de Infraestructura
+<img src="assets/c4-bloomie/DermatologyInfrastructureLayerClasses-dark.png" width="800"/>
+
+### Capa de Interfaces
+<img src="assets/c4-bloomie/DermatologyInterfaceLayerClasses-dark.png" width="800"/>
+
+---
+
+## Dermatological Appointment Bounded Context
+
+### Vista general de capas DDD
+<img src="assets/c4-bloomie/appointmentDermatologicalAppointmentLayers-dark.png" width="800"/>
+
+### Capa de Dominio
+<img src="assets/c4-bloomie/appointmentDomainLayerClasses-dark.png" width="800"/>
+
+### Capa de Aplicación
+<img src="assets/c4-bloomie/appointmentApplicationLayerClasses-dark.png" width="800"/>
+
+### Capa de Infraestructura
+<img src="assets/c4-bloomie/appointmentInfrastructureLayerClasses-dark.png" width="800"/>
+
+### Capa de Interfaces
+<img src="assets/c4-bloomie/appointmentInterfaceLayerClasses-dark.png" width="800"/>
+
+---
+
+## Subscriptions Bounded Context
+
+### Vista general de capas DDD
+<img src="assets/c4-bloomie/subscriptionSubscriptionLayers-dark.png" width="800"/>
+
+### Capa de Dominio
+<img src="assets/c4-bloomie/subscriptionDomainLayerClasses-dark.png" width="800"/>
+
+### Capa de Aplicación
+<img src="assets/c4-bloomie/subscriptionApplicationLayerClasses-dark.png" width="800"/>
+
+### Capa de Infraestructura
+<img src="assets/c4-bloomie/subscriptionInfrastructureLayerClasses-dark.png" width="800"/>
+
+### Capa de Interfaces
+<img src="assets/c4-bloomie/subscriptionInterfaceLayerClasses-dark.png" width="800"/>
+
+---
+
+## Payments Bounded Context
+
+### Vista general de capas DDD
+<img src="assets/c4-bloomie/paymentsPaymentsLayers-dark.png" width="800"/>
+
+### Capa de Dominio
+<img src="assets/c4-bloomie/paymentsDomainLayerClasses-dark.png" width="800"/>
+
+### Capa de Aplicación
+<img src="assets/c4-bloomie/paymentsApplicationLayerClasses-dark.png" width="800"/>
+
+### Capa de Infraestructura
+<img src="assets/c4-bloomie/paymentsInfrastructureLayerClasses-dark.png" width="800"/>
+
+### Capa de Interfaces
+<img src="assets/c4-bloomie/paymentsInterfaceLayerClasses-dark.png" width="800"/>
+
+---
+
+## Intelligent Support Bounded Context
+
+### Vista general de capas DDD
+<img src="assets/c4-bloomie/intelligentIntelligentSupportLayers-dark.png" width="800"/>
+
+### Capa de Dominio
+<img src="assets/c4-bloomie/intelligentDomainLayerClasses-dark.png" width="800"/>
+
+### Capa de Aplicación
+<img src="assets/c4-bloomie/intelligentApplicationLayerClasses-dark.png" width="800"/>
+
+### Capa de Infraestructura
+<img src="assets/c4-bloomie/intelligentInfrastructureLayerClasses-dark.png" width="800"/>
+
+### Capa de Interfaces
+<img src="assets/c4-bloomie/intelligentInterfaceLayerClasses-dark.png" width="800"/>
+## 4.7. Software Object-Oriented Design
+
+### 4.7.1. Class Diagrams Backend
+
+---
+
+## IAM
+
+### Capa de Dominio
+![IAM - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam/01-domain.puml)
+
+### Capa de Aplicación
+![IAM - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam/02-application.puml)
+
+### Capa de Infraestructura
+![IAM - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam/03-infrastructure.puml)
+
+### Capa de Interfaces
+![IAM - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam/04-interfaces.puml)
 
 ---
 
 ## Skin Analysis
 
 ### Capa de Dominio
-![Skin Analysis - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skin-analysis-domain.puml)
+![Skin Analysis - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skinanalysis/01-domain.puml)
 
 ### Capa de Aplicación
-![Skin Analysis - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skin-analysis-application.puml)
+![Skin Analysis - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skinanalysis/02-application.puml)
 
 ### Capa de Infraestructura
-![Skin Analysis - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skin-analysis-infrastructure.puml)
+![Skin Analysis - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skinanalysis/03-infrastructure.puml)
 
 ### Capa de Interfaces
-![Skin Analysis - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skin-analysis-interfaces.puml)
+![Skin Analysis - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skinanalysis/04-interfaces.puml)
 
 ---
 
-## Subscription
+## Routine Management
 
 ### Capa de Dominio
-![Subscription - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/subscription-domain.puml)
+![Routine Management - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/routinemanagement/01-domain.puml)
 
 ### Capa de Aplicación
-![Subscription - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/subscription-application.puml)
+![Routine Management - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/routinemanagement/02-application.puml)
 
 ### Capa de Infraestructura
-![Subscription - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/subscription-infrastructure.puml)
+![Routine Management - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/routinemanagement/03-infrastructure.puml)
 
 ### Capa de Interfaces
-![Subscription - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/subscription-interfaces.puml)
-
-## Payments
-
-### Capa de Dominio
-![Payments - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/payments-domain.puml)
-
-### Capa de Aplicación
-![Payments - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/payments-application.puml)
-
-### Capa de Infraestructura
-![Payments - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/payments-infrastructure.puml)
-
-### Capa de Interfaces
-![Payments - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/payments-interfaces.puml)
+![Routine Management - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/routinemanagement/04-interfaces.puml)
 
 ---
 
-## IAM (Identity and Access Management)
+## Product Discovery
 
 ### Capa de Dominio
-![IAM - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam-domain.puml)
+![Product Discovery - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/productdiscovery/01-domain.puml)
 
 ### Capa de Aplicación
-![IAM - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam-application.puml)
+![Product Discovery - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/productdiscovery/02-application.puml)
 
 ### Capa de Infraestructura
-![IAM - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam-infrastructure.puml)
+![Product Discovery - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/productdiscovery/03-infrastructure.puml)
 
 ### Capa de Interfaces
-![IAM - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam-interfaces.puml)
+![Product Discovery - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/productdiscovery/04-interfaces.puml)
 
 ---
 
 ## Dermatology Care
 
 ### Capa de Dominio
-![Dermatology Care - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatology-care-domain.puml)
+![Dermatology Care - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologycare/01-domain.puml)
 
 ### Capa de Aplicación
-![Dermatology Care - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatology-care-application.puml)
+![Dermatology Care - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologycare/02-application.puml)
 
 ### Capa de Infraestructura
-![Dermatology Care - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatology-care-infrastructure.puml)
+![Dermatology Care - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologycare/03-infrastructure.puml)
 
 ### Capa de Interfaces
-![Dermatology Care - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatology-care-interfaces.puml)
+![Dermatology Care - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologycare/04-interfaces.puml)
 
 ---
 
 ## Dermatological Appointment
 
 ### Capa de Dominio
-![Dermatological Appointment - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatological-appointment-domain.puml)
+![Dermatological Appointment - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologicalappointment/01-domain.puml)
 
 ### Capa de Aplicación
-![Dermatological Appointment - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatological-appointment-application.puml)
+![Dermatological Appointment - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologicalappointment/02-application.puml)
 
 ### Capa de Infraestructura
-![Dermatological Appointment - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatological-appointment-infrastructure.puml)
+![Dermatological Appointment - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologicalappointment/03-infrastructure.puml)
 
 ### Capa de Interfaces
-![Dermatological Appointment - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatological-appointment-interfaces.puml)
+![Dermatological Appointment - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologicalappointment/04-interfaces.puml)
+
+---
+
+## Subscription
+
+### Capa de Dominio
+![Subscription - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/subscription/01-domain.puml)
+
+### Capa de Aplicación
+![Subscription - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/subscription/02-application.puml)
+
+### Capa de Infraestructura
+![Subscription - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/subscription/03-infrastructure.puml)
+
+### Capa de Interfaces
+![Subscription - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/subscription/04-interfaces.puml)
+
+---
+
+## Payments
+
+### Capa de Dominio
+![Payments - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/payments/01-domain.puml)
+
+### Capa de Aplicación
+![Payments - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/payments/02-application.puml)
+
+### Capa de Infraestructura
+![Payments - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/payments/03-infrastructure.puml)
+
+### Capa de Interfaces
+![Payments - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/payments/04-interfaces.puml)
+
+---
+
+## Intelligent Support
+
+### Capa de Dominio
+![Intelligent Support - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/intelligentsupport/01-domain.puml)
+
+### Capa de Aplicación
+![Intelligent Support - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/intelligentsupport/02-application.puml)
+
+### Capa de Infraestructura
+![Intelligent Support - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/intelligentsupport/03-infrastructure.puml)
+
+### Capa de Interfaces
+![Intelligent Support - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/intelligentsupport/04-interfaces.puml)
 
 
 ## 4.8. Database Design
 
 ### 4.8.1. Database Diagrams
 
+En esta sección se presentan los Database Diagrams de Bloomie, elaborados para cada bounded context de la solución (IAM, Skin Analysis, Routine Management, Product Discovery, Dermatology Care, Payments, Subscription e Intelligent Support). Los diagramas muestran las tablas, columnas, llaves primarias y foráneas, así como las relaciones entre ellas, reflejando cómo se almacena en MySQL la información correspondiente a cada contexto del negocio.
+
+<img src="assets/img/bloomie-db.png" alt="DB Diagram" width="1000"/> <br>
+
 ### Identity and Access Management
-<img src="assets/img/iam-bd.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/iam.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Dermatology Care
-<img src="assets/img/dermatology-care.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/dermatologycare.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Intelligent Support
-<img src="assets/img/intelligent-support.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/intelligentsupport.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Payments
-<img src="assets/img/payments.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/payments .png" alt="DB Diagram" width="600"/> <br>
+
+### Subscriptions
+<img src="assets/img/Diagrama-base-de-datos/subscription.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Product Discovery
-<img src="assets/img/product-discovery.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/productdiscovery.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Routine Management
-<img src="assets/img/routine-management.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/routinemanagement.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Skin Analysis
-<img src="assets/img/skin-analysis.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/skinanalysis.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Suscription
-<img src="assets/img/suscription.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/subscription.png" alt="DB Diagram" width="1000"/> <br>
 
 
 # Capítulo V: Product Implementation, Validation & Deployment
@@ -7214,7 +7601,7 @@ En esta etapa del proyecto, JSON Server se utiliza únicamente como una solució
 | **Time** | 9:00 p.m. – 11:00 p.m. |
 | **Location** | Universidad Peruana de Ciencias Applicadas - Pabellón I |
 | **Prepared By** | Contreras Torres, Arturo |
-| **Attendees (to planning meeting)** | Asmat Alminco, Martin Alejandro / Contreras Torres, Arturo Valentino / Gallardo Morales, Carla Alejandra / Mechan Montenegro, Luciana Carolina / Ramirez Ruiz, Nickolas |
+| **Attendees (to planning meeting)** | Asmat Alminco, Martin Alejandro / Contreras Torres, Arturo Valentino / Mechan Montenegro, Luciana Carolina|
 | **Sprint Goal & User Stories** | |
 | **Sprint 1 Goal** | Nuestro objetivo es presentar la propuesta de valor de Bloomie a los usuarios potenciales a través de una página de destino. Creemos que esto brinda claridad y confianza a los jóvenes que buscan soluciones confiables para el cuidado de la piel, ayudándoles a comprender lo que Bloomie ofrece antes de registrarse. Esto se confirmará cuando los visitantes puedan explorar la propuesta de valor, comprender cómo funciona el servicio, comparar los planes de suscripción y navegar libremente por todas las secciones de la página de destino.|
 | **Sprint 1 Velocity** | 10 |
@@ -7647,7 +8034,7 @@ El Sprint 2 tuvo como punto de partida los resultados alcanzados en el Sprint 1,
 | **Time** | 9:00 p.m. – 11:00 p.m. |
 | **Location** | Reunión presencial - Sede Monterrico |
 | **Prepared By** | Ramirez Ruiz, Nickolas |
-| **Attendees (to planning meeting)** | Asmat Alminco, Martin Alejandro / Contreras Torres, Arturo Valentino / Gallardo Morales, Carla Alejandra / Mechan Montenegro, Luciana Carolina / Mechan Montenegro, Luciana |
+| **Attendees (to planning meeting)** | Asmat Alminco, Martin Alejandro / Contreras Torres, Arturo Valentino / Mechan Montenegro, Luciana Carolina |
 | **Sprint 1 Review Summary** | Durante el Sprint 1 se completaron los artefactos Lean UX (Problem Statements, Assumptions, Hypothesis Statements y Canvas), el análisis de requisitos con entrevistas y needfinding, la especificación completa de User Stories y Product Backlog, el diseño UX/UI en Figma incluyendo wireframes, mockups y wireflow diagrams para Landing Page y Web Application, la arquitectura del software con diagramas C4 y Event Storming, y el despliegue exitoso de la Landing Page en Vercel. Sin embargo, no se completó el prototipo interactivo de la Web Application ni la sección de Sprint Backlog 1, quedando ambos pendientes como deuda técnica para ser subsanada al inicio del Sprint 2. El equipo reconoció la necesidad de mejorar la planificación interna para evitar entregas incompletas. |
 | **Sprint 1 Retrospective Summary** | El equipo identificó como aciertos la aplicación de GitFlow con feature branches por inciso, la distribución de responsabilidades mediante el esquema de Aspect Leaders y Collaborators, y la comunicación constante a través de Discord. Como oportunidades de mejora se identificó que no se estableció una organización interna clara con fechas límite por tarea, lo que generó acumulación de trabajo hacia el cierre del sprint y la omisión de entregables como el prototipo y el Sprint Backlog 1. Para el Sprint 2 el equipo se comprometió a definir fechas internas por cada work item, realizar seguimiento activo del board en Trello y mantener los Pull Requests con descripciones detalladas para facilitar la revisión por pares. |
 | **Sprint Goal & User Stories** | |
@@ -8458,7 +8845,7 @@ El Sprint 3 tuvo como punto de partida los resultados alcanzados en el Sprint 2,
 | **Sprint 2 Review Summary** | Durante el Sprint 2 se completó el despliegue de la primera versión funcional del Frontend Web Application en Azure Static Web Apps, estructurada por bounded contexts bajo Domain-Driven Design e integrada con una Mock API desplegada en Azure App Service. Se implementaron las funcionalidades core del producto: escaneo facial, rutina personalizada con seguimiento diario, catálogo de productos, asistente virtual y gestión de citas dermatológicas con consulta virtual. Adicionalmente se integró Stripe como pasarela de pagos en el flujo de suscripción de la Landing Page y se completaron las correcciones de diseño UX/UI en Figma. El equipo cumplió con el alcance planificado y subsanó la deuda técnica heredada del Sprint 1. |
 | **Sprint 2 Retrospective Summary** | El equipo identificó como aciertos la organización del trabajo por bounded contexts mediante el esquema de Aspect Leaders y la definición de fechas internas por work item. Como oportunidades de mejora, a partir de la revisión del Sprint 2 se detectaron observaciones puntuales: algunas ramas no siguieron de forma consistente la convención de nomenclatura de GitFlow establecida por el equipo, y faltó definir con mayor claridad y detalle los diagramas de diseño del Frontend, los cuales requirieron correcciones posteriores. El equipo reconoció también la necesidad de iniciar antes el desarrollo de los Web Services para disponer de mayor tiempo de pruebas de integración. Para el Sprint 3 el equipo se comprometió a respetar estrictamente las convenciones de nomenclatura de ramas, revisar y completar correctamente los diagramas antes de darlos por finalizados, y priorizar el desarrollo del backend desde el inicio del sprint documentando los endpoints en paralelo a su implementación. |
 | **Sprint Goal & User Stories** | |
-| **Sprint 3 Goal** | Nuestro enfoque está en brindar a los usuarios de Bloomie una experiencia de cuidado de piel confiable y continua, donde puedan crear su cuenta, seguir su rutina diaria, explorar productos compatibles con su tipo de piel y agendar consultas con dermatólogos, conservando toda su información entre sesiones. Creemos que esto entrega confianza y compromiso a largo plazo a los jóvenes adultos que buscan mejorar el estado de su piel, y mayor organización en la gestión de pacientes para los dermatólogos. Esto se confirmará cuando los participantes de las entrevistas de validación de ambos segmentos puedan completar sus tareas principales en la aplicación desplegada sin perder información y sin encontrar bloqueos críticos que interrumpan su experiencia. |
+| **Sprint 3 Goal** | Nuestro enfoque está en brindar a los usuarios de Bloomie una experiencia de cuidado de piel confiable y continua, donde puedan crear su cuenta, seguir su rutina diaria, explorar productos compatibles con su tipo de piel y agendar consultas con dermatólogos, conservando toda su información entre sesiones. Creemos que esto entrega confianza y compromiso a largo plazo a los jóvenes adultos que buscan mejorar el estado de su piel, y mayor organización en la gestión de pacientes para los dermatólogos. Esto se confirmará cuando un usuario pueda registrarse, completar su perfil de piel, visualizar su rutina personalizada con productos reales, marcar el cumplimiento diario de su rutina, explorar el catálogo de productos y agendar una cita dermatológica sin perder su información entre sesiones. |
 | **Sprint 3 Velocity** | 40 |
 | **Sum of Story Points** | 40 |
 
@@ -8948,6 +9335,558 @@ A continuación se presentan los analíticos de colaboración obtenidos desde Gi
 
 ![landing-commits](assets/img/landing-commits-2.png)
 
+
+### 5.2.4. Sprint 4
+
+#### 5.2.4.1. Sprint Planning 4
+
+El Sprint 4 tuvo como punto de partida los resultados alcanzados en el Sprint 3, donde se implementó y desplegó la primera versión de los Web Services de Bloomie cubriendo los bounded contexts principales del sistema. En esta cuarta y última iteración el equipo se enfocó en consolidar el producto completo, mejorando y refinando todos los artefactos: Landing Page, Frontend Web Application y Web Services, logrando la versión final e integrada de los cuatro productos desplegados. Se aplicaron las correcciones identificadas en la evaluación heurística y en las entrevistas de validación del Sprint 3, se completó la integración del frontend con el backend en los bounded contexts pendientes, y se refinaron los endpoints del backend incorporando validaciones y comportamientos de negocio faltantes.
+
+| Campo | Detalle |
+|---|---|
+| **Sprint #** | Sprint 4 |
+| **Sprint Planning Background** | |
+| **Date** | 2026-06-20 |
+| **Time** | 12:00 p.m. – 1:00 p.m. |
+| **Location** | Reunión presencial en Universidad Peruana de Ciencias Aplicadas - Sede Monterrico|
+| **Prepared By** | Mechan Montenegro, Luciana |
+| **Attendees (to planning meeting)** | Asmat Alminco, Martin Alejandro / Contreras Torres, Arturo Valentino / Mechan Montenegro, Luciana Carolina / Mathias Joaquin Acuache Lucas / Rommel Daniel Hurtado Balcázar|
+| **Sprint 3 Review Summary** | Durante el Sprint 3 se implementó y desplegó la primera versión de los Web Services de Bloomie mediante una RESTful API desarrollada con Spring Boot, cubriendo doce bounded contexts con más de cuarenta endpoints documentados con OpenAPI/Swagger. El backend fue desplegado en Azure App Service con base de datos MySQL Flexible Server. Se actualizó el Frontend Web Application conectando los bounded contexts de IAM, Dermatology Care y Routine Management al backend real, y se actualizó la Landing Page con los enlaces definitivos hacia la Web Application. Adicionalmente se realizaron las entrevistas de validación con usuarios de ambos segmentos objetivo y se completó la evaluación heurística del producto. |
+| **Sprint 3 Retrospective Summary** | El equipo identificó como aciertos la organización del trabajo por bounded contexts mediante el esquema de Aspect Leaders, que permitió paralelizar el desarrollo del backend de forma efectiva, y la documentación de endpoints en paralelo a su implementación. Como oportunidades de mejora se identificó que algunos bounded contexts del frontend quedaron pendientes de conectar al backend real al cierre del sprint, y que ciertos endpoints del backend requieren validaciones adicionales de negocio. Para el Sprint 4 el equipo se comprometió a completar la integración total del frontend con el backend, aplicar las correcciones de usabilidad identificadas en la evaluación heurística, y asegurar que todos los productos estén en su versión final y completamente funcionales para el cierre del proyecto. |
+| **Sprint Goal & User Stories** | |
+| **Sprint 4 Goal** | Nuestro enfoque está en ofrecer a los usuarios de Bloomie una experiencia de cuidado de piel completa, pulida y confiable, donde todos los flujos principales del producto funcionen de manera integrada y sin interrupciones. Creemos que esto entrega una solución madura y lista para ser evaluada por usuarios reales a los jóvenes adultos que buscan personalizar su rutina de skincare, y una herramienta de gestión de pacientes más robusta y fluida para los dermatólogos. Esto se confirmará cuando un usuario pueda completar su rutina de skincare diaria, explorar y guardar productos favoritos, gestionar su suscripción activa y participar en una consulta dermatológica virtual de inicio a fin, y cuando un dermatólogo pueda gestionar su disponibilidad, atender una consulta y registrar sus notas clínicas, todo sin encontrar bloqueos ni inconsistencias en la información mostrada. |
+
+#### 5.2.4.2. Aspect Leaders and Collaborators
+
+Durante el Sprint 4 el equipo organizó el trabajo en torno a los bounded contexts 
+implementados y refinados en esta iteración final, incorporando adicionalmente un 
+aspecto de Quality Assurance y documentación de código para asegurar la calidad del 
+producto entregado. 
+
+| Team Member (Last Name, First Name) | GitHub Username | IAM & Authentication | Skin Analysis | Routine Management | Product Discovery | Dermatology Care | Dermatological Appointment | Subscriptions & Payments | Intelligent Support | Quality Assurance & Documentation |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Acuache Lucas, Mathias Joaquin | MathiasA25 | C | C | C | C | C | C | C | C | L |
+| Asmat Alminco, Martin Alejandro | Alemarr2 | C | L | C | C | C | C | C | C | C |
+| Contreras Torres, Arturo Valentino | Arturouu | C | C | L | L | C | C | C | L | C |
+| Hurtado Balcázar, Rommel Daniel | rommelDN | C | C | C | C | C | C | C | L | L |
+| Mechan Montenegro, Luciana Carolina | luuu6 | L | L | C | C | L | L | L | L | C |
+
+
+#### 5.2.4.3. Sprint Backlog 4
+
+El Sprint 4 tuvo como objetivo consolidar el producto final de Bloomie, completando la 
+implementación de los bounded contexts pendientes, integrando servicios externos para el 
+asistente virtual y los pagos, incorporando la funcionalidad de videollamada en las 
+consultas dermatológicas, y asegurando la calidad del flujo completo de la aplicación. 
+Adicionalmente se elaboraron los videos About the Product y About the Team requeridos 
+para la entrega final del proyecto.
+
+**URL del board:** https://trello.com/invite/b/6a03942179de59aecf992694/ATTI292239de3874460f61b240610610f74d5BE6017C/bloomie
+
+![Sprint Backlog 4 Board](assets/img/sprint-backlog-4.png)
+
+| User Story Id | Título | Task Id | Título | Descripción | Estimación (Hours) | Responsable | Estado |
+|---|---|---|---|---|---|---|---|
+| TS01 / TS02 | Gestionar usuarios del sistema / Gestionar sesiones de autenticación | T-01 | Completar implementación del bounded context IAM | Finalizar la implementación completa del bounded context de IAM incluyendo todos los endpoints de usuarios y autenticación, validaciones de negocio pendientes y correcciones identificadas en la iteración anterior. | 5 | Mechan, Luciana | Done |
+| TS09 / TS10 | Gestionar perfiles de dermatólogos / Gestionar disponibilidad de dermatólogos | T-02 | Completar endpoints de Dermatology Care | Finalizar la implementación completa del bounded context de Dermatology Care incluyendo los endpoints de perfiles de dermatólogos y disponibilidad con todas las validaciones de negocio requeridas. | 5 | Mechan, Luciana | Done |
+| TS11 | Gestionar citas dermatológicas | T-03 | Completar endpoints de Dermatological Appointment | Finalizar la implementación completa del bounded context de Dermatological Appointment incluyendo los endpoints de agendamiento, confirmación, cancelación y reprogramación de citas con validaciones de negocio completas. | 5 | Mechan, Luciana | Done |
+| TS13 / TS15 | Gestionar pagos / Gestionar suscripciones de usuarios | T-04 | Implementar transacción con Stripe integrada con base de datos | Implementar el flujo completo de procesamiento de pagos con Stripe persistiendo las transacciones en base de datos y actualizando el estado de la suscripción del usuario de forma sincronizada. | 5 | Mechan, Luciana | Done |
+| TS16 | Gestionar consultas al asistente virtual | T-05 | Integrar servicio externo Gemini para asistente virtual | Integrar la API de Gemini como motor del asistente virtual de skincare, permitiendo al usuario realizar consultas sobre productos, rutinas e ingredientes y recibir respuestas personalizadas basadas en su perfil de piel. | 5 | Mechan, Luciana | Done |
+| US29 / US34 | Realizar consulta virtual en tiempo real / Participar en consulta virtual | T-06 | Implementar videollamada en consulta dermatológica | Implementar la funcionalidad de videollamada dentro del flujo de consulta dermatológica virtual, permitiendo que el paciente y el dermatólogo se conecten en tiempo real durante la sesión. | 5 | Mechan, Luciana | Done |
+| TS07 | Gestionar catálogo de productos | T-07 | Integrar API externa de productos de skincare | Integrar una API externa como fuente de datos del catálogo de productos de skincare, reemplazando los datos simulados por información real de productos con sus atributos e ingredientes. | 5 | Contreras, Arturo | Done |
+| - | Quality Assurance | T-08 | Prueba del flujo completo de la aplicación — Mathias | Verificar el funcionamiento integral de todos los flujos de la aplicación desde el registro de usuario hasta la consulta dermatológica, documentando incidencias encontradas y confirmando su resolución. | 4 | Acuache, Mathias | Done |
+| - | Quality Assurance | T-09 | Prueba del flujo completo de la aplicación — Rommel | Verificar el funcionamiento integral de todos los flujos de la aplicación desde el registro de usuario hasta la consulta dermatológica, documentando incidencias encontradas y confirmando su resolución. | 4 | Hurtado, Rommel | Done |
+| - | Videos del proyecto | T-10 | Elaboración del video About the Product | Producir el video promocional de Bloomie de entre 1 y 3 minutos resumiendo el modelo de negocio, las características del producto y la opinión de usuarios de ambos segmentos objetivo. | 3 | Asmat, Martin | Done |
+| - | Videos del proyecto | T-11 | Grabación de testimonio individual para video About the Team | Grabar el testimonio individual ante cámara de cada integrante describiendo las actividades realizadas, los outcomes de aprendizaje logrados y las competencias desarrolladas durante el proyecto. | 2 | Todos | Done |
+| - | Videos del proyecto | T-12 | Edición del video About the Team | Editar el video About the Team integrando las escenas de sesiones de trabajo del equipo, la narración en voz en off del proceso y los testimonios individuales de cada integrante. | 3 | Asmat, Martin | Done |
+| - | Documentación del informe | T-13 | Documentación del capítulo 5 — Sprint 4 | Redactar y completar todas las secciones del capítulo 5 correspondientes al Sprint 4 en el informe del proyecto, incluyendo Sprint Planning, Sprint Backlog, evidencias de desarrollo, despliegue y colaboración del equipo. | 4 | Mechan, Luciana | Done |
+
+#### 5.2.4.4. Development Evidence for Sprint Review
+
+Durante el Sprint 4 el equipo completó la versión final de todos los productos de Bloomie. En el backend se implementaron los bounded contexts de Intelligent Support con integración a Gemini AI, mensajería en consulta virtual, el ciclo completo de pagos con Stripe incluyendo checkout y webhook, el ciclo completo de suscripciones con cancelación y cambio de plan, la compatibilidad de productos con Open Beauty Facts, la generación de rutinas con IA, y la implementación completa de IAM con JWT. En el frontend se conectaron todos los bounded contexts al backend real, se implementó la videollamada virtual, el cambio de contraseña, la gestión de suscripciones, y se aplicaron mejoras de UI en todas las vistas. La Landing Page fue actualizada con los videos About the Product y About the Team y los enlaces definitivos.
+
+Detalle de los principales commits realizados para la entrega del trabajo final
+
+| Repository | Branch | Commit Id | Commit Message | Committed on (Date) |
+|---|---|---|---|---|
+| bloomie-platform | feature/iam-implementation | b0bab61 | add AuthenticatedUserResourceFromEntityAssembler | 29/06/2026 |
+| bloomie-platform | feature/iam-implementation | 6f4301c | add token services | 29/06/2026 |
+| bloomie-platform | feature/iam-implementation | 7574c34 | add authorization services | 29/06/2026 |
+| bloomie-platform | feature/iam-implementation | 9c79c75 | add authorization pipeline | 29/06/2026 |
+| bloomie-platform | feature/iam-implementation | 981d993 | add authorization models | 29/06/2026 |
+| bloomie-platform | feature/iam-implementation | f823354 | add ApplicationReadyEventHandler | 29/06/2026 |
+| bloomie-platform | feature/iam-implementation | 5758691 | add RoleCommandServiceImpl | 29/06/2026 |
+| bloomie-platform | feature/change-password-command | 1767b4d | feat(iam): add change password request resources | 01/07/2026 |
+| bloomie-platform | feature/change-password-command | b5281a1 | feat(iam): update user controller | 01/07/2026 |
+| bloomie-platform | feature/create-support-query-command | 8981ac8 | add SupportQuery | 28/06/2026 |
+| bloomie-platform | feature/create-support-query-command | dba9938 | add CreateSupportQueryCommand | 28/06/2026 |
+| bloomie-platform | feature/create-support-query-command | 5768e1a | add AiService | 28/06/2026 |
+| bloomie-platform | feature/create-support-query-command | 316dd9d | add GeminiAiServiceImpl | 28/06/2026 |
+| bloomie-platform | feature/create-support-query-command | 9d97fb9 | add SupportQueryCommandServiceImpl | 28/06/2026 |
+| bloomie-platform | feature/create-support-query-command | fc6b36e | add SupportQueryRepositoryImpl | 28/06/2026 |
+| bloomie-platform | feature/create-support-query-command | 999c3ce | add SupportQueriesController | 28/06/2026 |
+| bloomie-platform | feature/get-support-query-by-id | ff287e3 | add GetSupportQueryByPatientIdAndStatusQuery | 28/06/2026 |
+| bloomie-platform | feature/get-support-query-by-patient-and-status | 25cdfeb | add query services | 28/06/2026 |
+| bloomie-platform | feature/send-message-command | 8ebf3df | add ChatMessage | 28/06/2026 |
+| bloomie-platform | feature/send-message-command | 218b8ec | add SendChatMessageCommand | 28/06/2026 |
+| bloomie-platform | feature/send-message-command | 257d5e9 | add ChatMessageCommandServiceImpl | 28/06/2026 |
+| bloomie-platform | feature/send-message-command | 31be9a1 | add ChatMessageRepositoryImpl | 28/06/2026 |
+| bloomie-platform | feature/get-chat-messages | 5eb0991 | add ChatMessagesController | 28/06/2026 |
+| bloomie-platform | feature/get-chat-messages | bcd644c | add ChatMessageQueryServiceImpl | 28/06/2026 |
+| bloomie-platform | feature/stripe-checkout-integration | 24077cd | feat(payments): add Stripe checkout session integration | 30/06/2026 |
+| bloomie-platform | feature/stripe-checkout-integration | 8ebcaaa | feat(payments): implement stripewebhookcontroller | 30/06/2026 |
+| bloomie-platform | feature/stripe-checkout-integration | 0a4638f | fix(webhook): use Jackson to deserialize Stripe session due to API version mismatch | 30/06/2026 |
+| bloomie-platform | feature/stripe-checkout-integration | 591c73d | feat(environments): add stripe environments variables | 30/06/2026 |
+| bloomie-platform | feature/stripe-checkout-integration | 1f3f36a | fix(stripe): expose webhook endpoint in security config | 30/06/2026 |
+| bloomie-platform | feature/stripe-checkout-integration | abc1995 | feat(payments): implement payment status | 30/06/2026 |
+| bloomie-platform | feature/payment-refund | f82f8d6 | feat(payments): add payment refund command and event | 29/06/2026 |
+| bloomie-platform | feature/payment-refund | b5acca6 | feat(payments): add payment event handlers | 29/06/2026 |
+| bloomie-platform | feature/payment-refund | 0c91d00 | feat(payments): add renewal payment processing | 29/06/2026 |
+| bloomie-platform | feature/cancel-subscription | 488b354 | feat(subscription): add CancelSubscriptionCommand | 29/06/2026 |
+| bloomie-platform | feature/cancel-subscription | 381bfdc | feat(subscription): add SubscriptionCancelledEvent | 29/06/2026 |
+| bloomie-platform | feature/cancel-subscription | d8ce810 | feat(subscription): add subscription lifecycle event handlers | 29/06/2026 |
+| bloomie-platform | feature/renew-subscription | 31a688e | feat(subscription): add RenewSubscriptionCommand | 29/06/2026 |
+| bloomie-platform | feature/renew-subscription | 0f62d16 | feat(subscription): add SubscriptionRenewedEvent | 29/06/2026 |
+| bloomie-platform | feature/subscription-expiration | b523697 | feat(subscription): add subscription expiration command and event | 29/06/2026 |
+| bloomie-platform | feature/change-subscription-plan | 9501d85 | feat(subscription): add subscription plan change | 01/07/2026 |
+| bloomie-platform | feat/plan-repository-and-seeding | e6fc751 | feat(subscription): implement application ready event for plans | 30/06/2026 |
+| bloomie-platform | feature/add-product-images | fceac28 | feat(product-discovery): add Open Beauty Facts integration | 29/06/2026 |
+| bloomie-platform | feature/ai-routine-recommendations | 2d0eb6a | feat(routine-management): add AI integration services | 29/06/2026 |
+| bloomie-platform | feature/ai-routine-regenerated | e59461a | feat(routine): implement routine generation with ai | 01/07/2026 |
+| bloomie-platform | fix/availability-missing-fields | e3c5c48 | feat(availability): add missing fields in availability aggregate | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | b29ad64 | feat(product-discovery): add generate product compatibility command | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 7c79609 | feat(product-discovery): add product compatibility aggregate | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 3c55bc8 | feat(product-discovery): add product compatibility command service | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 96a9884 | feat(product-discovery): add ProductCompatibilityAiService outbound port | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 77e8daa | feat(product-discovery): add Gemini compatibility AI Service Implementation | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 08698ed | feat(product-discovery): add product compatibility repository | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 84f0bd9 | feat(product-discovery): add product compatibility repository implementation | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | e4d9ff1 | feat(product-discovery): add product compatibility persistence assembler | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 1b3bdfa | feat(product-discovery): add product compatibility persistence entity | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | e0e35a2 | feat(product-discovery): add product compatibility persistence repository | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 7627112 | feat(product-discovery): update application ready event handler to seed compatibilities | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 06913a3 | feat(product-discovery): add Product Compatibility Query Service Implementation | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | b4ab5a9 | feat(product-discovery): add Product Compatibility Query Service | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 9fd5c62 | feat(product-discovery): add get compatibilities by skin type query | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 060c8be | feat(product-discovery): add product compatibility resource from entity assembler | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | f2934fb | feat(product-discovery): add product compatibility controller | 01/07/2026 |
+| bloomie-platform | fix/product-skin-compatibility | 2e01042 | fix(product-discovery): remove gemini compatibility and replace it with calculations | 01/07/2026 |
+| bloomie-platform | fix/consultation-appointment-endpoints | 137f223 | fix(consultation): add getAll endpoint and make appointmentId optional | 28/06/2026 |
+| bloomie-platform | fix/stripe-webhook-integration | 0b79809 | refactor(subscription): reorganize persistence package structure | 02/07/2026 |
+| bloomie-platform | fix/stripe-webhook-integration | 99d2872 | fix(product-discovery): eagerly fetch product benefits to avoid lazy-init error | 02/07/2026 |
+| bloomie-platform | fix/stripe-webhook-integration | 791de8a | fix(dermatology-care): return full availability resource on create | 02/07/2026 |
+| bloomie-webapp | feature/virtual-call | 752793a | feature/virtual-call | 28/06/2026 |
+| bloomie-webapp | feature/virtual-call | 009eb90 | refactor(dermatology-care): restructure consultation summary, scheduled appointments, select consultation and virtual call views | 27/06/2026 |
+| bloomie-webapp | feature/virtual-call | 4bb647c | fix(dermatology-care): improve consultation flow | 01/07/2026 |
+| bloomie-webapp | feature/virtual-call | 773c469 | fix(dermatology-care): update consultation services | 01/07/2026 |
+| bloomie-webapp | feature/virtual-call | 08ff9e2 | fix(dermatology-care): quit restriction for virtual call | 03/07/2026 |
+| bloomie-webapp | feature/virtual-call | 43c3bf8 | fix(dermatology-care): fix appointment date | 03/07/2026 |
+| bloomie-webapp | develop | 2f93336 | feat(iam): add authentication interceptor | 29/06/2026 |
+| bloomie-webapp | develop | e607f09 | feat(iam): add subscription plan selection | 30/06/2026 |
+| bloomie-webapp | develop | 0c58471 | feat(iam): implement change password ui | 01/07/2026 |
+| bloomie-webapp | develop | 2c964b3 | feat(subscription): implement cancelled a subscription | 30/06/2026 |
+| bloomie-webapp | develop | 8b668b6 | feat(subscription): implement subscription plan change | 01/07/2026 |
+| bloomie-webapp | develop | 962b9ed | feat(dermatologist-profile-connection): add dermatologist profile connection with the backend | 28/06/2026 |
+| bloomie-webapp | develop | 7203b1d | feature(dermatologist-profile): add dermatologist configuration form | 28/06/2026 |
+| bloomie-webapp | develop | dbc52f4 | feat(dermatologist-profile): implement dermatologist profile with backend | 01/07/2026 |
+| bloomie-webapp | develop | 3308bfd | fix(product-discovery): add product compatibility for all products | 01/07/2026 |
+| bloomie-webapp | develop | d9b6962 | fix(product-discovery): update product navigation | 01/07/2026 |
+| bloomie-webapp | develop | 52bb6cd | refactor(dashboard): improve dashboard UI | 27/06/2026 |
+| bloomie-webapp | develop | cfb5b91 | refactor(select-dermatologist): improve select dermatologist view ui | 27/06/2026 |
+| bloomie-webapp | develop | d6a3d56 | refactor(skin-scan-ui): improve skin scan flow ui | 27/06/2026 |
+| bloomie-webapp | develop | 43e33b3 | refactor(chat-ia): improve chat ia ui | 27/06/2026 |
+| bloomie-webapp | develop | 3e12083 | refactor(product-discovery): improve product discovery ui | 27/06/2026 |
+| bloomie-webapp | develop | fef625d | refactor(profile): improve profile ui | 27/06/2026 |
+| bloomie-webapp | develop | 261cc1e | fix(skin-analysis): implement total score view | 03/07/2026 |
+| bloomie-webapp | develop | 4fbf1e5 | fix(dermatology-care): add responsiveness to trending items section | 03/07/2026 |
+| bloomie-webapp | develop | 9df38cb | ci: add Azure Static Web Apps workflow file | 02/07/2026 |
+| bloomie-webapp | develop | 5c4b7bd | fix: add staticwebapp.config.json to handle Angular client-side routing | 02/07/2026 |
+| bloomie-webapp | develop | 9d14e0a | feat(iam): update iam store | 02/07/2026 |
+| bloomie-webapp | develop | c2950b6 | feat(environment): add backend base path | 02/07/2026 |
+| bloomie-webapp | develop | 870a1b9 | fix: replace backend url | 03/07/2026 |
+| bloomie-website | develop | 8c7b2e0 | feat(about): update about html | 20/06/2026 |
+| bloomie-website | develop | 3528bfd | feat(styles): update landing page styles for video about the team and product | 20/06/2026 |
+| bloomie-website | develop | b8eceb5 | feat(i18n): update i18n keys for videos about the team and product | 20/06/2026 |
+| bloomie-website | develop | f30103f | fix: change url links | 20/06/2026 |
+| bloomie-website | develop | c24c2d8 | refactor(main-view): improve visual interface | 29/06/2026 |
+| bloomie-website | develop | 279ff31 | feat(update-links): update plan links to sign in | 02/07/2026 |
+| bloomie-website | develop | 75d986e | docs: update member team | 03/07/2026 |
+
+#### 5.2.4.5. Execution Evidence for Sprint Review
+
+Durante el Sprint 4 el equipo completó la versión final e integrada de Bloomie, 
+consolidando todos los productos de la solución: Landing Page, Frontend Web Application 
+y Web Services. En esta iteración se implementaron y conectaron al backend real los 
+bounded contexts de Intelligent Support con Gemini AI, la videollamada en consultas 
+dermatológicas virtuales, el ciclo completo de pagos y suscripciones con Stripe, la 
+compatibilidad de productos con Open Beauty Facts, la generación de rutinas con IA y 
+la autenticación completa con JWT. Adicionalmente se aplicaron mejoras de interfaz en 
+todas las vistas de la aplicación y se publicaron los videos About the Product y About 
+the Team. A continuación se presentan las principales vistas implementadas durante el 
+sprint.
+
+**URL del video de ejecución:** [Ver aquí...](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241b843_upc_edu_pe/IQBHPhOMX3qTRoM8TGngdNpJARn4_AUWyMdFk-rh5HJONUE?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=u0zwGc)
+
+---
+
+**Rutina Personalizada**
+
+La vista de rutina personalizada muestra los productos asignados al usuario para cada 
+paso de su rutina de cuidado de piel, generada automáticamente con IA en base a su 
+perfil dermatológico. El usuario puede visualizar cada paso con el nombre real del 
+producto, reemplazar un producto por una alternativa recomendada, y marcar el 
+cumplimiento de su rutina del día. Todos los datos se persisten en el backend real 
+desplegado en Azure.
+
+![routine](assets/img/routine.png)
+
+---
+
+**Trending Items y Compatibilidad de Producto**
+
+La sección de Trending Items muestra el catálogo de productos de skincare obtenidos 
+desde la API Open Beauty Facts, con imagen real de cada producto. Al seleccionar un 
+producto, el usuario accede a su vista de detalle donde puede visualizar el nivel de 
+compatibilidad del producto con su tipo de piel, calculado automáticamente por el 
+sistema en base a su perfil dermatológico, y guardarlo en su lista de favoritos.
+
+![trending-items](assets/img/trending-items.png)
+
+---
+
+**Consulta Dermatológica Virtual con Videollamada**
+
+La vista de consulta virtual permite que el paciente y el dermatólogo se conecten en 
+tiempo real mediante videollamada durante la sesión de consulta. El dermatólogo puede 
+registrar notas clínicas de forma progresiva, subir fotografías clínicas del paciente 
+y registrar el diagnóstico final con sus recomendaciones. El paciente puede enviar 
+fotografías de su piel durante la sesión. Todo el flujo opera con datos reales 
+persistidos en el backend.
+
+![virtual-session](assets/img/virtual-session.png)
+
+---
+
+**Asistente Virtual de Skincare con Gemini AI**
+
+La sección de AI Assistant permite al usuario consultar dudas sobre productos, rutinas 
+o ingredientes en lenguaje natural. El sistema envía la consulta a Gemini AI, que 
+genera una respuesta personalizada basada en el perfil de piel del usuario, y la 
+retorna en la interfaz de chat. El historial de consultas se persiste en el backend 
+y es accesible en cualquier sesión posterior.
+
+![gemini](assets/img/gemini.png)
+
+
+#### 5.2.4.6. Services Documentation Evidence for Sprint Review
+
+Durante el Sprint 4 se completó la documentación de los Web Services de Bloomie 
+mediante OpenAPI/Swagger, incorporando los nuevos bounded contexts y endpoints 
+implementados en esta iteración final: Intelligent Support con integración a Gemini AI, 
+mensajería en consulta virtual, procesamiento de pagos con Stripe incluyendo checkout, 
+webhook y reembolsos, ciclo completo de suscripciones con cancelación y cambio de plan, 
+compatibilidad de productos con el perfil de piel del usuario, integración con Open Beauty 
+Facts para el catálogo de productos, generación de rutinas con IA, y cambio de contraseña. 
+La documentación completa está disponible en el Swagger UI desplegado en Azure.
+
+**URL Swagger UI:** https://bloomie-platform-awb7d0fyajc6fgby.eastus-01.azurewebsites.net/swagger-ui/index.html
+
+**URL Repositorio Web Services:** https://github.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-platform
+
+**Commits relacionados con documentación — Sprint 4:**
+Es importante mencionar que la documentación de los Web Services fue elaborada de forma 
+paralela a la implementación del código durante el Sprint 4. Cada endpoint fue documentado 
+mediante anotaciones de OpenAPI directamente en el código fuente al momento de su 
+implementación, por lo que los commits de documentación corresponden a los mismos commits 
+de desarrollo de cada bounded context. Los commits que se listan a continuación corresponden 
+específicamente a actualizaciones de documentación realizadas de forma independiente al 
+finalizar el sprint para refinar las descripciones y recursos REST de los bounded contexts 
+de Subscriptions, Payments y Dermatology Care.
+
+| Commit Id | Commit Message | Fecha |
+|---|---|---|
+| 2c5f256 | docs(subscription): update persistence documentation | 02/07/2026 |
+| 9907ac9 | docs(payments): update code documentation | 02/07/2026 |
+| 3227642 | docs(dermatology-care): update REST resource documentation | 02/07/2026 |
+
+---
+
+| Bounded Context | Endpoint | Verbo HTTP | Sintaxis | Parámetros | Response de ejemplo | Descripción del response |
+|---|---|---|---|---|---|---|
+| Authentication | Register user | POST | /api/v1/authentication/register | Body: { "firstName": "Luciana", "lastName": "Mechan", "email": "luciana@email.com", "password": "Pass123!" } | 201: { "id": 1, "firstName": "Luciana", "email": "luciana@email.com" } | Crea una cuenta de usuario paciente y retorna los datos del usuario registrado. |
+| Authentication | Register dermatologist | POST | /api/v1/authentication/register-dermatologist | Body: { "firstName": "Carlos", "lastName": "Torres", "email": "carlos@email.com", "password": "Pass123!", "licenseNumber": "CMP-12345" } | 201: { "id": 2, "firstName": "Carlos", "email": "carlos@email.com" } | Crea una cuenta de usuario dermatólogo y retorna los datos del dermatólogo registrado. |
+| IAM — Users | Get user by ID | GET | /api/v1/users/{userId} | Path: userId (Long) | 200: { "id": 1, "firstName": "Luciana", "email": "luciana@email.com", "photoUrl": "https://..." } | Retorna los datos del perfil del usuario correspondiente al ID indicado. |
+| IAM — Users | Update user profile | PUT | /api/v1/users/{userId} | Path: userId (Long) / Body: { "firstName": "Luciana", "lastName": "Mechan Montenegro" } | 200: { "id": 1, "firstName": "Luciana", "lastName": "Mechan Montenegro" } | Actualiza la información personal del usuario y retorna el perfil actualizado. |
+| IAM — Users | Update user photo | PUT | /api/v1/users/{userId}/photo | Path: userId (Long) / Body: { "photoUrl": "https://storage.azure.com/foto.jpg" } | 200: { "id": 1, "photoUrl": "https://storage.azure.com/foto.jpg" } | Actualiza la URL de la foto de perfil del usuario. |
+| IAM — Users | Change password | PUT | /api/v1/users/{userId}/change-password | Path: userId (Long) / Body: { "currentPassword": "Pass123!", "newPassword": "NewPass456!" } | 200: { "message": "Password updated successfully" } | Actualiza la contraseña del usuario validando la contraseña actual antes de aplicar el cambio. |
+| Skin Profiles | Complete skin profile | POST | /api/v1/skin-profiles | Body: { "patientId": 1, "skinType": "OILY", "sensitivity": "SENSITIVE", "conditions": ["ACNE"] } | 201: { "id": 1, "patientId": 1, "skinType": "OILY", "sensitivity": "SENSITIVE" } | Registra el perfil dermatológico del paciente tras completar el cuestionario inicial. |
+| Skin Profiles | Get skin profile by patient | GET | /api/v1/skin-profiles/patient/{patientId} | Path: patientId (Long) | 200: { "id": 1, "patientId": 1, "skinType": "OILY", "sensitivity": "SENSITIVE" } | Retorna el perfil de piel del paciente indicado. |
+| Skin Profiles | Update skin profile | PUT | /api/v1/skin-profiles/{skinProfileId} | Path: skinProfileId (Long) / Body: { "skinType": "COMBINATION", "sensitivity": "NORMAL" } | 200: { "id": 1, "skinType": "COMBINATION", "sensitivity": "NORMAL" } | Actualiza las características de piel del paciente y retorna el perfil actualizado. |
+| Facial Scans | Start facial scan | POST | /api/v1/facial-scans | Body: { "patientId": 1 } | 201: { "id": 1, "patientId": 1, "status": "PENDING" } | Inicia un nuevo escaneo facial para el paciente en estado pendiente. |
+| Facial Scans | Submit facial scan | PUT | /api/v1/facial-scans/{facialScanId}/submit | Path: facialScanId (Long) / Body: { "photoUrl": "https://storage.azure.com/scan.jpg" } | 200: { "id": 1, "status": "COMPLETED", "photoUrl": "https://..." } | Envía la fotografía del escaneo y dispara el análisis automático de piel. |
+| Facial Scans | Get facial scans by patient | GET | /api/v1/facial-scans/patient/{patientId} | Path: patientId (Long) | 200: [ { "id": 1, "status": "COMPLETED" }, { "id": 2, "status": "COMPLETED" } ] | Retorna el historial completo de escaneos faciales del paciente. |
+| Skin Analyses | Get skin analysis by facial scan | GET | /api/v1/skin-analyses/facial-scan/{facialScanId} | Path: facialScanId (Long) | 200: { "id": 1, "acneScore": 72, "hydrationScore": 45, "oilinessScore": 80, "skinType": "OILY" } | Retorna el análisis de piel generado para el escaneo facial indicado. |
+| Skin Analyses | Get skin analyses by patient | GET | /api/v1/skin-analyses/patient/{patientId} | Path: patientId (Long) | 200: [ { "id": 1, "acneScore": 72 }, { "id": 2, "acneScore": 60 } ] | Retorna el historial completo de análisis de piel del paciente para seguimiento de evolución. |
+| Routine Management | Get routine by patient | GET | /api/v1/routines/patient/{patientId} | Path: patientId (Long) | 200: { "id": 1, "patientId": 1, "items": [ { "id": 1, "productId": 3, "step": "MORNING" } ] } | Retorna la rutina personalizada activa del paciente generada con IA en base a su perfil de piel. |
+| Routine Management | Replace product in routine | PUT | /api/v1/routines/{routineId}/items/{routineItemId}/replace | Path: routineId, routineItemId (Long) / Body: { "newProductId": 5 } | 200: { "id": 1, "productId": 5, "step": "MORNING" } | Reemplaza el producto de un paso de la rutina por una alternativa recomendada. |
+| Routine Management | Get replacement options | GET | /api/v1/routines/{routineId}/items/{routineItemId}/replacement-options | Path: routineId, routineItemId (Long) | 200: [ { "id": 5, "name": "Gel Limpiador Suave" }, { "id": 8, "name": "Limpiador Espumoso" } ] | Retorna las alternativas de producto disponibles para reemplazar un paso de la rutina. |
+| Routine Management | Remove product from routine | DELETE | /api/v1/routines/{routineId}/items/{routineItemId} | Path: routineId, routineItemId (Long) | 204: (sin body) | Elimina un paso de la rutina validando que no sea obligatorio y que se mantenga el mínimo requerido. |
+| Daily Trackings | Mark routine as completed | POST | /api/v1/daily-trackings | Body: { "routineId": 1, "patientId": 1, "completedAt": "2026-06-20" } | 201: { "id": 1, "routineId": 1, "completedAt": "2026-06-20" } | Registra el cumplimiento diario de la rutina del paciente para la fecha indicada. |
+| Daily Trackings | Get trackings by routine | GET | /api/v1/daily-trackings/routine/{routineId} | Path: routineId (Long) | 200: [ { "id": 1, "completedAt": "2026-06-20" }, { "id": 2, "completedAt": "2026-06-21" } ] | Retorna todos los registros de cumplimiento asociados a una rutina específica. |
+| Daily Trackings | Get weekly summary | GET | /api/v1/daily-trackings/patient/{patientId}/weekly-summary | Path: patientId (Long) | 200: { "patientId": 1, "completedDays": 5, "totalDays": 7, "adherenceRate": 71.4 } | Retorna el resumen semanal de adherencia a la rutina del paciente con tasa de cumplimiento. |
+| Product Discovery | Get all products | GET | /api/v1/products | — | 200: [ { "id": 1, "name": "Niacinamide Serum", "category": "SERUM", "imageUrl": "https://..." } ] | Retorna el catálogo completo de productos obtenidos desde la API Open Beauty Facts. |
+| Product Discovery | Get product by ID | GET | /api/v1/products/{productId} | Path: productId (Long) | 200: { "id": 1, "name": "Niacinamide Serum", "category": "SERUM", "ingredients": ["Niacinamide", "Zinc"] } | Retorna el detalle completo de un producto incluyendo ingredientes y categoría. |
+| Product Discovery | Get compatibilities by skin type | GET | /api/v1/products/compatibilities | Query: skinType (String) | 200: [ { "productId": 1, "skinType": "OILY", "score": 92, "reason": "Alta compatibilidad con piel grasa" } ] | Retorna la lista de productos con su score de compatibilidad calculado para el tipo de piel indicado. |
+| Product Discovery | Get compatibilities by product | GET | /api/v1/products/{productId}/compatibilities | Path: productId (Long) | 200: [ { "skinType": "OILY", "score": 92 }, { "skinType": "DRY", "score": 45 } ] | Retorna los scores de compatibilidad de un producto para cada tipo de piel. |
+| Favorite Products | Save product as favorite | POST | /api/v1/favorite-products | Body: { "patientId": 1, "productId": 3 } | 201: { "id": 1, "patientId": 1, "productId": 3 } | Guarda un producto en la lista de favoritos del paciente. |
+| Favorite Products | Get favorites by user | GET | /api/v1/favorite-products | Query: patientId (Long) | 200: [ { "id": 1, "productId": 3 }, { "id": 2, "productId": 7 } ] | Retorna la lista de productos guardados como favoritos por el paciente indicado. |
+| Favorite Products | Remove from favorites | DELETE | /api/v1/favorite-products/{favoriteProductId} | Path: favoriteProductId (Long) | 204: (sin body) | Elimina un producto de la lista de favoritos del paciente. |
+| Dermatologist Profiles | Get all profiles | GET | /api/v1/dermatologist-profiles | — | 200: [ { "id": 1, "firstName": "Carlos", "specialty": "Dermatología clínica", "consultationFee": 80.00 } ] | Retorna la lista completa de perfiles de dermatólogos disponibles en la plataforma. |
+| Dermatologist Profiles | Get profile by ID | GET | /api/v1/dermatologist-profiles/{profileId} | Path: profileId (Long) | 200: { "id": 1, "firstName": "Carlos", "specialty": "Dermatología clínica", "consultationFee": 80.00 } | Retorna el perfil profesional del dermatólogo indicado. |
+| Dermatologist Profiles | Update profile | PUT | /api/v1/dermatologist-profiles/{profileId} | Path: profileId (Long) / Body: { "specialty": "Dermatología estética", "consultationFee": 90.00 } | 200: { "id": 1, "specialty": "Dermatología estética", "consultationFee": 90.00 } | Actualiza la información profesional del dermatólogo y retorna el perfil actualizado. |
+| Availabilities | Define availability | POST | /api/v1/availabilities | Body: { "dermatologistId": 1, "dayOfWeek": "MONDAY", "startTime": "09:00", "endTime": "13:00" } | 201: { "id": 1, "dayOfWeek": "MONDAY", "startTime": "09:00", "endTime": "13:00", "dermatologistId": 1 } | Registra un horario de disponibilidad del dermatólogo retornando el recurso completo con todos sus campos. |
+| Availabilities | Get availabilities | GET | /api/v1/availabilities | Query: dermatologistId (Long), dayOfWeek (opcional, String) | 200: [ { "id": 1, "dayOfWeek": "MONDAY", "startTime": "09:00", "endTime": "13:00" } ] | Retorna los horarios de disponibilidad del dermatólogo con filtrado opcional por día de la semana. |
+| Availabilities | Update availability | PUT | /api/v1/availabilities/{availabilityId} | Path: availabilityId (Long) / Body: { "startTime": "10:00", "endTime": "14:00" } | 200: { "id": 1, "dayOfWeek": "MONDAY", "startTime": "10:00", "endTime": "14:00" } | Actualiza un horario de disponibilidad existente del dermatólogo. |
+| Appointments | Schedule appointment | POST | /api/v1/appointments | Body: { "patientId": 1, "dermatologistId": 1, "scheduledAt": "2026-07-10T10:00:00" } | 201: { "id": 1, "status": "PENDING", "scheduledAt": "2026-07-10T10:00:00" } | Registra una nueva cita dermatológica en estado pendiente de confirmación de pago. |
+| Appointments | Confirm appointment | PUT | /api/v1/appointments/{id}/confirm | Path: id (Long) | 200: { "id": 1, "status": "CONFIRMED" } | Confirma una cita dermatológica tras la verificación del pago. |
+| Appointments | Cancel appointment | PUT | /api/v1/appointments/{id}/cancel | Path: id (Long) | 200: { "id": 1, "status": "CANCELLED" } | Cancela una cita programada y actualiza su estado. |
+| Appointments | Reprogram appointment | PUT | /api/v1/appointments/{id}/reprogram-request | Path: id (Long) / Body: { "newScheduledAt": "2026-07-15T11:00:00" } | 200: { "id": 1, "status": "REPROGRAM_REQUESTED", "scheduledAt": "2026-07-15T11:00:00" } | Solicita la reprogramación de una cita a una nueva fecha y hora. |
+| Appointments | Get appointments | GET | /api/v1/appointments | Query: patientId o dermatologistId (Long) | 200: [ { "id": 1, "status": "CONFIRMED", "scheduledAt": "2026-07-10T10:00:00" } ] | Retorna las citas del paciente o del dermatólogo según el parámetro indicado. |
+| Consultations | Start consultation | POST | /api/v1/consultations | Body: { "appointmentId": 1 } | 201: { "id": 1, "appointmentId": 1, "status": "IN_PROGRESS" } | Inicia una nueva sesión de consulta virtual para una cita confirmada. |
+| Consultations | Get consultation by appointment | GET | /api/v1/consultations | Query: appointmentId (Long) | 200: { "id": 1, "appointmentId": 1, "status": "IN_PROGRESS", "notes": "" } | Retorna la consulta virtual asociada a la cita indicada. |
+| Consultations | Save clinical notes | PUT | /api/v1/consultations/{id}/save-notes | Path: id (Long) / Body: { "notes": "Piel con tendencia acneica moderada." } | 200: { "id": 1, "notes": "Piel con tendencia acneica moderada." } | Guarda las notas clínicas del dermatólogo de forma progresiva durante la consulta. |
+| Consultations | Record diagnosis | PUT | /api/v1/consultations/{id}/diagnosis | Path: id (Long) / Body: { "diagnosis": "Acné grado II", "recommendations": "Aplicar ácido salicílico al 2%." } | 200: { "id": 1, "diagnosis": "Acné grado II", "recommendations": "Aplicar ácido salicílico al 2%." } | Registra el diagnóstico final y las recomendaciones clínicas del dermatólogo. |
+| Consultations | Upload clinical photo | POST | /api/v1/consultations/{id}/photos | Path: id (Long) / Body: { "photoUrl": "https://storage.azure.com/clinical.jpg" } | 201: { "id": 1, "photoUrl": "https://storage.azure.com/clinical.jpg" } | Agrega una fotografía clínica a la consulta para documentación del caso. |
+| Consultations | Finish consultation | PUT | /api/v1/consultations/{id}/finish | Path: id (Long) | 200: { "id": 1, "status": "COMPLETED" } | Cierra la sesión de consulta virtual y la marca como completada. |
+| Payments | Stripe checkout | POST | /api/v1/payments/checkout | Body: { "patientId": 1, "appointmentId": 1, "amount": 80.00 } | 201: { "checkoutUrl": "https://checkout.stripe.com/pay/cs_xxx" } | Crea una sesión de checkout en Stripe y retorna la URL de pago para redirigir al usuario. |
+| Payments | Stripe webhook | POST | /api/v1/payments/webhook | Header: Stripe-Signature / Body: (payload de Stripe) | 200: (sin body) | Recibe y procesa los eventos de webhook de Stripe para confirmar o rechazar pagos de forma asíncrona. |
+| Payments | Get payment by ID | GET | /api/v1/payments/{paymentId} | Path: paymentId (Long) | 200: { "id": 1, "amount": 80.00, "status": "COMPLETED", "stripePaymentId": "pi_xxx" } | Retorna el detalle de un pago incluyendo su estado y el identificador de la transacción en Stripe. |
+| Payments | Get payments by patient | GET | /api/v1/payments/patient/{patientId} | Path: patientId (Long) | 200: [ { "id": 1, "amount": 80.00, "status": "COMPLETED" } ] | Retorna el historial de pagos realizados por el paciente indicado. |
+| Payments | Refund payment | POST | /api/v1/payments/{paymentId}/refund | Path: paymentId (Long) | 200: { "id": 1, "status": "REFUNDED", "stripeRefundId": "re_xxx" } | Procesa el reembolso de un pago completado mediante Stripe. |
+| Subscriptions | Select subscription plan | POST | /api/v1/subscriptions | Body: { "patientId": 1, "planId": 2 } | 201: { "id": 1, "patientId": 1, "planId": 2, "status": "ACTIVE" } | Registra la suscripción del paciente al plan seleccionado y la activa tras la verificación del pago. |
+| Subscriptions | Get subscription by patient | GET | /api/v1/subscriptions/patient/{patientId} | Path: patientId (Long) | 200: { "id": 1, "planId": 2, "status": "ACTIVE", "startDate": "2026-06-20" } | Retorna la suscripción activa del paciente con su plan y fecha de inicio. |
+| Subscriptions | Cancel subscription | PUT | /api/v1/subscriptions/{subscriptionId}/cancel | Path: subscriptionId (Long) | 200: { "id": 1, "status": "CANCELLED" } | Cancela la suscripción activa del paciente y actualiza su estado. |
+| Subscriptions | Change subscription plan | PUT | /api/v1/subscriptions/{subscriptionId}/change-plan | Path: subscriptionId (Long) / Body: { "newPlanId": 3 } | 200: { "id": 1, "planId": 3, "status": "ACTIVE" } | Cambia el plan de suscripción activo del paciente al nuevo plan indicado. |
+| Intelligent Support | Create support query | POST | /api/v1/support-queries | Body: { "patientId": 1, "query": "¿Puedo usar niacinamida con vitamina C?" } | 201: { "id": 1, "query": "¿Puedo usar niacinamida con vitamina C?", "response": "Sí, son compatibles...", "status": "ANSWERED" } | Envía una consulta al asistente virtual de skincare potenciado por Gemini AI y retorna la respuesta personalizada. |
+| Intelligent Support | Get support query by ID | GET | /api/v1/support-queries/{id} | Path: id (Long) | 200: { "id": 1, "query": "¿Puedo usar niacinamida con vitamina C?", "response": "Sí, son compatibles...", "status": "ANSWERED" } | Retorna el detalle de una consulta al asistente virtual por su ID. |
+| Intelligent Support | Get queries by patient | GET | /api/v1/support-queries/patient/{patientId} | Path: patientId (Long) / Query: status (opcional) | 200: [ { "id": 1, "query": "...", "status": "ANSWERED" } ] | Retorna el historial de consultas realizadas al asistente virtual por el paciente, con filtrado opcional por estado. |
+| Chat Messages | Send chat message | POST | /api/v1/chat-messages | Body: { "consultationId": 1, "senderId": 1, "content": "Buenos días doctor", "messageType": "TEXT" } | 201: { "id": 1, "consultationId": 1, "content": "Buenos días doctor", "sentAt": "2026-07-01T10:05:00" } | Envía un mensaje de chat durante una consulta virtual entre paciente y dermatólogo. |
+| Chat Messages | Get messages by consultation | GET | /api/v1/chat-messages | Query: consultationId (Long) | 200: [ { "id": 1, "content": "Buenos días doctor", "sentAt": "2026-07-01T10:05:00" } ] | Retorna todos los mensajes de chat de una consulta virtual ordenados cronológicamente. |
+
+
+## Imágenes de interacción
+
+**Registro y Selección de Plan con Stripe**
+
+El usuario accede a la vista de sign-up e ingresa sus datos personales. La solicitud se envía a `POST /api/v1/authentication/register` y retorna `201 Created` con los datos del usuario registrado. A continuación el sistema redirige al usuario al flujo de selección de plan, donde elige entre los planes disponibles. Al confirmar el plan, el sistema invoca `POST /api/v1/subscriptions` para registrar la suscripción y genera una sesión de pago en Stripe mediante `POST /api/v1/payments/checkout`, retornando `201 Created` con la URL de checkout de Stripe. El usuario es redirigido a la pasarela de Stripe donde completa el pago. Stripe notifica al sistema mediante `POST /api/v1/payments/webhook`, que procesa el evento, confirma el pago y activa la suscripción del usuario de forma automática
+
+![stripe-flow-1](assets/img/stripe-1.png)
+![stripe-flow-2](assets/img/stripe-2.png)
+![stripe-flow-3](assets/img/stripe-3.png)
+![stripe-flow-4](assets/img/stripe-4.png)
+
+
+**Consulta al Asistente Virtual de Skincare**
+
+El usuario accede a la sección de AI Assistant y escribe una consulta sobre productos, rutinas o ingredientes. La solicitud se envía a `POST /api/v1/support-queries` con el ID del paciente y el texto de la consulta. El sistema invoca internamente el servicio de Gemini AI, que genera una respuesta personalizada basada en el perfil de piel del usuario, y retorna `201 Created` con el objeto de consulta incluyendo el campo `response` con la respuesta del asistente. El usuario puede consultar el historial de sus consultas previas mediante `GET /api/v1/support-queries/patient/{patientId}`, que retorna `200 OK` con la lista de consultas y sus respuestas.
+
+![gemini-1](assets/img/ia-1.png)
+![gemini-1](assets/img/ia-2.png)
+
+**Registro de Dermatólogo y Creación de Perfil Profesional**
+
+El dermatólogo accede a la vista de registro especializado e ingresa sus credenciales profesionales incluyendo su número de licencia. La solicitud se envía a `POST /api/v1/authentication/register-dermatologist` y retorna `201 Created` con los datos del dermatólogo registrado. Una vez dentro de la aplicación, el dermatólogo completa su perfil profesional ingresando su especialidad, tarifa de consulta, biografía y foto de perfil. El sistema envía `PUT /api/v1/dermatologist-profiles/{profileId}` y retorna `200 OK` con el perfil actualizado. Adicionalmente el dermatólogo puede subir su foto de perfil mediante `PUT /api/v1/users/{userId}/photo`, que retorna `200 OK` con la URL de la imagen persistida.
+
+![derm-register](assets/img/derma-signup-1.png)
+![derm-register](assets/img/derma-signup.png)
+![derm-register](assets/img/derma-signup-response.png)
+![derm-register](assets/img/derma-signup-bd.png)
+
+**Exploración de Trending Items y Compatibilidad de Producto**
+
+El usuario accede a la sección de Trending Items donde se muestra el catálogo de productos de skincare obtenidos desde la API Open Beauty Facts. La vista realiza una llamada a `GET /api/v1/products` que retorna `200 OK` con la lista completa de productos disponibles. El usuario selecciona un producto de su interés y accede a su vista de detalle, donde el sistema invoca `GET /api/v1/products/{productId}` retornando `200 OK` con la información completa del producto incluyendo ingredientes y categoría. En la misma vista se muestra el nivel de compatibilidad del producto con el tipo de piel del usuario, obtenido mediante `GET /api/v1/products/compatibilities?skinType={skinType}` que retorna `200 OK` con el score de compatibilidad calculado para el perfil del usuario.
+
+![derm-register](assets/img/product-1.png)
+![derm-register](assets/img/product-2.png)
+![derm-register](assets/img/product-3.png)
+
+
+#### 5.2.4.7. Software Deployment Evidence for Sprint Review
+
+Durante el Sprint 4 el equipo actualizó el despliegue de los cuatro productos de Bloomie 
+a su versión final. En el backend se incorporaron las variables de entorno correspondientes 
+a los servicios externos integrados en esta iteración — Gemini AI y Stripe — y se 
+verificó el correcto funcionamiento de la API desplegada mediante Swagger UI. La base de 
+datos MySQL en Azure continuó operativa sin cambios en su configuración. El Frontend Web 
+Application y la Landing Page fueron actualizados con las versiones finales del Sprint 4, 
+incluyendo la integración completa con el backend real en todos los bounded contexts.
+
+URL de swagger: https://bloomie-platform-awb7d0fyajc6fgby.eastus-01.azurewebsites.net/swagger-ui/index.html
+
+
+---
+
+**Web Services — Azure App Service**
+
+El recurso de Azure App Service que aloja la RESTful API de Bloomie se mantuvo operativo 
+durante el Sprint 4. A continuación se presenta el overview del recurso mostrando el 
+estado de ejecución, la URL pública del servicio y el plan de servicio configurado.
+
+![bloomie-platform](assets/img/bloomie-azure-overview.png)
+
+
+---
+
+Durante el Sprint 4 se agregaron las variables de entorno correspondientes a los dos 
+servicios externos integrados en esta iteración: la API Key de Gemini AI para el 
+asistente virtual de skincare y las credenciales de Stripe para el procesamiento de 
+pagos y el webhook. A continuación se presenta la sección de configuración del App 
+Service con las nuevas variables incorporadas.
+
+![bloomie-platform](assets/img/azure-variables.png)
+
+---
+
+Como evidencia del despliegue exitoso de la versión final del backend, se accedió a 
+la documentación de la API mediante Swagger UI desde la URL pública del App Service, 
+verificando que todos los bounded contexts implementados durante el Sprint 4 están 
+disponibles y correctamente documentados, incluyendo Intelligent Support, Chat Messages, 
+la integración completa de Payments con Stripe y el bounded context de Product Compatibility.
+
+![bloomie-platform](assets/img/swagger-updated.png)
+
+
+---
+
+**Base de datos — Azure Database for MySQL Flexible Server**
+
+La instancia de Azure Database for MySQL Flexible Server continuó operativa durante el 
+Sprint 4 sin cambios en su configuración de infraestructura. El servidor mantuvo el 
+estado Ready con SSL enforced y TLS 1.2, garantizando la seguridad en la comunicación 
+entre el App Service y la base de datos.
+
+![bloomie-bd](assets/img/bloomie-bd.png)
+
+
+---
+
+Los datos de conexión del servidor MySQL se mantuvieron configurados como variables de 
+entorno en el App Service, permitiendo que la aplicación Spring Boot establezca 
+correctamente la conexión con la base de datos en el entorno de producción durante 
+el Sprint 4.
+
+![bloomie-bd-connect](assets/img/azure-connect.png)
+
+
+---
+
+**Landing Page — Vercel**
+
+La Landing Page fue actualizada durante el Sprint 4 incorporando las secciones de 
+About the Product y About the Team con los videos del equipo incrustados, y los 
+enlaces de los planes actualizados para redirigir correctamente al flujo de registro 
+de la Web Application. La Landing Page se mantiene desplegada en Vercel y accesible 
+desde su URL pública.
+
+![bloomie-landing](assets/img/deploy-landing.png)
+
+---
+
+**Web Application — Azure Static Web Apps**
+
+El Frontend Web Application fue actualizado a su versión final durante el Sprint 4 
+con la integración completa de todos los bounded contexts al backend real. En esta 
+iteración se configuró además el pipeline de CI/CD en Azure Static Web Apps mediante 
+GitHub Actions, automatizando el proceso de despliegue ante cada actualización de la 
+rama develop del repositorio bloomie-webapp. La Web Application se encuentra 
+desplegada y accesible desde su URL pública en Azure.
+
+![bloomie-frontend](assets/img/deploy-frontend.png)
+
+
+**Automatización del despliegue — GitHub Actions**
+
+El pipeline de integración y despliegue continuo configurado en GitHub Actions permitió 
+automatizar el proceso de build y despliegue del Frontend Web Application durante el 
+Sprint 4. A continuación se presenta el historial de ejecuciones del workflow en GitHub, 
+donde se puede verificar el estado exitoso del último despliegue realizado.
+
+![bloomie-frontend](assets/img/github-actions.png)
+
+
+---
+
+**Historial de deployments — Landing Page**
+
+El repositorio bloomie-website registra el historial de deployments realizados durante 
+el proyecto. A continuación se presenta el historial de los últimos deployments de la 
+Landing Page en GitHub, confirmando que la versión final del Sprint 4 fue desplegada 
+correctamente en Vercel.
+
+![bloomie-frontend](assets/img/landing-deployments.png)
+
+#### 5.2.4.8. Team Collaboration Insights for Sprint Review
+
+Durante el Sprint 4 el equipo desarrolló las actividades de implementación 
+distribuyendo el trabajo según el esquema de Aspect Leaders definido en el Sprint 
+Planning. Luciana lideró la implementación del backend en los bounded contexts de 
+IAM, Dermatology Care, Dermatological Appointment, Subscriptions, Payments, 
+Intelligent Support y la integración con los servicios externos Gemini AI, Stripe 
+y Open Beauty Facts, acumulando 184 commits en el repositorio de Web Services. 
+Arturo lideró la implementación del bounded context de Product Compatibility en el 
+backend y la configuración del pipeline de CI/CD del Frontend Web Application en 
+Azure Static Web Apps, acumulando 24 commits en el backend y 15 en el frontend. 
+Luciana lideró adicionalmente las actualizaciones del frontend con 70 commits. 
+En la Landing Page, Arturo realizó las actualizaciones de enlaces y estilos con 
+6 commits, Rommel contribuyó con la actualización de los integrantes del equipo, 
+y Luciana realizó las mejoras visuales de la vista principal. Los integrantes 
+Mathias y Rommel participaron en las actividades de quality assurance, verificando 
+el flujo completo de la aplicación desplegada y documentando las incidencias 
+encontradas.
+
+A continuación se presentan los analíticos de colaboración obtenidos desde 
+GitHub Insights para cada repositorio durante el periodo del Sprint 4.
+
+**Web Services — bloomie-platform**
+
+| Miembro | GitHub Username | Commits Sprint 4 |
+|---|---|---|
+| Mechan Montenegro, Luciana | luuu6 | 433 |
+| Contreras Torres, Arturo | Arturouu | 182 |
+| Asmat Alminco, Martin | Alemarr | 8 |
+| **Total** | | **623** |
+
+![bloomie-backend](assets/img/backend-commits-4.png)
+
+---
+
+**Web Application — bloomie-webapp**
+
+| Miembro | GitHub Username | Commits Sprint 4 |
+|---|---|---|
+| Mechan Montenegro, Luciana | luuu6 | 114 |
+| Contreras Torres, Arturo | Arturouu | 53 |
+| **Total** | | **167** |
+
+![bloomie-frontend](assets/img/frontend-commits-4.png)
+
+---
+
+**Landing Page — bloomie-website**
+
+**Commist realizados en el útimo entregable**
+
+| Miembro | GitHub Username | Commits Sprint 4 |
+|---|---|---|
+| Contreras Torres, Arturo | Arturouu | 6 |
+| Mechan Montenegro, Luciana | luuu6 | 1 |
+| Hurtado Balcázar, Rommel | rommelDN | 1 |
+| Acuache Lucas, Mathias Joaquin | MathiasA25 | 1 |
+| **Total** | | **9** |
+
+![bloomie-landing](assets/img/landing-commits-4.png)
+
+
 ## 5.3. Validation Interviews.
 
 ### 5.3.1. Diseño de Entrevistas.
@@ -9323,9 +10262,9 @@ del segmento de dermatólogos, quienes expresan su opinión sobre la propuesta d
 de Bloomie. El video está disponible en Microsoft Stream y en YouTube, y se encuentra
 incrustado en la Landing Page del producto.
 
-**Microsoft Stream:** https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241b843_upc_edu_pe/IQDu96J8TapGTJZmvkV1EdXpARUk3t7E8ITiCe4zH8EjGTw?e=7t4xlF
+**Microsoft Stream:** [Ver aquí...](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202414802_upc_edu_pe/IQCLZQbk1nMDR5zlKgwLHl-gASkxdYG1uU3MCx8ibLTBe5g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=eENcRM)
 
-**YouTube:** https://youtu.be/PY43RkoGocc?si=J49vvlpaSJ3fSCid
+**YouTube:** https://youtu.be/pFUj0ZZU50A?si=M_1KEJRO0txqCB4J
 
 <img src="assets/img/about-product.png" width="500"/>
 
@@ -9344,9 +10283,9 @@ las actividades que realizó, los outcomes de aprendizaje logrados y las compete
 desarrolladas a lo largo del proyecto. El video está disponible en Microsoft Stream y
 en YouTube, y se encuentra incrustado en la Landing Page del producto.
 
-**Microsoft Stream:** https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416272_upc_edu_pe/IQB47eNi7uD-SZtLrmG1C6K9Aa38Jb27oKHBTQK-y9f7yqA?e=o5ZCsk
+**Microsoft Stream:** [Ver aquí...](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416272_upc_edu_pe/IQAE0grnnK-IQqLo15GHvKy1AST6GVO0LBl8YGvenPE6jgw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=PDPSHW)
 
-**YouTube:** https://youtu.be/EY9q8qPghf0?si=vW0y2XiUGsA_iNom
+**YouTube:** https://youtu.be/0IyUOE8eXvw
 
 <img src="assets/img/about-team.png" width="500"/>
 
@@ -9357,39 +10296,90 @@ en YouTube, y se encuentra incrustado en la Landing Page del producto.
 
 **En relación a los Problem Statements**
 
-El proyecto Bloomie surge como respuesta a una problemática real y verificada: los jóvenes adultos de 21 a 30 años enfrentan una sobrecarga de información contradictoria sobre skincare, carecen de herramientas personalizadas para el cuidado de su piel y tienen acceso limitado a orientación dermatológica asequible. A lo largo de los tres sprints ejecutados, el equipo logró construir una solución concreta que aborda directamente estas dificultades mediante análisis de piel con IA, rutinas personalizadas, catálogo de productos con score de compatibilidad y acceso a consultas dermatológicas virtuales. La implementación del Frontend Web Application integrado con la primera versión de los Web Services desplegados en Azure confirma que la arquitectura definida es técnicamente viable y que la solución opera con datos reales y persistentes, superando la etapa de simulación con Mock API del sprint anterior.
+El proyecto Bloomie nació como respuesta a una problemática real y verificada: los jóvenes adultos de 21 a 30 años enfrentan una sobrecarga de información contradictoria sobre skincare, carecen de herramientas personalizadas para el cuidado de su piel y tienen acceso limitado a orientación dermatológica asequible. Al término de los cuatro sprints ejecutados, el equipo logró construir y desplegar una solución completa e integrada que aborda directamente estas dificultades: análisis de piel con generación determinística de scores, rutinas personalizadas generadas con IA, catálogo de productos con compatibilidad calculada por tipo de piel, asistente virtual de skincare potenciado por Gemini AI, y acceso a consultas dermatológicas virtuales con videollamada, chat en tiempo real y registro clínico. La solución opera con datos reales y persistentes en producción, con todos los bounded contexts desplegados e integrados entre el frontend en Azure Static Web Apps y el backend en Azure App Service con base de datos MySQL Flexible Server.
 
 **En relación a los Lean UX Assumptions**
 
-Los assumptions definidos en la etapa inicial del proyecto mostraron ser coherentes con las decisiones de diseño y desarrollo tomadas a lo largo de los sprints. La hipótesis de que los usuarios necesitan identificar correctamente su tipo de piel para tomar mejores decisiones se reflejó directamente en la priorización de las funcionalidades de escaneo facial y diagnóstico como features core, y en este sprint se materializó con la implementación del backend de Skin Analysis que genera scores reales de análisis dermatológico. El assumption de que la interfaz debe ser intuitiva, con colores suaves y jerarquía visual clara, fue contrastado durante las entrevistas de validación realizadas en el Sprint 3 con usuarios de ambos segmentos objetivo, obteniendo feedback directo sobre la experiencia de navegación. El assumption de negocio sobre el modelo de suscripción escalonado fue implementado de punta a punta en este sprint, con el bounded context de Subscriptions y Payments conectado al backend real.
+Los assumptions definidos en la etapa inicial del proyecto mostraron ser coherentes con las decisiones de diseño y desarrollo tomadas a lo largo de los cuatro sprints. La hipótesis de que los usuarios necesitan identificar correctamente su tipo de piel para tomar mejores decisiones se materializó en el pipeline completo de escaneo facial, análisis de piel y generación automática de rutina personalizada, que opera de extremo a extremo con datos reales desde el Sprint 3. El assumption de que el modelo de suscripción escalonado permitiría monetizar el producto de forma sostenible se implementó de punta a punta en el Sprint 4 con la integración completa de Stripe, incluyendo checkout, webhook, reembolsos y ciclo de vida de suscripciones. El assumption sobre la integración de dermatólogos como factor de confianza quedó completamente validado con el bounded context de Dermatology Care, que incluye perfil profesional, disponibilidad, agendamiento de citas, pago, consulta virtual con videollamada, chat en tiempo real y registro clínico. Las entrevistas de validación realizadas al cierre del Sprint 3 aportaron evidencia concreta sobre el comportamiento real de usuarios de ambos segmentos, confirmando la pertinencia de los assumptions centrales del Lean UX Canvas.
 
 **En relación a los Lean UX Hypothesis Statements**
 
-Las hipótesis establecidas orientaron la definición del alcance funcional del producto. La hipótesis de que ofrecer recomendaciones personalizadas permitirá a los usuarios elegir productos más adecuados motivó la implementación del módulo de catálogo con score de compatibilidad y del sistema de rutinas personalizadas, ambos ahora respaldados por Web Services reales con persistencia en base de datos. La hipótesis de que visualizar el progreso incrementará la constancia del usuario se consolidó con la implementación del endpoint de weekly summary en el bounded context de Routine Management, que permite calcular y exponer métricas reales de adherencia a la rutina. La hipótesis relacionada con la integración de dermatólogos como factor de confianza se materializó completamente en este sprint con los bounded contexts de Dermatology Care y Dermatological Appointment desplegados, permitiendo que los pacientes agenden citas con dermatólogos reales registrados en el sistema. Las entrevistas de validación realizadas al finalizar el Sprint 3 con participantes de ambos segmentos objetivo permitieron contrastar por primera vez las hipótesis del Lean UX Canvas con comportamiento real de usuarios, aportando evidencia concreta para orientar las decisiones del siguiente sprint.
+Las hipótesis establecidas orientaron la definición del alcance funcional del producto a lo largo de todas las iteraciones. La hipótesis de que ofrecer recomendaciones personalizadas permitirá a los usuarios elegir productos más adecuados se implementó con el módulo de catálogo potenciado por Open Beauty Facts, la generación de rutinas con IA y el sistema de compatibilidad de productos calculado por tipo de piel, todos ellos integrados al backend real en el Sprint 4. La hipótesis de que visualizar el progreso incrementará la constancia del usuario se materializó con el endpoint de weekly summary que calcula la tasa de adherencia semanal a la rutina y la vista de total score en el historial de escaneos. La hipótesis relacionada con el asistente virtual como canal de orientación inmediata se implementó completamente en el Sprint 4 con la integración de Gemini AI, permitiendo que el usuario reciba respuestas personalizadas sobre productos, rutinas e ingredientes en lenguaje natural. Si bien las métricas de éxito definitivas (retención mensual, tasa de conversión, uso de funcionalidades premium) requieren usuarios reales en producción para ser medidas, la arquitectura implementada provee todos los endpoints y eventos de dominio necesarios para instrumentar su futura medición.
 
 **En relación al proceso de desarrollo**
 
-El equipo demostró capacidad para estructurar y escalar un proyecto de software complejo bajo metodología Scrum a lo largo de tres sprints ejecutados. En el Sprint 1 se establecieron todos los fundamentos del proyecto: documentación, diseño UX/UI, arquitectura C4, Event Storming y despliegue de la Landing Page. En el Sprint 2 se implementó la primera versión funcional del Frontend Web Application estructurada por bounded contexts bajo Domain-Driven Design integrada con una Mock API. En el Sprint 3 el equipo implementó y desplegó la primera versión de los Web Services mediante una RESTful API desarrollada con Spring Boot, cubriendo doce bounded contexts y más de cuarenta endpoints documentados con OpenAPI/Swagger, logrando una integración real entre el frontend desplegado en Azure Static Web Apps y el backend desplegado en Azure App Service con base de datos MySQL Flexible Server. La distribución del trabajo por bounded context bajo el esquema de Aspect Leaders demostró ser efectiva para mantener la autonomía de cada integrante y reducir los conflictos de integración a lo largo del sprint.
+El equipo demostró capacidad para estructurar, escalar y entregar un proyecto de software complejo bajo metodología Scrum a lo largo de cuatro sprints. En el Sprint 1 se establecieron los fundamentos del proyecto con documentación, diseño UX/UI, arquitectura C4, Event Storming y despliegue de la Landing Page. En el Sprint 2 se implementó la primera versión funcional del Frontend Web Application bajo Domain-Driven Design integrada con una Mock API. En el Sprint 3 se implementaron y desplegaron los Web Services cubriendo doce bounded contexts con más de cuarenta endpoints. En el Sprint 4 se completó el producto final integrando servicios externos (Gemini AI, Stripe, Open Beauty Facts), implementando el ciclo completo de pagos y suscripciones, la videollamada en consulta dermatológica, el asistente virtual y la autenticación completa con JWT, logrando una solución integrada, desplegada y funcional de extremo a extremo. La incorporación de dos nuevos integrantes al equipo en el Sprint 4 fue gestionada de forma efectiva, asignándoles actividades de quality assurance que contribuyeron a la estabilidad del producto final.
 
 ---
 
 ### Recomendaciones
 
-**Roadmap de próximos sprints**
+**Sobre la continuidad del producto**
 
-Para el Sprint 4 se recomienda priorizar la integración completa del frontend con todos los bounded contexts del backend implementados en el Sprint 3, comenzando por los que aún consumen la Mock API. Adicionalmente se recomienda incorporar autenticación real con JWT para reemplazar la solución temporal de localStorage implementada en este sprint, garantizando la seguridad de las sesiones de usuario. Se recomienda también implementar los bounded contexts de Intelligent Support (asistente virtual) y el módulo de chat en tiempo real durante la consulta virtual, que quedaron fuera del alcance del Sprint 3.
+Para una eventual siguiente fase del producto se recomienda priorizar la medición de las métricas de éxito definidas en el Lean UX Canvas mediante la instrumentación de eventos de análisis en la aplicación desplegada. Las métricas de retención mensual, tasa de adherencia a la rutina y tasa de conversión de plan son las más críticas para validar la viabilidad comercial del modelo de negocio. Se recomienda también incorporar notificaciones push para recordar al usuario completar su rutina diaria, dado que el sistema de daily trackings ya provee la infraestructura de datos necesaria para esta funcionalidad.
 
 **Sobre la arquitectura**
 
-Se recomienda mantener la estructura de bounded contexts definida en el DDD como guía para la organización del backend, asegurando que cada contexto mantenga su propio módulo, servicios y repositorios independientes. Para los próximos sprints se recomienda incorporar pruebas de integración automatizadas entre el frontend y el backend desplegados, aprovechando la infraestructura de CI/CD configurada en GitHub Actions y Azure durante el Sprint 3.
+La estructura de bounded contexts implementada bajo Domain-Driven Design demostró ser efectiva para escalar el sistema de forma paralela entre los integrantes del equipo. Para proyectos futuros se recomienda mantener esta organización y complementarla con pruebas de integración automatizadas entre el frontend y el backend, aprovechando el pipeline de CI/CD configurado en GitHub Actions durante el Sprint 4. Se recomienda también migrar la gestión de sesiones de localStorage a un mecanismo basado en tokens JWT con refresh token, lo que incrementará la seguridad y la experiencia de usuario al eliminar la necesidad de re-autenticación frecuente.
 
 **Sobre la experiencia de usuario**
 
-Las entrevistas de validación realizadas al cierre del Sprint 3 aportaron hallazgos concretos sobre la usabilidad del producto que deben ser priorizados en el siguiente sprint. Se recomienda aplicar las correcciones identificadas en la evaluación heurística, particularmente el formato de fechas en las consultas pasadas, la visualización del nombre de productos en la rutina en lugar del identificador numérico, y la implementación de un diálogo de confirmación previo a la cancelación de citas. Estas correcciones tienen impacto directo en la percepción de calidad del producto por parte de los usuarios validados.
+Las correcciones de usabilidad identificadas en la evaluación heurística del Sprint 3 — formato de fechas en ISO 8601, visualización de IDs en lugar de nombres de productos en la rutina, y ausencia de confirmación al cancelar citas — representan mejoras de alta prioridad para una siguiente iteración. Se recomienda también realizar una segunda ronda de entrevistas de validación con usuarios reales que hayan interactuado con la versión final del producto para contrastar los hallazgos del Sprint 3 con la experiencia en el producto completo.
 
 **Sobre el equipo**
 
-Se recomienda mantener el esquema de Aspect Leaders por bounded context establecido en el Sprint 2 y consolidado en el Sprint 3, ya que demostró ser efectivo para distribuir responsabilidades de forma clara con cuatro integrantes activos. Para los siguientes sprints se sugiere reforzar la convención de nomenclatura de ramas GitFlow identificada como oportunidad de mejora en la retrospectiva del Sprint 3, y establecer fechas límite internas por work item desde el inicio del sprint para evitar la concentración de commits en los últimos días del periodo de desarrollo.
+El esquema de Aspect Leaders por bounded context demostró ser efectivo para distribuir responsabilidades de forma clara durante los cuatro sprints del proyecto, incluso ante el cambio de integrantes ocurrido en el Sprint 4. Para equipos futuros se recomienda formalizar este esquema desde el Sprint 1 y establecer sesiones de knowledge transfer al incorporar nuevos miembros, con el objetivo de reducir el tiempo de adaptación y maximizar la contribución de cada integrante desde el inicio de su participación en el proyecto.
+
+**Sobre el modelo de negocio y evolución del producto**
+
+Como startup en etapa temprana, Bloomie reconoce que los primeros meses de operación 
+representan una fase de aprendizaje y ajuste en la que es natural enfrentar errores, 
+baja tracción inicial y necesidad de pivotar decisiones. Lo importante no es evitar 
+estos tropiezos sino contar con la capacidad de identificarlos rápidamente y corregir 
+el rumbo con base en evidencia real de usuarios. Cada iteración del producto, desde 
+el diseño inicial hasta el Sprint 4, es una demostración de esta capacidad de mejora 
+continua.
+
+En cuanto al modelo de monetización actual, Bloomie genera ingresos a través de dos 
+fuentes complementarias: las suscripciones de los pacientes para acceder a las 
+funcionalidades premium de la plataforma, y una comisión del 15% sobre el valor de 
+cada consulta dermatológica agendada a través de la aplicación. Este modelo permite 
+que los dermatólogos accedan a la plataforma sin costo inicial, reduciendo la barrera 
+de adopción y facilitando el crecimiento de la red de especialistas disponibles para 
+los pacientes.
+
+A mediano plazo se recomienda evaluar la incorporación de un modelo de suscripción 
+mensual para dermatólogos, similar al que actualmente se ofrece a los pacientes. 
+Este modelo permitiría a los especialistas acceder a funcionalidades avanzadas de 
+gestión como analíticas de su agenda, historial clínico centralizado y herramientas 
+de seguimiento de pacientes, a cambio de una tarifa fija mensual. La transición hacia 
+este modelo debería realizarse una vez que la plataforma cuente con una base 
+consolidada de dermatólogos activos, de modo que el valor percibido justifique el 
+costo de la suscripción.
+
+Respecto a mejoras futuras del producto, se recomienda priorizar las siguientes 
+funcionalidades para las próximas iteraciones:
+
+- **Notificaciones y recordatorios:** implementar notificaciones push para recordar 
+al usuario completar su rutina diaria, avisar sobre citas próximas y alertar sobre 
+el vencimiento de su suscripción.
+
+- **Historial clínico del paciente para el dermatólogo:** permitir que el dermatólogo 
+acceda al historial completo de escaneos, análisis y consultas previas del paciente 
+antes de iniciar una nueva consulta, mejorando la calidad del diagnóstico.
+
+- **Recomendaciones de rutina basadas en progreso:** ajustar automáticamente la rutina 
+personalizada del usuario en función de los resultados de sus escaneos faciales 
+periódicos, haciendo el sistema más adaptativo en el tiempo.
+
+- **Gamificación del seguimiento de rutina:** incorporar logros, rachas y recompensas 
+por la constancia en el cumplimiento de la rutina, con el objetivo de incrementar la 
+retención y el engagement de los usuarios.
+
+- **Expansión del catálogo de dermatólogos:** implementar un sistema de valoraciones 
+y reseñas de dermatólogos por parte de los pacientes, junto con filtros de búsqueda 
+por especialidad, precio y disponibilidad, para facilitar la elección del especialista 
+adecuado.
 
 # Bibliografía
 
@@ -9415,6 +10405,17 @@ Se recomienda mantener el esquema de Aspect Leaders por bounded context establec
 
 ## Anexo A
 
+
+## Usuario de prueba para el portal de pacientes
+**email**: prueba@gmail.com
+**contraseña**: 12345678
+
+## Usuario de prueba para el portal de dermatólogos
+**email**: pruebadoctor@gmail.com
+**contraseña**: 12345678
+
+---
+
 URL del repositorio (Report):  [Repositorio Reporte](https://github.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report)
 
 URL del repositorio (Backend): [Repositorio Backend](https://github.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-platform)
@@ -9435,6 +10436,13 @@ Video exposición TB1: [Click aquí...](https://upcedupe-my.sharepoint.com/:v:/g
 
 Video exposición AV2: [Click aquí...](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202414802_upc_edu_pe/IQCmXMM4EPCYToLXeyIfPNHEAQLouA-oKa0d86hEqbswBPo?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ALIcMA)
 
-Video About The Product: https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241b843_upc_edu_pe/IQDu96J8TapGTJZmvkV1EdXpARUk3t7E8ITiCe4zH8EjGTw?e=7t4xlF&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+Video exposición TB2: [Click aquí...](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202414802_upc_edu_pe/IQDp--rr2itkTrb5iwJhtrIOAcT7A0lqtSkIneNKntQW4RU?e=dRPeoZ&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 
-Video About The Team: https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416272_upc_edu_pe/IQB47eNi7uD-SZtLrmG1C6K9Aa38Jb27oKHBTQK-y9f7yqA?e=o5ZCsk&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+Video About The Product (Primera versión): [Click aquí..](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20241b843_upc_edu_pe/IQDu96J8TapGTJZmvkV1EdXpARUk3t7E8ITiCe4zH8EjGTw?e=7t4xlF&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
+Video About The Product (Segunda versión):  [Click aquí..](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202414802_upc_edu_pe/IQCLZQbk1nMDR5zlKgwLHl-gASkxdYG1uU3MCx8ibLTBe5g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=eENcRM)
+
+Video About The Team (Primera versión):  [Click aquí..](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416272_upc_edu_pe/IQB47eNi7uD-SZtLrmG1C6K9Aa38Jb27oKHBTQK-y9f7yqA?e=o5ZCsk&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+
+Video About The Team (Segunda versión): [Click aquí...](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416272_upc_edu_pe/IQAE0grnnK-IQqLo15GHvKy1AST6GVO0LBl8YGvenPE6jgw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=PDPSHW)
+

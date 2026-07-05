@@ -1,0 +1,207 @@
+@startuml dermatologicalappointment-application
+!include ../_style.puml
+title Dermatological Appointment — Application Layer
+
+package "dermatologicalappointment.domain (referenced)" as domain {
+  class Appointment
+  class Consultation
+  class ScheduleDermatologyAppointmentCommand <<command>>
+  class CancelAppointmentCommand <<command>>
+  class RequestReprogramAppointmentCommand <<command>>
+  class ReprogramAppointmentCommand <<command>>
+  class ConfirmAppointmentCommand <<command>>
+  class MarkAppointmentInProgressCommand <<command>>
+  class CompleteAppointmentCommand <<command>>
+  class StartConsultationCommand <<command>>
+  class SaveNotesCommand <<command>>
+  class RecordDermatologicalDiagnosisCommand <<command>>
+  class UploadClinicalPhotoCommand <<command>>
+  class FinishConsultationCommand <<command>>
+  class GetAppointmentByIdQuery <<query>>
+  class GetAppointmentsByPatientIdQuery <<query>>
+  class GetAppointmentsByDermatologistIdQuery <<query>>
+  class GetConsultationByIdQuery <<query>>
+  class GetConsultationByAppointmentIdQuery <<query>>
+  class DermatologistId <<value object>>
+  class PatientId <<value object>>
+  class AppointmentDateTime <<value object>>
+  enum AppointmentStatus
+  class AppointmentCancelledEvent <<domain event>>
+  class AppointmentReprogramRequestSubmittedEvent <<domain event>>
+  class ConsultationStartedEvent <<domain event>>
+  class ConsultationFinishedEvent <<domain event>>
+  class DermatologyAppointmentScheduledEvent <<domain event>>
+  interface AppointmentRepository
+  interface ConsultationRepository
+}
+
+package "dermatologicalappointment.interfaces (referenced)" as ifaces {
+  interface DermatologicalAppointmentContextFacade
+  class ProcessRefundIntegrationEvent <<integration event>>
+  class RequestConsultationPaymentIntegrationEvent <<integration event>>
+}
+
+package "dermatologycare bounded context (referenced)" as dcBc {
+  interface DermatologyCareContextFacade
+  class AvailabilityDefinedIntegrationEvent <<integration event>>
+}
+
+package "iam bounded context (referenced)" as iamBc {
+  interface IamContextFacade
+}
+
+package "dermatologicalappointment.application" as application {
+
+  package "commandservices\n(ports)" as cmdPorts {
+    interface AppointmentCommandService
+    interface ConsultationCommandService
+  }
+
+  package "queryservices\n(ports)" as queryPorts {
+    interface AppointmentQueryService
+    interface ConsultationQueryService
+  }
+
+  package "internal.outboundservices.acl\n(ports)" as outboundPorts {
+    interface ExternalIamService {
+      + existsUserById(userId: Long): boolean
+    }
+    interface ExternalDermatologyCareService {
+      + existsDermatologistProfile(id: Long): boolean
+      + getConsultationFee(id: Long): Double
+    }
+  }
+
+  package "internal.commandservices\n(impl)" as cmdImpl {
+    class AppointmentCommandServiceImpl {
+      - appointmentRepository: AppointmentRepository
+      - externalIamService: ExternalIamService
+      - externalDermatologyCareService: ExternalDermatologyCareService
+    }
+    class ConsultationCommandServiceImpl {
+      - consultationRepository: ConsultationRepository
+      - appointmentRepository: AppointmentRepository
+    }
+  }
+
+  package "internal.queryservices\n(impl)" as queryImpl {
+    class AppointmentQueryServiceImpl {
+      - appointmentRepository: AppointmentRepository
+    }
+    class ConsultationQueryServiceImpl {
+      - consultationRepository: ConsultationRepository
+    }
+  }
+
+  package "internal.eventhandlers" as handlers {
+    class AppointmentCancelledEventHandler {
+      - appointmentQueryService: AppointmentQueryService
+      - eventPublisher: ApplicationEventPublisher
+    }
+    class AppointmentReprogramRequestSubmittedEventHandler {
+      - appointmentCommandService: AppointmentCommandService
+    }
+    class DermatologyAppointmentScheduledEventHandler {
+      - eventPublisher: ApplicationEventPublisher
+      - externalDermatologyCareService: ExternalDermatologyCareService
+    }
+    class ConsultationStartedEventHandler {
+      - appointmentCommandService: AppointmentCommandService
+    }
+    class ConsultationFinishedEventHandler {
+      - appointmentCommandService: AppointmentCommandService
+    }
+    class AvailabilityDefinedIntegrationEventHandler
+  }
+
+  package acl {
+    class DermatologicalAppointmentContextFacadeImpl {
+      - appointmentQueryService: AppointmentQueryService
+    }
+  }
+}
+
+AppointmentCommandServiceImpl ..|> AppointmentCommandService
+ConsultationCommandServiceImpl ..|> ConsultationCommandService
+AppointmentQueryServiceImpl ..|> AppointmentQueryService
+ConsultationQueryServiceImpl ..|> ConsultationQueryService
+DermatologicalAppointmentContextFacadeImpl ..> DermatologicalAppointmentContextFacade : <<implements>>
+
+AppointmentCommandServiceImpl --> ExternalIamService : externalIamService
+AppointmentCommandServiceImpl --> ExternalDermatologyCareService : externalDermatologyCareService
+DermatologyAppointmentScheduledEventHandler --> ExternalDermatologyCareService : externalDermatologyCareService
+
+AppointmentCommandServiceImpl ..> AppointmentRepository : <<uses>>
+AppointmentCommandServiceImpl ..> Appointment : <<uses>>
+AppointmentCommandServiceImpl ..> AppointmentDateTime : <<uses>>
+AppointmentCommandServiceImpl ..> DermatologistId : <<uses>>
+AppointmentCommandServiceImpl ..> ScheduleDermatologyAppointmentCommand : <<uses>>
+AppointmentCommandServiceImpl ..> CancelAppointmentCommand : <<uses>>
+AppointmentCommandServiceImpl ..> RequestReprogramAppointmentCommand : <<uses>>
+AppointmentCommandServiceImpl ..> ReprogramAppointmentCommand : <<uses>>
+AppointmentCommandServiceImpl ..> ConfirmAppointmentCommand : <<uses>>
+AppointmentCommandServiceImpl ..> MarkAppointmentInProgressCommand : <<uses>>
+AppointmentCommandServiceImpl ..> CompleteAppointmentCommand : <<uses>>
+
+ConsultationCommandServiceImpl ..> ConsultationRepository : <<uses>>
+ConsultationCommandServiceImpl ..> AppointmentRepository : <<uses>>
+ConsultationCommandServiceImpl ..> Consultation : <<uses>>
+ConsultationCommandServiceImpl ..> AppointmentStatus : <<uses>>
+ConsultationCommandServiceImpl ..> StartConsultationCommand : <<uses>>
+ConsultationCommandServiceImpl ..> SaveNotesCommand : <<uses>>
+ConsultationCommandServiceImpl ..> RecordDermatologicalDiagnosisCommand : <<uses>>
+ConsultationCommandServiceImpl ..> UploadClinicalPhotoCommand : <<uses>>
+ConsultationCommandServiceImpl ..> FinishConsultationCommand : <<uses>>
+
+AppointmentQueryServiceImpl ..> AppointmentRepository : <<uses>>
+AppointmentQueryServiceImpl ..> GetAppointmentByIdQuery : <<uses>>
+AppointmentQueryServiceImpl ..> GetAppointmentsByPatientIdQuery : <<uses>>
+AppointmentQueryServiceImpl ..> GetAppointmentsByDermatologistIdQuery : <<uses>>
+AppointmentQueryServiceImpl ..> PatientId : <<uses>>
+AppointmentQueryServiceImpl ..> DermatologistId : <<uses>>
+
+ConsultationQueryServiceImpl ..> ConsultationRepository : <<uses>>
+ConsultationQueryServiceImpl ..> GetConsultationByIdQuery : <<uses>>
+ConsultationQueryServiceImpl ..> GetConsultationByAppointmentIdQuery : <<uses>>
+
+AppointmentCancelledEventHandler --> AppointmentQueryService : appointmentQueryService
+AppointmentCancelledEventHandler ..> AppointmentCancelledEvent : <<listens to>>
+AppointmentCancelledEventHandler ..> GetAppointmentByIdQuery : <<uses>>
+AppointmentCancelledEventHandler ..> ProcessRefundIntegrationEvent : <<publishes>>
+
+AppointmentReprogramRequestSubmittedEventHandler --> AppointmentCommandService : appointmentCommandService
+AppointmentReprogramRequestSubmittedEventHandler ..> AppointmentReprogramRequestSubmittedEvent : <<listens to>>
+AppointmentReprogramRequestSubmittedEventHandler ..> ReprogramAppointmentCommand : <<creates>>
+
+DermatologyAppointmentScheduledEventHandler ..> DermatologyAppointmentScheduledEvent : <<listens to>>
+DermatologyAppointmentScheduledEventHandler ..> RequestConsultationPaymentIntegrationEvent : <<publishes>>
+
+ConsultationStartedEventHandler --> AppointmentCommandService : appointmentCommandService
+ConsultationStartedEventHandler ..> ConsultationStartedEvent : <<listens to>>
+ConsultationStartedEventHandler ..> MarkAppointmentInProgressCommand : <<creates>>
+
+ConsultationFinishedEventHandler --> AppointmentCommandService : appointmentCommandService
+ConsultationFinishedEventHandler ..> ConsultationFinishedEvent : <<listens to>>
+ConsultationFinishedEventHandler ..> CompleteAppointmentCommand : <<creates>>
+
+AvailabilityDefinedIntegrationEventHandler ..> AvailabilityDefinedIntegrationEvent : <<listens to>>
+
+DermatologicalAppointmentContextFacadeImpl --> AppointmentQueryService : appointmentQueryService
+DermatologicalAppointmentContextFacadeImpl ..> GetAppointmentByIdQuery : <<uses>>
+DermatologicalAppointmentContextFacadeImpl ..> GetAppointmentsByPatientIdQuery : <<uses>>
+
+note bottom of ExternalIamService
+  Outbound port implemented in Infrastructure
+  by delegating to IAM's own ACL facade
+  (a different bounded context).
+end note
+note bottom of ExternalDermatologyCareService
+  Outbound port implemented in Infrastructure
+  by delegating to Dermatology Care's ACL facade.
+end note
+note bottom of AvailabilityDefinedIntegrationEventHandler
+  Integration point only — the internal
+  availability-slot domain model for this BC
+  is not implemented yet.
+end note
+@enduml

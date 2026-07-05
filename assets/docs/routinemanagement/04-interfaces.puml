@@ -1,0 +1,107 @@
+@startuml routinemanagement-interfaces
+!include ../_style.puml
+title Routine Management — Interfaces Layer
+
+package "routinemanagement.domain (referenced)" as domain {
+  class Routine
+  class DailyTracking
+  class RemoveProductFromRoutineCommand <<command>>
+  class MarkRoutineAsCompletedCommand <<command>>
+  class GetRoutineByIdQuery <<query>>
+  class GetRoutineByPatientIdQuery <<query>>
+  class GetRecommendedProductsForRoutineItemQuery <<query>>
+  class GetAllDailyTrackingsQuery <<query>>
+  class GetDailyTrackingsByPatientIdQuery <<query>>
+  class GetDailyTrackingsByRoutineIdQuery <<query>>
+  class GetWeeklySummaryByPatientIdQuery <<query>>
+  class PatientId <<value object>>
+}
+
+package "routinemanagement.application (referenced)" as application {
+  interface RoutineCommandService
+  interface RoutineQueryService
+  interface DailyTrackingCommandService
+  interface DailyTrackingQueryService
+  class PersonalizedRoutineGeneratedEventHandler
+}
+
+package "shared (referenced)" as shared {
+  class ApplicationError
+  class ResponseEntityAssembler <<static assembler>>
+  class ErrorResponseAssembler <<static assembler>>
+}
+
+package "routinemanagement.interfaces" as ifaces {
+
+  package events {
+    class PersonalizedRoutineGeneratedIntegrationEvent <<integration event>>
+  }
+
+  package rest {
+    class RoutineController {
+      - routineQueryService: RoutineQueryService
+      - routineCommandService: RoutineCommandService
+    }
+    class DailyTrackingController {
+      - dailyTrackingCommandService: DailyTrackingCommandService
+      - dailyTrackingQueryService: DailyTrackingQueryService
+    }
+  }
+
+  package "rest.resources" as resources {
+    class RoutineResource <<resource>>
+    class RoutineItemResource <<resource>>
+    class ReplaceProductInRoutineResource <<resource>>
+    class DailyTrackingResource <<resource>>
+    class MarkRoutineAsCompletedResource <<resource>>
+    class WeeklySummaryResource <<resource>>
+  }
+
+  package "rest.transform" as transform {
+    class RoutineResourceFromEntityAssembler <<static assembler>>
+    class ReplaceProductInRoutineCommandFromResourceAssembler <<static assembler>>
+    class DailyTrackingResourceFromEntityAssembler <<static assembler>>
+    class MarkRoutineAsCompletedCommandFromResourceAssembler <<static assembler>>
+  }
+}
+
+PersonalizedRoutineGeneratedEventHandler ..> PersonalizedRoutineGeneratedIntegrationEvent : <<publishes>>
+
+RoutineController --> RoutineQueryService : <<uses>>
+RoutineController --> RoutineCommandService : <<uses>>
+RoutineController ..> GetRoutineByIdQuery : <<uses>>
+RoutineController ..> GetRoutineByPatientIdQuery : <<uses>>
+RoutineController ..> GetRecommendedProductsForRoutineItemQuery : <<uses>>
+RoutineController ..> RemoveProductFromRoutineCommand : <<creates>>
+RoutineController ..> RoutineResource : <<uses>>
+RoutineController ..> ReplaceProductInRoutineResource : <<uses>>
+RoutineController ..> RoutineResourceFromEntityAssembler : <<uses>>
+RoutineController ..> ReplaceProductInRoutineCommandFromResourceAssembler : <<uses>>
+RoutineController ..> ApplicationError : <<uses>>
+RoutineController ..> ErrorResponseAssembler : <<uses>>
+RoutineController ..> ResponseEntityAssembler : <<uses>>
+
+DailyTrackingController --> DailyTrackingCommandService : <<uses>>
+DailyTrackingController --> DailyTrackingQueryService : <<uses>>
+DailyTrackingController ..> GetAllDailyTrackingsQuery : <<uses>>
+DailyTrackingController ..> GetDailyTrackingsByPatientIdQuery : <<uses>>
+DailyTrackingController ..> GetDailyTrackingsByRoutineIdQuery : <<uses>>
+DailyTrackingController ..> GetWeeklySummaryByPatientIdQuery : <<uses>>
+DailyTrackingController ..> PatientId : <<uses>>
+DailyTrackingController ..> DailyTrackingResource : <<uses>>
+DailyTrackingController ..> MarkRoutineAsCompletedResource : <<uses>>
+DailyTrackingController ..> WeeklySummaryResource : <<uses>>
+DailyTrackingController ..> DailyTrackingResourceFromEntityAssembler : <<uses>>
+DailyTrackingController ..> MarkRoutineAsCompletedCommandFromResourceAssembler : <<uses>>
+DailyTrackingController ..> ResponseEntityAssembler : <<uses>>
+
+RoutineResourceFromEntityAssembler ..> RoutineResource : <<creates>>
+RoutineResourceFromEntityAssembler ..> RoutineItemResource : <<creates>>
+RoutineResourceFromEntityAssembler ..> Routine : <<uses>>
+ReplaceProductInRoutineCommandFromResourceAssembler ..> ReplaceProductInRoutineResource : <<uses>>
+
+DailyTrackingResourceFromEntityAssembler ..> DailyTrackingResource : <<creates>>
+DailyTrackingResourceFromEntityAssembler ..> DailyTracking : <<uses>>
+MarkRoutineAsCompletedCommandFromResourceAssembler ..> MarkRoutineAsCompletedResource : <<uses>>
+MarkRoutineAsCompletedCommandFromResourceAssembler ..> MarkRoutineAsCompletedCommand : <<creates>>
+@enduml

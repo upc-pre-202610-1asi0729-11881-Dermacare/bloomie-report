@@ -1,0 +1,132 @@
+@startuml payments-application
+!include ../_style.puml
+title Payments — Application Layer
+
+package "payments.domain (referenced)" as domain {
+  class Payment
+  enum PaymentType
+  enum PaymentStatus
+  class ProcessSubscriptionPaymentCommand <<command>>
+  class ProcessRenewalPaymentCommand <<command>>
+  class ProcessConsultationPaymentCommand <<command>>
+  class RefundPaymentCommand <<command>>
+  class GetPaymentByIdQuery <<query>>
+  class GetPaymentsByPatientIdQuery <<query>>
+  class GetPaymentBySubscriptionIdQuery <<query>>
+  class GetPaymentByAppointmentIdQuery <<query>>
+  class SubscriptionPaymentProcessedEvent <<domain event>>
+  class SubscriptionRenewalPaymentProcessedEvent <<domain event>>
+  interface PaymentRepository
+}
+
+package "payments.interfaces (referenced)" as ifaces {
+  class SubscriptionPaymentProcessedIntegrationEvent <<integration event>>
+  class SubscriptionRenewalPaymentProcessedIntegrationEvent <<integration event>>
+}
+
+package "subscription bounded context (referenced)" as subBc {
+  interface SubscriptionContextFacade
+  class SubscriptionPlanSelectedIntegrationEvent <<integration event>>
+}
+
+package "dermatologicalappointment bounded context\n(referenced)" as apptBc {
+  class RequestConsultationPaymentIntegrationEvent <<integration event>>
+}
+
+package "payments.application" as application {
+
+  package "commandservices\n(port)" as cmdPorts {
+    interface PaymentCommandService
+  }
+
+  package "queryservices\n(port)" as queryPorts {
+    interface PaymentQueryService
+  }
+
+  package "internal.outboundservices.acl" as outboundAcl {
+    class ExternalSubscriptionService {
+      - subscriptionContextFacade: SubscriptionContextFacade
+      + fetchPlanById(planId: Long): Optional<Long>
+      + fetchPlanPrice(planId: Long): Optional<Double>
+    }
+  }
+
+  package "internal.outboundservices.stripe\n(port)" as outboundStripe {
+    interface StripeCheckoutService {
+      + createCheckoutSession(patientId, planId, planName, amount): String
+    }
+  }
+
+  package "internal.commandservices\n(impl)" as cmdImpl {
+    class PaymentCommandServiceImpl {
+      - paymentRepository: PaymentRepository
+      - externalSubscriptionService: ExternalSubscriptionService
+    }
+  }
+
+  package "internal.queryservices\n(impl)" as queryImpl {
+    class PaymentQueryServiceImpl {
+      - paymentRepository: PaymentRepository
+    }
+  }
+
+  package "internal.eventhandlers" as handlers {
+    class ConsultationPaymentRequestedEventHandler {
+      - paymentCommandService: PaymentCommandService
+    }
+    class SubscriptionPaymentProcessedEventHandler {
+      - paymentCommandService: PaymentCommandService
+      - externalSubscriptionService: ExternalSubscriptionService
+    }
+    class PaymentProcessedDomainEventHandler {
+      - eventPublisher: ApplicationEventPublisher
+    }
+    class RenewalPaymentProcessedDomainEventHandler {
+      - eventPublisher: ApplicationEventPublisher
+    }
+  }
+}
+
+PaymentCommandServiceImpl ..|> PaymentCommandService
+PaymentQueryServiceImpl ..|> PaymentQueryService
+
+PaymentCommandServiceImpl --> ExternalSubscriptionService : externalSubscriptionService
+SubscriptionPaymentProcessedEventHandler --> PaymentCommandService : paymentCommandService
+SubscriptionPaymentProcessedEventHandler --> ExternalSubscriptionService : externalSubscriptionService
+ConsultationPaymentRequestedEventHandler --> PaymentCommandService : paymentCommandService
+
+ExternalSubscriptionService --> SubscriptionContextFacade : subscriptionContextFacade
+
+PaymentCommandServiceImpl ..> PaymentRepository : <<uses>>
+PaymentCommandServiceImpl ..> Payment : <<uses>>
+PaymentCommandServiceImpl ..> PaymentStatus : <<uses>>
+PaymentCommandServiceImpl ..> ProcessSubscriptionPaymentCommand : <<uses>>
+PaymentCommandServiceImpl ..> ProcessRenewalPaymentCommand : <<uses>>
+PaymentCommandServiceImpl ..> ProcessConsultationPaymentCommand : <<uses>>
+PaymentCommandServiceImpl ..> RefundPaymentCommand : <<uses>>
+
+PaymentQueryServiceImpl ..> PaymentRepository : <<uses>>
+PaymentQueryServiceImpl ..> GetPaymentByIdQuery : <<uses>>
+PaymentQueryServiceImpl ..> GetPaymentsByPatientIdQuery : <<uses>>
+PaymentQueryServiceImpl ..> GetPaymentBySubscriptionIdQuery : <<uses>>
+PaymentQueryServiceImpl ..> GetPaymentByAppointmentIdQuery : <<uses>>
+
+ConsultationPaymentRequestedEventHandler ..> RequestConsultationPaymentIntegrationEvent : <<listens to>>
+ConsultationPaymentRequestedEventHandler ..> ProcessConsultationPaymentCommand : <<creates>>
+
+SubscriptionPaymentProcessedEventHandler ..> SubscriptionPlanSelectedIntegrationEvent : <<listens to>>
+SubscriptionPaymentProcessedEventHandler ..> ProcessSubscriptionPaymentCommand : <<creates>>
+
+PaymentProcessedDomainEventHandler ..> SubscriptionPaymentProcessedEvent : <<listens to>>
+PaymentProcessedDomainEventHandler ..> SubscriptionPaymentProcessedIntegrationEvent : <<publishes>>
+
+RenewalPaymentProcessedDomainEventHandler ..> SubscriptionRenewalPaymentProcessedEvent : <<listens to>>
+RenewalPaymentProcessedDomainEventHandler ..> SubscriptionRenewalPaymentProcessedIntegrationEvent : <<publishes>>
+
+note bottom of StripeCheckoutService
+  Implemented in Infrastructure by
+  StripeCheckoutServiceImpl; consumed directly
+  by CheckoutController in the Interfaces layer
+  (no application service in between).
+end note
+@enduml

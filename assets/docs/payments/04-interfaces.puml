@@ -1,0 +1,109 @@
+@startuml payments-interfaces
+!include ../_style.puml
+title Payments — Interfaces Layer
+
+package "payments.domain (referenced)" as domain {
+  class Payment
+  class RefundPaymentCommand <<command>>
+  class ProcessRenewalPaymentCommand <<command>>
+  class ProcessSubscriptionPaymentCommand <<command>>
+  class GetPaymentByIdQuery <<query>>
+  class GetPaymentsByPatientIdQuery <<query>>
+  class GetPaymentByAppointmentIdQuery <<query>>
+  class PatientId <<value object>>
+  class AppointmentId <<value object>>
+}
+
+package "payments.application (referenced)" as application {
+  interface PaymentCommandService
+  interface PaymentQueryService
+  interface StripeCheckoutService
+}
+
+package "shared (referenced)" as shared {
+  class ResponseEntityAssembler <<static assembler>>
+}
+
+package "subscription bounded context (referenced)" as subBc {
+  interface SubscriptionCommandService
+  class SelectSubscriptionPlanCommand <<command>>
+}
+
+package "payments.interfaces" as ifaces {
+
+  package events {
+    class SubscriptionPaymentProcessedIntegrationEvent <<integration event>>
+    class SubscriptionRenewalPaymentProcessedIntegrationEvent <<integration event>>
+  }
+
+  package rest {
+    class PaymentsController {
+      - paymentCommandService: PaymentCommandService
+      - paymentQueryService: PaymentQueryService
+    }
+    class CheckoutController {
+      - stripeCheckoutService: StripeCheckoutService
+    }
+    class StripeWebhookController {
+      - subscriptionCommandService: SubscriptionCommandService
+      - webhookSecret: String
+    }
+  }
+
+  package "rest.resources" as resources {
+    class PaymentResource <<resource>>
+    class ProcessSubscriptionPaymentResource <<resource>>
+    class ProcessRenewalPaymentResource <<resource>>
+    class CheckoutSessionResource <<resource>>
+    class CreateCheckoutSessionResource <<resource>>
+  }
+
+  package "rest.transform" as transform {
+    class PaymentResourceFromEntityAssembler <<static assembler>>
+    class ProcessSubscriptionPaymentCommandFromResourceAssembler <<static assembler>>
+    class ProcessRenewalPaymentCommandFromResourceAssembler <<static assembler>>
+  }
+}
+
+PaymentsController --> PaymentCommandService : <<uses>>
+PaymentsController --> PaymentQueryService : <<uses>>
+PaymentsController ..> GetPaymentByIdQuery : <<uses>>
+PaymentsController ..> GetPaymentsByPatientIdQuery : <<uses>>
+PaymentsController ..> GetPaymentByAppointmentIdQuery : <<uses>>
+PaymentsController ..> PatientId : <<uses>>
+PaymentsController ..> AppointmentId : <<uses>>
+PaymentsController ..> RefundPaymentCommand : <<creates>>
+PaymentsController ..> PaymentResource : <<uses>>
+PaymentsController ..> ProcessRenewalPaymentResource : <<uses>>
+PaymentsController ..> ProcessSubscriptionPaymentResource : <<uses>>
+PaymentsController ..> PaymentResourceFromEntityAssembler : <<uses>>
+PaymentsController ..> ProcessRenewalPaymentCommandFromResourceAssembler : <<uses>>
+PaymentsController ..> ProcessSubscriptionPaymentCommandFromResourceAssembler : <<uses>>
+PaymentsController ..> ResponseEntityAssembler : <<uses>>
+
+CheckoutController --> StripeCheckoutService : <<uses>>
+CheckoutController ..> CheckoutSessionResource : <<creates>>
+CheckoutController ..> CreateCheckoutSessionResource : <<uses>>
+
+StripeWebhookController --> SubscriptionCommandService : <<uses>>
+StripeWebhookController ..> SelectSubscriptionPlanCommand : <<creates>>
+
+PaymentResourceFromEntityAssembler ..> PaymentResource : <<creates>>
+PaymentResourceFromEntityAssembler ..> Payment : <<uses>>
+ProcessSubscriptionPaymentCommandFromResourceAssembler ..> ProcessSubscriptionPaymentResource : <<uses>>
+ProcessSubscriptionPaymentCommandFromResourceAssembler ..> ProcessSubscriptionPaymentCommand : <<creates>>
+ProcessRenewalPaymentCommandFromResourceAssembler ..> ProcessRenewalPaymentResource : <<uses>>
+ProcessRenewalPaymentCommandFromResourceAssembler ..> ProcessRenewalPaymentCommand : <<creates>>
+
+note bottom of SubscriptionPaymentProcessedIntegrationEvent
+  Published by application/internal/eventhandlers,
+  shown here as this BC's own published language.
+end note
+
+note bottom of StripeWebhookController
+  Calls the Subscription BC's application
+  command service directly (cross-BC,
+  cross-layer) instead of going through
+  an ACL facade — a layering shortcut.
+end note
+@enduml

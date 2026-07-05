@@ -1,0 +1,116 @@
+@startuml dermatologycare-infrastructure
+!include ../_style.puml
+title Dermatology Care — Infrastructure Layer
+
+package "«external» framework" as ext {
+  interface "JpaRepository<T,ID>" as JpaRepository
+}
+
+package "shared.infrastructure.persistence\n(referenced)" as sharedInfra {
+  abstract class AuditableAbstractPersistenceEntity
+}
+
+package "dermatologycare.domain (referenced)" as domain {
+  class Availability
+  class DermatologistProfile
+  class DermatologistId <<value object>>
+  class TimeSlot <<value object>>
+  class PersonName <<value object>>
+  class SpecialtyName <<value object>>
+  class LicenseNumber <<value object>>
+  class ContactPhone <<value object>>
+  interface AvailabilityRepository
+  interface DermatologistProfileRepository
+}
+
+package "dermatologycare.infrastructure" as infra {
+
+  package "persistence.jpa.entities" as entities {
+    class AvailabilityPersistenceEntity {
+      - dermatologistId: DermatologistId
+      - day: DayOfWeek
+      - timeSlot: TimeSlotPersistenceEmbeddable
+      - active: boolean
+    }
+    class DermatologistProfilePersistenceEntity {
+      - name: PersonNamePersistenceEmbeddable
+      - dermatologistId: DermatologistId
+      - specialty: SpecialtyName
+      - licenseNumber: LicenseNumber
+      - contactPhone: ContactPhone
+      - biography: String
+      - consultationFee: Double
+    }
+  }
+
+  package "persistence.jpa.embeddables" as embeddables {
+    class PersonNamePersistenceEmbeddable { - firstName: String\n- lastName: String }
+    class TimeSlotPersistenceEmbeddable { - startTime: LocalTime\n- endTime: LocalTime }
+  }
+
+  package "persistence.jpa.converters" as converters {
+    class DermatologistIdPersistenceConverter
+    class ContactPhonePersistenceConverter
+    class LicenseNumberPersistenceConverter
+    class SpecialtyNamePersistenceConverter
+  }
+
+  package "persistence.jpa.assemblers" as assemblers {
+    class AvailabilityPersistenceAssembler <<static assembler>>
+    class DermatologistProfilePersistenceAssembler <<static assembler>>
+  }
+
+  package "persistence.jpa.repositories" as jpaRepos {
+    interface AvailabilityPersistenceRepository
+    interface DermatologistProfilePersistenceRepository
+  }
+
+  package "persistence.jpa.adapters" as adapters {
+    class AvailabilityRepositoryImpl {
+      - persistenceRepository: AvailabilityPersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+    class DermatologistProfileRepositoryImpl {
+      - persistenceRepository: DermatologistProfilePersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+  }
+}
+
+AvailabilityPersistenceEntity --|> AuditableAbstractPersistenceEntity
+DermatologistProfilePersistenceEntity --|> AuditableAbstractPersistenceEntity
+AvailabilityPersistenceRepository --|> JpaRepository
+DermatologistProfilePersistenceRepository --|> JpaRepository
+
+AvailabilityPersistenceEntity "1" *-- "1" TimeSlotPersistenceEmbeddable : timeSlot
+DermatologistProfilePersistenceEntity "1" *-- "1" PersonNamePersistenceEmbeddable : name
+
+AvailabilityPersistenceEntity ..> DermatologistIdPersistenceConverter : <<uses>>\n@Convert
+DermatologistProfilePersistenceEntity ..> DermatologistIdPersistenceConverter : <<uses>>\n@Convert
+DermatologistProfilePersistenceEntity ..> ContactPhonePersistenceConverter : <<uses>>\n@Convert
+DermatologistProfilePersistenceEntity ..> LicenseNumberPersistenceConverter : <<uses>>\n@Convert
+DermatologistProfilePersistenceEntity ..> SpecialtyNamePersistenceConverter : <<uses>>\n@Convert
+
+DermatologistIdPersistenceConverter ..> DermatologistId : <<converts>>
+ContactPhonePersistenceConverter ..> ContactPhone : <<converts>>
+LicenseNumberPersistenceConverter ..> LicenseNumber : <<converts>>
+SpecialtyNamePersistenceConverter ..> SpecialtyName : <<converts>>
+
+AvailabilityRepositoryImpl --> AvailabilityPersistenceRepository : persistenceRepository
+DermatologistProfileRepositoryImpl --> DermatologistProfilePersistenceRepository : persistenceRepository
+AvailabilityRepositoryImpl ..> AvailabilityPersistenceAssembler : <<uses>>
+DermatologistProfileRepositoryImpl ..> DermatologistProfilePersistenceAssembler : <<uses>>
+
+AvailabilityPersistenceAssembler ..> AvailabilityPersistenceEntity : <<uses>>
+AvailabilityPersistenceAssembler ..> TimeSlotPersistenceEmbeddable : <<uses>>
+AvailabilityPersistenceAssembler ..> Availability : <<uses>>
+AvailabilityPersistenceAssembler ..> TimeSlot : <<uses>>
+
+DermatologistProfilePersistenceAssembler ..> DermatologistProfilePersistenceEntity : <<uses>>
+DermatologistProfilePersistenceAssembler ..> PersonNamePersistenceEmbeddable : <<uses>>
+DermatologistProfilePersistenceAssembler ..> DermatologistProfile : <<uses>>
+DermatologistProfilePersistenceAssembler ..> PersonName : <<uses>>
+
+AvailabilityRepositoryImpl ..> AvailabilityRepository : <<implements>>
+DermatologistProfileRepositoryImpl ..> DermatologistProfileRepository : <<implements>>
+@enduml

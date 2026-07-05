@@ -1,0 +1,103 @@
+@startuml subscription-interfaces
+!include ../_style.puml
+title Subscription — Interfaces Layer
+
+package "subscription.domain (referenced)" as domain {
+  class Subscription
+  class Plan
+  class PatientId <<value object>>
+  class ActivateSubscriptionCommand <<command>>
+  class CancelSubscriptionCommand <<command>>
+  class RenewSubscriptionCommand <<command>>
+  class ExpireSubscriptionCommand <<command>>
+  class GetAllPlansQuery <<query>>
+  class GetPlanByIdQuery <<query>>
+  class GetSubscriptionByIdQuery <<query>>
+  class GetSubscriptionByPatientIdQuery <<query>>
+}
+
+package "subscription.application (referenced)" as application {
+  interface SubscriptionCommandService
+  interface SubscriptionQueryService
+  class SubscriptionPlanSelectedEventHandler
+}
+
+package "shared (referenced)" as shared {
+  class ApplicationError
+  class "Result<T,E>" as Result
+  class ResponseEntityAssembler <<static assembler>>
+}
+
+package "subscription.interfaces" as ifaces {
+
+  package acl {
+    interface SubscriptionContextFacade {
+      + existsPlanById(id: Long): boolean
+      + fetchPlanPrice(planId: Long): Double
+    }
+  }
+
+  package events {
+    class SubscriptionPlanSelectedIntegrationEvent <<integration event>>
+  }
+
+  package rest {
+    class PlanController {
+      - subscriptionQueryService: SubscriptionQueryService
+    }
+    class SubscriptionController {
+      - subscriptionCommandService: SubscriptionCommandService
+      - subscriptionQueryService: SubscriptionQueryService
+    }
+  }
+
+  package "rest.resources" as resources {
+    class PlanResource <<resource>>
+    class SelectSubscriptionPlanResource <<resource>>
+    class ChangeSubscriptionPlanResource <<resource>>
+    class SubscriptionResource <<resource>>
+  }
+
+  package "rest.transform" as transform {
+    class PlanResourceFromEntityAssembler <<static assembler>>
+    class SelectSubscriptionPlanCommandFromResourceAssembler <<static assembler>>
+    class ChangeSubscriptionPlanCommandFromResourceAssembler <<static assembler>>
+    class SubscriptionResourceFromEntityAssembler <<static assembler>>
+  }
+}
+
+SubscriptionPlanSelectedEventHandler ..> SubscriptionPlanSelectedIntegrationEvent : <<publishes>>
+SubscriptionPlanSelectedIntegrationEvent ..> Subscription : <<uses>>\nfrom(Subscription)
+
+PlanController --> SubscriptionQueryService : <<uses>>
+PlanController ..> GetAllPlansQuery : <<uses>>
+PlanController ..> GetPlanByIdQuery : <<uses>>
+PlanController ..> PlanResource : <<uses>>
+PlanController ..> PlanResourceFromEntityAssembler : <<uses>>
+
+SubscriptionController --> SubscriptionCommandService : <<uses>>
+SubscriptionController --> SubscriptionQueryService : <<uses>>
+SubscriptionController ..> GetSubscriptionByIdQuery : <<uses>>
+SubscriptionController ..> GetSubscriptionByPatientIdQuery : <<uses>>
+SubscriptionController ..> PatientId : <<uses>>
+SubscriptionController ..> ActivateSubscriptionCommand : <<creates>>
+SubscriptionController ..> CancelSubscriptionCommand : <<creates>>
+SubscriptionController ..> RenewSubscriptionCommand : <<creates>>
+SubscriptionController ..> ExpireSubscriptionCommand : <<creates>>
+SubscriptionController ..> SelectSubscriptionPlanResource : <<uses>>
+SubscriptionController ..> ChangeSubscriptionPlanResource : <<uses>>
+SubscriptionController ..> SubscriptionResource : <<uses>>
+SubscriptionController ..> SelectSubscriptionPlanCommandFromResourceAssembler : <<uses>>
+SubscriptionController ..> ChangeSubscriptionPlanCommandFromResourceAssembler : <<uses>>
+SubscriptionController ..> SubscriptionResourceFromEntityAssembler : <<uses>>
+SubscriptionController ..> ApplicationError : <<uses>>
+SubscriptionController ..> Result : <<uses>>
+SubscriptionController ..> ResponseEntityAssembler : <<uses>>
+
+PlanResourceFromEntityAssembler ..> PlanResource : <<creates>>
+PlanResourceFromEntityAssembler ..> Plan : <<uses>>
+SelectSubscriptionPlanCommandFromResourceAssembler ..> SelectSubscriptionPlanResource : <<uses>>
+ChangeSubscriptionPlanCommandFromResourceAssembler ..> ChangeSubscriptionPlanResource : <<uses>>
+SubscriptionResourceFromEntityAssembler ..> SubscriptionResource : <<creates>>
+SubscriptionResourceFromEntityAssembler ..> Subscription : <<uses>>
+@enduml

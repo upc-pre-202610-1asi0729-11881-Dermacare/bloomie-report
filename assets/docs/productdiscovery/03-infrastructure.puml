@@ -1,0 +1,132 @@
+@startuml productdiscovery-infrastructure
+!include ../_style.puml
+title Product Discovery — Infrastructure Layer
+
+package "«external» framework" as ext {
+  interface "JpaRepository<T,ID>" as JpaRepository
+}
+
+package "shared.infrastructure.persistence\n(referenced)" as sharedInfra {
+  abstract class AuditableAbstractPersistenceEntity
+}
+
+package "productdiscovery.domain (referenced)" as domain {
+  class Product
+  class FavoriteProduct
+  class ProductCompatibility
+  class ProductId <<value object>>
+  class UserId <<value object>>
+  interface ProductRepository
+  interface FavoriteProductRepository
+  interface ProductCompatibilityRepository
+}
+
+package "productdiscovery.application (referenced)" as application {
+  interface ProductCatalogService
+}
+
+package "productdiscovery.infrastructure" as infra {
+
+  package "openbeautyfacts.services" as obf {
+    class OpenBeautyFactsCatalogServiceImpl {
+      - restTemplate: RestTemplate
+      - objectMapper: ObjectMapper
+    }
+  }
+
+  package "persistence.jpa.entities" as entities {
+    class ProductPersistenceEntity {
+      - name: String
+      - brand: String
+      - category: ProductCategory
+      - description: String
+      - benefits: List<String>
+      - aiRecommended: boolean
+      - imageUrl: String
+    }
+    class FavoriteProductPersistenceEntity {
+      - productId: ProductId
+      - userId: UserId
+    }
+    class ProductCompatibilityPersistenceEntity {
+      - productId: Long
+      - skinType: String
+      - compatibilityScore: Integer
+      - reason: String
+    }
+  }
+
+  package "persistence.jpa.converters" as converters {
+    class ProductIdPersistenceConverter
+    class UserIdPersistenceConverter
+  }
+
+  package "persistence.jpa.assemblers" as assemblers {
+    class ProductPersistenceAssembler <<static assembler>>
+    class FavoriteProductPersistenceAssembler <<static assembler>>
+    class ProductCompatibilityPersistenceAssembler <<static assembler>>
+  }
+
+  package "persistence.jpa.repositories" as jpaRepos {
+    interface ProductPersistenceRepository
+    interface FavoriteProductPersistenceRepository
+    interface ProductCompatibilityPersistenceRepository
+  }
+
+  package "persistence.jpa.adapters" as adapters {
+    class ProductRepositoryImpl {
+      - productPersistenceRepository: ProductPersistenceRepository
+    }
+    class FavoriteProductRepositoryImpl {
+      - persistenceRepository: FavoriteProductPersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+    class ProductCompatibilityRepositoryImpl {
+      - productCompatibilityPersistenceRepository: ProductCompatibilityPersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+  }
+}
+
+OpenBeautyFactsCatalogServiceImpl ..> ProductCatalogService : <<implements>>
+OpenBeautyFactsCatalogServiceImpl ..> Product : <<creates>>
+
+ProductPersistenceEntity --|> AuditableAbstractPersistenceEntity
+FavoriteProductPersistenceEntity --|> AuditableAbstractPersistenceEntity
+ProductCompatibilityPersistenceEntity --|> AuditableAbstractPersistenceEntity
+ProductPersistenceRepository --|> JpaRepository
+FavoriteProductPersistenceRepository --|> JpaRepository
+ProductCompatibilityPersistenceRepository --|> JpaRepository
+
+FavoriteProductPersistenceEntity ..> ProductIdPersistenceConverter : <<uses>>\n@Convert
+FavoriteProductPersistenceEntity ..> UserIdPersistenceConverter : <<uses>>\n@Convert
+ProductIdPersistenceConverter ..> ProductId : <<converts>>
+UserIdPersistenceConverter ..> UserId : <<converts>>
+
+ProductRepositoryImpl --> ProductPersistenceRepository : productPersistenceRepository
+FavoriteProductRepositoryImpl --> FavoriteProductPersistenceRepository : persistenceRepository
+ProductCompatibilityRepositoryImpl --> ProductCompatibilityPersistenceRepository : productCompatibilityPersistenceRepository
+
+ProductRepositoryImpl ..> ProductPersistenceAssembler : <<uses>>
+FavoriteProductRepositoryImpl ..> FavoriteProductPersistenceAssembler : <<uses>>
+ProductCompatibilityRepositoryImpl ..> ProductCompatibilityPersistenceAssembler : <<uses>>
+
+ProductPersistenceAssembler ..> ProductPersistenceEntity : <<uses>>
+ProductPersistenceAssembler ..> Product : <<uses>>
+FavoriteProductPersistenceAssembler ..> FavoriteProductPersistenceEntity : <<uses>>
+FavoriteProductPersistenceAssembler ..> FavoriteProduct : <<uses>>
+ProductCompatibilityPersistenceAssembler ..> ProductCompatibilityPersistenceEntity : <<uses>>
+ProductCompatibilityPersistenceAssembler ..> ProductCompatibility : <<uses>>
+
+ProductRepositoryImpl ..> ProductRepository : <<implements>>
+FavoriteProductRepositoryImpl ..> FavoriteProductRepository : <<implements>>
+ProductCompatibilityRepositoryImpl ..> ProductCompatibilityRepository : <<implements>>
+
+note bottom of ProductPersistenceRepository
+  Declares "Product save(Product product)" —
+  shadows JpaRepository's own save(S) instead of
+  overriding it, since the parameter/return types
+  don't match; ProductRepositoryImpl never calls
+  this particular overload.
+end note
+@enduml

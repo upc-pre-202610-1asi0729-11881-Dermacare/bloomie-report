@@ -1,0 +1,110 @@
+@startuml productdiscovery-domain
+!include ../_style.puml
+title Product Discovery — Domain Layer
+
+package "shared.domain.model.aggregates\n(referenced)" as sharedDomain {
+  abstract class AbstractDomainAggregateRoot<T>
+}
+
+package "productdiscovery.domain.model" as domain {
+
+  package aggregates {
+    class Product {
+      - id: Long
+      - name: String
+      - brand: String
+      - category: ProductCategory
+      - description: String
+      - benefits: List<String>
+      - aiRecommended: boolean
+      - imageUrl: String
+    }
+    class FavoriteProduct {
+      - id: Long
+      - productId: ProductId
+      - userId: UserId
+      - savedAt: Date
+      + onSavedAsFavorite()
+      + removeFromFavorites()
+    }
+    class ProductCompatibility {
+      - id: Long
+      - productId: Long
+      - skinType: String
+      - compatibilityScore: Integer
+      - reason: String
+      + onEvaluated()
+    }
+  }
+
+  package valueobjects {
+    class ProductId <<value object>> { + productId: Long }
+    class UserId <<value object>> { + userId: Long }
+    enum ProductCategory { CLEANSER\nTONER\nSERUM\nMOISTURIZER\nSUNSCREEN }
+  }
+
+  package commands {
+    class SaveProductAsFavoriteCommand <<command>>
+    class RemoveProductFromFavoritesCommand <<command>>
+    class SeedProductsCommand <<command>>
+    class GenerateProductCompatibilityCommand <<command>>
+  }
+
+  package queries {
+    class GetAllProductsQuery <<query>>
+    class GetProductByIdQuery <<query>>
+    class GetFavoriteProductsByUserIdQuery <<query>>
+    class GetCompatibilitiesByProductIdQuery <<query>>
+    class GetCompatibilitiesBySkinTypeQuery <<query>>
+  }
+
+  package events {
+    class ProductSavedAsFavoriteEvent <<domain event>>
+    class ProductRemovedFromFavoritesEvent <<domain event>>
+    class ProductCompatibilityEvaluatedEvent <<domain event>>
+  }
+
+  package repositories {
+    interface ProductRepository
+    interface FavoriteProductRepository
+    interface ProductCompatibilityRepository
+  }
+}
+
+Product --|> AbstractDomainAggregateRoot
+FavoriteProduct --|> AbstractDomainAggregateRoot
+ProductCompatibility --|> AbstractDomainAggregateRoot
+
+Product "1" *-- "1" ProductCategory : category
+FavoriteProduct "1" *-- "1" ProductId : productId
+FavoriteProduct "1" *-- "1" UserId : userId
+FavoriteProduct "0..*" o-- "1" Product : productId (by reference)
+ProductCompatibility "0..*" o-- "1" Product : productId (by reference)
+
+FavoriteProduct ..> ProductSavedAsFavoriteEvent : <<creates>>
+FavoriteProduct ..> ProductRemovedFromFavoritesEvent : <<creates>>
+ProductCompatibility ..> ProductCompatibilityEvaluatedEvent : <<creates>>
+
+ProductRepository ..> Product : <<uses>>
+FavoriteProductRepository ..> FavoriteProduct : <<uses>>
+FavoriteProductRepository ..> ProductId : <<uses>>
+FavoriteProductRepository ..> UserId : <<uses>>
+ProductCompatibilityRepository ..> ProductCompatibility : <<uses>>
+
+GetFavoriteProductsByUserIdQuery ..> UserId : <<derived, wrapped by\napplication>>
+
+note bottom of Product
+  Created only via default constructor +
+  setters (bulk-seeded from an external catalog
+  or a hardcoded fallback list) — no dedicated
+  domain command exists for creating a single
+  product by hand.
+end note
+
+note bottom of ProductCompatibility
+  Created via a plain constructor from
+  GenerateProductCompatibilityCommand's fields
+  inside the application service, not by passing
+  the command object itself to the aggregate.
+end note
+@enduml
