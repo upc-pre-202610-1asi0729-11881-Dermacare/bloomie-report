@@ -7265,7 +7265,7 @@ Capa de Interfaces <br>
 
 ## 4.7. Software Object-Oriented Design
 
-### 4.7.1. Class Diagrams Backend
+### 4.7.1. Class Diagrams
 
 ---
 
@@ -7290,7 +7290,7 @@ Capa de Interfaces <br>
 ## Skin Analysis
 
 ### Capa de Dominio
-![Skin Analysis - Domain](assets/diagrams/docs/skinanalysis/01-domain.png)
+![Skin Analysis - Domain](assets/diagrams/docs/skinanalysis/01-domain/skinanalysis-domain.png)
 
 ### Capa de Aplicación
 ![Skin Analysis - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skinanalysis/02-application.puml)
