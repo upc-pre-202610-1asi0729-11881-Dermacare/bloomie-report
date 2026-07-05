@@ -1,5 +1,5 @@
 @startuml iam-domain
-!include ../_style.puml
+!include https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/_style.puml
 title IAM — Domain Layer
 
 package "«external» framework" as ext {
