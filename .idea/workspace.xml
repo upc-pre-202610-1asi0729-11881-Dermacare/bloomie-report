@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0cbee535-a3a9-4b1d-838b-c44c5cacf3fa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/userflows/userflow-01-mobile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/userflows/userflow-08-mobile.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/userflows/userflow-08-mobile.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/userflows/userflow-10-mobile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/userflows/userflow25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/userflows/userflow_05-mobile.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,10 +37,10 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "feature/memberTeam",
+    "git-widget-placeholder": "feature/user-flow-mobile",
     "javascript.preferred.runtime.type.id": "node",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ACER/Desktop/bloomie-report/assets/img",
+    "last_opened_file_path": "C:/Users/ACER/Desktop/bloomie-report/assets/img/userflows",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -47,6 +51,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ACER\Desktop\bloomie-report\assets\img\userflows" />
       <recent name="C:\Users\ACER\Desktop\bloomie-report\assets\img" />
       <recent name="C:\Users\ACER\Desktop\bloomie-report\assets\img\mockups" />
     </key>
