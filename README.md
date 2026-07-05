@@ -3618,6 +3618,8 @@ Próximas citas, donde la información se ordena según la fecha más próxima o
 4) Alfabética: utilizada en la lista de pacientes o en el historial médico, para localizar
 rápidamente registros específicos.
 
+<img src="assets/img/1.jpg" width="500"/>
+
 ### 4.2.2. Labeling Systems
 
 El sistema de etiquetado de Bloomie fue diseñado para garantizar claridad, coherencia y 
@@ -4195,9 +4197,6 @@ crear una cuenta y acceder a Bloomie.
 ![wireframe 1](assets/img/wireframes/wireframe-01-web.png)
 
 ![wireframe 1 mobile](assets/img/wireframes/wireframe-01-mobile.png)
-
-
-
 
 **Principios y elementos de diseño:**
 La pantalla aplica jerarquía visual clara, ubicando el nombre y slogan de
@@ -6797,13 +6796,13 @@ El User Flow Diagram establece que desde el nodo "Entrar al perfil" se despliega
 
 ---
 
-## Funcionalidades Prototipadas
+###### Funcionalidades Prototipadas
 
 Se documentan a continuación las cinco funcionalidades core capturadas en los prototipos, con su correspondencia directa a las Historias de Usuario definidas en el backlog del producto.
 
 ---
 
-### 1. Skin Scan — Escaneo y Diagnóstico Facial
+###### 1. Skin Scan — Escaneo y Diagnóstico Facial
 
 **Historias de Usuario relacionadas:** US03 (Escaneo facial), US04 (Diagnóstico preliminar automático), US12 (Consultar historial de escaneos faciales) — Epic E2: Análisis de piel.
 
@@ -6819,7 +6818,7 @@ La captura se ejecuta con feedback visual progresivo (animación de escaneo) par
 
 ---
 
-### 2. My Routine — Gestión de Rutina Personalizada
+###### 2. My Routine — Gestión de Rutina Personalizada
 
 **Historias de Usuario relacionadas:** US05 (Generar rutina personalizada), US06 (Reemplazar producto de la rutina), US07 (Registrar cumplimiento de rutina diaria) — Epic E3: Gestión de rutina personalizada.
 
@@ -6835,7 +6834,7 @@ El reemplazo de productos utiliza un patrón de bottom sheet en mobile y panel l
 
 ---
 
-### 3. Appointments — Atención Dermatológica
+###### 3. Appointments — Atención Dermatológica
 
 **Historias de Usuario relacionadas:** US14 (Listar y seleccionar dermatólogo), US15 (Pagar y confirmar cita), US16 (Cancelar cita dermatológica), US34 (Participar en consulta virtual) — Epic E7: Atención dermatológica.
 
@@ -6851,7 +6850,7 @@ El flujo de pago sigue un patrón de stepper lineal (selección de especialista 
 
 ---
 
-### 4. AI Assistant — Soporte Inteligente de Skincare
+###### 4. AI Assistant — Soporte Inteligente de Skincare
 
 **Historias de Usuario relacionadas:** US13 (Consultar asistente virtual de skincare) — Epic E6: Soporte inteligente.
 
@@ -6867,7 +6866,7 @@ El chat mantiene historial visible de la conversación dentro de la sesión. Los
 
 ---
 
-### 5. Profile — Gestión de Perfil del Usuario
+###### 5. Profile — Gestión de Perfil del Usuario
 
 **Historias de Usuario relacionadas:** US19 (Editar perfil e información personal), US20 (Actualizar características de piel), US21 (Cambiar contraseña), US17 (Seleccionar y pagar plan de suscripción), US18 (Gestionar suscripción activa) — Epics E9 y E8.
 
@@ -6890,7 +6889,7 @@ La pantalla Profile centraliza en una sola vista las acciones de identidad (nomb
 [Click aquí...](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416272_upc_edu_pe/IQAzPhKCTFaWQqbaO1hR91IiAbpzFiv8RWWchSUaAiI63p8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=obm15x)
 ![imagen-profile-vid](assets/img/prototyping/profile-vid-img.png)
    
-##### Consideraciones de Diseño Responsivo
+###### Consideraciones de Diseño Responsivo
 
 Los prototipos presentados corresponden a la versión Desktop Web Browser. La versión Mobile Web Browser adapta los mismos flujos con los siguientes ajustes estructurales:
 
@@ -7270,148 +7269,157 @@ Capa de Interfaces <br>
 
 ---
 
-#### IAM
+## IAM
 
-##### Capa de Dominio
-![IAM - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam/01-domain.puml)
+### Capa de Dominio
+![IAM - Domain](assets/diagrams/docs/iam/01-domain/iam-domain.png)
 
-##### Capa de Aplicación
+
+### Capa de Aplicación
 ![IAM - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam/02-application.puml)
 
-##### Capa de Infraestructura
+### Capa de Infraestructura
 ![IAM - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam/03-infrastructure.puml)
 
-##### Capa de Interfaces
-![IAM - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/iam/04-interfaces.puml)
+### Capa de Interfaces
+![IAM - Interfaces](assets/diagrams/docs/iam/04-interfaces/iam-interfaces.png)
+
 
 ---
 
-#### Skin Analysis
+## Skin Analysis
 
-##### Capa de Dominio
-![Skin Analysis - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skinanalysis/01-domain.puml)
+### Capa de Dominio
+![Skin Analysis - Domain](out/assets/docs/skinanalysis/01-domain.png)
 
-##### Capa de Aplicación
+### Capa de Aplicación
 ![Skin Analysis - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skinanalysis/02-application.puml)
 
-##### Capa de Infraestructura
+### Capa de Infraestructura
 ![Skin Analysis - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skinanalysis/03-infrastructure.puml)
 
-##### Capa de Interfaces
+### Capa de Interfaces
 ![Skin Analysis - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skinanalysis/04-interfaces.puml)
 
 ---
 
-#### Routine Management
+## Routine Management
 
-##### Capa de Dominio
-![Routine Management - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/routinemanagement/01-domain.puml)
+### Capa de Dominio
+![Routine Management - Domain](assets/diagrams/docs/routinemanagement/01-domain/routinemanagement-domain.png)
 
-##### Capa de Aplicación
+
+### Capa de Aplicación
 ![Routine Management - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/routinemanagement/02-application.puml)
 
-##### Capa de Infraestructura
+### Capa de Infraestructura
 ![Routine Management - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/routinemanagement/03-infrastructure.puml)
 
-##### Capa de Interfaces
+### Capa de Interfaces
 ![Routine Management - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/routinemanagement/04-interfaces.puml)
 
 ---
 
-#### Product Discovery
+## Product Discovery
 
-##### Capa de Dominio
-![Product Discovery - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/productdiscovery/01-domain.puml)
+### Capa de Dominio
+![Product Discovery - Domain](assets/diagrams/docs/productdiscovery/01-domain/productdiscovery-domain.png)
 
-##### Capa de Aplicación
+
+### Capa de Aplicación
 ![Product Discovery - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/productdiscovery/02-application.puml)
 
-##### Capa de Infraestructura
+### Capa de Infraestructura
 ![Product Discovery - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/productdiscovery/03-infrastructure.puml)
 
-##### Capa de Interfaces
+### Capa de Interfaces
 ![Product Discovery - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/productdiscovery/04-interfaces.puml)
 
 ---
 
-#### Dermatology Care
+## Dermatology Care
 
-##### Capa de Dominio
-![Dermatology Care - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologycare/01-domain.puml)
+### Capa de Dominio
+![Dermatology Care - Domain](assets/diagrams/docs/dermatologycare/01-domain/dermatologycare-domain.png)
 
-##### Capa de Aplicación
+
+### Capa de Aplicación
 ![Dermatology Care - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologycare/02-application.puml)
 
-##### Capa de Infraestructura
-![Dermatology Care - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologycare/03-infrastructure.puml)
+### Capa de Infraestructura
+![Dermatology Care - Infrastructure](assets/diagrams/docs/dermatologycare/03-infrastructure/dermatologycare-infrastructure.png)
 
-##### Capa de Interfaces
+### Capa de Interfaces
 ![Dermatology Care - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologycare/04-interfaces.puml)
 
 ---
 
-#### Dermatological Appointment
+## Dermatological Appointment
 
-##### Capa de Dominio
-![Dermatological Appointment - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologicalappointment/01-domain.puml)
+### Capa de Dominio
+![Dermatological Appointment - Domain](assets/diagrams/docs/dermatologicalappointment/01-domain/dermatologicalappointment-domain.png)
 
-##### Capa de Aplicación
+
+### Capa de Aplicación
 ![Dermatological Appointment - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologicalappointment/02-application.puml)
 
-##### Capa de Infraestructura
+### Capa de Infraestructura
 ![Dermatological Appointment - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologicalappointment/03-infrastructure.puml)
 
-##### Capa de Interfaces
-![Dermatological Appointment - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/dermatologicalappointment/04-interfaces.puml)
+### Capa de Interfaces
+![Dermatological Appointment - Interfaces](assets/diagrams/docs/dermatologicalappointment/04-interfaces/dermatologicalappointment-interfaces.png)
+
+
 
 ---
 
-#### Subscription
+## Subscription
 
-##### Capa de Dominio
-![Subscription - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/subscription/01-domain.puml)
+### Capa de Dominio
+![Subscription - Domain](assets/diagrams/docs/subscription/01-domain/subscription-domain.png)
 
-##### Capa de Aplicación
+
+### Capa de Aplicación
 ![Subscription - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/subscription/02-application.puml)
 
-##### Capa de Infraestructura
+### Capa de Infraestructura
 ![Subscription - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/subscription/03-infrastructure.puml)
 
-##### Capa de Interfaces
+### Capa de Interfaces
 ![Subscription - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/subscription/04-interfaces.puml)
 
 ---
 
-#### Payments
+## Payments
 
-##### Capa de Dominio
-![Payments - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/payments/01-domain.puml)
+### Capa de Dominio
+![Payments - Domain](assets/diagrams/docs/payments/01-domain/payments-domain.png)
 
-##### Capa de Aplicación
+
+### Capa de Aplicación
 ![Payments - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/payments/02-application.puml)
 
-##### Capa de Infraestructura
+### Capa de Infraestructura
 ![Payments - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/payments/03-infrastructure.puml)
 
-##### Capa de Interfaces
+### Capa de Interfaces
 ![Payments - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/payments/04-interfaces.puml)
 
 ---
 
-#### Intelligent Support
+## Intelligent Support
 
-##### Capa de Dominio
-![Intelligent Support - Domain](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/intelligentsupport/01-domain.puml)
+### Capa de Dominio
+![Intelligent Support - Domain](assets/diagrams/docs/intelligentsupport/01-domain/intelligentsupport-domain.png)
 
-##### Capa de Aplicación
+### Capa de Aplicación
 ![Intelligent Support - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/intelligentsupport/02-application.puml)
 
-##### Capa de Infraestructura
+### Capa de Infraestructura
 ![Intelligent Support - Infrastructure](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/intelligentsupport/03-infrastructure.puml)
 
-##### Capa de Interfaces
+### Capa de Interfaces
 ![Intelligent Support - Interfaces](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/intelligentsupport/04-interfaces.puml)
-
 
 ## 4.8. Database Design
 
