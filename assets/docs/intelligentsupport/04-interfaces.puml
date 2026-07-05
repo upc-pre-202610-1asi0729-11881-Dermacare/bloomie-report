@@ -1,0 +1,85 @@
+@startuml intelligentsupport-interfaces
+!include ../_style.puml
+title Intelligent Support — Interfaces Layer
+
+package "intelligentsupport.domain (referenced)" as domain {
+  class ChatMessage
+  class SupportQuery
+  class GetChatMessagesBySupportQueryIdQuery <<query>>
+  class GetSupportQueryByIdQuery <<query>>
+  class GetSupportQueryByPatientIdAndStatusQuery <<query>>
+}
+
+package "intelligentsupport.application (referenced)" as application {
+  interface ChatMessageCommandService
+  interface ChatMessageQueryService
+  interface SupportQueryCommandService
+  interface SupportQueryQueryService
+}
+
+package "shared (referenced)" as shared {
+  class ApplicationError
+  class ResponseEntityAssembler <<static assembler>>
+  class ErrorResponseAssembler <<static assembler>>
+}
+
+package "intelligentsupport.interfaces" as ifaces {
+
+  package rest {
+    class ChatMessagesController {
+      - commandService: ChatMessageCommandService
+      - queryService: ChatMessageQueryService
+    }
+    class SupportQueriesController {
+      - commandService: SupportQueryCommandService
+      - supportQueryQueryService: SupportQueryQueryService
+    }
+  }
+
+  package "rest.resources" as resources {
+    class ChatMessageResource <<resource>>
+    class SendChatMessageResource <<resource>>
+    class SupportQueryResource <<resource>>
+    class CreateSupportQueryResource <<resource>>
+    class UpdateSupportQueryStatusResource <<resource>>
+  }
+
+  package "rest.transform" as transform {
+    class ChatMessageResourceFromEntityAssembler <<static assembler>>
+    class SendChatMessageCommandFromResourceAssembler <<static assembler>>
+    class SupportQueryResourceFromEntityAssembler <<static assembler>>
+    class CreateSupportQueryCommandFromResourceAssembler <<static assembler>>
+    class UpdateSupportQueryStatusCommandFromResourceAssembler <<static assembler>>
+  }
+}
+
+ChatMessagesController --> ChatMessageCommandService : <<uses>>
+ChatMessagesController --> ChatMessageQueryService : <<uses>>
+ChatMessagesController ..> GetChatMessagesBySupportQueryIdQuery : <<uses>>
+ChatMessagesController ..> SendChatMessageResource : <<uses>>
+ChatMessagesController ..> ChatMessageResourceFromEntityAssembler : <<uses>>
+ChatMessagesController ..> SendChatMessageCommandFromResourceAssembler : <<uses>>
+ChatMessagesController ..> ResponseEntityAssembler : <<uses>>
+
+SupportQueriesController --> SupportQueryCommandService : <<uses>>
+SupportQueriesController --> SupportQueryQueryService : <<uses>>
+SupportQueriesController ..> GetSupportQueryByIdQuery : <<uses>>
+SupportQueriesController ..> GetSupportQueryByPatientIdAndStatusQuery : <<uses>>
+SupportQueriesController ..> CreateSupportQueryResource : <<uses>>
+SupportQueriesController ..> UpdateSupportQueryStatusResource : <<uses>>
+SupportQueriesController ..> SupportQueryResourceFromEntityAssembler : <<uses>>
+SupportQueriesController ..> CreateSupportQueryCommandFromResourceAssembler : <<uses>>
+SupportQueriesController ..> UpdateSupportQueryStatusCommandFromResourceAssembler : <<uses>>
+SupportQueriesController ..> ApplicationError : <<uses>>
+SupportQueriesController ..> ErrorResponseAssembler : <<uses>>
+SupportQueriesController ..> ResponseEntityAssembler : <<uses>>
+
+ChatMessageResourceFromEntityAssembler ..> ChatMessageResource : <<creates>>
+ChatMessageResourceFromEntityAssembler ..> ChatMessage : <<uses>>
+SendChatMessageCommandFromResourceAssembler ..> SendChatMessageResource : <<uses>>
+
+SupportQueryResourceFromEntityAssembler ..> SupportQueryResource : <<creates>>
+SupportQueryResourceFromEntityAssembler ..> SupportQuery : <<uses>>
+CreateSupportQueryCommandFromResourceAssembler ..> CreateSupportQueryResource : <<uses>>
+UpdateSupportQueryStatusCommandFromResourceAssembler ..> UpdateSupportQueryStatusResource : <<uses>>
+@enduml

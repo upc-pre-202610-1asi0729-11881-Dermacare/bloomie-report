@@ -1,0 +1,111 @@
+@startuml payments-domain
+!include ../_style.puml
+title Payments — Domain Layer
+
+package "shared.domain.model.aggregates\n(referenced)" as sharedDomain {
+  abstract class AbstractDomainAggregateRoot<T>
+}
+
+package "payments.domain.model" as domain {
+
+  package aggregates {
+    class Payment {
+      - id: Long
+      - patientId: PatientId
+      - planId: PlanId
+      - subscriptionId: SubscriptionId
+      - appointmentId: AppointmentId
+      - dermatologistId: DermatologistId
+      - type: PaymentType
+      - amount: PaymentAmount
+      - platformFeeAmount: PaymentAmount
+      - status: PaymentStatus
+      - refunding: boolean
+      + onProcessSubscriptionPayment()
+      + onProcessRenewalPayment()
+      + onProcessConsultationPayment()
+      + refund()
+      + onRefunded()
+    }
+  }
+
+  package valueobjects {
+    class PatientId <<value object>> { + patientId: Long }
+    class PlanId <<value object>> { + planId: Long }
+    class SubscriptionId <<value object>> { + subscriptionId: Long }
+    class AppointmentId <<value object>> { + appointmentId: Long }
+    class DermatologistId <<value object>> { + dermatologistId: Long }
+    class PaymentAmount <<value object>> { + amount: Double }
+    enum PaymentType { SUBSCRIPTION\nRENEWAL\nCONSULTATION }
+    enum PaymentStatus { PENDING\nPROCESSED\nREFUNDED\nFAILED }
+  }
+
+  package commands {
+    class ProcessSubscriptionPaymentCommand <<command>>
+    class ProcessRenewalPaymentCommand <<command>>
+    class ProcessConsultationPaymentCommand <<command>>
+    class RefundPaymentCommand <<command>>
+  }
+
+  package queries {
+    class GetPaymentByIdQuery <<query>>
+    class GetPaymentsByPatientIdQuery <<query>>
+    class GetPaymentBySubscriptionIdQuery <<query>>
+    class GetPaymentByAppointmentIdQuery <<query>>
+  }
+
+  package events {
+    class SubscriptionPaymentProcessedEvent <<domain event>>
+    class SubscriptionRenewalPaymentProcessedEvent <<domain event>>
+    class ConsultationPaymentProcessedEvent <<domain event>>
+    class PaymentRefundedEvent <<domain event>>
+  }
+
+  package repositories {
+    interface PaymentRepository
+  }
+}
+
+Payment --|> AbstractDomainAggregateRoot
+
+Payment "1" *-- "1" PatientId : patientId
+Payment "0..1" *-- "0..1" PlanId : planId
+Payment "0..1" *-- "0..1" SubscriptionId : subscriptionId
+Payment "0..1" *-- "0..1" AppointmentId : appointmentId
+Payment "0..1" *-- "0..1" DermatologistId : dermatologistId
+Payment "1" *-- "1" PaymentAmount : amount
+Payment "0..1" *-- "0..1" PaymentAmount : platformFeeAmount
+Payment "1" *-- "1" PaymentType : type
+Payment "1" *-- "1" PaymentStatus : status
+
+Payment ..> ProcessSubscriptionPaymentCommand : <<uses>>
+Payment ..> ProcessRenewalPaymentCommand : <<uses>>
+Payment ..> ProcessConsultationPaymentCommand : <<uses>>
+
+SubscriptionPaymentProcessedEvent ..> Payment : <<derives from>>
+SubscriptionRenewalPaymentProcessedEvent ..> Payment : <<derives from>>
+ConsultationPaymentProcessedEvent ..> Payment : <<derives from>>
+PaymentRefundedEvent ..> Payment : <<derives from>>
+
+Payment ..> SubscriptionPaymentProcessedEvent : <<creates>>
+Payment ..> SubscriptionRenewalPaymentProcessedEvent : <<creates>>
+Payment ..> ConsultationPaymentProcessedEvent : <<creates>>
+Payment ..> PaymentRefundedEvent : <<creates>>
+
+PaymentRepository ..> Payment : <<uses>>
+PaymentRepository ..> PatientId : <<uses>>
+PaymentRepository ..> SubscriptionId : <<uses>>
+PaymentRepository ..> AppointmentId : <<uses>>
+
+GetPaymentBySubscriptionIdQuery ..> SubscriptionId : <<uses>>
+GetPaymentByAppointmentIdQuery ..> AppointmentId : <<uses>>
+GetPaymentsByPatientIdQuery ..> PatientId : <<uses>>
+
+note bottom of Payment
+  planId/subscriptionId are only set for
+  SUBSCRIPTION and RENEWAL payments;
+  appointmentId/dermatologistId/platformFeeAmount
+  only for CONSULTATION payments — mutually
+  exclusive depending on PaymentType.
+end note
+@enduml

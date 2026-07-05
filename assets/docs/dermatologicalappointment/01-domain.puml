@@ -1,0 +1,204 @@
+@startuml dermatologicalappointment-domain
+!include ../_style.puml
+title Dermatological Appointment — Domain Layer
+
+package "shared.domain.model.aggregates\n(referenced)" as sharedDomain {
+  abstract class AbstractDomainAggregateRoot<T>
+}
+
+package "dermatologicalappointment.domain.model" as domain {
+
+  package aggregates {
+    class Appointment {
+      - id: Long
+      - patientId: PatientId
+      - dermatologistId: DermatologistId
+      - scheduledAt: AppointmentDateTime
+      - status: AppointmentStatus
+      - cancellationReason: String
+      - pendingReprogramDate: String
+      + onScheduled()
+      + cancel(command: CancelAppointmentCommand)
+      + onCancelled()
+      + requestReprogram(command: RequestReprogramAppointmentCommand)
+      + onReprogramRequestSubmitted()
+      + reprogram(command: ReprogramAppointmentCommand)
+      + onReprogrammed()
+      + confirm()
+      + onConfirmed()
+      + markInProgress()
+      + complete()
+      + onCompleted()
+      + isEligibleForRefund(): boolean
+    }
+    class Consultation {
+      - id: Long
+      - appointmentId: Long
+      - patientId: PatientId
+      - dermatologistId: DermatologistId
+      - status: ConsultationStatus
+      - notes: ClinicalNotes
+      - recommendations: ClinicalNotes
+      - clinicalPhotoUrls: List<String>
+      - startedAt: String
+      - finishedAt: String
+      + start()
+      + onStarted()
+      + saveNotes(command: SaveNotesCommand)
+      + onNotesSaved()
+      + recordDiagnosis(command: RecordDermatologicalDiagnosisCommand)
+      + onDiagnosisRecorded()
+      + uploadPhoto(command: UploadClinicalPhotoCommand)
+      + onPhotoUploaded(url: String)
+      + finish(command: FinishConsultationCommand)
+      + onFinished()
+    }
+  }
+
+  package valueobjects {
+    class PatientId <<value object>> { + patientId: Long }
+    class DermatologistId <<value object>> { + dermatologistId: Long }
+    class AppointmentDateTime <<value object>> { + value: String }
+    class ClinicalNotes <<value object>> { + value: String }
+    enum AppointmentStatus {
+      SCHEDULED
+      CONFIRMED
+      IN_PROGRESS
+      COMPLETED
+      CANCELLED
+    }
+    enum ConsultationStatus {
+      PENDING
+      IN_PROGRESS
+      COMPLETED
+      CANCELLED
+    }
+    class AppointmentDate <<value object>> { + value: LocalDateTime }
+    class PhotoUrl <<value object>> { + value: String }
+  }
+
+  package commands {
+    class ScheduleDermatologyAppointmentCommand <<command>>
+    class CancelAppointmentCommand <<command>>
+    class RequestReprogramAppointmentCommand <<command>>
+    class ReprogramAppointmentCommand <<command>>
+    class ConfirmAppointmentCommand <<command>>
+    class MarkAppointmentInProgressCommand <<command>>
+    class CompleteAppointmentCommand <<command>>
+    class StartConsultationCommand <<command>>
+    class SaveNotesCommand <<command>>
+    class RecordDermatologicalDiagnosisCommand <<command>>
+    class UploadClinicalPhotoCommand <<command>>
+    class FinishConsultationCommand <<command>>
+  }
+
+  package queries {
+    class GetAppointmentByIdQuery <<query>>
+    class GetAppointmentsByPatientIdQuery <<query>>
+    class GetAppointmentsByDermatologistIdQuery <<query>>
+    class GetConsultationByIdQuery <<query>>
+    class GetConsultationByAppointmentIdQuery <<query>>
+  }
+
+  package events {
+    class DermatologyAppointmentScheduledEvent <<domain event>>
+    class AppointmentCancelledEvent <<domain event>>
+    class AppointmentReprogramRequestSubmittedEvent <<domain event>>
+    class AppointmentReprogrammedEvent <<domain event>>
+    class AppointmentConfirmedEvent <<domain event>>
+    class AppointmentCompletedEvent <<domain event>>
+    class ConsultationStartedEvent <<domain event>>
+    class ClinicalNotesSavedEvent <<domain event>>
+    class DermatologicalDiagnosisRecordedEvent <<domain event>>
+    class ClinicalPhotoUploadedEvent <<domain event>>
+    class ConsultationFinishedEvent <<domain event>>
+  }
+
+  package repositories {
+    interface AppointmentRepository {
+      + findById(id: Long): Optional<Appointment>
+      + findByPatientId(id: PatientId): List<Appointment>
+      + findByDermatologistId(id: DermatologistId): List<Appointment>
+      + save(a: Appointment): Appointment
+      + existsById(id: Long): boolean
+      + existsByDermatologistIdAndDate(id, at): boolean
+    }
+    interface ConsultationRepository {
+      + findById(id: Long): Optional<Consultation>
+      + findByAppointmentId(id: Long): Optional<Consultation>
+      + save(c: Consultation): Consultation
+      + findAll(): List<Consultation>
+    }
+  }
+}
+
+Appointment --|> AbstractDomainAggregateRoot
+Consultation --|> AbstractDomainAggregateRoot
+
+Appointment "1" *-- "1" PatientId : patientId
+Appointment "1" *-- "1" DermatologistId : dermatologistId
+Appointment "1" *-- "1" AppointmentDateTime : scheduledAt
+Appointment "1" *-- "1" AppointmentStatus : status
+
+Consultation "1" *-- "1" PatientId : patientId
+Consultation "1" *-- "1" DermatologistId : dermatologistId
+Consultation "1" *-- "1" ConsultationStatus : status
+Consultation "1" *-- "1" ClinicalNotes : notes
+Consultation "1" *-- "1" ClinicalNotes : recommendations
+Consultation "1" o-- "0..1" Appointment : appointmentId (by reference)
+
+Appointment ..> ScheduleDermatologyAppointmentCommand : <<uses>>
+Appointment ..> CancelAppointmentCommand : <<uses>>
+Appointment ..> RequestReprogramAppointmentCommand : <<uses>>
+Appointment ..> ReprogramAppointmentCommand : <<uses>>
+
+Consultation ..> StartConsultationCommand : <<uses>>
+Consultation ..> SaveNotesCommand : <<uses>>
+Consultation ..> RecordDermatologicalDiagnosisCommand : <<uses>>
+Consultation ..> UploadClinicalPhotoCommand : <<uses>>
+Consultation ..> FinishConsultationCommand : <<uses>>
+
+DermatologyAppointmentScheduledEvent ..> Appointment : <<derives from>>
+AppointmentCancelledEvent ..> Appointment : <<derives from>>
+AppointmentReprogramRequestSubmittedEvent ..> Appointment : <<derives from>>
+AppointmentReprogrammedEvent ..> Appointment : <<derives from>>
+AppointmentConfirmedEvent ..> Appointment : <<derives from>>
+AppointmentCompletedEvent ..> Appointment : <<derives from>>
+ConsultationStartedEvent ..> Consultation : <<derives from>>
+ClinicalNotesSavedEvent ..> Consultation : <<derives from>>
+DermatologicalDiagnosisRecordedEvent ..> Consultation : <<derives from>>
+ClinicalPhotoUploadedEvent ..> Consultation : <<derives from>>
+ConsultationFinishedEvent ..> Consultation : <<derives from>>
+
+Appointment ..> DermatologyAppointmentScheduledEvent : <<creates>>
+Appointment ..> AppointmentCancelledEvent : <<creates>>
+Appointment ..> AppointmentReprogramRequestSubmittedEvent : <<creates>>
+Appointment ..> AppointmentReprogrammedEvent : <<creates>>
+Appointment ..> AppointmentConfirmedEvent : <<creates>>
+Appointment ..> AppointmentCompletedEvent : <<creates>>
+Consultation ..> ConsultationStartedEvent : <<creates>>
+Consultation ..> ClinicalNotesSavedEvent : <<creates>>
+Consultation ..> DermatologicalDiagnosisRecordedEvent : <<creates>>
+Consultation ..> ClinicalPhotoUploadedEvent : <<creates>>
+Consultation ..> ConsultationFinishedEvent : <<creates>>
+
+AppointmentRepository ..> Appointment : <<uses>>
+AppointmentRepository ..> PatientId : <<uses>>
+AppointmentRepository ..> DermatologistId : <<uses>>
+AppointmentRepository ..> AppointmentDateTime : <<uses>>
+ConsultationRepository ..> Consultation : <<uses>>
+
+GetAppointmentsByPatientIdQuery ..> PatientId : <<derived, wrapped by\napplication>>
+GetAppointmentsByDermatologistIdQuery ..> DermatologistId : <<derived, wrapped by\napplication>>
+
+note bottom of AppointmentDate
+  Declared value object, but no aggregate
+  or converter currently references it —
+  superseded by AppointmentDateTime (String-based).
+end note
+note bottom of PhotoUrl
+  Declared value object, but Consultation
+  stores clinical photo URLs as a raw
+  List<String> — this VO is not yet wired in.
+end note
+@enduml

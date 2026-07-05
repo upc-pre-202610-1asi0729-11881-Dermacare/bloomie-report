@@ -1,0 +1,135 @@
+@startuml dermatologicalappointment-infrastructure
+!include ../_style.puml
+title Dermatological Appointment — Infrastructure Layer
+
+package "«external» framework" as ext {
+  interface "JpaRepository<T,ID>" as JpaRepository
+}
+
+package "shared.infrastructure.persistence\n(referenced)" as sharedInfra {
+  abstract class AuditableAbstractPersistenceEntity
+}
+
+package "dermatologicalappointment.domain (referenced)" as domain {
+  class Appointment
+  class Consultation
+  class PatientId <<value object>>
+  class DermatologistId <<value object>>
+  class AppointmentDateTime <<value object>>
+  class ClinicalNotes <<value object>>
+  enum AppointmentStatus
+  enum ConsultationStatus
+  interface AppointmentRepository
+  interface ConsultationRepository
+}
+
+package "dermatologicalappointment.application (referenced)" as application {
+  interface ExternalIamService
+  interface ExternalDermatologyCareService
+}
+
+package "dermatologycare bounded context (referenced)" as dcBc {
+  interface DermatologyCareContextFacade
+}
+
+package "iam bounded context (referenced)" as iamBc {
+  interface IamContextFacade
+}
+
+package "dermatologicalappointment.infrastructure" as infra {
+
+  package "persistence.jpa.entities" as entities {
+    class AppointmentPersistenceEntity {
+      - patientId: PatientId
+      - dermatologistId: DermatologistId
+      - scheduledAt: AppointmentDateTime
+      - status: AppointmentStatus
+      - cancellationReason: String
+      - pendingReprogramDate: String
+    }
+    class ConsultationPersistenceEntity {
+      - appointmentId: Long
+      - patientId: PatientId
+      - dermatologistId: DermatologistId
+      - status: ConsultationStatus
+      - notes: ClinicalNotes
+      - recommendations: ClinicalNotes
+      - clinicalPhotoUrls: List<String>
+      - startedAt: String
+      - finishedAt: String
+    }
+  }
+
+  package "persistence.jpa.converters" as converters {
+    class AppointmentDateTimePersistenceConverter
+    class ClinicalNotesPersistenceConverter
+    class DermatologistIdPersistenceConverter
+    class PatientIdPersistenceConverter
+  }
+
+  package "persistence.jpa.assemblers" as assemblers {
+    class AppointmentPersistenceAssembler <<static assembler>>
+    class ConsultationPersistenceAssembler <<static assembler>>
+  }
+
+  package "persistence.jpa.repositories" as jpaRepos {
+    interface AppointmentPersistenceRepository
+    interface ConsultationPersistenceRepository
+  }
+
+  package "persistence.jpa.adapters" as adapters {
+    class AppointmentRepositoryImpl {
+      - persistenceRepository: AppointmentPersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+    class ConsultationRepositoryImpl {
+      - persistenceRepository: ConsultationPersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+  }
+
+  package acl {
+    class ExternalIamServiceImpl {
+      - iamContextFacade: IamContextFacade
+    }
+    class ExternalDermatologyCareServiceImpl {
+      - dermatologyCareContextFacade: DermatologyCareContextFacade
+    }
+  }
+}
+
+AppointmentPersistenceEntity --|> AuditableAbstractPersistenceEntity
+ConsultationPersistenceEntity --|> AuditableAbstractPersistenceEntity
+AppointmentPersistenceRepository --|> JpaRepository
+ConsultationPersistenceRepository --|> JpaRepository
+
+AppointmentPersistenceEntity ..> AppointmentDateTimePersistenceConverter : <<uses>>\n@Convert
+AppointmentPersistenceEntity ..> DermatologistIdPersistenceConverter : <<uses>>\n@Convert
+AppointmentPersistenceEntity ..> PatientIdPersistenceConverter : <<uses>>\n@Convert
+ConsultationPersistenceEntity ..> ClinicalNotesPersistenceConverter : <<uses>>\n@Convert
+ConsultationPersistenceEntity ..> DermatologistIdPersistenceConverter : <<uses>>\n@Convert
+ConsultationPersistenceEntity ..> PatientIdPersistenceConverter : <<uses>>\n@Convert
+
+AppointmentDateTimePersistenceConverter ..> AppointmentDateTime : <<converts>>
+ClinicalNotesPersistenceConverter ..> ClinicalNotes : <<converts>>
+DermatologistIdPersistenceConverter ..> DermatologistId : <<converts>>
+PatientIdPersistenceConverter ..> PatientId : <<converts>>
+
+AppointmentRepositoryImpl --> AppointmentPersistenceRepository : persistenceRepository
+ConsultationRepositoryImpl --> ConsultationPersistenceRepository : persistenceRepository
+AppointmentRepositoryImpl ..> AppointmentPersistenceAssembler : <<uses>>
+ConsultationRepositoryImpl ..> ConsultationPersistenceAssembler : <<uses>>
+
+AppointmentPersistenceAssembler ..> AppointmentPersistenceEntity : <<uses>>
+AppointmentPersistenceAssembler ..> Appointment : <<uses>>
+ConsultationPersistenceAssembler ..> ConsultationPersistenceEntity : <<uses>>
+ConsultationPersistenceAssembler ..> Consultation : <<uses>>
+
+AppointmentRepositoryImpl ..> AppointmentRepository : <<implements>>
+ConsultationRepositoryImpl ..> ConsultationRepository : <<implements>>
+
+ExternalIamServiceImpl --> IamContextFacade : iamContextFacade
+ExternalIamServiceImpl ..> ExternalIamService : <<implements>>
+ExternalDermatologyCareServiceImpl --> DermatologyCareContextFacade : dermatologyCareContextFacade
+ExternalDermatologyCareServiceImpl ..> ExternalDermatologyCareService : <<implements>>
+@enduml

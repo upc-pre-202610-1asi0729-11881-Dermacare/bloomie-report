@@ -1,0 +1,146 @@
+@startuml skinanalysis-interfaces
+!include ../_style.puml
+title Skin Analysis — Interfaces Layer
+
+package "skinanalysis.domain (referenced)" as domain {
+  class FacialScan
+  class SkinAnalysis
+  class SkinProfile
+  class PatientId <<value object>>
+  class FacialScanId <<value object>>
+  class StartFacialScanCommand <<command>>
+  class SubmitFacialScanCommand <<command>>
+  class CompleteSkinProfileCommand <<command>>
+  class UpdateSkinCharacteristicsCommand <<command>>
+  class GetFacialScanByIdQuery <<query>>
+  class GetFacialScansByPatientIdQuery <<query>>
+  class GetSkinAnalysisByIdQuery <<query>>
+  class GetSkinAnalysisByFacialScanIdQuery <<query>>
+  class GetSkinAnalysesByPatientIdQuery <<query>>
+  class GetSkinProfileByIdQuery <<query>>
+  class GetSkinProfileByPatientIdQuery <<query>>
+}
+
+package "skinanalysis.application (referenced)" as application {
+  interface FacialScanCommandService
+  interface FacialScanQueryService
+  interface SkinAnalysisQueryService
+  interface SkinProfileCommandService
+  interface SkinProfileQueryService
+  class PreliminaryDiagnosisGeneratedEventHandler
+}
+
+package "shared (referenced)" as shared {
+  class ApplicationError
+  class ResponseEntityAssembler <<static assembler>>
+  class ErrorResponseAssembler <<static assembler>>
+}
+
+package "skinanalysis.interfaces" as ifaces {
+
+  package events {
+    class FacialScanSubmittedIntegrationEvent <<integration event>>
+    class PreliminaryDiagnosisGeneratedIntegrationEvent <<integration event>>
+  }
+
+  package rest {
+    class FacialScansController {
+      - commandService: FacialScanCommandService
+      - queryService: FacialScanQueryService
+    }
+    class SkinAnalysesController {
+      - queryService: SkinAnalysisQueryService
+    }
+    class SkinProfilesController {
+      - commandService: SkinProfileCommandService
+      - queryService: SkinProfileQueryService
+    }
+  }
+
+  package "rest.resources" as resources {
+    class FacialScanResource <<resource>>
+    class StartFacialScanResource <<resource>>
+    class SubmitFacialScanResource <<resource>>
+    class SkinAnalysisResource <<resource>>
+    class SkinProfileResource <<resource>>
+    class CompleteSkinProfileResource <<resource>>
+    class UpdateSkinCharacteristicsResource <<resource>>
+  }
+
+  package "rest.transform" as transform {
+    class FacialScanResourceFromEntityAssembler <<static assembler>>
+    class StartFacialScanCommandFromResourceAssembler <<static assembler>>
+    class SubmitFacialScanCommandFromResourceAssembler <<static assembler>>
+    class SkinAnalysisResourceFromEntityAssembler <<static assembler>>
+    class SkinProfileResourceFromEntityAssembler <<static assembler>>
+    class CompleteSkinProfileCommandFromResourceAssembler <<static assembler>>
+    class UpdateSkinCharacteristicsCommandFromResourceAssembler <<static assembler>>
+  }
+}
+
+PreliminaryDiagnosisGeneratedEventHandler ..> PreliminaryDiagnosisGeneratedIntegrationEvent : <<publishes>>
+
+FacialScansController --> FacialScanCommandService : <<uses>>
+FacialScansController --> FacialScanQueryService : <<uses>>
+FacialScansController ..> GetFacialScanByIdQuery : <<uses>>
+FacialScansController ..> GetFacialScansByPatientIdQuery : <<uses>>
+FacialScansController ..> PatientId : <<uses>>
+FacialScansController ..> FacialScanResource : <<uses>>
+FacialScansController ..> StartFacialScanResource : <<uses>>
+FacialScansController ..> SubmitFacialScanResource : <<uses>>
+FacialScansController ..> FacialScanResourceFromEntityAssembler : <<uses>>
+FacialScansController ..> StartFacialScanCommandFromResourceAssembler : <<uses>>
+FacialScansController ..> SubmitFacialScanCommandFromResourceAssembler : <<uses>>
+FacialScansController ..> ErrorResponseAssembler : <<uses>>
+FacialScansController ..> ResponseEntityAssembler : <<uses>>
+FacialScansController ..> ApplicationError : <<uses>>
+
+SkinAnalysesController --> SkinAnalysisQueryService : <<uses>>
+SkinAnalysesController ..> GetSkinAnalysisByIdQuery : <<uses>>
+SkinAnalysesController ..> GetSkinAnalysisByFacialScanIdQuery : <<uses>>
+SkinAnalysesController ..> GetSkinAnalysesByPatientIdQuery : <<uses>>
+SkinAnalysesController ..> FacialScanId : <<uses>>
+SkinAnalysesController ..> PatientId : <<uses>>
+SkinAnalysesController ..> SkinAnalysisResourceFromEntityAssembler : <<uses>>
+SkinAnalysesController ..> ErrorResponseAssembler : <<uses>>
+SkinAnalysesController ..> ApplicationError : <<uses>>
+
+SkinProfilesController --> SkinProfileCommandService : <<uses>>
+SkinProfilesController --> SkinProfileQueryService : <<uses>>
+SkinProfilesController ..> GetSkinProfileByIdQuery : <<uses>>
+SkinProfilesController ..> GetSkinProfileByPatientIdQuery : <<uses>>
+SkinProfilesController ..> PatientId : <<uses>>
+SkinProfilesController ..> CompleteSkinProfileResource : <<uses>>
+SkinProfilesController ..> UpdateSkinCharacteristicsResource : <<uses>>
+SkinProfilesController ..> CompleteSkinProfileCommandFromResourceAssembler : <<uses>>
+SkinProfilesController ..> UpdateSkinCharacteristicsCommandFromResourceAssembler : <<uses>>
+SkinProfilesController ..> SkinProfileResourceFromEntityAssembler : <<uses>>
+SkinProfilesController ..> ErrorResponseAssembler : <<uses>>
+SkinProfilesController ..> ResponseEntityAssembler : <<uses>>
+SkinProfilesController ..> ApplicationError : <<uses>>
+
+FacialScanResourceFromEntityAssembler ..> FacialScanResource : <<creates>>
+FacialScanResourceFromEntityAssembler ..> FacialScan : <<uses>>
+StartFacialScanCommandFromResourceAssembler ..> StartFacialScanResource : <<uses>>
+StartFacialScanCommandFromResourceAssembler ..> StartFacialScanCommand : <<creates>>
+SubmitFacialScanCommandFromResourceAssembler ..> SubmitFacialScanResource : <<uses>>
+SubmitFacialScanCommandFromResourceAssembler ..> SubmitFacialScanCommand : <<creates>>
+
+SkinAnalysisResourceFromEntityAssembler ..> SkinAnalysisResource : <<creates>>
+SkinAnalysisResourceFromEntityAssembler ..> SkinAnalysis : <<uses>>
+
+SkinProfileResourceFromEntityAssembler ..> SkinProfileResource : <<creates>>
+SkinProfileResourceFromEntityAssembler ..> SkinProfile : <<uses>>
+CompleteSkinProfileCommandFromResourceAssembler ..> CompleteSkinProfileResource : <<uses>>
+CompleteSkinProfileCommandFromResourceAssembler ..> CompleteSkinProfileCommand : <<creates>>
+UpdateSkinCharacteristicsCommandFromResourceAssembler ..> UpdateSkinCharacteristicsResource : <<uses>>
+UpdateSkinCharacteristicsCommandFromResourceAssembler ..> UpdateSkinCharacteristicsCommand : <<creates>>
+
+note bottom of FacialScanSubmittedIntegrationEvent
+  Declared as this BC's published language for
+  facial-scan submission, but the current flow
+  handles FacialScanSubmittedEvent internally
+  (same BC) and never re-publishes this
+  integration event — kept for future cross-BC use.
+end note
+@enduml

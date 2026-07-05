@@ -1,0 +1,147 @@
+@startuml skinanalysis-domain
+!include ../_style.puml
+title Skin Analysis — Domain Layer
+
+package "shared.domain.model.aggregates\n(referenced)" as sharedDomain {
+  abstract class AbstractDomainAggregateRoot<T>
+}
+
+package "dermatologicalappointment bounded context\n(referenced)" as apptBc {
+  note as N1
+    Reuses the vocabulary "PatientId" concept
+    (own VO — not shared across BCs directly).
+  end note
+}
+
+package "skinanalysis.domain.model" as domain {
+
+  package aggregates {
+    class FacialScan {
+      - id: Long
+      - patientId: PatientId
+      - status: FacialScanStatus
+      - photoUrl: String
+      - scannedAt: LocalDateTime
+      + submit(photoUrl: String)
+      + onStarted()
+      + onSubmitted()
+    }
+    class SkinAnalysis {
+      - id: Long
+      - patientId: PatientId
+      - facialScanId: FacialScanId
+      - skinType: String
+      - overallScore: Double
+      - hydrationScore: Double
+      - textureScore: Double
+      - sensitivityScore: Double
+      - brightnessScore: Double
+      - status: SkinAnalysisStatus
+      - analyzedAt: LocalDateTime
+      + onAnalysisCompleted()
+    }
+    class SkinProfile {
+      - id: Long
+      - patientId: PatientId
+      - skinType: SkinType
+      - sensitivity: Sensitivity
+      - waterIntake: String
+      - sunExposure: String
+      - sleepHours: String
+      - status: SkinProfileStatus
+      + update(command: UpdateSkinCharacteristicsCommand)
+      + onCompleted()
+      + onUpdated()
+    }
+  }
+
+  package valueobjects {
+    class PatientId <<value object>> { + patientId: Long }
+    class FacialScanId <<value object>> { + facialScanId: Long }
+    enum FacialScanStatus { STARTED\nSUBMITTED\nCOMPLETED\nFAILED }
+    enum SkinAnalysisStatus { PENDING\nCOMPLETED }
+    enum SkinProfileStatus { PENDING\nCOMPLETED }
+    enum SkinType { NORMAL\nDRY\nOILY\nCOMBINATION\nSENSITIVE }
+    enum Sensitivity { LOW\nMEDIUM\nHIGH }
+  }
+
+  package commands {
+    class StartFacialScanCommand <<command>>
+    class SubmitFacialScanCommand <<command>>
+    class AnalyzeSkinScanCommand <<command>>
+    class CompleteSkinProfileCommand <<command>>
+    class UpdateSkinCharacteristicsCommand <<command>>
+  }
+
+  package queries {
+    class GetFacialScanByIdQuery <<query>>
+    class GetFacialScansByPatientIdQuery <<query>>
+    class GetSkinAnalysisByIdQuery <<query>>
+    class GetSkinAnalysisByFacialScanIdQuery <<query>>
+    class GetSkinAnalysesByPatientIdQuery <<query>>
+    class GetSkinProfileByIdQuery <<query>>
+    class GetSkinProfileByPatientIdQuery <<query>>
+  }
+
+  package events {
+    class FacialScanStartedEvent <<domain event>>
+    class FacialScanSubmittedEvent <<domain event>>
+    class PreliminaryDiagnosisGeneratedEvent <<domain event>>
+    class SkinProfileCompletedEvent <<domain event>>
+    class SkinCharacteristicsUpdatedEvent <<domain event>>
+  }
+
+  package repositories {
+    interface FacialScanRepository
+    interface SkinAnalysisRepository
+    interface SkinProfileRepository
+  }
+}
+
+FacialScan --|> AbstractDomainAggregateRoot
+SkinAnalysis --|> AbstractDomainAggregateRoot
+SkinProfile --|> AbstractDomainAggregateRoot
+
+FacialScan "1" *-- "1" PatientId : patientId
+FacialScan "1" *-- "1" FacialScanStatus : status
+
+SkinAnalysis "1" *-- "1" PatientId : patientId
+SkinAnalysis "1" *-- "1" FacialScanId : facialScanId
+SkinAnalysis "1" *-- "1" SkinAnalysisStatus : status
+SkinAnalysis "1" o-- "1" FacialScan : facialScanId (by reference)
+
+SkinProfile "1" *-- "1" PatientId : patientId
+SkinProfile "1" *-- "1" SkinType : skinType
+SkinProfile "1" *-- "1" Sensitivity : sensitivity
+SkinProfile "1" *-- "1" SkinProfileStatus : status
+
+FacialScan ..> StartFacialScanCommand : <<uses>>
+SkinAnalysis ..> AnalyzeSkinScanCommand : <<uses>>
+SkinProfile ..> CompleteSkinProfileCommand : <<uses>>
+SkinProfile ..> UpdateSkinCharacteristicsCommand : <<uses>>
+
+FacialScanStartedEvent ..> FacialScan : <<derives from>>
+FacialScanSubmittedEvent ..> FacialScan : <<derives from>>
+PreliminaryDiagnosisGeneratedEvent ..> SkinAnalysis : <<derives from>>
+SkinProfileCompletedEvent ..> SkinProfile : <<derives from>>
+SkinCharacteristicsUpdatedEvent ..> SkinProfile : <<derives from>>
+
+FacialScan ..> FacialScanStartedEvent : <<creates>>
+FacialScan ..> FacialScanSubmittedEvent : <<creates>>
+SkinAnalysis ..> PreliminaryDiagnosisGeneratedEvent : <<creates>>
+SkinProfile ..> SkinProfileCompletedEvent : <<creates>>
+SkinProfile ..> SkinCharacteristicsUpdatedEvent : <<creates>>
+
+FacialScanRepository ..> FacialScan : <<uses>>
+FacialScanRepository ..> PatientId : <<uses>>
+SkinAnalysisRepository ..> SkinAnalysis : <<uses>>
+SkinAnalysisRepository ..> FacialScanId : <<uses>>
+SkinAnalysisRepository ..> PatientId : <<uses>>
+SkinProfileRepository ..> SkinProfile : <<uses>>
+SkinProfileRepository ..> PatientId : <<uses>>
+
+GetFacialScansByPatientIdQuery ..> PatientId : <<uses>>
+GetSkinAnalysisByFacialScanIdQuery ..> FacialScanId : <<uses>>
+GetSkinAnalysesByPatientIdQuery ..> PatientId : <<uses>>
+GetSkinProfileByPatientIdQuery ..> PatientId : <<uses>>
+@enduml

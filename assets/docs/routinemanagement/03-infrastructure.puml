@@ -1,0 +1,121 @@
+@startuml routinemanagement-infrastructure
+!include ../_style.puml
+title Routine Management — Infrastructure Layer
+
+package "«external» framework" as ext {
+  interface "JpaRepository<T,ID>" as JpaRepository
+}
+
+package "shared.infrastructure.persistence\n(referenced)" as sharedInfra {
+  abstract class AuditableAbstractPersistenceEntity
+}
+
+package "routinemanagement.domain (referenced)" as domain {
+  class Routine
+  class DailyTracking
+  class PatientId <<value object>>
+  class RoutineId <<value object>>
+  class SkinAnalysisId <<value object>>
+  interface RoutineRepository
+  interface DailyTrackingRepository
+}
+
+package "routinemanagement.application (referenced)" as application {
+  interface RoutineAiService
+}
+
+package "routinemanagement.infrastructure" as infra {
+
+  package "ai.services" as aiServices {
+    class GeminiRoutineAiServiceImpl {
+      - restTemplate: RestTemplate
+      - objectMapper: ObjectMapper
+      - apiKey: String
+      - apiUrl: String
+    }
+  }
+
+  package "persistence.jpa.entities" as entities {
+    class RoutinePersistenceEntity {
+      - patientId: PatientId
+      - skinAnalysisId: SkinAnalysisId
+      - status: RoutineStatus
+      - skinType: String
+      - items: List<RoutineItemPersistenceEntity>
+    }
+    class RoutineItemPersistenceEntity {
+      - routine: RoutinePersistenceEntity
+      - step: String
+      - order: Integer
+      - scheduledTime: String
+      - productRecommendation: String
+    }
+    class DailyTrackingPersistenceEntity {
+      - patientId: PatientId
+      - routineId: RoutineId
+      - date: LocalDate
+      - completed: boolean
+      - completedAt: LocalDateTime
+    }
+  }
+
+  package "persistence.jpa.converters" as converters {
+    class PatientIdPersistenceConverter
+    class RoutineIdPersistenceConverter
+    class SkinAnalysisIdPersistenceConverter
+  }
+
+  package "persistence.jpa.assemblers" as assemblers {
+    class RoutinePersistenceAssembler <<static assembler>>
+    class DailyTrackingPersistenceAssembler <<static assembler>>
+  }
+
+  package "persistence.jpa.repositories" as jpaRepos {
+    interface RoutinePersistenceRepository
+    interface DailyTrackingPersistenceRepository
+  }
+
+  package "persistence.jpa.adapters" as adapters {
+    class RoutineRepositoryImpl {
+      - routinePersistenceRepository: RoutinePersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+    class DailyTrackingRepositoryImpl {
+      - dailyTrackingPersistenceRepository: DailyTrackingPersistenceRepository
+      - eventPublisher: ApplicationEventPublisher
+    }
+  }
+}
+
+GeminiRoutineAiServiceImpl ..> RoutineAiService : <<implements>>
+
+RoutinePersistenceEntity --|> AuditableAbstractPersistenceEntity
+RoutineItemPersistenceEntity --|> AuditableAbstractPersistenceEntity
+DailyTrackingPersistenceEntity --|> AuditableAbstractPersistenceEntity
+RoutinePersistenceRepository --|> JpaRepository
+DailyTrackingPersistenceRepository --|> JpaRepository
+
+RoutinePersistenceEntity "1" *-- "2..*" RoutineItemPersistenceEntity : items
+RoutinePersistenceEntity ..> PatientIdPersistenceConverter : <<uses>>\n@Convert
+RoutinePersistenceEntity ..> SkinAnalysisIdPersistenceConverter : <<uses>>\n@Convert
+DailyTrackingPersistenceEntity ..> PatientIdPersistenceConverter : <<uses>>\n@Convert
+DailyTrackingPersistenceEntity ..> RoutineIdPersistenceConverter : <<uses>>\n@Convert
+
+PatientIdPersistenceConverter ..> PatientId : <<converts>>
+RoutineIdPersistenceConverter ..> RoutineId : <<converts>>
+SkinAnalysisIdPersistenceConverter ..> SkinAnalysisId : <<converts>>
+
+RoutineRepositoryImpl --> RoutinePersistenceRepository : routinePersistenceRepository
+DailyTrackingRepositoryImpl --> DailyTrackingPersistenceRepository : dailyTrackingPersistenceRepository
+RoutineRepositoryImpl ..> RoutinePersistenceAssembler : <<uses>>
+DailyTrackingRepositoryImpl ..> DailyTrackingPersistenceAssembler : <<uses>>
+
+RoutinePersistenceAssembler ..> RoutinePersistenceEntity : <<uses>>
+RoutinePersistenceAssembler ..> RoutineItemPersistenceEntity : <<uses>>
+RoutinePersistenceAssembler ..> Routine : <<uses>>
+DailyTrackingPersistenceAssembler ..> DailyTrackingPersistenceEntity : <<uses>>
+DailyTrackingPersistenceAssembler ..> DailyTracking : <<uses>>
+
+RoutineRepositoryImpl ..> RoutineRepository : <<implements>>
+DailyTrackingRepositoryImpl ..> DailyTrackingRepository : <<implements>>
+@enduml

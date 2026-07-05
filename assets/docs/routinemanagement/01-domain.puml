@@ -1,0 +1,128 @@
+@startuml routinemanagement-domain
+!include ../_style.puml
+title Routine Management — Domain Layer
+
+package "shared.domain.model.aggregates\n(referenced)" as sharedDomain {
+  abstract class AbstractDomainAggregateRoot<T>
+}
+
+package "routinemanagement.domain.model" as domain {
+
+  package aggregates {
+    class Routine {
+      - id: Long
+      - patientId: PatientId
+      - skinAnalysisId: SkinAnalysisId
+      - status: RoutineStatus
+      - skinType: String
+      - items: List<RoutineItem>
+      - createdAt: LocalDateTime
+      + removeItem(command: RemoveProductFromRoutineCommand)
+      + replaceProduct(command: ReplaceProductInRoutineCommand)
+      + onGenerated()
+    }
+    class DailyTracking {
+      - id: Long
+      - patientId: PatientId
+      - routineId: RoutineId
+      - date: LocalDate
+      - completed: boolean
+      - completedAt: LocalDateTime
+      + onCompleted()
+    }
+  }
+
+  package entities {
+    class RoutineItem {
+      - id: Long
+      - step: String
+      - order: Integer
+      - scheduledTime: String
+      - productRecommendation: String
+      + updateProductRecommendation(newProduct: String)
+    }
+  }
+
+  package valueobjects {
+    class PatientId <<value object>> { + patientId: Long }
+    class RoutineId <<value object>> { + routineId: Long }
+    class SkinAnalysisId <<value object>> { + skinAnalysisId: Long }
+    enum RoutineStatus { ACTIVE\nINACTIVE }
+    enum TrackingStatus { COMPLETED\nNOT_COMPLETED }
+  }
+
+  package commands {
+    class GeneratePersonalizedRoutineCommand <<command>>
+    class RemoveProductFromRoutineCommand <<command>>
+    class ReplaceProductInRoutineCommand <<command>>
+    class MarkRoutineAsCompletedCommand <<command>>
+  }
+
+  package queries {
+    class GetRoutineByIdQuery <<query>>
+    class GetRoutineByPatientIdQuery <<query>>
+    class GetRecommendedProductsForRoutineItemQuery <<query>>
+    class GetAllDailyTrackingsQuery <<query>>
+    class GetDailyTrackingByPatientIdAndDateQuery <<query>>
+    class GetDailyTrackingsByPatientIdQuery <<query>>
+    class GetDailyTrackingsByRoutineIdQuery <<query>>
+    class GetWeeklySummaryByPatientIdQuery <<query>>
+  }
+
+  package events {
+    class PersonalizedRoutineGeneratedEvent <<domain event>>
+    class ProductRemovedFromRoutineEvent <<domain event>>
+    class ProductReplacedInRoutineEvent <<domain event>>
+    class DailyRoutineCompletionRecordedEvent <<domain event>>
+  }
+
+  package repositories {
+    interface RoutineRepository
+    interface DailyTrackingRepository
+  }
+}
+
+Routine --|> AbstractDomainAggregateRoot
+DailyTracking --|> AbstractDomainAggregateRoot
+
+Routine "1" *-- "1" PatientId : patientId
+Routine "1" *-- "1" SkinAnalysisId : skinAnalysisId
+Routine "1" *-- "1" RoutineStatus : status
+Routine "1" *-- "2..*" RoutineItem : items
+
+DailyTracking "1" *-- "1" PatientId : patientId
+DailyTracking "1" *-- "1" RoutineId : routineId
+DailyTracking "1" o-- "0..1" Routine : routineId (by reference)
+
+Routine ..> GeneratePersonalizedRoutineCommand : <<uses>>
+Routine ..> RemoveProductFromRoutineCommand : <<uses>>
+Routine ..> ReplaceProductInRoutineCommand : <<uses>>
+DailyTracking ..> MarkRoutineAsCompletedCommand : <<uses>>
+
+PersonalizedRoutineGeneratedEvent ..> Routine : <<derives from>>
+ProductRemovedFromRoutineEvent ..> Routine : <<derives from>>
+ProductReplacedInRoutineEvent ..> Routine : <<derives from>>
+DailyRoutineCompletionRecordedEvent ..> DailyTracking : <<derives from>>
+
+Routine ..> PersonalizedRoutineGeneratedEvent : <<creates>>
+Routine ..> ProductRemovedFromRoutineEvent : <<creates>>
+Routine ..> ProductReplacedInRoutineEvent : <<creates>>
+DailyTracking ..> DailyRoutineCompletionRecordedEvent : <<creates>>
+
+RoutineRepository ..> Routine : <<uses>>
+RoutineRepository ..> PatientId : <<uses>>
+DailyTrackingRepository ..> DailyTracking : <<uses>>
+DailyTrackingRepository ..> PatientId : <<uses>>
+DailyTrackingRepository ..> RoutineId : <<uses>>
+
+GetRoutineByPatientIdQuery ..> PatientId : <<derived, wrapped by\napplication>>
+GetDailyTrackingsByPatientIdQuery ..> PatientId : <<derived, wrapped by\napplication>>
+GetDailyTrackingsByRoutineIdQuery ..> RoutineId : <<derived, wrapped by\napplication>>
+GetWeeklySummaryByPatientIdQuery ..> PatientId : <<uses>>
+
+note bottom of TrackingStatus
+  Declared value object, but DailyTracking
+  models completion with a plain boolean
+  field — this enum is not wired in.
+end note
+@enduml

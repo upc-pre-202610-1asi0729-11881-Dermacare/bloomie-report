@@ -1,0 +1,128 @@
+@startuml dermatologycare-interfaces
+!include ../_style.puml
+title Dermatology Care — Interfaces Layer
+
+package "dermatologycare.domain (referenced)" as domain {
+  class Availability
+  class DermatologistProfile
+  class DermatologistId <<value object>>
+  class DefineAvailabilityCommand <<command>>
+  class UpdateAvailabilityCommand <<command>>
+  class UpdateDermatologistProfileCommand <<command>>
+  class GetAvailabilityByDermatologistIdQuery <<query>>
+  class GetAvailabilityByDermatologistIdAndDayQuery <<query>>
+  class GetAllDermatologistProfilesQuery <<query>>
+  class GetDermatologistProfileByIdQuery <<query>>
+}
+
+package "dermatologycare.application (referenced)" as application {
+  interface AvailabilityCommandService
+  interface AvailabilityQueryService
+  interface DermatologistProfileCommandService
+  interface DermatologistProfileQueryService
+  class DermatologyCareContextFacadeImpl
+  class AvailabilityDefinedEventHandler
+}
+
+package "shared (referenced)" as shared {
+  class ApplicationError
+  class ResponseEntityAssembler <<static assembler>>
+  class ErrorResponseAssembler <<static assembler>>
+}
+
+package "dermatologycare.interfaces" as ifaces {
+
+  package acl {
+    interface DermatologyCareContextFacade {
+      + existsDermatologistProfileByDermatologistId(id: Long): boolean
+      + fetchProfileIdByDermatologistId(id: Long): Long
+      + fetchConsultationFeeByDermatologistId(id: Long): Double
+    }
+  }
+
+  package events {
+    class AvailabilityDefinedIntegrationEvent <<integration event>> {
+      + availabilityId: Long
+      + dermatologistId: Long
+      + dayOfWeek: String
+      + startTime: String
+      + endTime: String
+    }
+  }
+
+  package rest {
+    class AvailabilityController {
+      - queryService: AvailabilityQueryService
+      - commandService: AvailabilityCommandService
+      + getAvailabilities(dermatologistId, day)
+      + defineAvailability(resource)
+      + updateAvailability(availabilityId, resource)
+    }
+    class DermatologistProfileController {
+      - queryService: DermatologistProfileQueryService
+      - commandService: DermatologistProfileCommandService
+      + getAllProfiles()
+      + getProfileById(profileId)
+      + updateProfile(profileId, resource)
+    }
+  }
+
+  package "rest.resources" as resources {
+    class AvailabilityResource <<resource>>
+    class DefineAvailabilityResource <<resource>>
+    class UpdateAvailabilityResource <<resource>>
+    class DermatologistProfileResource <<resource>>
+    class UpdateDermatologistProfileResource <<resource>>
+  }
+
+  package "rest.transform" as transform {
+    class AvailabilityResourceFromEntityAssembler <<static assembler>>
+    class DefineAvailabilityCommandFromResourceAssembler <<static assembler>>
+    class UpdateAvailabilityCommandFromResourceAssembler <<static assembler>>
+    class DermatologistProfileResourceFromEntityAssembler <<static assembler>>
+    class UpdateDermatologistProfileCommandFromResourceAssembler <<static assembler>>
+  }
+}
+
+DermatologyCareContextFacadeImpl ..> DermatologyCareContextFacade : <<implements>>
+AvailabilityDefinedEventHandler ..> AvailabilityDefinedIntegrationEvent : <<publishes>>
+AvailabilityDefinedIntegrationEvent ..> Availability : <<uses>>\nfrom(Availability)
+
+AvailabilityController --> AvailabilityQueryService : <<uses>>
+AvailabilityController --> AvailabilityCommandService : <<uses>>
+AvailabilityController ..> GetAvailabilityByDermatologistIdQuery : <<uses>>
+AvailabilityController ..> GetAvailabilityByDermatologistIdAndDayQuery : <<uses>>
+AvailabilityController ..> DermatologistId : <<uses>>
+AvailabilityController ..> AvailabilityResource : <<uses>>
+AvailabilityController ..> DefineAvailabilityResource : <<uses>>
+AvailabilityController ..> UpdateAvailabilityResource : <<uses>>
+AvailabilityController ..> AvailabilityResourceFromEntityAssembler : <<uses>>
+AvailabilityController ..> DefineAvailabilityCommandFromResourceAssembler : <<uses>>
+AvailabilityController ..> UpdateAvailabilityCommandFromResourceAssembler : <<uses>>
+AvailabilityController ..> ResponseEntityAssembler : <<uses>>
+
+DermatologistProfileController --> DermatologistProfileQueryService : <<uses>>
+DermatologistProfileController --> DermatologistProfileCommandService : <<uses>>
+DermatologistProfileController ..> GetAllDermatologistProfilesQuery : <<uses>>
+DermatologistProfileController ..> GetDermatologistProfileByIdQuery : <<uses>>
+DermatologistProfileController ..> DermatologistProfileResource : <<uses>>
+DermatologistProfileController ..> UpdateDermatologistProfileResource : <<uses>>
+DermatologistProfileController ..> DermatologistProfileResourceFromEntityAssembler : <<uses>>
+DermatologistProfileController ..> UpdateDermatologistProfileCommandFromResourceAssembler : <<uses>>
+DermatologistProfileController ..> ApplicationError : <<uses>>
+DermatologistProfileController ..> ErrorResponseAssembler : <<uses>>
+DermatologistProfileController ..> ResponseEntityAssembler : <<uses>>
+
+AvailabilityResourceFromEntityAssembler ..> AvailabilityResource : <<creates>>
+AvailabilityResourceFromEntityAssembler ..> Availability : <<uses>>
+DefineAvailabilityCommandFromResourceAssembler ..> DefineAvailabilityResource : <<uses>>
+DefineAvailabilityCommandFromResourceAssembler ..> DefineAvailabilityCommand : <<creates>>
+DefineAvailabilityCommandFromResourceAssembler ..> DermatologistId : <<creates>>
+UpdateAvailabilityCommandFromResourceAssembler ..> UpdateAvailabilityResource : <<uses>>
+UpdateAvailabilityCommandFromResourceAssembler ..> UpdateAvailabilityCommand : <<creates>>
+
+DermatologistProfileResourceFromEntityAssembler ..> DermatologistProfileResource : <<creates>>
+DermatologistProfileResourceFromEntityAssembler ..> DermatologistProfile : <<uses>>
+UpdateDermatologistProfileCommandFromResourceAssembler ..> UpdateDermatologistProfileResource : <<uses>>
+UpdateDermatologistProfileCommandFromResourceAssembler ..> UpdateDermatologistProfileCommand : <<creates>>
+@enduml
