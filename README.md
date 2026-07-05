@@ -3519,6 +3519,105 @@ Headline "About us" en Montserrat Semibold 62 px (H1), #333333; us en Montserrat
 
 ### 4.2.1. Organization Systems
 
+La aplicación Bloomie está estructurada bajo un sistema de organización jerárquica y secuencial, diseñado para optimizar la experiencia de usuario y garantizar una navegación clara, eficiente y predecible. Esta organización permite que tanto jóvenes adultos (usuarios finales) como dermatólogos (usuarios profesionales) puedan encontrar la información que necesitan de forma lógica y contextual. A continuación se especificará las decisiones de arquitectura de información específicas para cada segmento objetivo
+
+#### 4.2.1.1. Organization System Segmento 1: Jóvenes adultos interesados en skincare
+
+##### 4.2.1.1.1. Organización jerárquica
+El contenido se dispone de manera jerárquica, siguiendo una estructura top-down que parte del onboarding hacia los módulos de uso frecuente.
+1) Nivel 1 – Acceso principal: Onboarding, Registro, Inicio de sesión y Dashboard.
+2) Nivel 2 – Módulos principales: Recomendaciones, Chat, Explorar nuevos productos, Buscar, Consulta a dermatólogo y Perfil.
+3) Nivel 3 – Submódulos o acciones: por ejemplo, dentro de Recomendaciones se encuentran Rutina personalizada, Sugerencia de productos y Recordatorios de rutina; dentro de Perfil se agrupan Editar datos, Cambiar foto, Configuración e Historial de consultas. Esta jerarquía visual facilita la orientación del usuario y distribuye los contenidos de forma coherente con las metas de interacción. Cada nivel reduce progresivamente la complejidad cognitiva, respetando los principios de Disclosure (mostrar solo la información necesaria), Growth (permitir expansión futura de funciones) y Choices (vistas alternativas significativas).
+
+##### 4.2.1.1.2. Organización secuencial
+Algunas tareas, como el registro del usuario o la agenda de citas con dermatólogos, siguen un
+flujo secuencial diseñado para guiar paso a paso al usuario:
+1. Registro → Datos personales → Lifestyle Questions → Escaneo facial → Análisis
+preliminar → Creación de perfil.
+2. Consultar dermatólogo → Seleccionar especialista → Elegir fecha → Confirmar cita.
+
+##### 4.2.1.1.3. Organización matricial
+1) Bloomie también integra rutas transversales o accesos cruzados que conectan
+diferentes módulos según la necesidad del usuario. Por ejemplo:
+2) Desde Productos sugeridos se puede acceder directamente a Tiendas cercanas o a
+Consulta a dermatólogo para resolver dudas sobre el uso del producto.
+3) Desde Historial de consultas, el usuario puede volver a Recomendaciones o Rutina
+personalizada para aplicar los cambios sugeridos.
+Este sistema matricial potencia la flexibilidad de navegación y promueve la exploración libre
+sin perder la consistencia del flujo principal.
+
+##### 4.2.1.1.4. Categorización del contenido
+El contenido dentro de Bloomie se organiza mediante diferentes esquemas de categorización
+dependiendo del contexto:
+1) Por audiencia: se diferencian dos vistas principales: Usuarios jóvenes adultos y
+Dermatólogos, cada uno con menús, funciones y terminología adaptada.
+2) Por tópicos: las secciones principales (Recomendaciones, Consulta, Buscar, Chat,
+Perfil) agrupan información y funciones según la acción o tema que el usuario desea
+realizar.
+3) Cronológica: en los módulos de Historial de consultas y Recordatorios de rutina, la
+información se ordena por fecha de registro o última actualización.
+4) Alfabética: utilizada en la lista de dermatólogos y en el catálogo de productos para
+facilitar la búsqueda directa.
+
+###### 4.2.1.2. Organization System Segmento 2: Dermatólogos certificados
+La aplicación Bloomie – vista para dermatólogos está estructurada bajo un sistema de
+organización jerárquica y secuencial, diseñado para optimizar la gestión clínica y garantizar
+una navegación clara, eficiente y centrada en las tareas profesionales. Esta organización
+permite que los dermatólogos puedan acceder fácilmente a la información de sus pacientes,
+gestionar consultas y mantener una comunicación fluida dentro de un entorno digital confiable
+y ordenado.
+
+###### 4.2.1.2.1. Organización jerárquica
+El contenido se dispone de manera jerárquica, siguiendo una estructura top-down que parte
+del onboarding hacia los módulos principales de trabajo del dermatólogo.
+1) Nivel 1 – Acceso principal: Onboarding, Registro, Inicio de sesión y Dashboard.
+2) Nivel 2 – Módulos principales: Overview, Chat, Pacientes, Siguiente reunión, Home,
+Buscar, Consulta a IA y Perfil.
+3) Nivel 3 – Submódulos o acciones: por ejemplo, dentro de Overview se encuentran
+Consultas pendientes, Pacientes recientes y Próximas citas; dentro de Pacientes se
+agrupan Historial médico, Datos personales, Progreso visual y Recomendaciones IA;
+mientras que en Perfil se incluyen Editar perfil, Cambiar foto, añadir nuevas
+credenciales y Configuración.
+Esta jerarquía visual organiza la aplicación según las prioridades de uso, permitiendo que las
+tareas clínicas estén siempre accesibles desde el Dashboard. Cada nivel reduce
+progresivamente la complejidad cognitiva, respetando los principios de Disclosure (mostrar
+solo lo necesario) y Growth (permitir la expansión de nuevas funciones sin afectar la estructura
+general).
+
+###### 4.2.1.2.2. Organización secuencial
+Algunas tareas dentro de la aplicación siguen un flujo secuencial para guiar al dermatólogo
+paso a paso en la gestión de sus pacientes y consultas:
+1) Registro → Datos personales → Subir cédula profesional → Crear perfil.
+2) Registro de pacientes → Seleccionar paciente → Revisar historial médico → Analizar
+progreso visual → Revisar recomendaciones IA.
+3) Próximas citas → Revisar calendario → Seleccionar fecha → Pacientes del día
+
+###### 4.2.1.2.3. Organización matricial
+Bloomie también integra rutas transversales o accesos cruzados que permiten al dermatólogo
+moverse de un módulo a otro sin perder contexto. Por ejemplo:
+1) Desde Consultas pendientes o Próximas citas, el dermatólogo puede acceder
+directamente al Chat con el paciente para coordinar detalles de la atención.
+2) Desde Recomendaciones IA, se puede acceder al Historial médico o al Progreso visual
+para ajustar los tratamientos.
+3) Desde la Videollamada de consulta, se puede abrir el Registro del paciente o enviar
+recomendaciones personalizadas tras finalizar la reunión.
+Este sistema matricial incrementa la eficiencia del trabajo clínico y permite una experiencia
+más flexible sin comprometer la consistencia general del flujo.
+
+###### 4.2.1.2.4. Categorización del contenido
+El contenido de la aplicación para dermatólogos se organiza mediante distintos esquemas de
+categorización que mejoran la búsqueda y comprensión de la información:
+1) Por audiencia: esta vista está dirigida exclusivamente a profesionales dermatólogos,
+con menús, iconografía y terminología médica adaptada a sus tareas de diagnóstico y
+seguimiento.
+2) Por tópicos: las secciones principales (Overview, Chat, Pacientes, Consulta, Perfil)
+agrupan funcionalidades relacionadas con tareas de gestión, comunicación y
+configuración.
+3) Cronológica: aplicada en los módulos de Consultas pendientes, Pacientes recientes y
+Próximas citas, donde la información se ordena según la fecha más próxima o reciente.
+4) Alfabética: utilizada en la lista de pacientes o en el historial médico, para localizar
+rápidamente registros específicos.
+
 ### 4.2.2. Labeling Systems
 
 El sistema de etiquetado de Bloomie fue diseñado para garantizar claridad, coherencia y 
