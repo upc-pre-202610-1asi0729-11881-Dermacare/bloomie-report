@@ -7233,7 +7233,7 @@ Dermatological Appointment Context <br>
 
 En esta sección se presentan los Database Diagrams de Bloomie, elaborados para cada bounded context de la solución (IAM, Skin Analysis, Routine Management, Product Discovery, Dermatology Care, Payments, Subscription e Intelligent Support). Los diagramas muestran las tablas, columnas, llaves primarias y foráneas, así como las relaciones entre ellas, reflejando cómo se almacena en MySQL la información correspondiente a cada contexto del negocio.
 
-<img src="assets/img/Diagrama-base-de-datos/diagrama_base_datos_general.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/bloomie-db.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Identity and Access Management
 <img src="assets/img/Diagrama-base-de-datos/iam.png" alt="DB Diagram" width="1000"/> <br>
