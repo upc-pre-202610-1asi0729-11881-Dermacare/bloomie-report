@@ -6885,82 +6885,82 @@ Dermatological Appointment Context <br>
 <img src="assets/c4-bloomie/BloomieApiComponents-dark.png" alt="C4 Diagram" width="1000"/> <br>
  
 
-## Componentes - frontend
+#### Componentes - Frontend
 
-## IAM Bounded Context
+##### IAM Bounded Context
 
-### Contenedores y Capas
+Contenedores y Capas <br>
 ![IAM - Contenedores y Capas](assets/c4-frontend-bloomie/iam01-ContenedoresYCapas-dark.png)
 
-### Capa de Presentación
+Capa de Presentación <br>
 ![IAM - Capa de Presentación](assets/c4-frontend-bloomie/iam02-CapaPresentacion-dark.png)
 
-### Componentes de Views
+Componentes de Views
 ![IAM - Componentes de Views](assets/c4-frontend-bloomie/iam03-ComponentesViews-dark.png)
 
 ---
 
-## Skin Analysis Bounded Context
+##### Skin Analysis Bounded Context
 
-### Contenedores y Capas
+Contenedores y Capas  <br>
 ![Skin Analysis - Contenedores y Capas](assets/c4-frontend-bloomie/skin-analysis01-ContenedoresYCapas-dark.png)
 
-### Capa de Presentación
+Capa de Presentación  <br>
 ![Skin Analysis - Capa de Presentación](assets/c4-frontend-bloomie/skin-analysis02-CapaPresentacion-dark.png)
 
-### Componentes de Views
+Componentes de Views  <br>
 ![Skin Analysis - Componentes de Views](assets/c4-frontend-bloomie/skin-analysis03-ComponentesViews-dark.png)
 
 ---
 
-## Routine Management Bounded Context
+##### Routine Management Bounded Context
 
-### Contenedores y Capas
+Contenedores y Capas  <br>
 ![Routine Management - Contenedores y Capas](assets/c4-frontend-bloomie/routine01-ContenedoresYCapas-dark.png)
 
-### Capa de Presentación
+Capa de Presentación <br>
 ![Routine Management - Capa de Presentación](assets/c4-frontend-bloomie/routine02-CapaPresentacion-dark.png)
 
-### Componentes de Views
+Componentes de Views <br>
 ![Routine Management - Componentes de Views](assets/c4-frontend-bloomie/routine03-ComponentesViews-dark.png)
 
 ---
 
-## Product Discovery Bounded Context
+##### Product Discovery Bounded Context
 
-### Contenedores y Capas
+Contenedores y Capas <br>
 ![Product Discovery - Contenedores y Capas](assets/c4-frontend-bloomie/product-discovery01-ContenedoresYCapas-dark.png)
 
-### Capa de Presentación
+Capa de Presentación <br>
 ![Product Discovery - Capa de Presentación](assets/c4-frontend-bloomie/product-discovery02-CapaPresentacion-dark.png)
 
-### Componentes de Views
+Componentes de Views <br>
 ![Product Discovery - Componentes de Views](assets/c4-frontend-bloomie/product-discovery03-ComponentesViews-dark.png)
 
 ---
 
-## Dermatology Care Bounded Context
+##### Dermatology Care Bounded Context
 
-### Contenedores y Capas
+Contenedores y Capas <br>
 ![Dermatology Care - Contenedores y Capas](assets/c4-frontend-bloomie/dermatology-care01-ContenedoresYCapas-dark.png)
 
-### Capa de Presentación
+Capa de Presentación <br>
 ![Dermatology Care - Capa de Presentación](assets/c4-frontend-bloomie/dermatology-care02-CapaPresentacion-dark.png)
 
-### Componentes de Views
+Componentes de Views <br>
 ![Dermatology Care - Componentes de Views](assets/c4-frontend-bloomie/dermatology-care03-ComponentesViews-dark.png)
 
 ---
 
-## Intelligent Support Bounded Context
+##### Intelligent Support Bounded Context
 
-### Contenedores y Capas
+Contenedores y Capas  <br>
 ![Intelligent Support - Contenedores y Capas](assets/c4-frontend-bloomie/intelligent01-ContenedoresYCapas-dark.png)
 
-### Capa de Presentación
+Capa de Presentación  <br>
 ![Intelligent Support - Capa de Presentación](assets/c4-frontend-bloomie/intelligent02-CapaPresentacion-dark.png)
 
-### Componentes de Views
+Componentes de Views  <br>
 ![Intelligent Support - Componentes de Views](assets/c4-frontend-bloomie/intelligent03-ComponentesViews-dark.png)
 
 ## Componentes - Backend
