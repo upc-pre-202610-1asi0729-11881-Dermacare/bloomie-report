@@ -7097,19 +7097,19 @@ Componentes de Views  <br>
 ##### IAM Bounded Context
 
 Vista general de capas DDD <br>
-<img src="assets/c4-bloomie/iamIamLayers-dark.png" height="800"/>
+<img src="assets/c4-bloomie/iamIamLayers-dark.png" width="800"/>
 
 Capa de Dominio <br>
-<img src="assets/c4-bloomie/iamDomainLayerClasses-dark.png" height="800"/>
+<img src="assets/c4-bloomie/iamDomainLayerClasses-dark.png" width="800"/>
 
 Capa de Aplicación <br>
 <img src="assets/c4-bloomie/iamApplicationLayerClasses-dark.png" width="600"/>
 
 Capa de Infraestructura <br>
-<img src="assets/c4-bloomie/iamInfrastructureLayerClasses-dark.png" height="800"/>
+<img src="assets/c4-bloomie/iamInfrastructureLayerClasses-dark.png" width="800"/>
 
 Capa de Interfaces <br>
-<img src="assets/c4-bloomie/iamInterfaceLayerClasses-dark.png" height="800"/>
+<img src="assets/c4-bloomie/iamInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
@@ -7290,7 +7290,7 @@ Capa de Interfaces <br>
 ## Skin Analysis
 
 ### Capa de Dominio
-![Skin Analysis - Domain](out/assets/docs/skinanalysis/01-domain.png)
+![Skin Analysis - Domain](assets/diamgras/docs/skinanalysis/01-domain.png)
 
 ### Capa de Aplicación
 ![Skin Analysis - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skinanalysis/02-application.puml)
