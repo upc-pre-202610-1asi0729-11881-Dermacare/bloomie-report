@@ -7290,7 +7290,7 @@ Capa de Interfaces <br>
 ## Skin Analysis
 
 ### Capa de Dominio
-![Skin Analysis - Domain](out/assets/docs/skinanalysis/01-domain.png)
+![Skin Analysis - Domain](assets/diamgras/docs/skinanalysis/01-domain.png)
 
 ### Capa de Aplicación
 ![Skin Analysis - Application](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report/refs/heads/main/assets/docs/skinanalysis/02-application.puml)
