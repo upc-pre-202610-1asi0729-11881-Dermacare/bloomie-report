@@ -6246,7 +6246,7 @@ adecuado.
 
 
 **Desktop**
-![user flow 5 desktop](assets/img/userflows/userflow_05-web.png)
+![user flow 5 desktop](assets/img/userflows/new-userflow-web1.png)
 
 
 **Descripción del flujo:**
@@ -6279,7 +6279,7 @@ aplicar filtros para encontrar opciones relevantes a mis necesidades.
 ![user flow 8 mobile](assets/img/userflows/userflow-08-mobile.png)
 
 **Desktop**
-![user flow 8 desktop](assets/img/userflows/userflow-08-web.png)
+![user flow 8 desktop](assets/img/userflows/new-userflow-web2.png)
 
 **Descripción del flujo:**
 
@@ -6312,7 +6312,7 @@ para acceder a ellos fácilmente después.
 ![user flow 10 mobile](assets/img/userflows/userflow-10-mobile.png)
 
 **Desktop**
-![user flow 10 desktop](assets/img/userflows/userflow-10-web.png)
+![user flow 10 desktop](assets/img/userflows/new-userflow-web3.png)
 
 **Descripción del flujo:**
 
