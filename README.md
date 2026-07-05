@@ -5450,7 +5450,8 @@ crear una cuenta y acceder a Bloomie.
 
 **Desktop**
 
-<img src="assets/img/mockups/new-mockup-web1.png" width="400" /> <img src="assets/img/mockups/new-mockup-web2.png" width="400" /> 
+ <img src="assets/img/mockups/new-mockup-web2.png" width="400" /> 
+ 
 ![mockup 1 desktop](assets/img/mockups/new-mockup-web3.png){width=500px}
 
 **Mobile**
