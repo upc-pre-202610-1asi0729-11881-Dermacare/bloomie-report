@@ -10299,6 +10299,57 @@ Las correcciones de usabilidad identificadas en la evaluación heurística del S
 
 El esquema de Aspect Leaders por bounded context demostró ser efectivo para distribuir responsabilidades de forma clara durante los cuatro sprints del proyecto, incluso ante el cambio de integrantes ocurrido en el Sprint 4. Para equipos futuros se recomienda formalizar este esquema desde el Sprint 1 y establecer sesiones de knowledge transfer al incorporar nuevos miembros, con el objetivo de reducir el tiempo de adaptación y maximizar la contribución de cada integrante desde el inicio de su participación en el proyecto.
 
+**Sobre el modelo de negocio y evolución del producto**
+
+Como startup en etapa temprana, Bloomie reconoce que los primeros meses de operación 
+representan una fase de aprendizaje y ajuste en la que es natural enfrentar errores, 
+baja tracción inicial y necesidad de pivotar decisiones. Lo importante no es evitar 
+estos tropiezos sino contar con la capacidad de identificarlos rápidamente y corregir 
+el rumbo con base en evidencia real de usuarios. Cada iteración del producto, desde 
+el diseño inicial hasta el Sprint 4, es una demostración de esta capacidad de mejora 
+continua.
+
+En cuanto al modelo de monetización actual, Bloomie genera ingresos a través de dos 
+fuentes complementarias: las suscripciones de los pacientes para acceder a las 
+funcionalidades premium de la plataforma, y una comisión del 15% sobre el valor de 
+cada consulta dermatológica agendada a través de la aplicación. Este modelo permite 
+que los dermatólogos accedan a la plataforma sin costo inicial, reduciendo la barrera 
+de adopción y facilitando el crecimiento de la red de especialistas disponibles para 
+los pacientes.
+
+A mediano plazo se recomienda evaluar la incorporación de un modelo de suscripción 
+mensual para dermatólogos, similar al que actualmente se ofrece a los pacientes. 
+Este modelo permitiría a los especialistas acceder a funcionalidades avanzadas de 
+gestión como analíticas de su agenda, historial clínico centralizado y herramientas 
+de seguimiento de pacientes, a cambio de una tarifa fija mensual. La transición hacia 
+este modelo debería realizarse una vez que la plataforma cuente con una base 
+consolidada de dermatólogos activos, de modo que el valor percibido justifique el 
+costo de la suscripción.
+
+Respecto a mejoras futuras del producto, se recomienda priorizar las siguientes 
+funcionalidades para las próximas iteraciones:
+
+- **Notificaciones y recordatorios:** implementar notificaciones push para recordar 
+al usuario completar su rutina diaria, avisar sobre citas próximas y alertar sobre 
+el vencimiento de su suscripción.
+
+- **Historial clínico del paciente para el dermatólogo:** permitir que el dermatólogo 
+acceda al historial completo de escaneos, análisis y consultas previas del paciente 
+antes de iniciar una nueva consulta, mejorando la calidad del diagnóstico.
+
+- **Recomendaciones de rutina basadas en progreso:** ajustar automáticamente la rutina 
+personalizada del usuario en función de los resultados de sus escaneos faciales 
+periódicos, haciendo el sistema más adaptativo en el tiempo.
+
+- **Gamificación del seguimiento de rutina:** incorporar logros, rachas y recompensas 
+por la constancia en el cumplimiento de la rutina, con el objetivo de incrementar la 
+retención y el engagement de los usuarios.
+
+- **Expansión del catálogo de dermatólogos:** implementar un sistema de valoraciones 
+y reseñas de dermatólogos por parte de los pacientes, junto con filtros de búsqueda 
+por especialidad, precio y disponibilidad, para facilitar la elección del especialista 
+adecuado.
+
 # Bibliografía
 
 - Cámara de Comercio de Lima. (2024). Sector cosméticos e higiene personal facturaría más de S/ 9 000 millones en 2024. COPECOH–CCL. https://lacamara.pe/sector-cosmeticos-e-higiene-personal-facturaria-mas-de-s-9-000-millones-en-2024/
