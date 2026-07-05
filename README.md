@@ -422,7 +422,7 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       <u>AV2</u><br>
       Como líder del backend en este entregable, lideró la presentación del avance del desarrollo backend, explicando ante el equipo y los evaluadores las decisiones técnicas detrás de la conexión entre frontend y backend, adaptando el nivel de detalle según quién preguntaba. Presentó los hallazgos de la entrevista de validación y la evaluación según heurísticas, comunicando con claridad qué aspectos del producto debían ajustarse y por qué. Participó en la grabación del Video About the Team, compartiendo de forma cercana la experiencia del equipo durante el sprint. Al exponer el despliegue del backend en Azure, mostró evidencia en vivo del servicio funcionando, dirigiendo la explicación hacia la disponibilidad real del sistema.<br><br>
       <u>TB2</u><br>
-      <br><br>
+      Se lideró la presentación del avance final del Sprint 4, comunicando al equipo y evaluadores el estado del backend, las mejoras de la webapp y los despliegues en Azure. Al exponer las mejoras de diagramas, se explicó con claridad qué había cambiado y por qué, mostrando que las observaciones de entregas anteriores fueron escuchadas e incorporadas. Se participó en el Video About the Team compartiendo de forma cercana la experiencia del proyecto desde el inicio hasta el cierre.<br><br>
       <b>Asmat Alminco, Martin Alejandro</b><br>
       <u>AV1</u><br>
       Presentó las Lean UX Assumptions y el diseño de entrevistas empleando un lenguaje orientado a validar hipótesis con audiencias mixtas (técnicas y de negocio), diferenciando los supuestos del producto de los hallazgos del usuario. En la exposición del Sprint Review, utilizó tablas y evidencias de commits como medios de soporte visual, enfocando la presentación en demostrar el avance funcional alcanzado dentro del sprint.<br><br>
@@ -431,7 +431,7 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       <u>AV2</u><br>
       Expuso el avance del desarrollo backend explicando los bounded contexts implementados, adaptando el discurso según si la audiencia tenía perfil técnico o no. Compartió los resultados de la entrevista de validación, explicando cómo los hallazgos motivaron la mejora del userflow presentado. Participó en el Video About the Team, comunicando de forma cercana y honesta la experiencia del equipo a lo largo del proyecto.<br><br>
       <u>TB2</u><br>
-      <br><br>
+      Se comunicaron al equipo los hallazgos de calidad detectados en el reporte, la webapp y la plataforma, priorizando de forma oral qué observaciones debían resolverse antes del cierre del proyecto. Las actualizaciones de pantallas y las mejoras del landing page se validaron verbalmente con el equipo antes de darlas por cerradas. Se participó en el Video About the Team compartiendo la experiencia del proyecto ante cámara.<br><br>
       <b>Contreras Torres, Arturo Valentino</b><br>
       <u>AV1</u><br>
       Presentó los diagramas de arquitectura C4 (Context, Container y Components) empleando los niveles de abstracción adecuados para cada audiencia. Al exponer el Big Picture Event Storming y el Design-Level Event Storming, utilizó los tableros de eventos como medios visuales estructurados, orientando cada explicación hacia el objetivo de delimitar los bounded contexts del sistema.<br><br>
@@ -440,13 +440,25 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       <u>AV2</u><br>
       Presentó el avance del desarrollo backend junto con las mejoras realizadas en la webapp, explicando cómo se integraron los nuevos cambios al sistema existente. Expuso los resultados de la entrevista de validación, comunicando los hallazgos de forma estructurada. Lideró la grabación del Video About the Product, presentando el producto terminado a una audiencia externa al curso, cuidando que el mensaje fuera comprensible sin necesidad de contexto técnico previo. Mostró en vivo el despliegue de la segunda versión de la webapp en Azure, validando ante el equipo que la nueva versión estuviera disponible y funcionando correctamente.<br><br>
       <u>TB2</u><br>
-      <br><br>
+      Se presentó el estado final del backend y los despliegues en Azure ante el equipo, mostrando en vivo la disponibilidad real del sistema en producción. Al editar y presentar el Video About the Product, se adaptó el mensaje del producto para una audiencia completamente externa, cuidando que cualquier persona pudiera entender el valor de Bloomie sin contexto técnico previo. Se expusieron las mejoras de diagramas y los releases del proyecto de forma ordenada, comunicando el cierre del sistema con claridad.<br><br>
       <b>Acuache Lucas, Mathias Joaquin</b><br>
+      <u>AV1</u><br>
+      Se comunicaron al equipo las observaciones detectadas al revisar la calidad de los primeros artefactos del informe, señalando de forma oral y directa qué secciones requerían corrección antes de la entrega, adaptando el lenguaje según si la observación era para un compañero técnico o para la coherencia general del documento.<br><br>
+      <u>TB1</u><br>
+      Se expusieron ante el equipo los hallazgos de la revisión de calidad sobre el informe y los primeros avances de la webapp, comunicando con claridad qué inconsistencias se encontraron y priorizando verbalmente cuáles debían resolverse primero antes del cierre del sprint.<br><br>
+      <u>AV2</u><br>
+      Se compartieron con el equipo los resultados de la revisión de calidad realizada sobre el informe, la webapp y la plataforma en esta etapa del proyecto, explicando de forma oral el criterio usado para evaluar cada componente y qué ajustes se consideraban prioritarios.<br><br>
       <u>TB2</u><br>
-      <br><br>
+      Se presentaron los hallazgos de la revisión de calidad sobre el reporte, la webapp y la plataforma al equipo, comunicando con claridad qué estaba listo y qué necesitaba corrección antes del cierre del proyecto. Las actualizaciones de pantallas y las mejoras del landing page se validaron en vivo junto al equipo. Se participó en el Video About the Team compartiendo la experiencia del proyecto ante cámara para una audiencia que no estuvo presente en el desarrollo.<br><br>
       <b>Hurtado Balcázar, Rommel Daniel</b><br>
+      <u>AV1</u><br>
+      Se comunicaron al equipo las observaciones encontradas al revisar la calidad de los artefactos entregados en el AV1, explicando de forma oral y puntual qué aspectos no cumplían con el estándar esperado y por qué era necesario ajustarlos.<br><br>
+      <u>TB1</u><br>
+      Se expusieron los hallazgos de la revisión de calidad realizada sobre el informe y los avances técnicos del TB1, comunicando al equipo de forma clara y ordenada las inconsistencias detectadas y el criterio usado para priorizarlas.<br><br>
+      <u>AV2</u><br>
+      Se compartieron con el equipo los resultados de la revisión de calidad del informe, la webapp y la plataforma en esta etapa, explicando verbalmente qué elementos cumplían el estándar esperado y cuáles requerían ajustes antes de continuar.<br><br>
       <u>TB2</u><br>
-      <br><br>
+      Se presentaron los resultados de la revisión de calidad al equipo, señalando con precisión los aspectos que requerían ajuste en el reporte, la webapp y la plataforma para el cierre del proyecto. Las actualizaciones de pantallas y las mejoras del landing page se expusieron mostrando los cambios aplicados, permitiendo que el equipo verificara el resultado final antes de la entrega. Se participó en el Video About the Team comunicando de forma cercana la experiencia vivida durante el proyecto.
     </td>
     <td>
       <u>AV1</u><br>
@@ -456,7 +468,7 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       <u>AV2</u><br>
       Como equipo, durante el AV2 la comunicación oral se orientó hacia audiencias más diversas: el equipo interno, los evaluadores del curso y, por primera vez, una audiencia externa a través del Video About the Product. Esto exigió adaptar el lenguaje según quién recibía el mensaje, sin perder claridad ni rigor. Las entrevistas de validación y la evaluación según heurísticas se convirtieron en un espacio donde se practicó escuchar primero y comunicar después, asegurando que los hallazgos del usuario fueran el punto de partida de cualquier ajuste presentado. El Video About the Team, además, permitió que cada integrante comunicara su experiencia personal dentro del proyecto de forma honesta y cercana.<br><br>
       <u>TB2</u><br>
-      <br><br>
+      Como equipo, durante el TB2 la comunicación oral estuvo orientada al cierre del proyecto. Los hallazgos de la revisión de calidad se comunicaron al equipo de forma directa, señalando con claridad qué estaba listo y qué necesitaba ajuste antes de la entrega final. El Video About the Team reunió la voz de todos los integrantes, permitiendo que cada uno comunicara su experiencia a una audiencia que no participó en el desarrollo. El Video About the Product, ya editado en su versión final, exigió simplificar el mensaje al máximo sin perder lo esencial de la solución construida, pensando siempre en alguien completamente externo al proyecto.
     </td>
   </tr>
   <tr>
@@ -470,7 +482,7 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       <u>AV2</u><br>
       Como líder del backend, documentó el desarrollo de los bounded contexts implementados y la conexión entre frontend y backend, dejando registro técnico claro de las decisiones tomadas para que cualquier integrante del equipo pudiera continuar el trabajo sin perder contexto. Redactó los hallazgos de la entrevista de validación y de la evaluación según heurísticas, sintetizando los resultados en un lenguaje comprensible tanto para el equipo técnico como para quien revisara el informe sin haber participado en las pruebas. Documentó el Sprint 3 y las mejoras de diagramas aplicadas, además del despliegue del backend en Azure, dejando evidencia escrita verificable del avance.<br><br>
       <u>TB2</u><br>
-      <br><br>
+      Se documentó el Sprint 4 con los acuerdos del equipo y los objetivos del cierre, redactando de forma que cualquier lector pudiera entender el alcance final del proyecto. Las mejoras de diagramas se registraron con sus respectivas descripciones, dejando trazabilidad de los cambios respecto a versiones anteriores. La evidencia del despliegue en Azure y las mejoras de la webapp se documentaron siguiendo los estándares del informe técnico, con el nivel de detalle necesario para que el trabajo fuera verificable por cualquier revisor.<br><br>
       <b>Asmat Alminco, Martin Alejandro</b><br>
       <u>AV1</u><br>
       Redactó las Lean UX Assumptions y las User Stories siguiendo el formato estándar del informe, utilizando un lenguaje orientado al usuario que permitiera a lectores no técnicos comprender las hipótesis y los criterios de aceptación del producto. Documentó las evidencias de desarrollo para el Sprint Review con un nivel de detalle técnico adecuado para evaluadores del curso, incluyendo referencias a commits y entornos de despliegue.<br><br>
@@ -479,7 +491,7 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       <u>AV2</u><br>
       Documentó el avance del desarrollo backend explicando por escrito los bounded contexts trabajados, con un nivel de detalle técnico pensado para evaluadores del curso. Redactó los hallazgos de la entrevista de validación, sintetizando los resultados de forma que motivaran con claridad las mejoras aplicadas al userflow. Dejó registro escrito de los ajustes realizados al userflow tras la validación, explicando qué cambió respecto a la versión anterior.<br><br>
       <u>TB2</u><br>
-      <br><br>
+      Se dejó registro escrito de los hallazgos encontrados al revisar la calidad del reporte, la webapp y la plataforma, priorizando por escrito qué observaciones eran más urgentes antes del cierre del proyecto. Las actualizaciones de pantallas y las mejoras del landing page se documentaron con sus descripciones correspondientes, de modo que cualquier lector del informe pudiera identificar con claridad qué cambió respecto a la versión anterior y por qué.<br><br>
       <b>Contreras Torres, Arturo Valentino</b><br>
       <u>AV1</u><br>
       Documentó los diagramas de arquitectura C4, el Big Picture Event Storming y el Design-Level Event Storming con descripciones escritas que acompañaban cada vista del sistema, utilizando un lenguaje técnico preciso adecuado para evaluadores de ingeniería de software. Redactó las User Personas y el User Task Matrix con un nivel de síntesis que permite a lectores no técnicos comprender el comportamiento y las necesidades de los usuarios del sistema.<br><br>
@@ -488,13 +500,25 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       <u>AV2</u><br>
       Documentó el avance del desarrollo backend y las mejoras aplicadas a la webapp, explicando por escrito cómo se integraron los cambios al sistema existente. Redactó los hallazgos de la entrevista de validación de forma estructurada. Documentó el guion y la justificación del Video About the Product, sintetizando el mensaje del producto en un lenguaje accesible para una audiencia externa al curso. Redactó la evidencia del despliegue de la segunda versión de la webapp en Azure, dejando registro técnico verificable del proceso.<br><br>
       <u>TB2</u><br>
-      <br><br>
+      Se documentó el avance final del backend y el proceso de despliegue en Azure, dejando registro verificable de los releases y la configuración del entorno de producción. Las mejoras de diagramas se registraron detallando los cambios aplicados respecto a versiones anteriores, facilitando la trazabilidad del diseño a lo largo del proyecto. El guion del Video About the Product en su versión final se redactó pensando en una audiencia externa, cuidando que el mensaje fuera claro y accesible sin asumir conocimiento técnico previo.<br><br>
       <b>Acuache Lucas, Mathias Joaquin</b><br>
+      <u>AV1</u><br>
+      Dejó registro escrito de las observaciones encontradas al revisar la calidad de los primeros artefactos del informe, redactando de forma clara qué secciones requerían corrección y por qué, de modo que el equipo pudiera priorizar los ajustes antes de la entrega.<br><br>
+      <u>TB1</u><br>
+      Documentó por escrito los hallazgos de la revisión de calidad sobre el informe y los primeros avances de la webapp, sintetizando las inconsistencias encontradas en un lenguaje comprensible para cualquier integrante del equipo, sin importar su nivel de involucramiento técnico.<br><br>
+      <u>AV2</u><br>
+      Dejó registro escrito de los resultados de la revisión de calidad realizada sobre el informe, la webapp y la plataforma en esta etapa del proyecto, explicando por escrito el criterio usado para evaluar cada componente y los ajustes considerados prioritarios.<br><br>
       <u>TB2</u><br>
-      <br><br>
+      Se documentaron los hallazgos de la revisión de calidad sobre el reporte, la webapp y la plataforma, sintetizando los resultados de forma comprensible tanto para el equipo técnico como para los evaluadores del curso. Las actualizaciones de pantallas y las mejoras del landing page se registraron por escrito, dejando evidencia clara de los cambios realizados para el cierre del proyecto y permitiendo que cualquier lector identificara el estado final de cada componente revisado.<br><br>
       <b>Hurtado Balcázar, Rommel Daniel</b><br>
+      <u>AV1</u><br>
+      Dejó registro escrito de las observaciones encontradas al revisar la calidad de los artefactos entregados en el AV1, redactando con precisión qué aspectos no cumplían con el estándar esperado y qué se necesitaba ajustar antes de la entrega.<br><br>
+      <u>TB1</u><br>
+      Documentó por escrito los hallazgos de la revisión de calidad realizada sobre el informe y los avances técnicos del TB1, sintetizando las inconsistencias detectadas y el criterio usado para priorizarlas de forma comprensible para el equipo.<br><br>
+      <u>AV2</u><br>
+      Dejó registro escrito de los resultados de la revisión de calidad del informe, la webapp y la plataforma en esta etapa, explicando por escrito qué elementos cumplían el estándar esperado y cuáles requerían ajustes antes de continuar.<br><br>
       <u>TB2</u><br>
-      <br><br>
+      Se documentaron los resultados de la revisión de calidad de forma estructurada, dejando registro escrito de los aspectos revisados en el reporte, la webapp y la plataforma. Las actualizaciones de pantallas y las mejoras del landing page se registraron con sus descripciones correspondientes, de modo que cualquier lector del informe pudiera identificar con claridad los ajustes aplicados antes de la entrega final del proyecto.
     </td>
     <td>
       <u>AV1</u><br>
@@ -504,7 +528,7 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
       <u>AV2</u><br>
       Como equipo, durante el AV2 la documentación escrita se volvió más exigente porque el proyecto empezó a tener piezas funcionando de extremo a extremo: backend desplegado, frontend conectado, validaciones reales con usuarios. Aprendimos a sintetizar resultados de entrevistas y heurísticas sin perder la voz del usuario en el camino, y a documentar el trabajo técnico de forma que fuera comprensible incluso para quien no participó directamente en el desarrollo. El Video About the Product también nos obligó a pensar por primera vez en una audiencia completamente externa al curso, lo que reforzó la importancia de comunicar con claridad sin asumir conocimiento previo.<br><br>
       <u>TB2</u><br>
-      <br><br>
+      Como equipo, durante el TB2 la comunicación escrita se centró en dejar el proyecto completamente documentado y verificable. Los hallazgos de la revisión de calidad, las evidencias de despliegue, los releases y las mejoras de diagramas se registraron con el nivel de detalle necesario para que cualquier lector, independientemente de su perfil, pudiera entender el estado final del sistema. Cerrar el proyecto nos dejó la convicción de que documentar bien no es un trámite, sino parte de construir algo que realmente pueda ser entendido, mantenido y continuado por otros.
     </td>
   </tr>
 </table>
