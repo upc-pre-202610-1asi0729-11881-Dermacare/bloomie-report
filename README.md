@@ -5597,15 +5597,13 @@ preliminar y próximos pasos recomendados.
 
 ---
 
-4) **Mock-up 4:** Generar rutina personalizada
+4) **Mock-up 4:** Diagnóstico preliminar automático
 
 **User Story relacionada:**
-US05 - Como joven adulto, quiero recibir una rutina personalizada con
-productos basados en mi diagnóstico de piel para seguir un tratamiento
-adecuado.
+US04 - Como joven adulto, quiero recibir un diagnóstico generado por IA después del escaneo para conocer el estado de mi piel y los cuidados que necesito.
 
 **Desktop**
-![mockup 4 desktop](assets/img/mockups/new-mockup-web8.png)
+![mockup 4 desktop](assets/img/mockups/new-mockup-web10.png)
 ![mockup 4 desktop](assets/img/mockups/new-mockup-web9.png)
 
 **Mobile**
@@ -5650,7 +5648,7 @@ productos basados en mi diagnóstico de piel para seguir un tratamiento
 adecuado.
 
 **Desktop**
-![mockup 5 desktop](assets/img/mockups/new-mockup-web10.png)
+![mockup 5 desktop](assets/img/mockups/new-mockup-web8.png)
 ![mockup 5 desktop](assets/img/mockups/new-mockup-web11.png)
 
 **Mobile**
