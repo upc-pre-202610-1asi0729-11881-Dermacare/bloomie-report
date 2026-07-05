@@ -10406,6 +10406,17 @@ adecuado.
 
 ## Anexo A
 
+
+## Usuario de prueba para el portal de pacientes
+**email**: prueba@gmail.com
+**contraseña**: 12345678
+
+## Usuario de prueba para el portal de dermatólogos
+**email**: pruebadoctor@gmail.com
+**contraseña**: 12345678
+
+---
+
 URL del repositorio (Report):  [Repositorio Reporte](https://github.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report)
 
 URL del repositorio (Backend): [Repositorio Backend](https://github.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-platform)
