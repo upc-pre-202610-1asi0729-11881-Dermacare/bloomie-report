@@ -6963,175 +6963,175 @@ Capa de Presentación  <br>
 Componentes de Views  <br>
 ![Intelligent Support - Componentes de Views](assets/c4-frontend-bloomie/intelligent03-ComponentesViews-dark.png)
 
-## Componentes - Backend
+#### Componentes - Backend
 
-## IAM Bounded Context
+##### IAM Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/iamIamLayers-dark.png" height="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/iamDomainLayerClasses-dark.png" height="800"/>
 
-### Capa de Aplicación
+Capa de Aplicación <br>
 <img src="assets/c4-bloomie/iamApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/iamInfrastructureLayerClasses-dark.png" height="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/iamInterfaceLayerClasses-dark.png" height="800"/>
 
 ---
 
-## Skin Analysis Bounded Context
+##### Skin Analysis Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/SkinAnalysisLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/DomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
+Capa de Aplicación <br>
 <img src="assets/c4-bloomie/ApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/InfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/InterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
-## Routine Management Bounded Context
+##### Routine Management Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/routineRoutineManagementLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/routineDomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
+Capa de Aplicación <br>
 <img src="assets/c4-bloomie/routineApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/routineInfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/routineInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
-## Product Discovery Bounded Context
+##### Product Discovery Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/productProductDiscoveryLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/productDomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
+Capa de Aplicación <br>
 <img src="assets/c4-bloomie/productApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/productInfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/productInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
-## Dermatology Care Bounded Context
+##### Dermatology Care Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/DermatologyCareLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/DermatologyDomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
+Capa de Aplicación <br>
 <img src="assets/c4-bloomie/DermatologyApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/DermatologyInfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/DermatologyInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
-## Dermatological Appointment Bounded Context
+##### Dermatological Appointment Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/appointmentDermatologicalAppointmentLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/appointmentDomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
+Capa de Aplicación <br>
 <img src="assets/c4-bloomie/appointmentApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/appointmentInfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/appointmentInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
-## Subscriptions Bounded Context
+##### Subscriptions Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/subscriptionSubscriptionLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/subscriptionDomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
+Capa de Aplicación <br>
 <img src="assets/c4-bloomie/subscriptionApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/subscriptionInfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/subscriptionInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
-## Payments Bounded Context
+##### Payments Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/paymentsPaymentsLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/paymentsDomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
+Capa de Aplicación <br>
 <img src="assets/c4-bloomie/paymentsApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/paymentsInfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/paymentsInterfaceLayerClasses-dark.png" width="800"/>
 
 ---
 
-## Intelligent Support Bounded Context
+##### Intelligent Support Bounded Context
 
-### Vista general de capas DDD
+Vista general de capas DDD <br>
 <img src="assets/c4-bloomie/intelligentIntelligentSupportLayers-dark.png" width="800"/>
 
-### Capa de Dominio
+Capa de Dominio <br>
 <img src="assets/c4-bloomie/intelligentDomainLayerClasses-dark.png" width="800"/>
 
-### Capa de Aplicación
+Capa de Aplicación <br>
 <img src="assets/c4-bloomie/intelligentApplicationLayerClasses-dark.png" width="600"/>
 
-### Capa de Infraestructura
+Capa de Infraestructura <br>
 <img src="assets/c4-bloomie/intelligentInfrastructureLayerClasses-dark.png" width="800"/>
 
-### Capa de Interfaces
+Capa de Interfaces <br>
 <img src="assets/c4-bloomie/intelligentInterfaceLayerClasses-dark.png" width="800"/>
 
 ## 4.7. Software Object-Oriented Design
@@ -7291,31 +7291,31 @@ En esta sección se presentan los Database Diagrams de Bloomie, elaborados para 
 
 <img src="assets/img/bloomie-db.png" alt="DB Diagram" width="1000"/> <br>
 
-### Identity and Access Management
+#### Identity and Access Management
 <img src="assets/img/Diagrama-base-de-datos/iam.png" alt="DB Diagram" width="1000"/> <br>
 
-### Dermatology Care
+#### Dermatology Care
 <img src="assets/img/Diagrama-base-de-datos/dermatologycare.png" alt="DB Diagram" width="1000"/> <br>
 
-### Intelligent Support
+#### Intelligent Support
 <img src="assets/img/Diagrama-base-de-datos/intelligentsupport.png" alt="DB Diagram" width="1000"/> <br>
 
-### Payments
+#### Payments
 <img src="assets/img/Diagrama-base-de-datos/payments .png" alt="DB Diagram" width="600"/> <br>
 
-### Subscriptions
+#### Subscriptions
 <img src="assets/img/Diagrama-base-de-datos/subscription.png" alt="DB Diagram" width="1000"/> <br>
 
-### Product Discovery
+#### Product Discovery
 <img src="assets/img/Diagrama-base-de-datos/productdiscovery.png" alt="DB Diagram" width="1000"/> <br>
 
-### Routine Management
+#### Routine Management
 <img src="assets/img/Diagrama-base-de-datos/routinemanagement.png" alt="DB Diagram" width="1000"/> <br>
 
-### Skin Analysis
+#### Skin Analysis
 <img src="assets/img/Diagrama-base-de-datos/skinanalysis.png" alt="DB Diagram" width="1000"/> <br>
 
-### Suscription
+#### Suscription
 <img src="assets/img/Diagrama-base-de-datos/subscription.png" alt="DB Diagram" width="1000"/> <br>
 
 
@@ -7381,7 +7381,7 @@ una vez completada y revisada.
 
 Convención de nomenclatura:
 
-### feature/<descripción-en-kebab-case>
+#### feature/<descripción-en-kebab-case>
 Ejemplos aplicados durante el Sprint 1 en el repositorio del informe:
 
 - `feature/startup-profile`
@@ -9000,11 +9000,11 @@ Tabla de los commits mas importantes para el Backend, Frontend y Landing Page
 #### 5.2.3.5. Execution Evidence for Sprint Review
 Durante este Sprint, la plataforma Bloomie logró la integración entre el frontend Angular y el backend Spring Boot en los bounded contexts principales: IAM, Skin Analysis y Routine Management, Citas dermatológicas. Las principales funcionalidades implementadas y validadas incluyen el registro de usuario, la creación del perfil de piel mediante el formulario de estilo de vida, el envío del escaneo facial con generación automática del análisis de piel, la generación de rutina personalizada disparada por eventos de dominio, y el seguimiento diario de rutina. El backend fue desplegado exitosamente en Azure App Service y conectado a Azure Database for MySQL, permitiendo que el flujo completo del usuario funcione en un entorno de producción.
 
-### Swagger UI — Endpoints Documentados
+##### Swagger UI — Endpoints Documentados
 
 ![swagger](assets/img/swagger.png)
 
-### Evidencias de método POST - GET en la página web
+##### Evidencias de método POST - GET en la página web
 ![sign-in-db](assets/img/auth-response.png)
 ![skin-db](assets/img/skin-profile-response.png) 
 ![scan-response](assets/img/scan-result-response.png) 
@@ -9024,7 +9024,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 
 ---
 
-### Endpoints Documentados
+##### Endpoints Documentados
 
 | Bounded Context | Verbo HTTP | Endpoint | Descripción |
 |---|---|---|---|
@@ -9086,9 +9086,9 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 
 ---
 
-### Detalle de Endpoints Principales
+##### Detalle de Endpoints Principales
 
-#### POST `/api/v1/authentication/register`
+##### POST `/api/v1/authentication/register`
 **Parámetros:** Body JSON
 ```json
 {
@@ -9108,7 +9108,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 }
 ```
 
-#### POST `/api/v1/skin-profiles`
+##### POST `/api/v1/skin-profiles`
 **Parámetros:** Body JSON
 ```json
 {
@@ -9134,7 +9134,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 }
 ```
 
-#### POST `/api/v1/facial-scans`
+##### POST `/api/v1/facial-scans`
 **Parámetros:** Body JSON
 ```json
 {
@@ -9152,7 +9152,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 }
 ```
 
-#### PUT `/api/v1/facial-scans/{facialScanId}/submit`
+##### PUT `/api/v1/facial-scans/{facialScanId}/submit`
 **Parámetros:** Path `facialScanId`, Body JSON
 ```json
 {
@@ -9161,7 +9161,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 ```
 **Response 200:** Devuelve el `FacialScan` actualizado con status `SUBMITTED`. Dispara automáticamente la generación del `SkinAnalysis` y la `Routine` mediante eventos de dominio.
 
-#### GET `/api/v1/skin-analyses/facial-scan/{facialScanId}`
+##### GET `/api/v1/skin-analyses/facial-scan/{facialScanId}`
 **Parámetros:** Path `facialScanId`
 **Response 200:**
 ```json
@@ -9179,7 +9179,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 }
 ```
 
-#### GET `/api/v1/routines/patient/{patientId}`
+##### GET `/api/v1/routines/patient/{patientId}`
 **Parámetros:** Path `patientId`
 **Response 200:**
 ```json
@@ -9197,7 +9197,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 }
 ```
 
-#### POST `/api/v1/daily-trackings`
+##### POST `/api/v1/daily-trackings`
 **Parámetros:** Body JSON
 ```json
 {
@@ -9208,7 +9208,7 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 ```
 **Response 201:** Devuelve el ID del `DailyTracking` creado.
 
-#### GET `/api/v1/daily-trackings/patient/{patientId}/weekly-summary`
+##### GET `/api/v1/daily-trackings/patient/{patientId}/weekly-summary`
 **Parámetros:** Path `patientId`
 **Response 200:**
 ```json
@@ -9224,8 +9224,9 @@ Durante este Sprint, se documentaron todos los Web Services implementados en la 
 
 ---
 
-### Imágenes de interacción utilizando datos de prueba
-### Registro de Usuario
+###### Imágenes de interacción utilizando datos de prueba
+
+Registro de Usuario <br>
 
 El usuario se registra desde la vista de sign-up. La solicitud se envía a `POST /api/v1/authentication/register` y retorna 201 Created. El nuevo registro de usuario se persiste en la base de datos.
 
@@ -9233,7 +9234,7 @@ El usuario se registra desde la vista de sign-up. La solicitud se envía a `POST
 ![sign-in-response](assets/img/auth-response.png)
 ![sign-in-db](assets/img/sign-in-bd.png)
 
-### Creación del Perfil de Piel
+Creación del Perfil de Piel <br>
 
 Después del registro, el paciente completa el formulario de estilo de vida con su tipo de piel, ingesta de agua, exposición solar y hábitos de sueño. El sistema envía una solicitud `POST /api/v1/skin-profiles` y persiste el perfil en la base de datos.
 
@@ -9241,7 +9242,7 @@ Después del registro, el paciente completa el formulario de estilo de vida con 
 ![skin-response](assets/img/skin-profile-response.png)
 ![skin-db](assets/img/skin-profile-bd.png)
 
-### Envío del Escaneo Facial y Análisis de Piel
+Envío del Escaneo Facial y Análisis de Piel <br>
 
 El paciente envía un escaneo facial con una foto. El sistema dispara automáticamente el pipeline de análisis de piel mediante eventos de dominio, generando un aggregate `SkinAnalysis` con puntajes determinísticos basados en el tipo de piel y sensibilidad del paciente.
 
@@ -9249,7 +9250,7 @@ El paciente envía un escaneo facial con una foto. El sistema dispara automátic
 ![scan-response](assets/img/scan-result-response.png)
 ![scan-db](assets/img/scan-bd.png)
 
-### Generación de Rutina Personalizada
+Generación de Rutina Personalizada <br>
 
 Al completarse el análisis de piel, se publica un `PreliminaryDiagnosisGeneratedIntegrationEvent` que es consumido por el bounded context de Routine Management, el cual genera automáticamente una rutina personalizada con recomendaciones de productos adaptadas al tipo de piel del paciente.
 
@@ -9675,7 +9676,7 @@ de Subscriptions, Payments y Dermatology Care.
 | Chat Messages | Get messages by consultation | GET | /api/v1/chat-messages | Query: consultationId (Long) | 200: [ { "id": 1, "content": "Buenos días doctor", "sentAt": "2026-07-01T10:05:00" } ] | Retorna todos los mensajes de chat de una consulta virtual ordenados cronológicamente. |
 
 
-## Imágenes de interacción
+##### Imágenes de interacción
 
 **Registro y Selección de Plan con Stripe**
 
@@ -9947,7 +9948,7 @@ Los User Flows propuestos corresponden a las funcionalidades core del panel del 
 
 ### 5.3.2. Registro de Entrevistas.
 
-## Primer segmento: Jóvenes adultos
+#### Primer segmento: Jóvenes adultos
 
 <u>Entrevista 1:</u>
 
@@ -10037,7 +10038,7 @@ Al pasar al portal web, Britny realizó el flujo de búsqueda y selección de un
 En términos generales, Britny tuvo una experiencia muy positiva en ambas partes de la sesión, sin reportar confusión en ninguna de las tareas asignadas. Su única sugerencia fue incorporar la foto del especialista en el perfil. Calificó a Bloomie como una aplicación prometedora, con una interfaz intuitiva y precios accesibles para el cuidado de la piel.
 
 
-## Segundo segmento: Dermatólogos certificados
+#### Segundo segmento: Dermatólogos certificados
 
 <u>Entrevista 1:</u>
 
@@ -10146,7 +10147,7 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 3. Gestión de suscripciones y pagos
 4. Flujo completo de agendamiento de cita
 
-### ESCALA DE SEVERIDAD
+#### ESCALA DE SEVERIDAD
 
 Los errores serán puntuados tomando en cuenta la siguiente escala de severidad:
 
@@ -10167,9 +10168,9 @@ Los errores serán puntuados tomando en cuenta la siguiente escala de severidad:
 | 5 | La sección de consultas pasadas muestra notas clínicas bajo una etiqueta que dice "Diagnosis" | 2 | Information Architecture: Is it communicative? |
 | 6 | La cancelación de una cita se ejecuta sin solicitar confirmación al usuario | 3 | Usability: Prevención de errores |
 
-### DESCRIPCIÓN DE PROBLEMAS:
+#### DESCRIPCIÓN DE PROBLEMAS:
 
-#### PROBLEMA #1: Las fechas de las consultas pasadas se muestran en formato ISO 8601
+##### PROBLEMA #1: Las fechas de las consultas pasadas se muestran en formato ISO 8601
 Severidad: 3
 Heurística violada: Usability — Relación entre el sistema y el mundo real
 Problema:
@@ -10184,7 +10185,7 @@ Recomendación:
 Formatear la fecha antes de presentarla al usuario utilizando un formato legible según el idioma activo de la aplicación, por ejemplo April 10, 2026 – 10:00 AM en inglés o 10 de abril de 2026 – 10:00 a.m. en español.
 
 
-#### PROBLEMA #2: Los productos en la rutina se muestran como identificador numérico
+##### PROBLEMA #2: Los productos en la rutina se muestran como identificador numérico
 Severidad: 3
 Heurística violada: Usability — Relación entre el sistema y el mundo real
 Problema:
@@ -10197,7 +10198,7 @@ Recomendación:
 
 Resolver el nombre del producto a partir de su ID antes de renderizar la vista, mostrando el nombre comercial del producto, su categoría o ambos, por ejemplo: Niacinamide 10% + Zinc 1% — Serum.
 
-#### PROBLEMA #3: No existe opción para descartar el resultado de un escaneo facial
+##### PROBLEMA #3: No existe opción para descartar el resultado de un escaneo facial
 Severidad: 2
 Heurística violada: Usability — Libertad y control del usuario
 Problema:
@@ -10210,7 +10211,7 @@ Recomendación:
 
 Agregar un botón secundario como Discard and Retake que permita al usuario descartar el resultado y reiniciar el proceso de escaneo sin guardar el análisis actual.
 
-#### PROBLEMA #4: Las tarjetas de productos no tienen imagen representativa
+##### PROBLEMA #4: Las tarjetas de productos no tienen imagen representativa
 Severidad: 2
 Principio violado: Inclusive Design — Proporciona experiencias comparables
 Problema:
@@ -10223,7 +10224,7 @@ Recomendación:
 
 Incorporar imágenes reales de los productos en el catálogo. Como solución intermedia, se puede categorizar visualmente los productos usando íconos o colores diferenciadores por categoría (cleanser, serum, moisturizer, sunscreen) para que el usuario pueda distinguirlos visualmente mientras se implementan las imágenes reales.
 
-#### PROBLEMA #5: Etiqueta "Diagnosis" mostrando contenido de notas clínicas
+##### PROBLEMA #5: Etiqueta "Diagnosis" mostrando contenido de notas clínicas
 Severidad: 2
 Principio violado: Information Architecture — Is it communicative?
 Problema:
@@ -10237,7 +10238,7 @@ Recomendación:
 
 Corregir la etiqueta para que refleje con precisión el tipo de contenido mostrado. Si el campo corresponde a notas clínicas, la etiqueta debe ser Clinical Notes o Notes. Si se desea mostrar un diagnóstico diferenciado, este debe provenir de un campo específico del modelo de datos.
 
-#### PROBLEMA #6: Cancelación de cita se ejecuta sin solicitar confirmación
+##### PROBLEMA #6: Cancelación de cita se ejecuta sin solicitar confirmación
 Severidad: 3
 Heurística violada: Usability — Prevención de errores
 Problema:
@@ -10404,9 +10405,6 @@ adecuado.
 
 # Anexos
 
-## Anexo A
-
-
 ## Usuario de prueba para el portal de pacientes
 **email**: prueba@gmail.com
 **contraseña**: 12345678
@@ -10414,8 +10412,6 @@ adecuado.
 ## Usuario de prueba para el portal de dermatólogos
 **email**: pruebadoctor@gmail.com
 **contraseña**: 12345678
-
----
 
 URL del repositorio (Report):  [Repositorio Reporte](https://github.com/upc-pre-202610-1asi0729-11881-dermacare/bloomie-report)
 
