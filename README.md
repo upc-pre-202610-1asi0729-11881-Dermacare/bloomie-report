@@ -7054,29 +7054,36 @@ Dermatological Appointment Context <br>
 
 ### 4.8.1. Database Diagrams
 
+En esta sección se presentan los Database Diagrams de Bloomie, elaborados para cada bounded context de la solución (IAM, Skin Analysis, Routine Management, Product Discovery, Dermatology Care, Payments, Subscription e Intelligent Support). Los diagramas muestran las tablas, columnas, llaves primarias y foráneas, así como las relaciones entre ellas, reflejando cómo se almacena en MySQL la información correspondiente a cada contexto del negocio.
+
+<img src="assets/img/Diagrama-base-de-datos/diagrama_base_datos_general.png" alt="DB Diagram" width="1000"/> <br>
+
 ### Identity and Access Management
-<img src="assets/img/iam-bd.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/iam.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Dermatology Care
-<img src="assets/img/dermatology-care.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/dermatologycare.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Intelligent Support
-<img src="assets/img/intelligent-support.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/intelligentsupport.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Payments
-<img src="assets/img/payments.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/payments .png" alt="DB Diagram" width="600"/> <br>
+
+### Subscriptions
+<img src="assets/img/Diagrama-base-de-datos/subscription.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Product Discovery
-<img src="assets/img/product-discovery.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/productdiscovery.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Routine Management
-<img src="assets/img/routine-management.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/routinemanagement.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Skin Analysis
-<img src="assets/img/skin-analysis.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/skinanalysis.png" alt="DB Diagram" width="1000"/> <br>
 
 ### Suscription
-<img src="assets/img/suscription.png" alt="DB Diagram" width="1000"/> <br>
+<img src="assets/img/Diagrama-base-de-datos/subscription.png" alt="DB Diagram" width="1000"/> <br>
 
 
 # Capítulo V: Product Implementation, Validation & Deployment
