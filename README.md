@@ -1,50 +1,61 @@
 <div style="page-break-after: always; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%;">
 
-<img src="assets/img/upc-logo.png" alt="UPC Logo" width="150" style="display: block; margin: 0 auto 20px auto;"/>
+<img src="assets/img/upc-logo.png" alt="UPC Logo" width="90" style="display: block; margin: 0 auto 20px auto;"/>
 
-<h1 style="text-align: center; width: 100%;">Universidad Peruana de Ciencias Aplicadas</h1>
-<h2 style="text-align: center; width: 100%;">Carrera de Ingeniería de Software</h2>
-<h2 style="text-align: center; width: 100%;">1ASI0729</h2>
-<p style="text-align: center; width: 100%;"><strong>Desarrollo de aplicaciones Open Source</strong></p>
-<p style="text-align: center; width: 100%;"><strong>NRC:</strong> 11881</p>
-<h1 style="text-align: center; width: 100%;">Informe de Trabajo Final</h1>
-<p style="text-align: center; width: 100%;"><strong>Docente:</strong> Bautista Ubillús, Efraín Ricardo</p>
-<p style="text-align: center; width: 100%;"><strong>Equipo:</strong> Dermacare</p>
-<p style="text-align: center; width: 100%;"><strong>Proyecto:</strong> Bloomie</p>
-<h2 style="text-align: center; width: 100%;">Integrantes</h2>
+<p style="text-align: center; width: 100%; margin: 4px 0;">Universidad Peruana de Ciencias Aplicadas</p>
+<p style="text-align: center; width: 100%; margin: 4px 0;">Carrera de Ingeniería de Software</p>
 
-<table style="margin: 0 auto; border-collapse: collapse; width: 60%;">
+<p style="text-align: center; width: 100%; margin: 20px 0 4px 0;"><strong>1ASI0729</strong></p>
+<p style="text-align: center; width: 100%; margin: 4px 0;"><strong>Desarrollo de Aplicaciones Open Source</strong></p>
+
+<p style="text-align: center; width: 100%; margin: 20px 0 4px 0;">NRC</p>
+<p style="text-align: center; width: 100%; margin: 4px 0;"><strong>11881</strong></p>
+
+<p style="text-align: center; width: 100%; margin: 20px 0; font-size: 18pt"><strong>Informe del Trabajo Final</strong></p>
+
+<p style="text-align: center; width: 100%; margin: 20px 0 4px 0;">Docente</p>
+<p style="text-align: center; width: 100%; margin: 4px 0;"><strong>Bautista Ubillús, Efraín Ricardo</strong></p>
+
+<p style="text-align: center; width: 100%; margin: 20px 0 4px 0;">Equipo</p>
+<p style="text-align: center; width: 100%; margin: 4px 0;"><strong>Dermacare</strong></p>
+
+<p style="text-align: center; width: 100%; margin: 20px 0 4px 0;">Proyecto</p>
+<p style="text-align: center; width: 100%; margin: 4px 0;"><strong>Bloomie</strong></p>
+
+<p style="text-align: center; width: 100%; margin: 30px 0 10px 0;"><strong>Integrantes</strong></p>
+
+<table style="margin: 0 auto; border-collapse: collapse;">
   <thead>
     <tr>
-      <th style="border: 1px solid #000; padding: 6px 12px; text-align: center;">Código</th>
-      <th style="border: 1px solid #000; padding: 6px 12px; text-align: center;">Apellidos y Nombres</th>
+      <th style="padding: 4px 20px; text-align: center; font-weight: bold;">Código</th>
+      <th style="padding: 4px 20px; text-align: left; font-weight: bold;">Apellidos y Nombres</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u202314898</td>
-      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Acuache Lucas, Mathias Joaquin</td>
+      <td style="padding: 2px 20px; text-align: center;">u202314898</td>
+      <td style="padding: 2px 20px; text-align: left;">Acuache Lucas, Mathias Joaquin</td>
     </tr>
     <tr>
-      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u202416272</td>
-      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Asmat Alminco, Martin Alejandro</td>
+      <td style="padding: 2px 20px; text-align: center;">u202416272</td>
+      <td style="padding: 2px 20px; text-align: left;">Asmat Alminco, Martin Alejandro</td>
     </tr>
     <tr>
-      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u202414802</td>
-      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Contreras Torres, Arturo Valentino</td>
+      <td style="padding: 2px 20px; text-align: center;">u202414802</td>
+      <td style="padding: 2px 20px; text-align: left;">Contreras Torres, Arturo Valentino</td>
     </tr>
     <tr>
-      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u202517474</td>
-      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Hurtado Balcázar, Rommel Daniel</td>
+      <td style="padding: 2px 20px; text-align: center;">u202517474</td>
+      <td style="padding: 2px 20px; text-align: left;">Hurtado Balcázar, Rommel Daniel</td>
     </tr>
     <tr>
-      <td style="border: 1px solid #000; padding: 6px 12px; text-align: center;">u20241b843</td>
-      <td style="border: 1px solid #000; padding: 6px 12px; text-align: left;">Mechan Montenegro, Luciana Carolina</td>
+      <td style="padding: 2px 20px; text-align: center;">u20241b843</td>
+      <td style="padding: 2px 20px; text-align: left;">Mechan Montenegro, Luciana Carolina</td>
     </tr>
   </tbody>
 </table>
 
-<p style="text-align: center; width: 100%; margin-top: 20px;"><em>Período 202610</em></p>
+<p style="text-align: center; width: 100%; margin-top: 30px;"><em>Período 202610</em></p>
 <p style="text-align: center; width: 100%;"><em>Julio, 2026</em></p>
 
 </div>
