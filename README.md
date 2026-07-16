@@ -11,7 +11,7 @@
 <p style="text-align: center; width: 100%; margin: 24px 0 4px 0; font-size: 13pt;">NRC</p>
 <p style="text-align: center; width: 100%; margin: 4px 0; font-size: 14pt;"><strong>11881</strong></p>
 
-<p style="text-align: center; width: 100%; margin: 24px 0; font-size: 22pt;"><strong>Informe del Trabajo Final</strong></p>
+<p style="text-align: center; width: 100%; margin: 24px 0; font-size: 20pt;"><strong>Informe del Trabajo Final</strong></p>
 
 <p style="text-align: center; width: 100%; margin: 24px 0 4px 0; font-size: 13pt;">Docente</p>
 <p style="text-align: center; width: 100%; margin: 4px 0; font-size: 14pt;"><strong>Bautista Ubillús, Efraín Ricardo</strong></p>
@@ -22,7 +22,7 @@
 <p style="text-align: center; width: 100%; margin: 24px 0 4px 0; font-size: 13pt;">Proyecto</p>
 <p style="text-align: center; width: 100%; margin: 4px 0; font-size: 14pt;"><strong>Bloomie</strong></p>
 
-<p style="text-align: center; width: 100%; margin: 34px 0 12px 0; font-size: 15pt;"><strong>Integrantes</strong></p>
+<p style="text-align: center; width: 100%; margin: 34px 0 12px 0; font-size: 14pt;"><strong>Integrantes</strong></p>
 
 <table style="margin: 0 auto; border-collapse: collapse; border: none; font-size: 12pt;">
   <thead>
@@ -55,8 +55,8 @@
   </tbody>
 </table>
 
-<p style="text-align: center; width: 100%; margin-top: 34px; font-size: 12pt;"><em>Período 202610</em></p>
-<p style="text-align: center; width: 100%; font-size: 12pt;"><em>Julio, 2026</em></p>
+<p style="text-align: center; width: 100%; margin-top: 34px; font-size: 12pt;"><em><strong>Período 202610</strong></em></p>
+<p style="text-align: center; width: 100%; font-size: 12pt;"><em><strong>Julio, 2026</strong></em></p>
 
 </div>
 
