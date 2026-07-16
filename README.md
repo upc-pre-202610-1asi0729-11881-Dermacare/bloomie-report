@@ -1,62 +1,62 @@
 <div style="page-break-after: always; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; width: 100%;">
 
-<img src="assets/img/upc-logo.png" alt="UPC Logo" width="90" style="display: block; margin: 0 auto 20px auto;"/>
+<img src="assets/img/upc-logo.png" alt="UPC Logo" width="110" style="display: block; margin: 0 auto 20px auto;"/>
 
-<p style="text-align: center; width: 100%; margin: 4px 0;">Universidad Peruana de Ciencias Aplicadas</p>
-<p style="text-align: center; width: 100%; margin: 4px 0;">Carrera de Ingeniería de Software</p>
+<p style="text-align: center; width: 100%; margin: 4px 0; font-size: 14pt;">Universidad Peruana de Ciencias Aplicadas</p>
+<p style="text-align: center; width: 100%; margin: 4px 0; font-size: 13pt;">Carrera de Ingeniería de Software</p>
 
-<p style="text-align: center; width: 100%; margin: 20px 0 4px 0;"><strong>1ASI0729</strong></p>
-<p style="text-align: center; width: 100%; margin: 4px 0;"><strong>Desarrollo de Aplicaciones Open Source</strong></p>
+<p style="text-align: center; width: 100%; margin: 24px 0 4px 0; font-size: 14pt;"><strong>1ASI0729</strong></p>
+<p style="text-align: center; width: 100%; margin: 4px 0; font-size: 13pt;"><strong>Desarrollo de Aplicaciones Open Source</strong></p>
 
-<p style="text-align: center; width: 100%; margin: 20px 0 4px 0;">NRC</p>
-<p style="text-align: center; width: 100%; margin: 4px 0;"><strong>11881</strong></p>
+<p style="text-align: center; width: 100%; margin: 24px 0 4px 0; font-size: 13pt;">NRC</p>
+<p style="text-align: center; width: 100%; margin: 4px 0; font-size: 14pt;"><strong>11881</strong></p>
 
-<p style="text-align: center; width: 100%; margin: 20px 0; font-size: 18pt"><strong>Informe del Trabajo Final</strong></p>
+<p style="text-align: center; width: 100%; margin: 24px 0; font-size: 22pt;"><strong>Informe del Trabajo Final</strong></p>
 
-<p style="text-align: center; width: 100%; margin: 20px 0 4px 0;">Docente</p>
-<p style="text-align: center; width: 100%; margin: 4px 0;"><strong>Bautista Ubillús, Efraín Ricardo</strong></p>
+<p style="text-align: center; width: 100%; margin: 24px 0 4px 0; font-size: 13pt;">Docente</p>
+<p style="text-align: center; width: 100%; margin: 4px 0; font-size: 14pt;"><strong>Bautista Ubillús, Efraín Ricardo</strong></p>
 
-<p style="text-align: center; width: 100%; margin: 20px 0 4px 0;">Equipo</p>
-<p style="text-align: center; width: 100%; margin: 4px 0;"><strong>Dermacare</strong></p>
+<p style="text-align: center; width: 100%; margin: 24px 0 4px 0; font-size: 13pt;">Equipo</p>
+<p style="text-align: center; width: 100%; margin: 4px 0; font-size: 14pt;"><strong>Dermacare</strong></p>
 
-<p style="text-align: center; width: 100%; margin: 20px 0 4px 0;">Proyecto</p>
-<p style="text-align: center; width: 100%; margin: 4px 0;"><strong>Bloomie</strong></p>
+<p style="text-align: center; width: 100%; margin: 24px 0 4px 0; font-size: 13pt;">Proyecto</p>
+<p style="text-align: center; width: 100%; margin: 4px 0; font-size: 14pt;"><strong>Bloomie</strong></p>
 
-<p style="text-align: center; width: 100%; margin: 30px 0 10px 0;"><strong>Integrantes</strong></p>
+<p style="text-align: center; width: 100%; margin: 34px 0 12px 0; font-size: 15pt;"><strong>Integrantes</strong></p>
 
-<table style="margin: 0 auto; border-collapse: collapse;">
+<table style="margin: 0 auto; border-collapse: collapse; border: none; font-size: 12pt;">
   <thead>
     <tr>
-      <th style="padding: 4px 20px; text-align: center; font-weight: bold;">Código</th>
-      <th style="padding: 4px 20px; text-align: left; font-weight: bold;">Apellidos y Nombres</th>
+      <th style="padding: 6px 22px; text-align: center; font-weight: bold; border: none;">Código</th>
+      <th style="padding: 6px 22px; text-align: left; font-weight: bold; border: none;">Apellidos y Nombres</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="padding: 2px 20px; text-align: center;">u202314898</td>
-      <td style="padding: 2px 20px; text-align: left;">Acuache Lucas, Mathias Joaquin</td>
+      <td style="padding: 3px 22px; text-align: center; border: none;">u202314898</td>
+      <td style="padding: 3px 22px; text-align: left; border: none;">Acuache Lucas, Mathias Joaquin</td>
     </tr>
     <tr>
-      <td style="padding: 2px 20px; text-align: center;">u202416272</td>
-      <td style="padding: 2px 20px; text-align: left;">Asmat Alminco, Martin Alejandro</td>
+      <td style="padding: 3px 22px; text-align: center; border: none;">u202416272</td>
+      <td style="padding: 3px 22px; text-align: left; border: none;">Asmat Alminco, Martin Alejandro</td>
     </tr>
     <tr>
-      <td style="padding: 2px 20px; text-align: center;">u202414802</td>
-      <td style="padding: 2px 20px; text-align: left;">Contreras Torres, Arturo Valentino</td>
+      <td style="padding: 3px 22px; text-align: center; border: none;">u202414802</td>
+      <td style="padding: 3px 22px; text-align: left; border: none;">Contreras Torres, Arturo Valentino</td>
     </tr>
     <tr>
-      <td style="padding: 2px 20px; text-align: center;">u202517474</td>
-      <td style="padding: 2px 20px; text-align: left;">Hurtado Balcázar, Rommel Daniel</td>
+      <td style="padding: 3px 22px; text-align: center; border: none;">u202517474</td>
+      <td style="padding: 3px 22px; text-align: left; border: none;">Hurtado Balcázar, Rommel Daniel</td>
     </tr>
     <tr>
-      <td style="padding: 2px 20px; text-align: center;">u20241b843</td>
-      <td style="padding: 2px 20px; text-align: left;">Mechan Montenegro, Luciana Carolina</td>
+      <td style="padding: 3px 22px; text-align: center; border: none;">u20241b843</td>
+      <td style="padding: 3px 22px; text-align: left; border: none;">Mechan Montenegro, Luciana Carolina</td>
     </tr>
   </tbody>
 </table>
 
-<p style="text-align: center; width: 100%; margin-top: 30px;"><em>Período 202610</em></p>
-<p style="text-align: center; width: 100%;"><em>Julio, 2026</em></p>
+<p style="text-align: center; width: 100%; margin-top: 34px; font-size: 12pt;"><em>Período 202610</em></p>
+<p style="text-align: center; width: 100%; font-size: 12pt;"><em>Julio, 2026</em></p>
 
 </div>
 
